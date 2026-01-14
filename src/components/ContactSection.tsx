@@ -97,7 +97,7 @@ const ContactSection = () => {
                   <p className="text-sm text-muted-foreground">Clientes B2B</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-primary">€2M+</p>
+                  <p className="text-3xl font-bold text-primary">$2M+</p>
                   <p className="text-sm text-muted-foreground">Generados</p>
                 </div>
                 <div className="text-center">

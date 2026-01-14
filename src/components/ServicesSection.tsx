@@ -1,28 +1,28 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Target, Server, Cog } from "lucide-react";
+import { Globe, Target, Cog } from "lucide-react";
 
 const services = [
   {
-    icon: Target,
-    title: "Captación Inteligente",
+    icon: Globe,
+    title: "Diseño Web",
     description:
-      "No disparamos a ciegas. Usamos SEO estratégico y pauta de precisión para atraer a quien realmente está listo para comprar en tu nicho B2B.",
+      "Páginas web profesionales, rápidas y optimizadas para convertir visitantes en clientes. Diseño moderno que refleja tu marca y genera confianza.",
     highlight: false,
   },
   {
-    icon: Server,
-    title: "Infraestructura Robusta",
+    icon: Target,
+    title: "SEO + Campañas",
     description:
-      "Tu web será una máquina de conversión rápida y estable, apoyada en tecnologías como Hostinger/Banahosting. No más sitios lentos que pierden clientes.",
+      "Posicionamiento en Google y campañas de alto rendimiento en Google Ads, Meta y TikTok para captar leads cualificados con intención de compra.",
     highlight: false,
   },
   {
     icon: Cog,
     title: "Seguimiento y Automatización",
     description:
-      "Implementamos GHL (GoHighLevel) y flujos de N8N para que ningún lead quede olvidado. El sistema nutre al prospecto automáticamente hasta que está listo para cerrar contigo.",
+      "Sistemas inteligentes que nutren a cada prospecto automáticamente hasta que está listo para cerrar contigo. Ningún lead queda olvidado.",
     highlight: true,
     badge: "El Cerebro",
   },

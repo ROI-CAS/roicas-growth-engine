@@ -75,7 +75,7 @@ const HeroSection = () => {
                   <p className="text-xs text-muted-foreground">Tasa Conversión</p>
                 </div>
                 <div className="text-center p-3 rounded-lg bg-secondary">
-                  <p className="text-2xl lg:text-3xl font-bold text-primary">€84K</p>
+                  <p className="text-2xl lg:text-3xl font-bold text-primary">$84K</p>
                   <p className="text-xs text-muted-foreground">Ingresos</p>
                 </div>
               </div>
