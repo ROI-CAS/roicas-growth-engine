@@ -18,11 +18,11 @@ import AnimatedCounter from "./AnimatedCounter";
 
 const services = [
   { id: "web", label: "Diseño Web" },
+  { id: "ecommerce", label: "Tienda Online" },
   { id: "seo", label: "SEO" },
-  { id: "google-ads", label: "Google Ads" },
-  { id: "meta-ads", label: "Meta Ads (Facebook/Instagram)" },
-  { id: "tiktok-ads", label: "TikTok Ads" },
-  { id: "automation", label: "Automatización y CRM" },
+  { id: "ads", label: "Publicidad Digital" },
+  { id: "automation-ia", label: "Automatización IA" },
+  { id: "automation-crm", label: "CRM y Seguimiento" },
 ];
 
 const ContactSection = () => {

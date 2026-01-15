@@ -12,10 +12,11 @@ import { useToast } from "@/hooks/use-toast";
 
 const services = [
   { id: "web", label: "Diseño Web" },
+  { id: "ecommerce", label: "Tienda Online" },
   { id: "seo", label: "SEO" },
   { id: "ads", label: "Publicidad Digital" },
   { id: "email", label: "Email Marketing" },
-  { id: "automation", label: "Automatización" },
+  { id: "automation", label: "Automatización IA" },
 ];
 
 const contactInfo = [
@@ -141,68 +142,13 @@ const Contact = () => {
       {/* Contact Section */}
       <section className="py-16 md:py-24">
         <div className="section-container">
-          <div className="grid lg:grid-cols-5 gap-12">
-            {/* Contact Info */}
-            <div className="lg:col-span-2">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h2 className="text-2xl font-bold mb-6">Información de Contacto</h2>
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <motion.div
-                      key={info.title}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1, duration: 0.5 }}
-                      className="flex items-start gap-4"
-                    >
-                      <motion.div 
-                        whileHover={{ scale: 1.1, rotate: 10 }}
-                        className="w-12 h-12 rounded-xl bg-gradient-to-br from-warm/10 to-accent flex items-center justify-center flex-shrink-0"
-                      >
-                        <info.icon className="w-5 h-5 text-warm" />
-                      </motion.div>
-                      <div>
-                        <p className="font-medium">{info.title}</p>
-                        {info.link ? (
-                          <a href={info.link} className="text-muted-foreground hover:text-warm transition-colors">
-                            {info.value}
-                          </a>
-                        ) : (
-                          <p className="text-muted-foreground">{info.value}</p>
-                        )}
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Social proof */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
-                  className="mt-12 p-6 card-dashboard"
-                >
-                  <p className="text-sm text-muted-foreground mb-2">Tiempo promedio de respuesta</p>
-                  <p className="text-3xl font-bold text-gradient-warm">{"< 2 horas"}</p>
-                  <p className="text-sm text-muted-foreground mt-2">En horario laboral</p>
-                </motion.div>
-              </motion.div>
-            </div>
-
+          <div className="max-w-2xl mx-auto">
             {/* Contact Form */}
             <motion.div
               ref={formRef}
               initial={{ opacity: 0, y: 30 }}
               animate={formInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="lg:col-span-3"
             >
               {isSuccess ? (
                 <motion.div
@@ -277,13 +223,13 @@ const Contact = () => {
                         <motion.button
                           key={service.id}
                           type="button"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                           onClick={() => handleServiceToggle(service.id)}
-                          className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                          className={`px-4 py-2 rounded-full text-sm font-medium border-2 transition-all duration-200 ${
                             formData.services.includes(service.id)
-                              ? "bg-warm text-white"
-                              : "bg-muted text-muted-foreground hover:bg-muted/80"
+                              ? "bg-primary text-primary-foreground border-primary"
+                              : "bg-background text-foreground border-border hover:border-primary/50"
                           }`}
                         >
                           {service.label}
@@ -343,6 +289,34 @@ const Contact = () => {
                 </form>
               )}
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Info - Simplified */}
+      <section className="py-12 bg-muted/50">
+        <div className="section-container">
+          <div className="grid md:grid-cols-4 gap-6 text-center">
+            {contactInfo.map((info, index) => (
+              <motion.div
+                key={info.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-4"
+              >
+                <info.icon className="w-6 h-6 text-primary mx-auto mb-2" />
+                <p className="font-medium text-sm">{info.title}</p>
+                {info.link ? (
+                  <a href={info.link} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {info.value}
+                  </a>
+                ) : (
+                  <p className="text-sm text-muted-foreground">{info.value}</p>
+                )}
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

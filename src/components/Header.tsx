@@ -8,6 +8,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
+    { href: "/", label: "Inicio" },
     { href: "/servicios", label: "Servicios" },
     { href: "/nosotros", label: "Nosotros" },
     { href: "/contacto", label: "Contacto" },
@@ -38,7 +39,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button variant="hero" size="default" asChild>
-              <a href="#contacto">Agendar Consultoría</a>
+              <a href="/contacto">Agendar Consultoría</a>
             </Button>
           </div>
 
@@ -73,7 +74,7 @@ const Header = () => {
                   </a>
                 ))}
                 <Button variant="hero" size="default" className="w-full" asChild>
-                  <a href="#contacto">Agendar Consultoría</a>
+                  <a href="/contacto">Agendar Consultoría</a>
                 </Button>
               </div>
             </motion.nav>

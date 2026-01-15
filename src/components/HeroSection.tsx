@@ -106,7 +106,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.2 }}
               >
                 <Button variant="hero" size="xl" asChild>
-                  <a href="#contacto" className="group">
+                  <a href="/contacto" className="group">
                     Hablemos de tu proyecto
                     <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                   </a>
