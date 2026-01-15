@@ -71,10 +71,11 @@ const FunnelSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            El <span className="text-gradient">Embudo</span> que Convierte
+            Así convertimos <span className="text-gradient">visitas en clientes</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Centralizamos todos tus canales en un sistema que no deja escapar ningún lead.
+            No importa de dónde lleguen tus leads. Nuestro sistema los captura, 
+            los cualifica y los acompaña hasta que estén listos para hablar contigo.
           </p>
         </motion.div>
 

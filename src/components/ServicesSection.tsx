@@ -6,25 +6,25 @@ import { Globe, Target, Cog } from "lucide-react";
 const services = [
   {
     icon: Globe,
-    title: "Diseño Web",
+    title: "Tu web, tu mejor vendedor",
     description:
-      "Páginas web profesionales, rápidas y optimizadas para convertir visitantes en clientes. Diseño moderno que refleja tu marca y genera confianza.",
+      "Creamos sitios que no solo se ven bien, sino que convierten. Webs rápidas, claras y pensadas para que tus visitantes se conviertan en clientes.",
     highlight: false,
   },
   {
     icon: Target,
-    title: "SEO + Campañas",
+    title: "Te ponemos delante de quien te busca",
     description:
-      "Posicionamiento en Google y campañas de alto rendimiento en Google Ads, Meta y TikTok para captar leads cualificados con intención de compra.",
+      "SEO y campañas en Google, Meta y TikTok diseñadas para atraer a personas que ya están buscando lo que ofreces. Nada de clics vacíos.",
     highlight: false,
   },
   {
     icon: Cog,
-    title: "Seguimiento y Automatización",
+    title: "Ningún lead se queda sin respuesta",
     description:
-      "Sistemas inteligentes que nutren a cada prospecto automáticamente hasta que está listo para cerrar contigo. Ningún lead queda olvidado.",
+      "Automatizamos el seguimiento para que cada contacto reciba atención personalizada. Tú te enfocas en cerrar, nosotros en que nadie se pierda.",
     highlight: true,
-    badge: "El Cerebro",
+    badge: "Lo que nos diferencia",
   },
 ];
 
@@ -43,12 +43,12 @@ const ServicesSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Tu Aliado de Crecimiento:{" "}
-            <span className="text-gradient">Del Lead al Cierre</span>
+            Todo lo que necesitas{" "}
+            <span className="text-gradient">en un solo lugar</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Un sistema completo que trabaja mientras tú te enfocas en lo que
-            mejor sabes hacer.
+            No necesitas 5 proveedores diferentes. Nosotros nos encargamos 
+            de todo el proceso para que tú hagas lo que mejor sabes: dirigir tu negocio.
           </p>
         </motion.div>
 

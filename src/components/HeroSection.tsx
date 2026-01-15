@@ -53,7 +53,7 @@ const HeroSection = () => {
               >
                 <Sparkles size={16} />
               </motion.span>
-              Agencia de Crecimiento Digital B2B
+              Tu socio de crecimiento B2B
             </motion.div>
 
             <motion.h1 
@@ -62,24 +62,24 @@ const HeroSection = () => {
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
             >
-              Dejamos de contar{" "}
+              Hacemos crecer{" "}
               <motion.span 
                 className="text-gradient-warm inline-block"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
               >
-                'Likes'
+                tu negocio
               </motion.span>
               <br />
-              Empezamos a contar{" "}
+              con resultados{" "}
               <motion.span 
                 className="text-gradient-warm inline-block"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
               >
-                Ventas
+                reales
               </motion.span>.
             </motion.h1>
 
@@ -89,9 +89,9 @@ const HeroSection = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="text-lg md:text-xl text-muted-foreground max-w-xl"
             >
-              Construimos sistemas de generación de leads B2B que no mueren en un
-              formulario. Acompañamos tu proceso desde la primera visita hasta el
-              cierre definitivo mediante automatización inteligente.
+              Más de 8 años ayudando a empresas como la tuya a conseguir 
+              clientes de calidad. Sin humo, sin métricas vacías. 
+              Solo estrategias que funcionan y un equipo que se implica de verdad.
             </motion.p>
 
             <motion.div 
@@ -107,7 +107,7 @@ const HeroSection = () => {
               >
                 <Button variant="hero" size="xl" asChild>
                   <a href="#contacto" className="group">
-                    Agendar Consultoría Estratégica
+                    Hablemos de tu proyecto
                     <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                   </a>
                 </Button>
@@ -120,7 +120,7 @@ const HeroSection = () => {
               transition={{ delay: 0.9 }}
               className="text-sm text-muted-foreground"
             >
-              ✓ Enfoque 100% orientado a ROI, sin ataduras.
+              ✓ Sin permanencias · ✓ Resultados desde el primer mes
             </motion.p>
           </motion.div>
 
