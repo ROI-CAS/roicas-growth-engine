@@ -15,19 +15,14 @@ const technologies = [
     icon: BarChart3,
   },
   {
-    name: "Google Ads",
-    description: "Campañas de búsqueda y display",
+    name: "Publicidad Digital",
+    description: "Google, Meta y TikTok Ads",
     icon: Target,
   },
   {
-    name: "Meta Ads",
-    description: "Facebook e Instagram Ads",
+    name: "Email Marketing",
+    description: "Campañas que convierten",
     icon: Megaphone,
-  },
-  {
-    name: "TikTok Ads",
-    description: "Alcanza nuevas audiencias",
-    icon: Smartphone,
   },
   {
     name: "CRM & Automatización",
@@ -61,18 +56,31 @@ const TechStackSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
           {technologies.map((tech, index) => (
             <motion.div
               key={tech.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="card-dashboard p-4 md:p-6 text-center group"
+              initial={{ opacity: 0, y: 40, rotateY: -15 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
+              transition={{ 
+                duration: 0.7, 
+                delay: index * 0.12,
+                ease: [0.16, 1, 0.3, 1]
+              }}
+              whileHover={{ 
+                y: -8, 
+                scale: 1.05,
+                transition: { duration: 0.3 }
+              }}
+              className="card-dashboard p-4 md:p-6 text-center group cursor-pointer"
             >
-              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary/10 to-accent flex items-center justify-center group-hover:from-primary/20 group-hover:to-accent transition-colors">
-                <tech.icon className="w-6 h-6 text-primary" />
-              </div>
+              <motion.div 
+                className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-warm/10 to-accent flex items-center justify-center"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
+                <tech.icon className="w-6 h-6 text-warm" />
+              </motion.div>
               <h3 className="font-semibold text-sm md:text-base mb-1">{tech.name}</h3>
               <p className="text-xs text-muted-foreground hidden md:block">{tech.description}</p>
             </motion.div>
