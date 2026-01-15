@@ -191,18 +191,40 @@ const FunnelSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.7 }}
-            className="mt-12 card-dashboard p-6 md:p-8 text-center max-w-xl mx-auto"
+            className="mt-12 card-dashboard p-6 md:p-8 max-w-2xl mx-auto"
           >
-            <p className="text-muted-foreground mb-2">Resultado Final</p>
-            <p className="text-4xl md:text-5xl font-bold text-gradient-warm mb-2">
-              $<AnimatedCounter end={174} />K+
-            </p>
-            <p className="text-lg text-foreground font-medium">
-              En ventas cerradas con un ROI de{" "}
-              <span className="text-success font-bold">
-                <AnimatedCounter end={9} />x
-              </span>
-            </p>
+            <p className="text-muted-foreground mb-4 text-center">Resultados del Embudo</p>
+            
+            {/* Main Result */}
+            <div className="text-center mb-6">
+              <p className="text-4xl md:text-5xl font-bold text-gradient-warm mb-2">
+                $<AnimatedCounter end={174} />K+
+              </p>
+              <p className="text-lg text-foreground font-medium">
+                En ventas cerradas con un ROI de{" "}
+                <span className="text-success font-bold">
+                  <AnimatedCounter end={9} />x
+                </span>
+              </p>
+            </div>
+
+            {/* CPL & CPA Metrics */}
+            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
+              <div className="text-center">
+                <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">CPL</p>
+              <p className="text-2xl md:text-3xl font-bold text-foreground">
+                $<AnimatedCounter end={4.12} decimals={2} />
+              </p>
+                <p className="text-xs text-muted-foreground">Costo por Lead</p>
+              </div>
+              <div className="text-center">
+                <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">CPA</p>
+                <p className="text-2xl md:text-3xl font-bold text-foreground">
+                  $<AnimatedCounter end={221} />
+                </p>
+                <p className="text-xs text-muted-foreground">Costo por Adquisición</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
