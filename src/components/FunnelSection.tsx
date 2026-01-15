@@ -89,14 +89,24 @@ const FunnelSection = () => {
             {sources.map((source, index) => (
               <motion.div
                 key={source.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.3, delay: 0.2 + index * 0.05 }}
-                className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border shadow-sm"
+                initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: 0.2 + index * 0.08,
+                  type: "spring",
+                  stiffness: 200
+                }}
+                whileHover={{ scale: 1.1, y: -5 }}
+                className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border shadow-sm cursor-pointer"
               >
-                <div className={`w-6 h-6 rounded-full ${source.color} flex items-center justify-center`}>
+                <motion.div 
+                  className={`w-6 h-6 rounded-full ${source.color} flex items-center justify-center`}
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                >
                   <source.icon size={12} className="text-white" />
-                </div>
+                </motion.div>
                 <span className="text-sm font-medium">{source.label}</span>
               </motion.div>
             ))}
@@ -106,13 +116,24 @@ const FunnelSection = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
             className="flex justify-center mb-6"
           >
             <div className="flex items-center gap-4">
-              <ArrowDown className="w-5 h-5 text-muted-foreground animate-bounce" />
-              <ArrowDown className="w-5 h-5 text-muted-foreground animate-bounce" style={{ animationDelay: '0.1s' }} />
-              <ArrowDown className="w-5 h-5 text-muted-foreground animate-bounce" style={{ animationDelay: '0.2s' }} />
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ 
+                    duration: 1, 
+                    repeat: Infinity, 
+                    delay: i * 0.15,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <ArrowDown className="w-5 h-5 text-warm" />
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
@@ -121,26 +142,38 @@ const FunnelSection = () => {
             {funnelStages.map((stage, index) => (
               <motion.div
                 key={stage.label}
-                initial={{ opacity: 0, x: -30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
+                initial={{ opacity: 0, scale: 0.8, x: index % 2 === 0 ? -100 : 100 }}
+                animate={isInView ? { opacity: 1, scale: 1, x: 0 } : {}}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: 0.7 + index * 0.15,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
                 className="relative"
               >
-                <div 
+                <motion.div 
                   className={`
                     mx-auto bg-gradient-to-r ${stage.color} rounded-xl p-4 md:p-6
                     flex items-center justify-between text-white shadow-lg
-                    transition-transform hover:scale-[1.02]
                   `}
                   style={{ 
                     width: `${100 - index * 15}%`,
                     maxWidth: '100%'
                   }}
+                  whileHover={{ 
+                    scale: 1.03,
+                    boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3)"
+                  }}
+                  transition={{ duration: 0.3 }}
                 >
                   <div className="flex items-center gap-3 md:gap-4">
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm">
+                    <motion.div 
+                      className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
                       <stage.icon className="w-5 h-5 md:w-6 md:h-6" />
-                    </div>
+                    </motion.div>
                     <div>
                       <p className="text-sm md:text-base font-medium opacity-90">{stage.label}</p>
                       <p className="text-2xl md:text-3xl font-bold">
@@ -154,13 +187,23 @@ const FunnelSection = () => {
                     </p>
                     <p className="text-xs md:text-sm opacity-75">del total</p>
                   </div>
-                </div>
+                </motion.div>
                 
                 {/* Connector */}
                 {index < funnelStages.length - 1 && (
-                  <div className="flex justify-center py-2">
-                    <ArrowDown className="w-6 h-6 text-muted-foreground" />
-                  </div>
+                  <motion.div 
+                    className="flex justify-center py-2"
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ delay: 1 + index * 0.15 }}
+                  >
+                    <motion.div
+                      animate={{ y: [0, 5, 0] }}
+                      transition={{ duration: 1, repeat: Infinity }}
+                    >
+                      <ArrowDown className="w-6 h-6 text-muted-foreground" />
+                    </motion.div>
+                  </motion.div>
                 )}
               </motion.div>
             ))}
@@ -168,16 +211,22 @@ const FunnelSection = () => {
 
           {/* Result Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 1.2 }}
-            className="mt-12 card-dashboard p-6 md:p-8 text-center max-w-xl mx-auto"
+            initial={{ opacity: 0, y: 40, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ scale: 1.02 }}
+            className="mt-12 card-dashboard p-6 md:p-8 text-center max-w-xl mx-auto relative overflow-hidden"
           >
-            <p className="text-muted-foreground mb-2">Resultado Final</p>
-            <p className="text-4xl md:text-5xl font-bold text-gradient-warm mb-2">
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-warm/5 via-transparent to-warm/5"
+              animate={{ x: ["-100%", "100%"] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            />
+            <p className="text-muted-foreground mb-2 relative z-10">Resultado Final</p>
+            <p className="text-4xl md:text-5xl font-bold text-gradient-warm mb-2 relative z-10">
               $<AnimatedCounter end={95} />K+
             </p>
-            <p className="text-lg text-foreground font-medium">
+            <p className="text-lg text-foreground font-medium relative z-10">
               En ventas cerradas con un ROI de{" "}
               <span className="text-success font-bold">
                 <AnimatedCounter end={12} />x
