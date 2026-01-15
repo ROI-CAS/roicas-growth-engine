@@ -164,18 +164,30 @@ const HeroSection = () => {
               {/* Chart Visualization */}
               <div className="relative h-32 bg-secondary rounded-lg p-4 overflow-hidden">
                 <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-2 h-20">
-                  {[40, 55, 35, 70, 50, 85, 65, 90, 75, 95, 80, 100].map((height, i) => (
+                  {[
+                    { height: 40, color: "from-blue-500 to-blue-400" },
+                    { height: 55, color: "from-emerald-500 to-emerald-400" },
+                    { height: 35, color: "from-amber-500 to-amber-400" },
+                    { height: 70, color: "from-rose-500 to-rose-400" },
+                    { height: 50, color: "from-violet-500 to-violet-400" },
+                    { height: 85, color: "from-cyan-500 to-cyan-400" },
+                    { height: 65, color: "from-orange-500 to-orange-400" },
+                    { height: 90, color: "from-pink-500 to-pink-400" },
+                    { height: 75, color: "from-teal-500 to-teal-400" },
+                    { height: 95, color: "from-indigo-500 to-indigo-400" },
+                    { height: 80, color: "from-lime-500 to-lime-400" },
+                    { height: 100, color: "from-warm to-warm/80" }
+                  ].map((bar, i) => (
                     <motion.div
                       key={i}
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: `${height}%`, opacity: 1 }}
+                      animate={{ height: `${bar.height}%`, opacity: 1 }}
                       transition={{ 
                         duration: 0.8, 
                         delay: 1 + i * 0.08,
                         ease: [0.16, 1, 0.3, 1]
                       }}
-                      whileHover={{ scaleY: 1.1 }}
-                      className="flex-1 bg-gradient-to-t from-warm to-warm/60 rounded-t cursor-pointer"
+                      className={`flex-1 bg-gradient-to-t ${bar.color} rounded-t hover:opacity-80 transition-opacity`}
                     />
                   ))}
                 </div>
