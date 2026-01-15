@@ -6,61 +6,69 @@
 
 @layer base {
   :root {
-    /* ROICAS Brand Colors */
+    /* ROICAS Brand Colors - Balanced Palette */
     --background: 0 0% 100%;
-    --foreground: 220 13% 26%;
+    --foreground: 220 15% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 13% 26%;
+    --card-foreground: 220 15% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 13% 26%;
+    --popover-foreground: 220 15% 20%;
 
-    /* ROICAS Blue - Primary */
-    --primary: 220 100% 55%;
+    /* Primary Blue - Strategic Accent Only */
+    --primary: 220 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    /* Light Gray Surfaces */
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 13% 26%;
+    /* Warm Secondary - Coral/Orange for Variety */
+    --secondary: 30 30% 96%;
+    --secondary-foreground: 220 15% 20%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 215 16% 47%;
+    /* Neutral Muted */
+    --muted: 220 10% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 220 100% 97%;
-    --accent-foreground: 220 100% 55%;
+    /* Warm Accent - Amber/Gold */
+    --accent: 35 100% 96%;
+    --accent-foreground: 25 90% 40%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 220 100% 55%;
+    --border: 220 10% 90%;
+    --input: 220 10% 90%;
+    --ring: 220 100% 50%;
 
     --radius: 0.75rem;
 
-    /* Custom tokens */
-    --success: 158 64% 52%;
+    /* Success - Emerald */
+    --success: 158 64% 42%;
     --success-foreground: 0 0% 100%;
+
+    /* Warm Colors for Variety */
+    --warm: 25 95% 53%;
+    --warm-foreground: 0 0% 100%;
     
-    --chart-blue: 220 100% 55%;
-    --chart-green: 158 64% 52%;
+    /* Chart Colors - Diverse Palette */
+    --chart-blue: 220 100% 50%;
+    --chart-green: 158 64% 42%;
     --chart-orange: 25 95% 53%;
     --chart-purple: 262 83% 58%;
+    --chart-rose: 350 89% 60%;
 
     /* Shadows */
-    --shadow-card: 0 1px 3px 0 hsl(220 13% 26% / 0.1), 0 1px 2px -1px hsl(220 13% 26% / 0.1);
-    --shadow-card-hover: 0 10px 15px -3px hsl(220 13% 26% / 0.1), 0 4px 6px -4px hsl(220 13% 26% / 0.1);
-    --shadow-button: 0 4px 14px 0 hsl(220 100% 55% / 0.35);
+    --shadow-card: 0 1px 3px 0 hsl(220 15% 20% / 0.08), 0 1px 2px -1px hsl(220 15% 20% / 0.08);
+    --shadow-card-hover: 0 10px 15px -3px hsl(220 15% 20% / 0.1), 0 4px 6px -4px hsl(220 15% 20% / 0.08);
+    --shadow-button: 0 4px 14px 0 hsl(220 100% 50% / 0.3);
 
-    /* Sidebar (keeping defaults) */
+    /* Sidebar */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
+    --sidebar-border: 220 10% 90%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -155,7 +163,18 @@
 
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(220 100% 55%) 0%, hsl(220 100% 40%) 100%);
+    background-image: linear-gradient(135deg, hsl(220 100% 50%) 0%, hsl(220 100% 35%) 100%);
+  }
+
+  .text-gradient-warm {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(350 89% 55%) 100%);
+  }
+
+  .gradient-mesh-warm {
+    background: 
+      radial-gradient(ellipse 80% 80% at 50% -20%, hsl(25 95% 53% / 0.1), transparent),
+      radial-gradient(ellipse 60% 60% at 100% 0%, hsl(350 89% 60% / 0.05), transparent);
   }
 }
 

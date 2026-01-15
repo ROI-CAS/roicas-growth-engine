@@ -11,7 +11,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
+import AnimatedCounter from "./AnimatedCounter";
+
+const services = [
+  { id: "web", label: "Diseño Web" },
+  { id: "seo", label: "SEO" },
+  { id: "google-ads", label: "Google Ads" },
+  { id: "meta-ads", label: "Meta Ads (Facebook/Instagram)" },
+  { id: "tiktok-ads", label: "TikTok Ads" },
+  { id: "automation", label: "Automatización y CRM" },
+];
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -21,8 +33,18 @@ const ContactSection = () => {
     email: "",
     website: "",
     challenge: "",
+    selectedServices: [] as string[],
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleServiceToggle = (serviceId: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      selectedServices: prev.selectedServices.includes(serviceId)
+        ? prev.selectedServices.filter((id) => id !== serviceId)
+        : [...prev.selectedServices, serviceId],
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +68,7 @@ const ContactSection = () => {
       description: "Nos pondremos en contacto contigo en menos de 24 horas.",
     });
 
-    setFormData({ name: "", email: "", website: "", challenge: "" });
+    setFormData({ name: "", email: "", website: "", challenge: "", selectedServices: [] });
     setIsSubmitting(false);
   };
 
@@ -70,7 +92,7 @@ const ContactSection = () => {
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
                 Hablemos de{" "}
-                <span className="text-gradient">Resultados Reales</span>
+                <span className="text-gradient-warm">Resultados Reales</span>
               </h2>
 
               <p className="text-lg text-muted-foreground">
@@ -82,7 +104,7 @@ const ContactSection = () => {
               <div className="space-y-4">
                 {benefits.map((benefit) => (
                   <div key={benefit.text} className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/10 to-accent flex items-center justify-center">
                       <benefit.icon size={20} className="text-primary" />
                     </div>
                     <span className="font-medium">{benefit.text}</span>
@@ -93,15 +115,21 @@ const ContactSection = () => {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 pt-6">
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-primary">+150</p>
+                  <p className="text-3xl font-bold text-gradient-warm">
+                    +<AnimatedCounter end={150} />
+                  </p>
                   <p className="text-sm text-muted-foreground">Clientes B2B</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-primary">$2M+</p>
+                  <p className="text-3xl font-bold text-gradient-warm">
+                    $<AnimatedCounter end={2} />M+
+                  </p>
                   <p className="text-sm text-muted-foreground">Generados</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-bold text-primary">98%</p>
+                  <p className="text-3xl font-bold text-gradient-warm">
+                    <AnimatedCounter end={98} />%
+                  </p>
                   <p className="text-sm text-muted-foreground">Satisfacción</p>
                 </div>
               </div>
@@ -157,6 +185,32 @@ const ContactSection = () => {
                   />
                 </div>
 
+                {/* Services Selection */}
+                <div className="space-y-3">
+                  <label className="text-sm font-medium">
+                    Servicios de interés{" "}
+                    <span className="text-muted-foreground">(Opcional)</span>
+                  </label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {services.map((service) => (
+                      <label
+                        key={service.id}
+                        className={`flex items-center gap-2 p-3 rounded-lg border cursor-pointer transition-colors ${
+                          formData.selectedServices.includes(service.id)
+                            ? "border-primary bg-primary/5"
+                            : "border-border hover:border-primary/50"
+                        }`}
+                      >
+                        <Checkbox
+                          checked={formData.selectedServices.includes(service.id)}
+                          onCheckedChange={() => handleServiceToggle(service.id)}
+                        />
+                        <span className="text-sm">{service.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
                 <div className="space-y-2">
                   <label className="text-sm font-medium">
                     ¿Cuál es tu mayor reto de ventas hoy? *
@@ -177,6 +231,12 @@ const ContactSection = () => {
                       </SelectItem>
                       <SelectItem value="automation">
                         Falta de seguimiento/automatización
+                      </SelectItem>
+                      <SelectItem value="visibility">
+                        Poca visibilidad online
+                      </SelectItem>
+                      <SelectItem value="conversion">
+                        Baja tasa de conversión
                       </SelectItem>
                       <SelectItem value="other">Otro</SelectItem>
                     </SelectContent>
@@ -201,7 +261,10 @@ const ContactSection = () => {
                 </Button>
 
                 <p className="text-xs text-center text-muted-foreground">
-                  Al enviar, aceptas nuestra política de privacidad.
+                  Al enviar, aceptas nuestra{" "}
+                  <Link to="/politica-privacidad" className="text-primary hover:underline">
+                    política de privacidad
+                  </Link>.
                 </p>
               </form>
             </motion.div>
