@@ -21,6 +21,7 @@ const services = [
   { id: "ecommerce", label: "Tienda Online" },
   { id: "seo", label: "SEO" },
   { id: "ads", label: "Publicidad Digital" },
+  { id: "design", label: "Diseño Gráfico" },
   { id: "automation-ia", label: "Automatización IA" },
   { id: "automation-crm", label: "CRM y Seguimiento" },
 ];
@@ -90,7 +91,7 @@ const ContactSection = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">
                 ¿Listo para dar el{" "}
                 <span className="text-gradient-warm">siguiente paso</span>?
               </h2>
@@ -112,27 +113,6 @@ const ContactSection = () => {
                 ))}
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 pt-6">
-                <div className="text-center">
-                  <p className="text-3xl font-bold text-gradient-warm">
-                    +<AnimatedCounter end={150} />
-                  </p>
-                  <p className="text-sm text-muted-foreground">Clientes B2B</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-3xl font-bold text-gradient-warm">
-                    $<AnimatedCounter end={2} />M+
-                  </p>
-                  <p className="text-sm text-muted-foreground">Generados</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-3xl font-bold text-gradient-warm">
-                    <AnimatedCounter end={98} />%
-                  </p>
-                  <p className="text-sm text-muted-foreground">Satisfacción</p>
-                </div>
-              </div>
             </div>
 
             {/* Right Form */}
