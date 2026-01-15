@@ -29,28 +29,28 @@ const funnelStages = [
   { 
     icon: Users, 
     label: "Leads Captados", 
-    value: 1882, 
+    value: 2450, 
     percentage: 100,
     color: "from-primary to-primary/80"
   },
   { 
     icon: Target, 
     label: "Leads Cualificados", 
-    value: 394, 
+    value: 520, 
     percentage: 21,
     color: "from-emerald-500 to-emerald-600"
   },
   { 
     icon: Calendar, 
     label: "Citas Agendadas", 
-    value: 112, 
+    value: 147, 
     percentage: 6,
     color: "from-amber-500 to-amber-600"
   },
   { 
     icon: Handshake, 
     label: "Clientes Cerrados", 
-    value: 58, 
+    value: 73, 
     percentage: 3,
     color: "from-rose-500 to-rose-600"
   },
