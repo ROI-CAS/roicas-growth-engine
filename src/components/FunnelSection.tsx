@@ -29,29 +29,29 @@ const funnelStages = [
   { 
     icon: Users, 
     label: "Leads Captados", 
-    value: 2450, 
+    value: 4827, 
     percentage: 100,
     color: "from-primary to-primary/80"
   },
   { 
     icon: Target, 
     label: "Leads Cualificados", 
-    value: 520, 
+    value: 1014, 
     percentage: 21,
     color: "from-emerald-500 to-emerald-600"
   },
   { 
     icon: Calendar, 
     label: "Citas Agendadas", 
-    value: 147, 
+    value: 289, 
     percentage: 6,
     color: "from-amber-500 to-amber-600"
   },
   { 
     icon: Handshake, 
     label: "Clientes Cerrados", 
-    value: 73, 
-    percentage: 3,
+    value: 87, 
+    percentage: 1.8,
     color: "from-rose-500 to-rose-600"
   },
 ];
@@ -195,12 +195,12 @@ const FunnelSection = () => {
           >
             <p className="text-muted-foreground mb-2">Resultado Final</p>
             <p className="text-4xl md:text-5xl font-bold text-gradient-warm mb-2">
-              $<AnimatedCounter end={95} />K+
+              $<AnimatedCounter end={174} />K+
             </p>
             <p className="text-lg text-foreground font-medium">
               En ventas cerradas con un ROI de{" "}
               <span className="text-success font-bold">
-                <AnimatedCounter end={12} />x
+                <AnimatedCounter end={9} />x
               </span>
             </p>
           </motion.div>
