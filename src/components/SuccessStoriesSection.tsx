@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { TrendingUp, Building2, Code, Factory, Stethoscope } from "lucide-react";
+import { Building2, Code, Factory, Stethoscope } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
 
 interface Metric {
@@ -32,7 +32,7 @@ const successStories: SuccessStory[] = [
       { value: 5.11, suffix: "%", label: "CTR (vs 1.69%)" },
     ],
     description:
-      "Pasamos de perseguir volumen a buscar calidad. El resultado: 112 citas reales con pacientes que querían tratarse, no solo preguntar precios.",
+      "Pasamos de perseguir volumen a buscar calidad. El resultado: pacientes reales que querían tratarse, no solo preguntar precios.",
   },
   {
     industry: "Consultoría B2B",
@@ -86,7 +86,7 @@ const SuccessStoriesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
             Empresas como la tuya{" "}
             <span className="text-gradient-warm">ya lo consiguieron</span>
           </h2>
@@ -96,8 +96,8 @@ const SuccessStoriesSection = () => {
           </p>
         </motion.div>
 
-        <div className="space-y-6">
-{successStories.map((story, index) => (
+        <div className="grid md:grid-cols-2 gap-6">
+          {successStories.map((story, index) => (
             <motion.div
               key={story.industry}
               initial={{ opacity: 0, y: 30 }}
@@ -107,75 +107,67 @@ const SuccessStoriesSection = () => {
                 delay: 0.1 * (index + 1),
                 ease: "easeOut"
               }}
-              className={`card-dashboard p-6 lg:p-8 ${
+              className={`card-dashboard p-6 ${
                 story.highlight 
-                  ? 'ring-2 ring-warm/30 bg-gradient-to-r from-card via-warm/5 to-accent/30' 
+                  ? 'ring-2 ring-warm/30 bg-gradient-to-br from-card to-warm/5' 
                   : ''
               }`}
             >
-              <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-                {/* Header with industry and period */}
-                <div className="flex items-center justify-between lg:justify-start lg:flex-col lg:items-start lg:min-w-[200px] gap-2">
-                  <div className="flex items-center gap-3">
-                    <div 
-                      className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                        story.highlight 
-                          ? 'bg-gradient-to-br from-warm to-warm/80' 
-                          : 'bg-warm/10'
-                      }`}
-                    >
-                      <story.icon size={20} className={story.highlight ? 'text-white' : 'text-warm'} />
-                    </div>
-                    <span className="font-semibold text-foreground">
-                      {story.industry}
-                    </span>
-                  </div>
-                  <span 
-                    className={`text-xs px-3 py-1 rounded-full font-medium ${
+              {/* Header with industry and period */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div 
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                       story.highlight 
-                        ? 'bg-warm text-white' 
-                        : 'bg-accent text-accent-foreground'
+                        ? 'bg-gradient-to-br from-warm to-warm/80' 
+                        : 'bg-warm/10'
                     }`}
                   >
-                    {story.period}
-                  </span>
-                </div>
-
-                {/* Metrics Grid */}
-                <div className="grid grid-cols-3 gap-4 lg:gap-8 flex-1">
-                {story.metrics.map((metric) => (
-                    <div 
-                      key={metric.label} 
-                      className="text-center lg:text-left"
+                    <story.icon size={24} className={story.highlight ? 'text-white' : 'text-warm'} />
+                  </div>
+                  <div>
+                    <span className="font-semibold text-foreground block">
+                      {story.industry}
+                    </span>
+                    <span 
+                      className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                        story.highlight 
+                          ? 'bg-warm text-white' 
+                          : 'bg-primary/10 text-primary'
+                      }`}
                     >
-                      <div className="flex items-center justify-center lg:justify-start gap-1">
-                        <TrendingUp
-                          size={16}
-                          className="text-success hidden sm:block"
-                        />
-                        <p className="text-2xl lg:text-3xl font-bold text-gradient-warm">
-                          <AnimatedCounter 
-                            end={metric.value} 
-                            prefix={metric.prefix}
-                            suffix={metric.suffix}
-                            decimals={metric.value % 1 !== 0 ? 1 : 0}
-                          />
-                        </p>
-                      </div>
-                      <p className="text-xs lg:text-sm text-muted-foreground mt-1">
-                        {metric.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Description */}
-                <div className="lg:max-w-xs">
-                  <p className="text-muted-foreground text-sm leading-relaxed italic">
-                    "{story.description}"
-                  </p>
+                      {story.period}
+                    </span>
+                  </div>
                 </div>
               </div>
+
+              {/* Metrics Grid */}
+              <div className="grid grid-cols-3 gap-3 mb-4">
+                {story.metrics.map((metric) => (
+                  <div 
+                    key={metric.label} 
+                    className="text-center p-3 rounded-lg bg-secondary"
+                  >
+                    <p className="text-xl font-bold text-primary">
+                      <AnimatedCounter 
+                        end={metric.value} 
+                        prefix={metric.prefix}
+                        suffix={metric.suffix}
+                        decimals={metric.value % 1 !== 0 ? 1 : 0}
+                      />
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {metric.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Description */}
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                "{story.description}"
+              </p>
             </motion.div>
           ))}
         </div>

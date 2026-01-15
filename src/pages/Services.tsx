@@ -5,10 +5,13 @@ import {
   Globe,
   Search,
   Target,
-  Users,
   Video,
   ArrowRight,
   CheckCircle2,
+  ShoppingCart,
+  Bot,
+  Palette,
+  Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
@@ -18,8 +21,9 @@ const services = [
   {
     icon: Globe,
     title: "Diseño Web",
+    subtitle: "Tu mejor vendedor, 24/7",
     description:
-      "Páginas web profesionales, rápidas y optimizadas para convertir visitantes en clientes. Diseño moderno que refleja la esencia de tu marca.",
+      "Creamos páginas web que no solo se ven bien, sino que convierten. Cada elemento está pensado para que tus visitantes den el siguiente paso y se conviertan en clientes.",
     features: [
       "Diseño responsive y moderno",
       "Optimización de velocidad de carga",
@@ -28,10 +32,24 @@ const services = [
     ],
   },
   {
+    icon: ShoppingCart,
+    title: "Tiendas Online",
+    subtitle: "Vende mientras duermes",
+    description:
+      "Montamos tu ecommerce con WooCommerce: catálogo, pagos, envíos y todo lo que necesitas para vender online sin complicaciones técnicas. Tú te enfocas en el producto, nosotros en la plataforma.",
+    features: [
+      "Configuración completa de WooCommerce",
+      "Pasarelas de pago integradas",
+      "Gestión de inventario y envíos",
+      "Diseño optimizado para conversión",
+    ],
+  },
+  {
     icon: Search,
     title: "SEO",
+    subtitle: "Que te encuentren quienes te buscan",
     description:
-      "Posicionamiento orgánico en Google para que te encuentren quienes realmente buscan lo que ofreces. Resultados sostenibles a largo plazo.",
+      "Posicionamiento orgánico en Google para que aparezcas cuando tus clientes potenciales buscan lo que ofreces. Resultados sostenibles que crecen con el tiempo.",
     features: [
       "Auditoría técnica completa",
       "Optimización on-page y off-page",
@@ -41,39 +59,56 @@ const services = [
   },
   {
     icon: Target,
-    title: "Google Ads",
+    title: "Publicidad Digital",
+    subtitle: "Inversión inteligente, resultados reales",
     description:
-      "Campañas de búsqueda y display para captar leads cualificados con intención de compra. Máximo retorno de inversión publicitaria.",
+      "Campañas en Google, Facebook, Instagram y TikTok diseñadas para captar leads cualificados. Maximizamos cada peso que inviertes en publicidad.",
     features: [
-      "Investigación de palabras clave",
-      "Creación y optimización de anuncios",
+      "Google Ads: Búsqueda y Display",
+      "Meta Ads: Facebook e Instagram",
+      "TikTok Ads para nuevas audiencias",
       "Remarketing y audiencias personalizadas",
-      "Optimización de conversiones",
     ],
   },
   {
-    icon: Users,
-    title: "Meta Ads",
+    icon: Palette,
+    title: "Diseño Gráfico",
+    subtitle: "Tu marca, memorable",
     description:
-      "Publicidad en Facebook e Instagram para alcanzar a tu audiencia ideal con precisión quirúrgica. Escalamos lo que funciona.",
+      "Creamos la identidad visual que tu marca necesita para destacar. Desde logos hasta material para redes, todo pensado para que te recuerden.",
     features: [
-      "Segmentación avanzada de audiencias",
-      "Creatividades optimizadas para conversión",
-      "Campañas de leads y ventas",
-      "A/B testing continuo",
+      "Diseño de logos e identidad visual",
+      "Material para redes sociales",
+      "Presentaciones corporativas",
+      "Diseño de material impreso",
     ],
   },
   {
-    icon: Video,
-    title: "TikTok Ads",
+    icon: Mail,
+    title: "Email Marketing",
+    subtitle: "Conecta con quienes ya te conocen",
     description:
-      "Campañas en TikTok para conectar con nuevas audiencias mediante contenido dinámico y auténtico. La plataforma de mayor crecimiento.",
+      "Campañas de email que nutren a tus leads y mantienen a tus clientes cerca. Automatizaciones que trabajan mientras tú te enfocas en cerrar ventas.",
     features: [
-      "Estrategia de contenido nativo",
-      "Campañas de awareness y conversión",
-      "Colaboración con creadores",
-      "Análisis de tendencias del mercado",
+      "Estrategia de email personalizada",
+      "Diseño de newsletters atractivas",
+      "Automatizaciones y secuencias",
+      "Segmentación avanzada de listas",
     ],
+  },
+  {
+    icon: Bot,
+    title: "Automatización con IA",
+    subtitle: "Tecnología que trabaja por ti",
+    description:
+      "Implementamos inteligencia artificial para automatizar tareas repetitivas: chatbots, clasificación de leads, respuestas automáticas y más. Tu equipo se enfoca en lo importante.",
+    features: [
+      "Chatbots inteligentes 24/7",
+      "Clasificación automática de leads",
+      "Respuestas automáticas personalizadas",
+      "Integración con tu CRM",
+    ],
+    highlight: true,
   },
 ];
 
@@ -88,7 +123,7 @@ const Services = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 gradient-mesh">
+      <section className="pt-32 pb-20 gradient-mesh-warm">
         <div className="section-container">
           <motion.div
             ref={heroRef}
@@ -97,18 +132,20 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Soluciones Digitales que{" "}
-              <span className="text-gradient">Impulsan tu Crecimiento</span>
+            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+              Nuestros Servicios
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-primary">
+              Todo lo que necesitas para{" "}
+              <span className="text-gradient-warm">crecer online</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8">
-              Desde el diseño de tu web hasta campañas publicitarias de alto
-              rendimiento. Todo lo que necesitas para dominar el mercado digital
-              B2B.
+              No necesitas 5 proveedores diferentes. Somos tu equipo de marketing digital 
+              completo: desde la web hasta las automatizaciones que cierran ventas por ti.
             </p>
             <Button variant="hero" size="xl" asChild>
-              <a href="#contacto" className="group">
-                Solicitar Consultoría Gratuita
+              <a href="/contacto" className="group">
+                Cuéntanos qué necesitas
                 <ArrowRight
                   size={20}
                   className="group-hover:translate-x-1 transition-transform"
@@ -122,60 +159,68 @@ const Services = () => {
       {/* Services Detail Section */}
       <section ref={servicesRef} className="py-20 md:py-28">
         <div className="section-container">
-          <div className="space-y-12">
+          <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={servicesInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
-                className="card-dashboard p-8 lg:p-10"
+                className={`card-dashboard p-8 relative ${
+                  service.highlight ? "ring-2 ring-primary/30 bg-primary/5" : ""
+                }`}
               >
-                <div className="grid lg:grid-cols-2 gap-8 items-start">
-                  {/* Left: Title and Description */}
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <service.icon size={28} className="text-primary" />
-                      </div>
-                      <h2 className="text-2xl lg:text-3xl font-bold">
-                        {service.title}
-                      </h2>
-                    </div>
-                    <p className="text-muted-foreground text-lg leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
+                {service.highlight && (
+                  <span className="absolute -top-3 left-6 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+                    Lo que nos diferencia
+                  </span>
+                )}
 
-                  {/* Right: Features */}
-                  <div className="space-y-4">
-                    <p className="text-sm font-semibold text-foreground uppercase tracking-wide">
-                      ¿Qué incluye?
+                <div className="flex items-start gap-4 mb-4">
+                  <div
+                    className={`w-14 h-14 rounded-xl flex items-center justify-center shrink-0 ${
+                      service.highlight
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-warm/10 text-warm"
+                    }`}
+                  >
+                    <service.icon size={28} />
+                  </div>
+                  <div>
+                    <h2 className="text-xl lg:text-2xl font-bold text-primary">
+                      {service.title}
+                    </h2>
+                    <p className="text-warm font-medium text-sm">
+                      {service.subtitle}
                     </p>
-                    <ul className="space-y-3">
-                      {service.features.map((feature) => (
-                        <li
-                          key={feature}
-                          className="flex items-start gap-3 text-muted-foreground"
-                        >
-                          <CheckCircle2
-                            size={20}
-                            className="text-success shrink-0 mt-0.5"
-                          />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="pt-4">
-                      <Button variant="outline" asChild>
-                        <a href="/#contacto">
-                          Solicitar información
-                          <ArrowRight size={16} />
-                        </a>
-                      </Button>
-                    </div>
                   </div>
                 </div>
+
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+
+                <ul className="space-y-2 mb-6">
+                  {service.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2 text-sm text-muted-foreground"
+                    >
+                      <CheckCircle2
+                        size={16}
+                        className="text-success shrink-0 mt-0.5"
+                      />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Button variant="outline" size="sm" asChild>
+                  <a href="/contacto">
+                    Más información
+                    <ArrowRight size={14} />
+                  </a>
+                </Button>
               </motion.div>
             ))}
           </div>
@@ -192,17 +237,17 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-2xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              ¿Listo para{" "}
-              <span className="text-gradient">Impulsar tu Negocio</span>?
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+              ¿No sabes por dónde{" "}
+              <span className="text-gradient-warm">empezar</span>?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Agenda una consultoría gratuita y descubre cómo podemos ayudarte a
-              alcanzar tus objetivos de crecimiento.
+              Es normal. Cada negocio es diferente. Cuéntanos sobre el tuyo y 
+              te diremos honestamente qué necesitas (y qué no).
             </p>
             <Button variant="hero" size="xl" asChild>
-              <a href="/#contacto" className="group">
-                Agendar Consultoría Gratuita
+              <a href="/contacto" className="group">
+                Agenda una llamada sin compromiso
                 <ArrowRight
                   size={20}
                   className="group-hover:translate-x-1 transition-transform"

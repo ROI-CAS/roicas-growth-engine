@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Globe, Target, Cog } from "lucide-react";
-
-import { ShoppingCart, Bot } from "lucide-react";
+import { Globe, Target, Cog, ShoppingCart, Bot, Palette } from "lucide-react";
 
 const services = [
   {
@@ -25,6 +23,13 @@ const services = [
     title: "Te ponemos delante de quien te busca",
     description:
       "SEO y campañas en Google, Meta y TikTok diseñadas para atraer a personas que ya están buscando lo que ofreces. Nada de clics vacíos.",
+    highlight: false,
+  },
+  {
+    icon: Palette,
+    title: "Diseño gráfico que comunica",
+    description:
+      "Creamos la identidad visual de tu marca: logos, presentaciones, material para redes y todo lo que necesitas para destacar y ser recordado.",
     highlight: false,
   },
   {
@@ -58,9 +63,9 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
             Todo lo que necesitas{" "}
-            <span className="text-gradient">en un solo lugar</span>
+            <span className="text-gradient-warm">en un solo lugar</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             No necesitas 5 proveedores diferentes. Nosotros nos encargamos 
