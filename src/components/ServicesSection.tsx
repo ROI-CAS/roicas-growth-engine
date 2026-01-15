@@ -65,7 +65,7 @@ const ServicesSection = () => {
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
             Todo lo que necesitas{" "}
-            <span className="text-gradient-warm">en un solo lugar</span>
+            <span className="text-muted-foreground">en un solo lugar</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             No necesitas 5 proveedores diferentes. Nosotros nos encargamos 

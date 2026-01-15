@@ -14,7 +14,7 @@ const faqs = [
     answer: "Empezamos a trabajar desde el día 1. En 15-20 días tendrás todo implementado y funcionando. Las primeras semanas ya empiezas a recibir leads cualificados, y entre el segundo y tercer mes verás los resultados más significativos.",
   },
   {
-    question: "¿Por qué debería elegiros a vosotros?",
+    question: "¿Por qué debería elegirlos a ustedes?",
     answer: "Porque no te vamos a vender humo. Nos medimos por tus ventas, no por likes. Y lo más importante: no desaparecemos después de firmar. Somos parte de tu equipo.",
   },
   {

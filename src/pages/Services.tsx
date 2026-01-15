@@ -137,7 +137,7 @@ const Services = () => {
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-primary">
               Todo lo que necesitas para{" "}
-              <span className="text-gradient-warm">crecer online</span>
+              <span className="text-muted-foreground">crecer online</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8">
               No necesitas 5 proveedores diferentes. Somos tu equipo de marketing digital 
@@ -181,7 +181,7 @@ const Services = () => {
                     className={`w-14 h-14 rounded-xl flex items-center justify-center shrink-0 ${
                       service.highlight
                         ? "bg-primary text-primary-foreground"
-                        : "bg-warm/10 text-warm"
+                        : "bg-primary/10 text-primary"
                     }`}
                   >
                     <service.icon size={28} />
@@ -190,7 +190,7 @@ const Services = () => {
                     <h2 className="text-xl lg:text-2xl font-bold text-primary">
                       {service.title}
                     </h2>
-                    <p className="text-warm font-medium text-sm">
+                    <p className="text-muted-foreground font-medium text-sm">
                       {service.subtitle}
                     </p>
                   </div>
@@ -239,7 +239,7 @@ const Services = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
               ¿No sabes por dónde{" "}
-              <span className="text-gradient-warm">empezar</span>?
+              <span className="text-muted-foreground">empezar</span>?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               Es normal. Cada negocio es diferente. Cuéntanos sobre el tuyo y 
