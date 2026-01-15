@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
-import { Target, Users, Zap, Award, Heart, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
+import { Target, Users, Zap, Award, Heart, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -34,7 +34,6 @@ const clients = [
   { name: "Proware", url: "https://www.proware.com.co/", sector: "Tecnología" },
   { name: "Componente Legal", url: "https://www.componentelegal.com/", sector: "Legal Tech" },
   { name: "FinDolor", url: "https://www.findolor.com/", sector: "Salud" },
-  { name: "Aeroambulancias SAS", url: "https://aeroambulanciassas.com/", sector: "Salud & Emergencias" },
 ];
 
 const AboutUs = () => {
@@ -44,28 +43,6 @@ const AboutUs = () => {
   const heroInView = useInView(heroRef, { once: true });
   const valuesInView = useInView(valuesRef, { once: true, margin: "-100px" });
   const clientsInView = useInView(clientsRef, { once: true, margin: "-100px" });
-  
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  // Auto-slide for clients
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % clients.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
-
-  const nextSlide = () => {
-    setIsAutoPlaying(false);
-    setCurrentSlide((prev) => (prev + 1) % clients.length);
-  };
-
-  const prevSlide = () => {
-    setIsAutoPlaying(false);
-    setCurrentSlide((prev) => (prev - 1 + clients.length) % clients.length);
-  };
 
   return (
     <main className="min-h-screen bg-background">
@@ -86,7 +63,7 @@ const AboutUs = () => {
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary">
               Detrás de cada estrategia hay{" "}
-              <span className="text-gradient-warm">personas que se implican</span>
+              <span className="text-muted-foreground">personas que se involucran</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Somos un equipo pequeño pero comprometido. No tenemos cientos de clientes 
@@ -96,7 +73,7 @@ const AboutUs = () => {
         </div>
 
         {/* Background decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-warm/10 via-transparent to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 via-transparent to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
       </section>
 
       {/* Mission Section */}
@@ -111,7 +88,7 @@ const AboutUs = () => {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
                 Creemos en hacer las cosas{" "}
-                <span className="text-gradient-warm">de otra manera</span>
+                <span className="text-muted-foreground">de otra manera</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
                 En ROICAS no perseguimos métricas de vanidad. No te vamos a mostrar 
@@ -130,12 +107,12 @@ const AboutUs = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="card-dashboard p-8 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-warm/20 to-transparent rounded-bl-full" />
-              <Heart className="w-12 h-12 text-warm mb-4" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full" />
+              <Heart className="w-12 h-12 text-primary mb-4" />
               <h3 className="text-2xl font-bold mb-2 text-primary">Compromiso Real</h3>
               <p className="text-muted-foreground">
                 Cuando dices que sí a trabajar con nosotros, te garantizamos una cosa: 
-                nos vamos a implicar como si tu negocio fuera el nuestro. Porque en parte, lo es.
+                nos vamos a involucrar como si tu negocio fuera el nuestro. Porque en parte, lo es.
               </p>
             </motion.div>
           </div>
@@ -154,7 +131,7 @@ const AboutUs = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
               Lo que nos{" "}
-              <span className="text-gradient-warm">define</span>
+              <span className="text-muted-foreground">define</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               No son solo palabras bonitas. Son los principios que guían cada decisión que tomamos.
@@ -170,8 +147,8 @@ const AboutUs = () => {
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className="card-dashboard text-center group"
               >
-                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-warm/10 to-accent flex items-center justify-center group-hover:from-warm/20 transition-colors">
-                  <value.icon className="w-7 h-7 text-warm" />
+                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/10 to-muted flex items-center justify-center group-hover:from-primary/20 transition-colors">
+                  <value.icon className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-primary">{value.title}</h3>
                 <p className="text-muted-foreground text-sm">{value.description}</p>
@@ -181,7 +158,7 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Clients Slider Section */}
+      {/* Clients Grid Section */}
       <section ref={clientsRef} className="py-20 md:py-28">
         <div className="section-container">
           <motion.div
@@ -192,76 +169,37 @@ const AboutUs = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
               Empresas que{" "}
-              <span className="text-gradient-warm">confían en nosotros</span>
+              <span className="text-muted-foreground">confían en nosotros</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Cada proyecto es una historia de colaboración y resultados compartidos.
             </p>
           </motion.div>
 
-          {/* Slider */}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="overflow-hidden">
-              <motion.div
-                className="flex"
-                animate={{ x: `-${currentSlide * 100}%` }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          {/* Grid de 4 logos */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {clients.map((client, index) => (
+              <motion.a
+                key={client.name}
+                href={client.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={clientsInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className="card-dashboard p-6 text-center hover:border-primary/30 transition-colors group"
               >
-                {clients.map((client) => (
-                  <div
-                    key={client.name}
-                    className="w-full flex-shrink-0 px-4"
-                  >
-                    <a
-                      href={client.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block card-dashboard p-12 text-center hover:border-primary/30 transition-colors group"
-                    >
-                      <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/10 to-warm/10 flex items-center justify-center">
-                        <span className="text-3xl font-bold text-primary group-hover:text-warm transition-colors">
-                          {client.name.charAt(0)}
-                        </span>
-                      </div>
-                      <h3 className="text-2xl font-bold text-primary mb-2 group-hover:text-warm transition-colors">
-                        {client.name}
-                      </h3>
-                      <p className="text-warm font-medium">{client.sector}</p>
-                    </a>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Navigation */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full bg-card border border-border shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full bg-card border border-border shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-            >
-              <ChevronRight size={24} />
-            </button>
-
-            {/* Dots */}
-            <div className="flex justify-center gap-2 mt-8">
-              {clients.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setIsAutoPlaying(false);
-                    setCurrentSlide(index);
-                  }}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentSlide ? "bg-primary" : "bg-border hover:bg-primary/50"
-                  }`}
-                />
-              ))}
-            </div>
+                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/10 to-muted flex items-center justify-center">
+                  <span className="text-xl font-bold text-primary group-hover:text-primary/80 transition-colors">
+                    {client.name.charAt(0)}
+                  </span>
+                </div>
+                <h3 className="text-sm font-bold text-primary mb-1 group-hover:text-primary/80 transition-colors">
+                  {client.name}
+                </h3>
+                <p className="text-xs text-muted-foreground">{client.sector}</p>
+              </motion.a>
+            ))}
           </div>
         </div>
       </section>
@@ -278,7 +216,7 @@ const AboutUs = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
               ¿Quieres saber si podemos{" "}
-              <span className="text-gradient-warm">ayudarte</span>?
+              <span className="text-muted-foreground">ayudarte</span>?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               No hacemos propuestas genéricas. Cuéntanos sobre tu negocio y te diremos 

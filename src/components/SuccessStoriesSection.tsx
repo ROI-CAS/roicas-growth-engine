@@ -88,7 +88,7 @@ const SuccessStoriesSection = () => {
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
             Empresas como la tuya{" "}
-            <span className="text-gradient-warm">ya lo consiguieron</span>
+            <span className="text-muted-foreground">ya lo consiguieron</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             No te contamos lo que podemos hacer. Te mostramos lo que ya hemos hecho 
@@ -109,7 +109,7 @@ const SuccessStoriesSection = () => {
               }}
               className={`card-dashboard p-6 ${
                 story.highlight 
-                  ? 'ring-2 ring-warm/30 bg-gradient-to-br from-card to-warm/5' 
+                  ? 'ring-2 ring-primary/30 bg-gradient-to-br from-card to-primary/5' 
                   : ''
               }`}
             >
@@ -119,11 +119,11 @@ const SuccessStoriesSection = () => {
                   <div 
                     className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                       story.highlight 
-                        ? 'bg-gradient-to-br from-warm to-warm/80' 
-                        : 'bg-warm/10'
+                        ? 'bg-gradient-to-br from-primary to-primary/80' 
+                        : 'bg-primary/10'
                     }`}
                   >
-                    <story.icon size={24} className={story.highlight ? 'text-white' : 'text-warm'} />
+                    <story.icon size={24} className={story.highlight ? 'text-white' : 'text-primary'} />
                   </div>
                   <div>
                     <span className="font-semibold text-foreground block">
@@ -132,7 +132,7 @@ const SuccessStoriesSection = () => {
                     <span 
                       className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                         story.highlight 
-                          ? 'bg-warm text-white' 
+                          ? 'bg-primary text-white' 
                           : 'bg-primary/10 text-primary'
                       }`}
                     >

@@ -126,7 +126,7 @@ const FunnelSection = () => {
               delay: i * 0.15,
               ease: "easeInOut"
             }}>
-                  <ArrowDown className="w-5 h-5 text-warm" />
+                  <ArrowDown className="w-5 h-5 text-primary" />
                 </motion.div>)}
             </div>
           </motion.div>
@@ -204,7 +204,7 @@ const FunnelSection = () => {
             
             {/* Main Result */}
             <div className="text-center mb-6">
-              <p className="text-4xl md:text-5xl font-bold text-gradient-warm mb-2">
+              <p className="text-4xl md:text-5xl font-bold text-primary mb-2">
                 $<AnimatedCounter end={174} />K+
               </p>
               <p className="text-lg text-foreground font-medium">
