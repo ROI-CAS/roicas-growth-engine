@@ -73,9 +73,9 @@ const ContactSection = () => {
   };
 
   const benefits = [
-    { icon: Calendar, text: "Auditoría sin compromiso" },
-    { icon: Zap, text: "Respuesta en menos de 24h" },
-    { icon: Shield, text: "100% confidencial" },
+    { icon: Calendar, text: "Primera llamada sin coste" },
+    { icon: Zap, text: "Te respondemos hoy" },
+    { icon: Shield, text: "Cero spam, prometido" },
   ];
 
   return (
@@ -91,14 +91,14 @@ const ContactSection = () => {
             {/* Left Content */}
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-                Hablemos de{" "}
-                <span className="text-gradient-warm">Resultados Reales</span>
+                ¿Listo para dar el{" "}
+                <span className="text-gradient-warm">siguiente paso</span>?
               </h2>
 
               <p className="text-lg text-muted-foreground">
-                ¿Eres un emprendedor o empresa B2B buscando escalar? Agenda una
-                auditoría inicial sin coste para analizar tu embudo actual y
-                detectar fugas de dinero.
+                Cuéntanos sobre tu negocio y te diremos honestamente si podemos 
+                ayudarte. Sin compromiso, sin presión. Solo una conversación 
+                para conocernos.
               </p>
 
               <div className="space-y-4">
@@ -255,7 +255,7 @@ const ContactSection = () => {
                   ) : (
                     <>
                       <Send size={20} />
-                      Solicitar mi Auditoría Gratuita
+                      Quiero que me contactéis
                     </>
                   )}
                 </Button>

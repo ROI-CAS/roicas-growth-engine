@@ -18,14 +18,14 @@ const ProblemSection = () => {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            ¿Harto de las{" "}
-            <span className="text-gradient">"Métricas de Vanidad"</span>?
+            Sabemos lo que sientes cuando{" "}
+            <span className="text-gradient">inviertes sin ver resultados</span>
           </h2>
 
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Muchas agencias te entregan reportes llenos de impresiones y clics,
-            pero tu facturación sigue igual y te sientes abandonado. En ROICAS,
-            entendemos que un lead sin seguimiento es dinero tirado a la basura.
+            Has trabajado con agencias que te prometieron el mundo y solo te entregaron 
+            informes bonitos. Entendemos esa frustración porque hemos ayudado a decenas 
+            de empresas a salir de ahí. Tu negocio merece algo mejor.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -39,23 +39,23 @@ const ProblemSection = () => {
               <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center mb-4 mx-auto">
                 <X size={24} className="text-destructive" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">El Problema Habitual</h3>
+              <h3 className="text-xl font-semibold mb-4">Lo que probablemente has vivido</h3>
               <ul className="space-y-3 text-left text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <X size={18} className="text-destructive mt-1 shrink-0" />
-                  <span>Reportes con miles de impresiones pero cero ventas</span>
+                  <span>"Tienes muchas impresiones"... pero ningún cliente nuevo</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <X size={18} className="text-destructive mt-1 shrink-0" />
-                  <span>Leads que nunca reciben seguimiento</span>
+                  <span>Leads que llegan y nadie les da seguimiento</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <X size={18} className="text-destructive mt-1 shrink-0" />
-                  <span>Sentirse abandonado después de firmar el contrato</span>
+                  <span>Firmaste y casi no volviste a hablar con ellos</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <X size={18} className="text-destructive mt-1 shrink-0" />
-                  <span>Facturación estancada a pesar del "éxito" de campañas</span>
+                  <span>Pagas cada mes pero no ves el retorno</span>
                 </li>
               </ul>
             </motion.div>
@@ -70,23 +70,23 @@ const ProblemSection = () => {
               <div className="w-12 h-12 rounded-full bg-success/10 flex items-center justify-center mb-4 mx-auto">
                 <Check size={24} className="text-success" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">La Solución ROICAS</h3>
+              <h3 className="text-xl font-semibold mb-4">Cómo trabajamos contigo</h3>
               <ul className="space-y-3 text-left text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <Check size={18} className="text-success mt-1 shrink-0" />
-                  <span>Métricas enfocadas en ventas reales y ROI</span>
+                  <span>Te mostramos ventas reales, no vanity metrics</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check size={18} className="text-success mt-1 shrink-0" />
-                  <span>Automatización que nutre cada lead hasta el cierre</span>
+                  <span>Cada lead recibe seguimiento automático hasta que cierra</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check size={18} className="text-success mt-1 shrink-0" />
-                  <span>Acompañamiento continuo en todo el proceso</span>
+                  <span>Hablamos cada semana, no desaparecemos</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check size={18} className="text-success mt-1 shrink-0" />
-                  <span>Maquinaria de ventas que funciona para ti 24/7</span>
+                  <span>Nos medimos por tu crecimiento, no por nuestro ego</span>
                 </li>
               </ul>
             </motion.div>
@@ -98,9 +98,9 @@ const ProblemSection = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="mt-10 text-lg font-medium text-foreground"
           >
-            No te entregamos solo datos;{" "}
+            Tu éxito es nuestro éxito.{" "}
             <span className="text-primary">
-              implementamos una maquinaria de ventas que funciona para ti
+              Por eso nos implicamos como parte de tu equipo
             </span>
             .
           </motion.p>

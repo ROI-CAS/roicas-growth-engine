@@ -61,15 +61,15 @@ const LeadMagnetSection = () => {
               </div>
 
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
-                ¿Tus leads no se convierten en clientes?
+                Te regalamos lo que nos ha llevado años aprender
               </h2>
 
               <p className="text-muted-foreground text-lg">
-                Descarga gratis la guía:{" "}
+                Descarga gratis:{" "}
                 <span className="font-semibold text-foreground">
                   "La Hoja de Ruta Lead-to-Sale"
                 </span>
-                . Los 5 pasos críticos para que tus campañas dejen de ser un gasto y se vuelvan una inversión.
+                . Los 5 pasos que usamos con nuestros clientes para convertir leads en ventas reales.
               </p>
 
               <ul className="space-y-2 text-sm text-muted-foreground">

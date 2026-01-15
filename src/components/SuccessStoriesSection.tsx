@@ -32,7 +32,7 @@ const successStories: SuccessStory[] = [
       { value: 5.11, suffix: "%", label: "CTR (vs 1.69%)" },
     ],
     description:
-      "Transformamos su estrategia de volumen a rentabilidad. 112 citas agendadas confirmadas con un costo por conversión optimizado de $9,807.",
+      "Pasamos de perseguir volumen a buscar calidad. El resultado: 112 citas reales con pacientes que querían tratarse, no solo preguntar precios.",
   },
   {
     industry: "Consultoría B2B",
@@ -44,7 +44,7 @@ const successStories: SuccessStory[] = [
       { value: 180, prefix: "$", suffix: "K", label: "Generados" },
     ],
     description:
-      "De campañas sin seguimiento a un embudo automatizado que cierra prospectos mientras el equipo duerme.",
+      "Antes los leads se enfriaban. Ahora el sistema los nutre automáticamente y el equipo solo habla con quienes están listos para comprar.",
   },
   {
     industry: "Software SaaS",
@@ -56,7 +56,7 @@ const successStories: SuccessStory[] = [
       { value: 15, prefix: "$", suffix: "K MRR", label: "Adicional" },
     ],
     description:
-      "SEO estratégico combinado con automatización que genera demos cualificadas 24/7 sin intervención manual.",
+      "Dejaron de depender solo de ads. Ahora Google les trae tráfico gratis y el sistema convierte visitas en demos sin que toquen nada.",
   },
   {
     industry: "Servicios Industriales",
@@ -68,7 +68,7 @@ const successStories: SuccessStory[] = [
       { value: 95, prefix: "$", suffix: "K", label: "En Ventas" },
     ],
     description:
-      "Optimización de campañas publicitarias con seguimiento inteligente que convierte clics en contratos.",
+      "Gastaban mucho y cerraban poco. Ajustamos las campañas, pusimos seguimiento real y triplicaron sus cierres en 3 meses.",
   },
 ];
 
@@ -87,12 +87,12 @@ const SuccessStoriesSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Resultados que{" "}
-            <span className="text-gradient-warm">Hablan por Sí Solos</span>
+            Empresas como la tuya{" "}
+            <span className="text-gradient-warm">ya lo consiguieron</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Casos reales de empresas que transformaron su proceso comercial
-            y multiplicaron sus resultados.
+            No te contamos lo que podemos hacer. Te mostramos lo que ya hemos hecho 
+            con negocios similares al tuyo.
           </p>
         </motion.div>
 

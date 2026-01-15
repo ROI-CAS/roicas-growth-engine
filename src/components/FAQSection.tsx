@@ -10,24 +10,24 @@ import {
 
 const faqs = [
   {
-    question: "¿Cuánto tiempo toma ver resultados?",
-    answer: "Leads cualificados en 2-4 semanas. Resultados significativos entre el segundo y tercer mes.",
+    question: "¿En cuánto tiempo empezaré a ver resultados?",
+    answer: "Normalmente en las primeras 2-4 semanas ya empiezas a recibir leads cualificados. Los resultados más significativos llegan entre el segundo y tercer mes, cuando el sistema está completamente optimizado.",
   },
   {
-    question: "¿Qué diferencia a ROICAS de otras agencias?",
-    answer: "Cero métricas de vanidad. Solo leads cualificados y automatización que cierra ventas.",
+    question: "¿Por qué debería elegiros a vosotros?",
+    answer: "Porque no te vamos a vender humo. Nos medimos por tus ventas, no por likes. Y lo más importante: no desaparecemos después de firmar. Somos parte de tu equipo.",
   },
   {
-    question: "¿Necesito tener una web?",
-    answer: "No. Creamos tu presencia digital desde cero o mejoramos la existente.",
+    question: "No tengo web, ¿es problema?",
+    answer: "Para nada. Podemos crearla desde cero o mejorar la que ya tienes. Lo importante es tener una base sólida antes de invertir en publicidad.",
   },
   {
-    question: "¿Cuánto invertir en pauta?",
-    answer: "Mínimo $1,000-2,000 USD/mes. Lo definimos en la consultoría según tus objetivos.",
+    question: "¿Cuánto necesito invertir en publicidad?",
+    answer: "Depende de tu sector y objetivos, pero como referencia, recomendamos un mínimo de $1,000-2,000 USD/mes en pauta. Lo definimos juntos en una primera conversación.",
   },
   {
-    question: "¿Ofrecen garantías?",
-    answer: "Auditoría inicial gratuita. Contratos flexibles y métricas 100% transparentes.",
+    question: "¿Hay permanencia o compromiso largo?",
+    answer: "No nos gustan las ataduras. Trabajamos mes a mes porque creemos que si hacemos bien nuestro trabajo, querrás seguir con nosotros. Así de simple.",
   },
 ];
 
@@ -46,10 +46,10 @@ const FAQSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Preguntas <span className="text-gradient-warm">Frecuentes</span>
+            Lo que seguro te estás <span className="text-gradient-warm">preguntando</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Resolvemos tus dudas para que tomes la mejor decisión para tu negocio.
+            Son las dudas que todos tienen antes de dar el paso. Aquí van las respuestas honestas.
           </p>
         </motion.div>
 
