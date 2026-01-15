@@ -3,12 +3,21 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Globe, Target, Cog } from "lucide-react";
 
+import { ShoppingCart, Bot } from "lucide-react";
+
 const services = [
   {
     icon: Globe,
     title: "Tu web, tu mejor vendedor",
     description:
       "Creamos sitios que no solo se ven bien, sino que convierten. Webs rápidas, claras y pensadas para que tus visitantes se conviertan en clientes.",
+    highlight: false,
+  },
+  {
+    icon: ShoppingCart,
+    title: "Tiendas online que venden solas",
+    description:
+      "Montamos tu ecommerce con WooCommerce: catálogo, pagos, envíos y todo lo que necesitas para vender online sin complicaciones técnicas.",
     highlight: false,
   },
   {
@@ -19,12 +28,19 @@ const services = [
     highlight: false,
   },
   {
+    icon: Bot,
+    title: "IA que trabaja por ti 24/7",
+    description:
+      "Automatizamos tareas repetitivas con inteligencia artificial: chatbots, respuestas automáticas, clasificación de leads y más.",
+    highlight: true,
+    badge: "Lo que nos diferencia",
+  },
+  {
     icon: Cog,
     title: "Ningún lead se queda sin respuesta",
     description:
       "Automatizamos el seguimiento para que cada contacto reciba atención personalizada. Tú te enfocas en cerrar, nosotros en que nadie se pierda.",
-    highlight: true,
-    badge: "Lo que nos diferencia",
+    highlight: false,
   },
 ];
 
@@ -52,7 +68,7 @@ const ServicesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
