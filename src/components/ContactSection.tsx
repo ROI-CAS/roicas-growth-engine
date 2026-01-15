@@ -235,7 +235,7 @@ const ContactSection = () => {
                   ) : (
                     <>
                       <Send size={20} />
-                      Quiero que me contactéis
+                      Quiero que me contacten
                     </>
                   )}
                 </Button>
