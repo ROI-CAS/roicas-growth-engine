@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Target, Users, Zap, Award, TrendingUp, Heart } from "lucide-react";
+import { Target, Users, Zap, Award, TrendingUp, Heart, ExternalLink } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 const values = [
   {
@@ -30,19 +31,27 @@ const values = [
 ];
 
 const stats = [
-  { value: "50+", label: "Clientes B2B" },
-  { value: "$2M+", label: "En ventas generadas" },
-  { value: "95%", label: "Retención de clientes" },
-  { value: "3x", label: "ROI promedio" }
+  { value: 50, suffix: "+", label: "Clientes B2B" },
+  { value: 2, prefix: "$", suffix: "M+", label: "En ventas generadas" },
+  { value: 95, suffix: "%", label: "Retención de clientes" },
+  { value: 3, suffix: "x", label: "ROI promedio" }
+];
+
+const clients = [
+  { name: "Grupo Ecosfera", url: "https://www.grupoecosfera.com/", sector: "Servicios Ambientales" },
+  { name: "Proware", url: "https://www.proware.com.co/", sector: "Tecnología" },
+  { name: "Componente Legal", url: "https://www.componentelegal.com/", sector: "Legal Tech" },
+  { name: "FinDolor", url: "https://www.findolor.com/", sector: "Salud" },
+  { name: "Aeroambulancias SAS", url: "https://aeroambulanciassas.com/", sector: "Salud & Emergencias" },
 ];
 
 const AboutUs = () => {
   const heroRef = useRef(null);
   const valuesRef = useRef(null);
-  const teamRef = useRef(null);
+  const clientsRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true });
   const valuesInView = useInView(valuesRef, { once: true, margin: "-100px" });
-  const teamInView = useInView(teamRef, { once: true, margin: "-100px" });
+  const clientsInView = useInView(clientsRef, { once: true, margin: "-100px" });
 
   return (
     <main className="min-h-screen bg-background">
@@ -53,46 +62,26 @@ const AboutUs = () => {
         <div className="section-container relative z-10">
           <motion.div
             ref={heroRef}
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            animate={heroInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="max-w-4xl mx-auto text-center"
           >
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 }}
-              className="inline-block px-4 py-2 rounded-full bg-warm/10 text-warm text-sm font-medium mb-6"
-            >
+            <span className="inline-block px-4 py-2 rounded-full bg-warm/10 text-warm text-sm font-medium mb-6">
               Conoce a ROICAS
-            </motion.span>
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            >
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Transformamos empresas B2B en{" "}
               <span className="text-gradient-warm">máquinas de ventas</span>
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl text-muted-foreground max-w-2xl mx-auto"
-            >
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Somos una agencia de growth marketing especializada en convertir tráfico en clientes reales mediante estrategias de captación y automatización inteligente.
-            </motion.p>
+            </p>
           </motion.div>
         </div>
 
         {/* Background decoration */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={heroInView ? { opacity: 0.5, scale: 1 } : {}}
-          transition={{ delay: 0.5, duration: 1.5 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-warm/10 via-transparent to-transparent rounded-full blur-3xl pointer-events-none"
-        />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-warm/10 via-transparent to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
       </section>
 
       {/* Stats Section */}
@@ -102,21 +91,19 @@ const AboutUs = () => {
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
                 className="text-center"
               >
-                <motion.div 
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.3, type: "spring", stiffness: 200 }}
-                  className="text-4xl md:text-5xl font-bold text-gradient-warm mb-2"
-                >
-                  {stat.value}
-                </motion.div>
+                <div className="text-4xl md:text-5xl font-bold text-gradient-warm mb-2">
+                  <AnimatedCounter 
+                    end={stat.value} 
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                  />
+                </div>
                 <p className="text-muted-foreground">{stat.label}</p>
               </motion.div>
             ))}
@@ -124,15 +111,15 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Mission Section */}
+      {/* Mission & Vision Section */}
       <section className="py-20 md:py-28">
         <div className="section-container">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Nuestra <span className="text-gradient-warm">Misión</span>
@@ -145,20 +132,18 @@ const AboutUs = () => {
               </p>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, x: 50, rotateY: -15 }}
-              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="card-dashboard p-8 relative overflow-hidden"
             >
-              <div className="card-dashboard p-8 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-warm/20 to-transparent rounded-bl-full" />
-                <TrendingUp className="w-12 h-12 text-warm mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Crecimiento Sostenible</h3>
-                <p className="text-muted-foreground">
-                  No buscamos picos de tráfico efímeros. Construimos sistemas que generan leads cualificados de forma predecible y escalable.
-                </p>
-              </div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-warm/20 to-transparent rounded-bl-full" />
+              <TrendingUp className="w-12 h-12 text-warm mb-4" />
+              <h3 className="text-2xl font-bold mb-2">Crecimiento Sostenible</h3>
+              <p className="text-muted-foreground">
+                No buscamos picos de tráfico efímeros. Construimos sistemas que generan leads cualificados de forma predecible y escalable.
+              </p>
             </motion.div>
           </div>
         </div>
@@ -169,9 +154,9 @@ const AboutUs = () => {
         <div className="section-container">
           <motion.div
             ref={valuesRef}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={valuesInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -186,27 +171,14 @@ const AboutUs = () => {
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 50, rotateX: -15 }}
-                animate={valuesInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-                transition={{ 
-                  delay: index * 0.15, 
-                  duration: 0.7,
-                  ease: [0.16, 1, 0.3, 1]
-                }}
-                whileHover={{ 
-                  y: -10, 
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
-                className="card-dashboard text-center group cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className="card-dashboard text-center group"
               >
-                <motion.div 
-                  className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-warm/10 to-accent flex items-center justify-center"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                >
+                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-warm/10 to-accent flex items-center justify-center group-hover:from-warm/20 transition-colors">
                   <value.icon className="w-7 h-7 text-warm" />
-                </motion.div>
+                </div>
                 <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
                 <p className="text-muted-foreground text-sm">{value.description}</p>
               </motion.div>
@@ -215,31 +187,64 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Why Us Section */}
-      <section ref={teamRef} className="py-20 md:py-28">
+      {/* Clients Section */}
+      <section ref={clientsRef} className="py-20 md:py-28">
         <div className="section-container">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={teamInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={clientsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Clientes que <span className="text-gradient-warm">Confían en Nosotros</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Empresas líderes en sus sectores que han transformado su proceso comercial con ROICAS.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {clients.map((client, index) => (
+              <motion.a
+                key={client.name}
+                href={client.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={clientsInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: index * 0.08, duration: 0.5 }}
+                className="card-dashboard flex items-center justify-between group cursor-pointer"
+              >
+                <div>
+                  <h3 className="font-semibold text-foreground group-hover:text-warm transition-colors">
+                    {client.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{client.sector}</p>
+                </div>
+                <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-warm transition-colors" />
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Us Section */}
+      <section className="py-20 md:py-28 bg-muted/30">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto text-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               ¿Por qué <span className="text-gradient-warm">elegirnos</span>?
             </h2>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={teamInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="card-dashboard p-8 md:p-12"
-            >
+            <div className="card-dashboard p-8 md:p-12">
               <div className="flex justify-center mb-6">
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Heart className="w-12 h-12 text-warm" />
-                </motion.div>
+                <Heart className="w-12 h-12 text-warm" />
               </div>
               <p className="text-lg text-muted-foreground mb-6">
                 Porque entendemos que tu negocio no necesita más "likes" o "impresiones". Necesita clientes que paguen, contratos que se cierren y un pipeline predecible.
@@ -250,7 +255,7 @@ const AboutUs = () => {
               <Button variant="hero" size="lg" asChild>
                 <a href="/#contacto">Agenda una Consultoría</a>
               </Button>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>

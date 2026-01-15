@@ -86,27 +86,17 @@ const FunnelSection = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex flex-wrap justify-center gap-3 mb-8"
           >
-            {sources.map((source, index) => (
+{sources.map((source, index) => (
               <motion.div
                 key={source.label}
-                initial={{ opacity: 0, scale: 0, rotate: -180 }}
-                animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: 0.2 + index * 0.08,
-                  type: "spring",
-                  stiffness: 200
-                }}
-                whileHover={{ scale: 1.1, y: -5 }}
-                className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border shadow-sm cursor-pointer"
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
+                className="flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border shadow-sm hover:shadow-md transition-shadow"
               >
-                <motion.div 
-                  className={`w-6 h-6 rounded-full ${source.color} flex items-center justify-center`}
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
+                <div className={`w-6 h-6 rounded-full ${source.color} flex items-center justify-center`}>
                   <source.icon size={12} className="text-white" />
-                </motion.div>
+                </div>
                 <span className="text-sm font-medium">{source.label}</span>
               </motion.div>
             ))}
@@ -139,41 +129,28 @@ const FunnelSection = () => {
 
           {/* Funnel Visualization */}
           <div className="space-y-4">
-            {funnelStages.map((stage, index) => (
+{funnelStages.map((stage, index) => (
               <motion.div
                 key={stage.label}
-                initial={{ opacity: 0, scale: 0.8, x: index % 2 === 0 ? -100 : 100 }}
-                animate={isInView ? { opacity: 1, scale: 1, x: 0 } : {}}
-                transition={{ 
-                  duration: 0.7, 
-                  delay: 0.7 + index * 0.15,
-                  ease: [0.16, 1, 0.3, 1]
-                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                 className="relative"
               >
-                <motion.div 
+                <div 
                   className={`
                     mx-auto bg-gradient-to-r ${stage.color} rounded-xl p-4 md:p-6
-                    flex items-center justify-between text-white shadow-lg
+                    flex items-center justify-between text-white shadow-lg hover:shadow-xl transition-shadow
                   `}
                   style={{ 
                     width: `${100 - index * 15}%`,
                     maxWidth: '100%'
                   }}
-                  whileHover={{ 
-                    scale: 1.03,
-                    boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3)"
-                  }}
-                  transition={{ duration: 0.3 }}
                 >
                   <div className="flex items-center gap-3 md:gap-4">
-                    <motion.div 
-                      className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm">
                       <stage.icon className="w-5 h-5 md:w-6 md:h-6" />
-                    </motion.div>
+                    </div>
                     <div>
                       <p className="text-sm md:text-base font-medium opacity-90">{stage.label}</p>
                       <p className="text-2xl md:text-3xl font-bold">
@@ -183,11 +160,11 @@ const FunnelSection = () => {
                   </div>
                   <div className="text-right">
                     <p className="text-2xl md:text-3xl font-bold">
-                      <AnimatedCounter end={stage.percentage} suffix="%" />
+                      {stage.percentage}%
                     </p>
                     <p className="text-xs md:text-sm opacity-75">del total</p>
                   </div>
-                </motion.div>
+                </div>
                 
                 {/* Connector */}
                 {index < funnelStages.length - 1 && (
@@ -211,22 +188,16 @@ const FunnelSection = () => {
 
           {/* Result Card */}
           <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ scale: 1.02 }}
-            className="mt-12 card-dashboard p-6 md:p-8 text-center max-w-xl mx-auto relative overflow-hidden"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.7 }}
+            className="mt-12 card-dashboard p-6 md:p-8 text-center max-w-xl mx-auto"
           >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-warm/5 via-transparent to-warm/5"
-              animate={{ x: ["-100%", "100%"] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            />
-            <p className="text-muted-foreground mb-2 relative z-10">Resultado Final</p>
-            <p className="text-4xl md:text-5xl font-bold text-gradient-warm mb-2 relative z-10">
+            <p className="text-muted-foreground mb-2">Resultado Final</p>
+            <p className="text-4xl md:text-5xl font-bold text-gradient-warm mb-2">
               $<AnimatedCounter end={95} />K+
             </p>
-            <p className="text-lg text-foreground font-medium relative z-10">
+            <p className="text-lg text-foreground font-medium">
               En ventas cerradas con un ROI de{" "}
               <span className="text-success font-bold">
                 <AnimatedCounter end={12} />x

@@ -97,22 +97,17 @@ const SuccessStoriesSection = () => {
         </motion.div>
 
         <div className="space-y-6">
-          {successStories.map((story, index) => (
+{successStories.map((story, index) => (
             <motion.div
               key={story.industry}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60, rotateY: index % 2 === 0 ? -10 : 10 }}
-              animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ 
-                duration: 0.8, 
-                delay: 0.15 * (index + 1),
-                ease: [0.16, 1, 0.3, 1]
+                duration: 0.5, 
+                delay: 0.1 * (index + 1),
+                ease: "easeOut"
               }}
-              whileHover={{ 
-                scale: 1.02, 
-                y: -5,
-                transition: { duration: 0.3 }
-              }}
-              className={`card-dashboard p-6 lg:p-8 cursor-pointer ${
+              className={`card-dashboard p-6 lg:p-8 ${
                 story.highlight 
                   ? 'ring-2 ring-warm/30 bg-gradient-to-r from-card via-warm/5 to-accent/30' 
                   : ''
@@ -122,57 +117,43 @@ const SuccessStoriesSection = () => {
                 {/* Header with industry and period */}
                 <div className="flex items-center justify-between lg:justify-start lg:flex-col lg:items-start lg:min-w-[200px] gap-2">
                   <div className="flex items-center gap-3">
-                    <motion.div 
+                    <div 
                       className={`w-10 h-10 rounded-lg flex items-center justify-center ${
                         story.highlight 
                           ? 'bg-gradient-to-br from-warm to-warm/80' 
                           : 'bg-warm/10'
                       }`}
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
                     >
                       <story.icon size={20} className={story.highlight ? 'text-white' : 'text-warm'} />
-                    </motion.div>
+                    </div>
                     <span className="font-semibold text-foreground">
                       {story.industry}
                     </span>
                   </div>
-                  <motion.span 
+                  <span 
                     className={`text-xs px-3 py-1 rounded-full font-medium ${
                       story.highlight 
                         ? 'bg-warm text-white' 
                         : 'bg-accent text-accent-foreground'
                     }`}
-                    whileHover={{ scale: 1.1 }}
                   >
                     {story.period}
-                  </motion.span>
+                  </span>
                 </div>
 
                 {/* Metrics Grid */}
                 <div className="grid grid-cols-3 gap-4 lg:gap-8 flex-1">
-                  {story.metrics.map((metric, metricIndex) => (
-                    <motion.div 
+                {story.metrics.map((metric) => (
+                    <div 
                       key={metric.label} 
                       className="text-center lg:text-left"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{ delay: 0.3 + index * 0.15 + metricIndex * 0.1 }}
                     >
                       <div className="flex items-center justify-center lg:justify-start gap-1">
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={isInView ? { scale: 1 } : {}}
-                          transition={{ delay: 0.5 + index * 0.15 + metricIndex * 0.1, type: "spring" }}
-                        >
-                          <TrendingUp
-                            size={16}
-                            className="text-success hidden sm:block"
-                          />
-                        </motion.div>
-                        <p className={`text-2xl lg:text-3xl font-bold ${
-                          story.highlight ? 'text-gradient-warm' : 'text-gradient-warm'
-                        }`}>
+                        <TrendingUp
+                          size={16}
+                          className="text-success hidden sm:block"
+                        />
+                        <p className="text-2xl lg:text-3xl font-bold text-gradient-warm">
                           <AnimatedCounter 
                             end={metric.value} 
                             prefix={metric.prefix}
@@ -184,7 +165,7 @@ const SuccessStoriesSection = () => {
                       <p className="text-xs lg:text-sm text-muted-foreground mt-1">
                         {metric.label}
                       </p>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 

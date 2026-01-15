@@ -101,19 +101,14 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
               >
-                <Button variant="hero" size="xl" asChild className="animate-glow">
+                <Button variant="hero" size="xl" asChild>
                   <a href="#contacto" className="group">
-                    Agendar Consultoría de Estrategia
-                    <motion.span
-                      className="inline-block ml-2"
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      <ArrowRight size={20} />
-                    </motion.span>
+                    Agendar Consultoría Estratégica
+                    <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                   </a>
                 </Button>
               </motion.div>
@@ -137,26 +132,14 @@ const HeroSection = () => {
             className="relative perspective-1000"
           >
             {/* Main Dashboard Card */}
-            <motion.div 
-              className="card-dashboard p-6 lg:p-8"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <div className="card-dashboard p-6 lg:p-8">
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-semibold text-foreground">Panel de Resultados</h3>
-                <motion.span 
-                  className="text-xs text-success font-medium px-2 py-1 bg-success/10 rounded-full flex items-center gap-1"
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <motion.span
-                    className="w-2 h-2 rounded-full bg-success"
-                    animate={{ opacity: [1, 0.5, 1] }}
-                    transition={{ duration: 1, repeat: Infinity }}
-                  />
+                <span className="text-xs text-success font-medium px-2 py-1 bg-success/10 rounded-full flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
                   En Vivo
-                </motion.span>
+                </span>
               </div>
 
               {/* Stats Grid */}
@@ -165,20 +148,16 @@ const HeroSection = () => {
                   { value: "247", label: "Leads Generados" },
                   { value: "68%", label: "Tasa Conversión" },
                   { value: "$84K", label: "Ingresos", highlight: true }
-                ].map((stat, index) => (
-                  <motion.div 
+                ].map((stat) => (
+                  <div 
                     key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="text-center p-3 rounded-lg bg-secondary"
+                    className="text-center p-3 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors"
                   >
                     <p className={`text-2xl lg:text-3xl font-bold ${stat.highlight ? 'text-gradient-warm' : 'text-foreground'}`}>
                       {stat.value}
                     </p>
                     <p className="text-xs text-muted-foreground">{stat.label}</p>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
 
@@ -226,7 +205,7 @@ const HeroSection = () => {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* Floating Elements */}
             <motion.div
