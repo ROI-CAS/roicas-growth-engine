@@ -201,7 +201,7 @@ const ContactSection = () => {
                       setFormData({ ...formData, challenge: value })
                     }
                   >
-                    <SelectTrigger className="h-12 bg-background">
+                    <SelectTrigger className="h-12 bg-background" aria-label="Selecciona tu mayor reto de ventas">
                       <SelectValue placeholder="Selecciona una opción" />
                     </SelectTrigger>
                     <SelectContent className="bg-background border border-border z-50">
