@@ -10,6 +10,8 @@ import LeadMagnetSection from "@/components/LeadMagnetSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
+import CookieConsent from "@/components/CookieConsent";
 
 const Index = () => {
   return (
@@ -26,6 +28,8 @@ const Index = () => {
       <ContactSection />
       <Footer />
       <WhatsAppButton />
+      <ExitIntentPopup />
+      <CookieConsent />
     </main>
   );
 };

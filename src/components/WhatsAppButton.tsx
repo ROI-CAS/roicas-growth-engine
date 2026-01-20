@@ -62,7 +62,7 @@ const WhatsAppButton = () => {
                 👋 ¿Listo para escalar tu negocio?
               </p>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Agenda una <span className="font-medium text-primary">consultoría gratuita</span> y descubre cómo podemos duplicar tus leads cualificados en 90 días.
+                Agenda una <span className="font-medium text-primary">consultoría gratuita</span> y descubre cómo podemos duplicar tus leads cualificados.
               </p>
               <a
                 href={whatsappUrl}
