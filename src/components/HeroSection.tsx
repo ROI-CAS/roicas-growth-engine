@@ -135,7 +135,7 @@ const HeroSection = () => {
             <div className="card-dashboard p-6 lg:p-8">
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
-                <h3 className="font-semibold text-foreground">Panel de Resultados</h3>
+                <span className="font-semibold text-foreground">Panel de Resultados</span>
                 <span className="text-xs text-white font-medium px-2 py-1 bg-success rounded-full flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                   En Vivo
