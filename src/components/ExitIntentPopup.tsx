@@ -53,22 +53,22 @@ const ExitIntentPopup = () => {
           >
             <div className="bg-background rounded-2xl shadow-2xl border border-border overflow-hidden">
               {/* Header with gradient */}
-              <div className="bg-gradient-to-r from-primary to-primary/80 p-6 text-primary-foreground relative">
+              <div className="bg-gradient-to-br from-primary via-primary to-blue-900 p-6 text-white relative">
                 <button
                   onClick={handleClose}
-                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/20 hover:bg-black/30 flex items-center justify-center transition-colors"
                   aria-label="Cerrar"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-4 h-4 text-white" />
                 </button>
                 
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                    <Calendar className="w-6 h-6" />
+                  <div className="w-12 h-12 rounded-full bg-white/25 flex items-center justify-center">
+                    <Calendar className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium opacity-90">Antes de irte...</p>
-                    <h3 className="text-xl font-bold">¡Espera un momento!</h3>
+                    <p className="text-sm font-semibold text-white/90">Antes de irte...</p>
+                    <h3 className="text-xl font-bold text-white">¡Espera un momento!</h3>
                   </div>
                 </div>
               </div>

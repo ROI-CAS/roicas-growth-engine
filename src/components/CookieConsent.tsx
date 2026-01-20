@@ -37,7 +37,7 @@ const CookieConsent = () => {
             <p className="text-xs text-muted-foreground leading-relaxed mb-3">
               Usamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra{" "}
               <a 
-                href="/politica-de-privacidad" 
+                href="/politica-privacidad" 
                 className="text-primary hover:underline"
               >
                 política de privacidad
