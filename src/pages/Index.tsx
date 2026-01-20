@@ -9,6 +9,7 @@ import FAQSection from "@/components/FAQSection";
 import LeadMagnetSection from "@/components/LeadMagnetSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
       <LeadMagnetSection />
       <ContactSection />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 };

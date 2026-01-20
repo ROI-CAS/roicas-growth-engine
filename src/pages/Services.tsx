@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const services = [
   {
@@ -259,6 +260,7 @@ const Services = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 };

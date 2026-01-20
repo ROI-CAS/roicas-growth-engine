@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Target, Users, Zap, Award, Heart, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 
 const values = [
@@ -233,6 +234,7 @@ const AboutUs = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 };
