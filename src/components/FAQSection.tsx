@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     question: "¿Hay permanencia o compromiso largo?",
-    answer: "No nos gustan las ataduras. Trabajamos mes a mes porque creemos que si hacemos bien nuestro trabajo, querrás seguir con nosotros. Así de simple.",
+    answer: "Lo ideal son tres meses como mínimo para consolidar resultados. Sin embargo, no creemos en contratos eternos: si hacemos bien nuestro trabajo, vas a querer seguir con nosotros. Así de simple.",
   },
 ];
 
