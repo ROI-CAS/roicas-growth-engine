@@ -4,6 +4,7 @@ import { useInView } from "framer-motion";
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -29,8 +30,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Teléfono",
-    value: "+57 300 123 4567",
-    link: "tel:+573001234567"
+    value: "+57 311 456 5403",
+    link: "tel:+573114565403"
   },
   {
     icon: MapPin,
@@ -322,6 +323,7 @@ const Contact = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 };
