@@ -7,6 +7,14 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 
+// Client logos
+import logoFalcon from "@/assets/clients/falcon-cloud.png";
+import logoComponenteLegal from "@/assets/clients/componente-legal.png";
+import logoTorregroza from "@/assets/clients/torregroza-diazgranados.png";
+import logoEcosfera from "@/assets/clients/ecosfera.png";
+import logoAeroAmbulancias from "@/assets/clients/aero-ambulancias.jpg";
+import logoFindolor from "@/assets/clients/findolor.png";
+
 const values = [
   {
     icon: Target,
@@ -31,10 +39,12 @@ const values = [
 ];
 
 const clients = [
-  { name: "Grupo Ecosfera", url: "https://www.grupoecosfera.com/", sector: "Servicios Ambientales" },
-  { name: "Proware", url: "https://www.proware.com.co/", sector: "Tecnología" },
-  { name: "Componente Legal", url: "https://www.componentelegal.com/", sector: "Legal Tech" },
-  { name: "FinDolor", url: "https://www.findolor.com/", sector: "Salud" },
+  { name: "Falcon Cloud", logo: logoFalcon, url: "https://www.falconcloud.co/", sector: "Gestión de Personal" },
+  { name: "Ecosfera", logo: logoEcosfera, url: "https://www.grupoecosfera.com/", sector: "Consultoría Estratégica" },
+  { name: "Componente Legal", logo: logoComponenteLegal, url: "https://www.componentelegal.com/", sector: "Legal Tech" },
+  { name: "Torregroza & Diazgranados", logo: logoTorregroza, url: "#", sector: "Servicios Jurídicos" },
+  { name: "Aero Ambulancias", logo: logoAeroAmbulancias, url: "https://www.aeroambulancias.com.co/", sector: "Salud" },
+  { name: "FinDolor", logo: logoFindolor, url: "https://www.findolor.com/", sector: "Salud" },
 ];
 
 const AboutUs = () => {
@@ -177,8 +187,8 @@ const AboutUs = () => {
             </p>
           </motion.div>
 
-          {/* Grid de 4 logos */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          {/* Grid de logos */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {clients.map((client, index) => (
               <motion.a
                 key={client.name}
@@ -188,17 +198,16 @@ const AboutUs = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={clientsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="card-dashboard p-6 text-center hover:border-primary/30 transition-colors group"
+                className="card-dashboard p-6 flex flex-col items-center justify-center hover:border-primary/30 transition-all group hover:shadow-lg"
               >
-                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/10 to-muted flex items-center justify-center">
-                  <span className="text-xl font-bold text-primary group-hover:text-primary/80 transition-colors">
-                    {client.name.charAt(0)}
-                  </span>
+                <div className="h-16 flex items-center justify-center mb-3">
+                  <img 
+                    src={client.logo} 
+                    alt={`Logo de ${client.name}`} 
+                    className="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
                 </div>
-                <h3 className="text-sm font-bold text-primary mb-1 group-hover:text-primary/80 transition-colors">
-                  {client.name}
-                </h3>
-                <p className="text-xs text-muted-foreground">{client.sector}</p>
+                <p className="text-xs text-muted-foreground text-center">{client.sector}</p>
               </motion.a>
             ))}
           </div>
