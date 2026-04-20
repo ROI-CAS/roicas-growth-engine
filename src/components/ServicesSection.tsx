@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 const packages = [
   {
     icon: Zap,
+    bg: "bg-amber-500",
     title: "Sistema Base",
     subtitle: "Deja de perder leads",
     description:
@@ -25,6 +26,7 @@ const packages = [
   },
   {
     icon: TrendingUp,
+    bg: "bg-primary",
     title: "Sistema de Crecimiento",
     subtitle: "Más leads, mejor calidad",
     description:
@@ -43,6 +45,7 @@ const packages = [
   },
   {
     icon: Rocket,
+    bg: "bg-violet-500",
     title: "Sistema 360°",
     subtitle: "Escala sin contratar más",
     description:
@@ -108,14 +111,8 @@ const ServicesSection = () => {
               {/* Level + icon */}
               <div className="mb-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className={`w-14 h-14 rounded-xl flex items-center justify-center ${
-                      pkg.highlight
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-accent text-accent-foreground"
-                    }`}
-                  >
-                    <pkg.icon size={28} />
+                  <div className={`w-14 h-14 rounded-xl ${pkg.bg} flex items-center justify-center shadow-md`}>
+                    <pkg.icon size={26} className="text-white" strokeWidth={2} />
                   </div>
                   <span className="text-4xl font-black text-border select-none">
                     {String(index + 1).padStart(2, "0")}

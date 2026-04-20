@@ -30,9 +30,9 @@ const LogoBarSection = () => {
         initial={{ opacity: 0, y: 10 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
-        className="text-center text-xs font-semibold text-muted-foreground mb-8 uppercase tracking-[0.2em]"
+        className="text-center text-sm text-muted-foreground mb-8"
       >
-        Empresas que ya tienen su sistema activo
+        Empresas que confían en nuestro sistema para crecer
       </motion.p>
 
       {/* Marquee wrapper — fade edges */}

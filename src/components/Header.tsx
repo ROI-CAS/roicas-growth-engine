@@ -10,30 +10,35 @@ const serviceItems = [
     label: "Diseño Web",
     description: "Sitios WordPress de alta conversión",
     icon: Globe,
+    bg: "bg-blue-500",
   },
   {
     href: "/servicios/tiendas-online",
     label: "Tiendas Online",
     description: "E-commerce que vende mientras duermes",
     icon: ShoppingCart,
+    bg: "bg-emerald-500",
   },
   {
     href: "/servicios/seo",
     label: "SEO",
     description: "Posicionamiento orgánico sostenible",
     icon: Search,
+    bg: "bg-amber-500",
   },
   {
     href: "/servicios/publicidad-digital",
     label: "Publicidad Digital",
     description: "Google Ads y Meta Ads con ROI medible",
     icon: Megaphone,
+    bg: "bg-rose-500",
   },
   {
     href: "/servicios/automatizacion-ia",
     label: "Automatización con IA",
     description: "Flujos inteligentes y bots que convierten",
     icon: Bot,
+    bg: "bg-violet-500",
   },
 ];
 
@@ -111,8 +116,8 @@ const Header = () => {
                           href={item.href}
                           className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-accent transition-colors group"
                         >
-                          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                            <item.icon size={15} className="text-primary" />
+                          <div className={`w-8 h-8 rounded-lg ${item.bg} flex items-center justify-center shrink-0 shadow-sm`}>
+                            <item.icon size={14} className="text-white" strokeWidth={2.2} />
                           </div>
                           <div>
                             <p className="text-sm font-semibold text-foreground leading-tight">{item.label}</p>
@@ -211,7 +216,9 @@ const Header = () => {
                             className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
                             onClick={() => setIsMenuOpen(false)}
                           >
-                            <item.icon size={14} className="text-primary shrink-0" />
+                            <div className={`w-5 h-5 rounded ${item.bg} flex items-center justify-center shrink-0`}>
+                              <item.icon size={11} className="text-white" strokeWidth={2.2} />
+                            </div>
                             {item.label}
                           </a>
                         ))}

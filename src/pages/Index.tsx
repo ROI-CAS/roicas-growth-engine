@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import FeaturesStrip from "@/components/FeaturesStrip";
 import LogoBarSection from "@/components/LogoBarSection";
 import ProblemSection from "@/components/ProblemSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -19,9 +20,11 @@ const Index = () => {
       <Header />
       {/* 1. Hero — propuesta inmediata + dual CTA */}
       <HeroSection />
-      {/* 2. Logos — prueba social inmediata post-hero */}
+      {/* 2. Features strip — 4 iconos sólidos estilo LottieFiles */}
+      <FeaturesStrip />
+      {/* 3. Logos — prueba social inmediata post-hero */}
       <LogoBarSection />
-      {/* 3. Problema — empatía con el visitante */}
+      {/* 4. Problema — empatía con el visitante */}
       <ProblemSection />
       {/* 4. Solución — 3 paquetes con nivel y promesa */}
       <ServicesSection />

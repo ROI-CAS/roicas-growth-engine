@@ -9,40 +9,35 @@ const steps = [
     title: "Atracción",
     description: "Llevamos tráfico cualificado a tu negocio mediante Google Ads, Meta Ads y posicionamiento orgánico en buscadores.",
     icon: Megaphone,
-    color: "from-blue-500/20 to-blue-600/10",
-    iconColor: "text-blue-500",
+    bg: "bg-blue-500",
   },
   {
     number: "02",
     title: "Captación",
     description: "Páginas de captura optimizadas que convierten visitas en contactos y los registran automáticamente en tu sistema.",
     icon: MousePointerClick,
-    color: "from-primary/20 to-primary/10",
-    iconColor: "text-primary",
+    bg: "bg-primary",
   },
   {
     number: "03",
     title: "Nutrición",
     description: "Secuencias automáticas por email, SMS y WhatsApp que mantienen el interés del lead hasta que esté listo para comprar.",
     icon: MessageSquare,
-    color: "from-green-500/20 to-green-600/10",
-    iconColor: "text-green-500",
+    bg: "bg-emerald-500",
   },
   {
     number: "04",
     title: "Cualificación",
     description: "Sistema de scoring que filtra y prioriza automáticamente los leads con mayor intención de compra. Sin trabajo manual.",
     icon: SlidersHorizontal,
-    color: "from-orange-500/20 to-orange-600/10",
-    iconColor: "text-orange-500",
+    bg: "bg-orange-500",
   },
   {
     number: "05",
     title: "Entrega al Comercial",
     description: "Tu equipo recibe la notificación con la ficha completa del lead y la cita ya agendada. Solo queda cerrar.",
     icon: Handshake,
-    color: "from-purple-500/20 to-purple-600/10",
-    iconColor: "text-purple-500",
+    bg: "bg-violet-500",
   },
 ];
 
@@ -83,13 +78,13 @@ const TechStackSection = () => {
               transition={{ duration: 0.6, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="flex-1 flex flex-col items-center text-center px-4 relative"
             >
-              {/* Icon bubble */}
+              {/* Icon square — solid vibrant color */}
               <motion.div
-                whileHover={{ scale: 1.12, y: -4 }}
-                transition={{ duration: 0.25 }}
-                className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${step.color} border border-border flex items-center justify-center mb-5 z-10 relative bg-background shadow-sm`}
+                whileHover={{ scale: 1.1, y: -4 }}
+                transition={{ duration: 0.2 }}
+                className={`w-16 h-16 rounded-2xl ${step.bg} flex items-center justify-center mb-5 z-10 relative shadow-md`}
               >
-                <step.icon className={`w-8 h-8 ${step.iconColor}`} />
+                <step.icon className="w-7 h-7 text-white" strokeWidth={2} />
               </motion.div>
 
               <span className="text-xs font-bold text-muted-foreground/50 tracking-widest mb-1">
@@ -113,8 +108,8 @@ const TechStackSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="card-dashboard p-5 flex items-start gap-4"
             >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center shrink-0`}>
-                <step.icon className={`w-6 h-6 ${step.iconColor}`} />
+              <div className={`w-12 h-12 rounded-xl ${step.bg} flex items-center justify-center shrink-0 shadow-sm`}>
+                <step.icon className="w-6 h-6 text-white" strokeWidth={2} />
               </div>
               <div>
                 <span className="text-xs font-bold text-muted-foreground/50 tracking-widest">
