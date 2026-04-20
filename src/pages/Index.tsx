@@ -6,7 +6,6 @@ import TechStackSection from "@/components/TechStackSection";
 import FunnelSection from "@/components/FunnelSection";
 import SuccessStoriesSection from "@/components/SuccessStoriesSection";
 import FAQSection from "@/components/FAQSection";
-import LeadMagnetSection from "@/components/LeadMagnetSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -24,7 +23,6 @@ const Index = () => {
       <FunnelSection />
       <SuccessStoriesSection />
       <FAQSection />
-      <LeadMagnetSection />
       <ContactSection />
       <Footer />
       <WhatsAppButton />
