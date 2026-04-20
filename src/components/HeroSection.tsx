@@ -53,7 +53,7 @@ const HeroSection = () => {
               >
                 <Sparkles size={16} />
               </motion.span>
-              Tu socio de crecimiento B2B
+              Del primer clic al cliente cerrado
             </motion.div>
 
             <motion.h1 
@@ -62,25 +62,25 @@ const HeroSection = () => {
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
             >
-              Hacemos crecer{" "}
-              <motion.span 
+              Convertimos leads en{" "}
+              <motion.span
                 className="text-primary inline-block"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
               >
-                tu negocio
+                clientes.
               </motion.span>
               <br />
-              con resultados{" "}
-              <motion.span 
+              Sin que tu equipo{" "}
+              <motion.span
                 className="text-primary inline-block"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
               >
-                reales
-              </motion.span>.
+                persiga a nadie.
+              </motion.span>
             </motion.h1>
 
             <motion.p 
@@ -89,9 +89,9 @@ const HeroSection = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="text-lg md:text-xl text-muted-foreground max-w-xl"
             >
-              Más de 8 años ayudando a empresas como la tuya a conseguir 
-              clientes de calidad. Sin humo, sin métricas vacías. 
-              Solo estrategias que funcionan y un equipo que se implica de verdad.
+              Captamos el lead, lo nutrimos, lo cualificamos y lo agendamos
+              automáticamente. Tu comercial solo habla con quienes ya están
+              listos para comprar. Nosotros hacemos el resto.
             </motion.p>
 
             <motion.div 

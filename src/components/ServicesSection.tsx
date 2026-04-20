@@ -1,51 +1,63 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Globe, Target, Cog, ShoppingCart, Bot, Palette } from "lucide-react";
+import { CheckCircle2, Zap, TrendingUp, Rocket, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-const services = [
+const packages = [
   {
-    icon: Globe,
-    title: "Tu web, tu mejor vendedor",
+    icon: Zap,
+    title: "Sistema Base",
+    subtitle: "Deja de perder leads",
     description:
-      "Creamos sitios que no solo se ven bien, sino que convierten. Webs rápidas, claras y pensadas para que tus visitantes se conviertan en clientes.",
+      "Para empresas que ya reciben contactos pero los están perdiendo por falta de seguimiento. Organizamos y automatizamos tu proceso de ventas desde el día 1.",
+    features: [
+      "CRM y pipeline de ventas visual",
+      "Captura automática de contactos",
+      "Secuencia de bienvenida en menos de 5 minutos",
+      "Agendamiento automático de citas",
+      "Notificación instantánea al comercial",
+      "Reportes semanales de resultados",
+    ],
+    promise: "En 15 días tu equipo deja de perseguir leads.",
     highlight: false,
+    badge: null,
   },
   {
-    icon: ShoppingCart,
-    title: "Tiendas online que venden solas",
+    icon: TrendingUp,
+    title: "Sistema de Crecimiento",
+    subtitle: "Más leads, mejor calidad",
     description:
-      "Montamos tu ecommerce con WooCommerce: catálogo, pagos, envíos y todo lo que necesitas para vender online sin complicaciones técnicas.",
-    highlight: false,
-  },
-  {
-    icon: Target,
-    title: "Te ponemos delante de quien te busca",
-    description:
-      "SEO y campañas en Google, Meta y TikTok diseñadas para atraer a personas que ya están buscando lo que ofreces. Nada de clics vacíos.",
-    highlight: false,
-  },
-  {
-    icon: Palette,
-    title: "Diseño gráfico que comunica",
-    description:
-      "Creamos la identidad visual de tu marca: logos, presentaciones, material para redes y todo lo que necesitas para destacar y ser recordado.",
-    highlight: false,
-  },
-  {
-    icon: Bot,
-    title: "IA que trabaja por ti 24/7",
-    description:
-      "Automatizamos tareas repetitivas con inteligencia artificial: chatbots, respuestas automáticas, clasificación de leads y más.",
+      "Para empresas que quieren escalar la captación con publicidad y automatizar todo el proceso de conversión. Generamos demanda y la convertimos en oportunidades reales.",
+    features: [
+      "Todo lo del Sistema Base",
+      "Campañas en Google Ads y Meta Ads",
+      "Páginas de captura optimizadas para conversión",
+      "Nutrición automática multicanal",
+      "Cualificación y scoring inteligente de leads",
+      "Reportes de ROI por canal de captación",
+    ],
+    promise: "Leads cualificados, no solo contactos. Tu cierre mejora desde el primer mes.",
     highlight: true,
-    badge: "Lo que nos diferencia",
+    badge: "Más popular",
   },
   {
-    icon: Cog,
-    title: "Ningún lead se queda sin respuesta",
+    icon: Rocket,
+    title: "Sistema 360°",
+    subtitle: "Escala sin contratar más",
     description:
-      "Automatizamos el seguimiento para que cada contacto reciba atención personalizada. Tú te enfocas en cerrar, nosotros en que nadie se pierda.",
+      "El sistema completo de revenue. Desde atraer al desconocido hasta cerrar y retener al cliente. Tu equipo comercial recibe oportunidades, no tareas.",
+    features: [
+      "Todo lo del Sistema de Crecimiento",
+      "SEO y posicionamiento orgánico sostenible",
+      "Web o landing page de alta conversión",
+      "Agente conversacional con IA activo 24/7",
+      "Gestión de reputación y reseñas automáticas",
+      "Reunión estratégica mensual de optimización",
+    ],
+    promise: "De desconocido a cliente cerrado. Completamente automatizado.",
     highlight: false,
+    badge: null,
   },
 ];
 
@@ -64,51 +76,104 @@ const ServicesSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
-            Todo lo que necesitas{" "}
-            <span className="text-muted-foreground">en un solo lugar</span>
+            Un sistema completo,{" "}
+            <span className="text-muted-foreground">tres niveles de crecimiento</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            No necesitas 5 proveedores diferentes. Nosotros nos encargamos 
-            de todo el proceso para que tú hagas lo que mejor sabes: dirigir tu negocio.
+            No vendemos servicios sueltos. Construimos el sistema que lleva a tu cliente
+            potencial desde el primer contacto hasta el cierre — y tu equipo solo aparece
+            cuando el lead ya está listo.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+          {packages.map((pkg, index) => (
             <motion.div
-              key={service.title}
+              key={pkg.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
-              className={`card-dashboard p-8 relative ${
-                service.highlight
-                  ? "border-primary/30 bg-primary/5"
+              className={`card-dashboard p-8 relative flex flex-col ${
+                pkg.highlight
+                  ? "ring-2 ring-primary/40 bg-primary/5 scale-[1.02]"
                   : ""
               }`}
             >
-              {service.badge && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
-                  {service.badge}
+              {pkg.badge && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-full shadow">
+                  {pkg.badge}
                 </span>
               )}
 
-              <div
-                className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${
-                  service.highlight
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-accent text-accent-foreground"
-                }`}
-              >
-                <service.icon size={28} />
+              {/* Icon + title */}
+              <div className="mb-6">
+                <div
+                  className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${
+                    pkg.highlight
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-accent text-accent-foreground"
+                  }`}
+                >
+                  <pkg.icon size={28} />
+                </div>
+                <h3 className="text-2xl font-bold mb-1">{pkg.title}</h3>
+                <p className="text-sm font-semibold text-primary">{pkg.subtitle}</p>
               </div>
 
-              <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {service.description}
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                {pkg.description}
               </p>
+
+              {/* Features */}
+              <ul className="space-y-3 mb-8 flex-1">
+                {pkg.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2 text-sm">
+                    <CheckCircle2
+                      size={16}
+                      className="text-primary shrink-0 mt-0.5"
+                    />
+                    <span className="text-muted-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Promise */}
+              <div className="mb-6 px-4 py-3 rounded-lg bg-primary/10 border border-primary/20">
+                <p className="text-xs font-semibold text-primary text-center">
+                  {pkg.promise}
+                </p>
+              </div>
+
+              <Button
+                variant={pkg.highlight ? "hero" : "outline"}
+                size="default"
+                className="w-full"
+                asChild
+              >
+                <a href="/contacto" className="group">
+                  Quiero este sistema
+                  <ArrowRight
+                    size={16}
+                    className="ml-2 group-hover:translate-x-1 transition-transform"
+                  />
+                </a>
+              </Button>
             </motion.div>
           ))}
         </div>
+
+        {/* Bottom note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="text-center text-sm text-muted-foreground mt-8"
+        >
+          ¿No sabes cuál es el tuyo?{" "}
+          <a href="/contacto" className="text-primary font-medium hover:underline">
+            Hablamos y te lo decimos sin compromiso.
+          </a>
+        </motion.p>
       </div>
     </section>
   );
