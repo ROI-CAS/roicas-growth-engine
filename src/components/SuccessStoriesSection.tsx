@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Building2, Code, Factory, Stethoscope, ArrowRight, TrendingUp } from "lucide-react";
+import { useRef, useState } from "react";
+import { Building2, Code, Factory, Stethoscope, ArrowRight, X, ZoomIn, Search } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
+import seoCase01 from "@/assets/results/seo-case-01.png";
+import seoCase02 from "@/assets/results/seo-case-02.png";
+import seoCase03 from "@/assets/results/seo-case-03.png";
 
 const aggregateStats = [
   { value: 85.6, suffix: "K", label: "Impresiones orgánicas/mes" },
@@ -30,7 +33,14 @@ interface SuccessStory {
   iconBg: string;
   iconColor: string;
   badge: string;
+  evidence?: { src: string; alt: string }[];
 }
+
+const seoEvidence = [
+  { src: seoCase01, alt: "Métricas SEO: tráfico 1.97K e impresiones 85.64K" },
+  { src: seoCase02, alt: "Posiciones de palabras clave: 342 en top 3" },
+  { src: seoCase03, alt: "Evolución de palabras clave posicionadas" },
+];
 
 const successStories: SuccessStory[] = [
   {
@@ -71,9 +81,9 @@ const successStories: SuccessStory[] = [
   {
     industry: "Empresa de Servicios",
     sector: "SEO Orgánico",
-    icon: Code,
+    icon: Search,
     period: "7 meses",
-    color: "from-purple-500/10 to-purple-600/5",
+    color: "from-violet-500/10 to-violet-600/5",
     iconBg: "bg-violet-500",
     iconColor: "text-white",
     badge: "bg-violet-100 text-violet-700",
@@ -84,6 +94,7 @@ const successStories: SuccessStory[] = [
     ],
     description:
       "Partían de cero visibilidad en Google. En 7 meses, 342 palabras clave en top 3 y tráfico orgánico sostenible que llega solo, sin pagar por cada clic.",
+    evidence: seoEvidence,
   },
   {
     industry: "Servicios Industriales",
@@ -104,9 +115,68 @@ const successStories: SuccessStory[] = [
   },
 ];
 
+const Lightbox = ({ images, startIndex, onClose }: { images: { src: string; alt: string }[]; startIndex: number; onClose: () => void }) => {
+  const [current, setCurrent] = useState(startIndex);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.9 }}
+        animate={{ scale: 1 }}
+        className="relative max-w-4xl w-full"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors"
+        >
+          <X size={28} />
+        </button>
+
+        <img
+          src={images[current].src}
+          alt={images[current].alt}
+          className="w-full h-auto rounded-xl shadow-2xl"
+        />
+
+        {images.length > 1 && (
+          <div className="flex justify-center gap-2 mt-4">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? "bg-white scale-125" : "bg-white/40"}`}
+              />
+            ))}
+          </div>
+        )}
+
+        <div className="flex justify-center gap-3 mt-4">
+          {images.map((img, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`overflow-hidden rounded-lg border-2 transition-all ${i === current ? "border-white" : "border-transparent opacity-60 hover:opacity-90"}`}
+            >
+              <img src={img.src} alt={img.alt} className="w-20 h-14 object-cover" />
+            </button>
+          ))}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const SuccessStoriesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [lightbox, setLightbox] = useState<{ images: { src: string; alt: string }[]; index: number } | null>(null);
 
   return (
     <section className="py-20 md:py-28 bg-background">
@@ -134,7 +204,7 @@ const SuccessStoriesSection = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 p-6 rounded-2xl bg-primary/5 border border-primary/10"
         >
-          {aggregateStats.map((stat, i) => (
+          {aggregateStats.map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-2xl md:text-3xl font-black text-primary">
                 <AnimatedCounter
@@ -155,12 +225,12 @@ const SuccessStoriesSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 * (index + 1), ease: "easeOut" }}
-              className={`card-dashboard p-6 bg-gradient-to-br ${story.color}`}
+              className={`card-dashboard p-6 bg-gradient-to-br ${story.color} flex flex-col`}
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-3">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${story.iconBg}`}>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${story.iconBg} shadow-sm`}>
                     <story.icon size={22} className={story.iconColor} />
                   </div>
                   <div>
@@ -195,9 +265,39 @@ const SuccessStoriesSection = () => {
               </div>
 
               {/* Quote */}
-              <p className="text-muted-foreground text-sm leading-relaxed italic border-l-2 border-primary/30 pl-3">
+              <p className="text-muted-foreground text-sm leading-relaxed italic border-l-2 border-primary/30 pl-3 mb-4">
                 "{story.description}"
               </p>
+
+              {/* Evidence screenshots — only for stories with proof images */}
+              {story.evidence && (
+                <div className="mt-auto">
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 flex items-center gap-1">
+                    <ZoomIn size={11} />
+                    Datos verificados — clic para ampliar
+                  </p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {story.evidence.map((img, i) => (
+                      <motion.button
+                        key={i}
+                        whileHover={{ scale: 1.03, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => setLightbox({ images: story.evidence!, index: i })}
+                        className="relative overflow-hidden rounded-lg border border-border/60 shadow-sm group"
+                      >
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          className="w-full h-20 object-cover object-top"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                          <ZoomIn size={16} className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow" />
+                        </div>
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
@@ -221,6 +321,15 @@ const SuccessStoriesSection = () => {
           </a>
         </motion.div>
       </div>
+
+      {/* Lightbox */}
+      {lightbox && (
+        <Lightbox
+          images={lightbox.images}
+          startIndex={lightbox.index}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </section>
   );
 };
