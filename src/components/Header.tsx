@@ -1,12 +1,47 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, Globe, ShoppingCart, Search, Megaphone, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-roicas.webp";
+
+const serviceItems = [
+  {
+    href: "/servicios/diseno-web",
+    label: "Diseño Web",
+    description: "Sitios WordPress de alta conversión",
+    icon: Globe,
+  },
+  {
+    href: "/servicios/tiendas-online",
+    label: "Tiendas Online",
+    description: "E-commerce que vende mientras duermes",
+    icon: ShoppingCart,
+  },
+  {
+    href: "/servicios/seo",
+    label: "SEO",
+    description: "Posicionamiento orgánico sostenible",
+    icon: Search,
+  },
+  {
+    href: "/servicios/publicidad-digital",
+    label: "Publicidad Digital",
+    description: "Google Ads y Meta Ads con ROI medible",
+    icon: Megaphone,
+  },
+  {
+    href: "/servicios/automatizacion-ia",
+    label: "Automatización con IA",
+    description: "Flujos inteligentes y bots que convierten",
+    icon: Bot,
+  },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -14,12 +49,9 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { href: "/", label: "Inicio" },
-    { href: "/servicios", label: "Servicios" },
-    { href: "/nosotros", label: "Nosotros" },
-    { href: "/contacto", label: "Contacto" },
-  ];
+  useEffect(() => {
+    if (!isMenuOpen) setMobileServicesOpen(false);
+  }, [isMenuOpen]);
 
   return (
     <header
@@ -38,16 +70,81 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
-              >
-                {link.label}
+            <a
+              href="/"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+            >
+              Inicio
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+            </a>
+
+            {/* Servicios dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group">
+                Servicios
+                <motion.span
+                  animate={{ rotate: servicesOpen ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ChevronDown size={14} />
+                </motion.span>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
+              </button>
+
+              <AnimatePresence>
+                {servicesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 bg-background border border-border rounded-2xl shadow-xl overflow-hidden"
+                  >
+                    <div className="p-2">
+                      {serviceItems.map((item) => (
+                        <a
+                          key={item.href}
+                          href={item.href}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-accent transition-colors group"
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                            <item.icon size={15} className="text-primary" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold text-foreground leading-tight">{item.label}</p>
+                            <p className="text-xs text-muted-foreground leading-tight">{item.description}</p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                    <div className="px-4 py-3 border-t border-border bg-muted/30">
+                      <a href="/servicios" className="text-xs font-medium text-primary hover:underline">
+                        Ver todos los servicios →
+                      </a>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <a
+              href="/nosotros"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+            >
+              Nosotros
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+            </a>
+            <a
+              href="/contacto"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+            >
+              Contacto
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+            </a>
           </nav>
 
           {/* CTA Button */}
@@ -77,19 +174,79 @@ const Header = () => {
               className="md:hidden overflow-hidden bg-background border-t border-border"
             >
               <div className="py-4 space-y-1">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="block px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
+                <a
+                  href="/"
+                  className="block px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Inicio
+                </a>
+
+                {/* Mobile Servicios accordion */}
+                <div>
+                  <button
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                    className="w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
                   >
-                    {link.label}
-                  </a>
-                ))}
+                    Servicios
+                    <motion.span
+                      animate={{ rotate: mobileServicesOpen ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown size={14} />
+                    </motion.span>
+                  </button>
+                  <AnimatePresence>
+                    {mobileServicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden pl-3 mt-1 space-y-1"
+                      >
+                        {serviceItems.map((item) => (
+                          <a
+                            key={item.href}
+                            href={item.href}
+                            className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            <item.icon size={14} className="text-primary shrink-0" />
+                            {item.label}
+                          </a>
+                        ))}
+                        <a
+                          href="/servicios"
+                          className="block px-3 py-2 text-xs font-medium text-primary hover:underline"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Ver todos →
+                        </a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <a
+                  href="/nosotros"
+                  className="block px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Nosotros
+                </a>
+                <a
+                  href="/contacto"
+                  className="block px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Contacto
+                </a>
+
                 <div className="pt-2 px-3">
                   <Button variant="hero" size="default" className="w-full" asChild>
-                    <a href="/contacto">Agendar Consultoría</a>
+                    <a href="/contacto" onClick={() => setIsMenuOpen(false)}>
+                      Agendar Consultoría
+                    </a>
                   </Button>
                 </div>
               </div>

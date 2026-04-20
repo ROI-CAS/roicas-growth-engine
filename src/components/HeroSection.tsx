@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, Users, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import crmDashboard from "@/assets/crm-dashboard.png";
 
 const HeroSection = () => {
   return (
@@ -46,7 +47,7 @@ const HeroSection = () => {
                 animate={{ scale: [1, 1.4, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
-              Implementación en 15 días · Sin permanencias
+              Sin permanencias · Equipo dedicado a tu crecimiento
             </motion.div>
 
             {/* H1 */}
@@ -111,84 +112,30 @@ const HeroSection = () => {
               transition={{ delay: 0.9 }}
               className="text-sm text-muted-foreground"
             >
-              ✓ Sin permanencias · ✓ Resultados desde el primer mes · ✓ Respuesta hoy
+              ✓ Sin permanencias · ✓ Adaptado a tu negocio · ✓ Respuesta hoy
             </motion.p>
           </motion.div>
 
-          {/* Right — Dashboard */}
+          {/* Right — Real CRM Dashboard Screenshot */}
           <motion.div
-            initial={{ opacity: 0, x: 60, rotateY: -15 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
+            initial={{ opacity: 0, x: 60, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative perspective-1000"
+            className="relative"
           >
-            <div className="card-dashboard p-6 lg:p-8">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-semibold text-foreground">Panel de Resultados</h3>
-                <span className="text-xs text-success font-medium px-2 py-1 bg-success/10 rounded-full flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
-                  En Vivo
-                </span>
-              </div>
+            <motion.div
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.3 }}
+              className="rounded-2xl overflow-hidden shadow-2xl border border-border/60"
+            >
+              <img
+                src={crmDashboard}
+                alt="Pipeline de ventas automatizado — Panel CRM ROICAS"
+                className="w-full h-auto block"
+              />
+            </motion.div>
 
-              <div className="grid grid-cols-3 gap-4 mb-6">
-                {[
-                  { value: "247", label: "Leads Generados" },
-                  { value: "68%", label: "Tasa Conversión" },
-                  { value: "$84K", label: "Ingresos", highlight: true },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="text-center p-3 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors"
-                  >
-                    <p className={`text-2xl lg:text-3xl font-bold ${stat.highlight ? "text-primary" : "text-foreground"}`}>
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-muted-foreground">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="relative h-32 bg-secondary rounded-lg p-4 overflow-hidden">
-                <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-2 h-20">
-                  {[40, 55, 35, 70, 50, 85, 65, 90, 75, 95, 80, 100].map((height, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: `${height}%`, opacity: 1 }}
-                      transition={{ duration: 0.8, delay: 1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                      className="flex-1 bg-gradient-to-t from-primary to-primary/60 rounded-t hover:opacity-80 transition-opacity"
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-6 space-y-3">
-                {[
-                  { icon: TrendingUp, iconBg: "bg-success/20", iconColor: "text-success", title: "Nuevo lead cualificado", subtitle: "Tech Solutions S.L. — hace 2 min" },
-                  { icon: Users, iconBg: "bg-primary/20", iconColor: "text-primary", title: "Reunión agendada automáticamente", subtitle: "Innovatech Corp — hace 15 min" },
-                ].map((activity, index) => (
-                  <motion.div
-                    key={activity.title}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1.5 + index * 0.2 }}
-                    whileHover={{ x: 5 }}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-accent/50 cursor-pointer"
-                  >
-                    <div className={`w-8 h-8 rounded-full ${activity.iconBg} flex items-center justify-center`}>
-                      <activity.icon size={16} className={activity.iconColor} />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">{activity.title}</p>
-                      <p className="text-xs text-muted-foreground">{activity.subtitle}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Floating badges */}
+            {/* Floating badge — top right */}
             <motion.div
               initial={{ opacity: 0, scale: 0, rotate: -180 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -202,10 +149,11 @@ const HeroSection = () => {
                   animate={{ scale: [1, 1.3, 1] }}
                   transition={{ duration: 1, repeat: Infinity }}
                 />
-                <span className="text-sm font-bold text-primary">+324% ROI</span>
+                <span className="text-sm font-bold text-primary">295 oportunidades</span>
               </div>
             </motion.div>
 
+            {/* Floating badge — bottom left */}
             <motion.div
               initial={{ opacity: 0, scale: 0, rotate: 180 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -213,7 +161,7 @@ const HeroSection = () => {
               whileHover={{ scale: 1.1, rotate: -5 }}
               className="absolute -bottom-4 -left-4 card-dashboard p-4 shadow-lg cursor-pointer"
             >
-              <p className="text-xs text-muted-foreground">Tiempo de respuesta</p>
+              <p className="text-xs text-muted-foreground">Respuesta automática</p>
               <p className="text-lg font-bold text-primary">&lt;5 min</p>
             </motion.div>
           </motion.div>
