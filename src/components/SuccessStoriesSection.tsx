@@ -1,8 +1,15 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Building2, Code, Factory, Stethoscope, ArrowRight } from "lucide-react";
+import { Building2, Code, Factory, Stethoscope, ArrowRight, TrendingUp } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
+
+const aggregateStats = [
+  { value: 85.6, suffix: "K", label: "Impresiones orgánicas/mes" },
+  { value: 342, label: "Keywords en top 3" },
+  { value: 1882, label: "Leads generados" },
+  { value: 40, suffix: "%", label: "Reducción coste por lead" },
+];
 
 interface Metric {
   value: number;
@@ -62,21 +69,21 @@ const successStories: SuccessStory[] = [
       "Antes los leads se enfriaban. Ahora el sistema los nutre automáticamente y el equipo solo habla con quienes están listos para comprar.",
   },
   {
-    industry: "Software SaaS",
-    sector: "Tecnología",
+    industry: "Empresa de Servicios",
+    sector: "SEO Orgánico",
     icon: Code,
-    period: "6 meses",
+    period: "7 meses",
     color: "from-purple-500/10 to-purple-600/5",
-    iconBg: "bg-purple-500",
+    iconBg: "bg-violet-500",
     iconColor: "text-white",
-    badge: "bg-purple-100 text-purple-700",
+    badge: "bg-violet-100 text-violet-700",
     metrics: [
-      { value: 520, prefix: "+", suffix: "%", label: "Tráfico Orgánico" },
-      { value: 28, label: "Leads/Semana" },
-      { value: 15, prefix: "$", suffix: "K MRR", label: "Adicional" },
+      { value: 342, label: "Keywords Top 3" },
+      { value: 85.6, suffix: "K", label: "Impresiones/mes" },
+      { value: 1.97, suffix: "K", label: "Visitas Orgánicas" },
     ],
     description:
-      "Dejaron de depender solo de ads. Ahora Google les trae tráfico gratis y el sistema convierte visitas en demos sin que toquen nada.",
+      "Partían de cero visibilidad en Google. En 7 meses, 342 palabras clave en top 3 y tráfico orgánico sostenible que llega solo, sin pagar por cada clic.",
   },
   {
     industry: "Servicios Industriales",
@@ -118,6 +125,27 @@ const SuccessStoriesSection = () => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Números reales, empresas reales. Sin filtros.
           </p>
+        </motion.div>
+
+        {/* Aggregate stats bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 p-6 rounded-2xl bg-primary/5 border border-primary/10"
+        >
+          {aggregateStats.map((stat, i) => (
+            <div key={stat.label} className="text-center">
+              <p className="text-2xl md:text-3xl font-black text-primary">
+                <AnimatedCounter
+                  end={stat.value}
+                  suffix={stat.suffix}
+                  decimals={stat.value % 1 !== 0 ? 1 : 0}
+                />
+              </p>
+              <p className="text-xs text-muted-foreground mt-1 leading-snug">{stat.label}</p>
+            </div>
+          ))}
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">

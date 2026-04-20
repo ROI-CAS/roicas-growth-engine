@@ -130,10 +130,24 @@ const HeroSection = () => {
               </motion.div>
             </motion.div>
 
+            {/* Social proof — real result */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-3 pt-1"
+            >
+              <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                <p className="text-xs text-emerald-800 font-medium">
+                  Resultado real: <strong>342 keywords en top 3</strong> · <strong>85K impresiones</strong> en 7 meses
+                </p>
+              </div>
+            </motion.div>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.9 }}
+              transition={{ delay: 1.0 }}
               className="text-sm text-muted-foreground"
             >
               ✓ Sin permanencias · ✓ Adaptado a tu negocio · ✓ Respuesta hoy
