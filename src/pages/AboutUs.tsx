@@ -43,7 +43,7 @@ const clients = [
   { name: "Ecosfera", logo: logoEcosfera, url: "https://www.grupoecosfera.com/", sector: "Consultoría Estratégica" },
   { name: "Componente Legal", logo: logoComponenteLegal, url: "https://www.componentelegal.com/", sector: "Legal Tech" },
   { name: "Torregroza & Diazgranados", logo: logoTorregroza, url: "#", sector: "Servicios Jurídicos" },
-  { name: "Aero Ambulancias", logo: logoAeroAmbulancias, url: "https://www.aeroambulancias.com.co/", sector: "Salud" },
+  { name: "Aero Ambulancias", logo: logoAeroAmbulancias, url: "https://aeroambulanciassas.com/", sector: "Salud" },
   { name: "FinDolor", logo: logoFindolor, url: "https://www.findolor.com/", sector: "Salud" },
 ];
 
