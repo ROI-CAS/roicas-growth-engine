@@ -105,16 +105,21 @@ const ServicesSection = () => {
                 </span>
               )}
 
-              {/* Icon + title */}
+              {/* Level + icon */}
               <div className="mb-6">
-                <div
-                  className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${
-                    pkg.highlight
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-accent text-accent-foreground"
-                  }`}
-                >
-                  <pkg.icon size={28} />
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className={`w-14 h-14 rounded-xl flex items-center justify-center ${
+                      pkg.highlight
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-accent text-accent-foreground"
+                    }`}
+                  >
+                    <pkg.icon size={28} />
+                  </div>
+                  <span className="text-4xl font-black text-border select-none">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
                 <h3 className="text-2xl font-bold mb-1">{pkg.title}</h3>
                 <p className="text-sm font-semibold text-primary">{pkg.subtitle}</p>

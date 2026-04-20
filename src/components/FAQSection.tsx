@@ -11,23 +11,38 @@ import {
 const faqs = [
   {
     question: "¿En cuánto tiempo empezaré a ver resultados?",
-    answer: "Empezamos a trabajar desde el día 1. En 15-20 días tendrás todo implementado y funcionando. Las primeras semanas ya empiezas a recibir leads cualificados, y entre el segundo y tercer mes verás los resultados más significativos.",
+    answer:
+      "Empezamos a trabajar desde el día 1. En 15-20 días tienes el sistema implementado y funcionando. Las primeras semanas ya recibes leads cualificados, y entre el segundo y tercer mes ves los resultados más significativos.",
   },
   {
-    question: "¿Por qué debería elegirlos a ustedes?",
-    answer: "Porque no te vamos a vender humo. Nos medimos por tus ventas, no por likes. Y lo más importante: no desaparecemos después de firmar. Somos parte de tu equipo.",
+    question: "¿Funciona para una PYME o negocio pequeño?",
+    answer:
+      "Sí. De hecho, los negocios pequeños son los que más se benefician porque no tienen estructura para hacer seguimiento manual. El sistema hace el trabajo de 2-3 personas de ventas a una fracción del costo. Tenemos clientes desde emprendedores hasta empresas con equipos de 50.",
   },
   {
-    question: "No tengo web, ¿es problema?",
-    answer: "Para nada. Podemos crearla desde cero o mejorar la que ya tienes. Lo importante es tener una base sólida antes de invertir en publicidad.",
+    question: "¿Qué pasa si no tengo CRM ni base de datos?",
+    answer:
+      "No necesitas nada. Partimos de cero: configuramos el sistema completo, importamos tus contactos existentes si los tienes, y desde el primer día todos los nuevos leads entran organizados. No necesitas tener nada previo.",
   },
   {
     question: "¿Cuánto necesito invertir en publicidad?",
-    answer: "Depende de tu sector y objetivos, pero como referencia, recomendamos un mínimo de $1,000-2,000 USD/mes en pauta. Lo definimos juntos en una primera conversación.",
+    answer:
+      "Depende del sector y objetivos. Como referencia, recomendamos mínimo $1,000-2,000 USD/mes en pauta para ver resultados consistentes. Lo definimos juntos en la primera llamada según tu mercado específico.",
+  },
+  {
+    question: "No tengo web, ¿es problema?",
+    answer:
+      "Para nada. Podemos crearla desde cero o trabajar con lo que tienes. Lo importante es tener una base de captación sólida antes de invertir en publicidad — eso está incluido en el sistema.",
   },
   {
     question: "¿Hay permanencia o compromiso largo?",
-    answer: "No nos gustan las ataduras. Trabajamos mes a mes porque creemos que si hacemos bien nuestro trabajo, querrás seguir con nosotros. Así de simple.",
+    answer:
+      "No. Trabajamos mes a mes porque creemos que si hacemos bien nuestro trabajo, querrás seguir. No necesitamos contratos largos para retenerte — los resultados lo hacen.",
+  },
+  {
+    question: "¿Por qué ROICAS y no otra agencia?",
+    answer:
+      "Porque no gestionamos campañas y mandamos un informe bonito al mes. Construimos el sistema completo: desde la captación hasta la entrega del lead cualificado a tu equipo. Somos responsables del resultado final, no de las métricas intermedias.",
   },
 ];
 
@@ -36,7 +51,7 @@ const FAQSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className="py-20 md:py-28 bg-secondary/30">
       <div className="section-container">
         <motion.div
           ref={ref}
@@ -46,10 +61,11 @@ const FAQSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Lo que seguro te estás <span className="text-gradient-warm">preguntando</span>
+            Lo que seguro te estás{" "}
+            <span className="text-gradient-warm">preguntando</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Son las dudas que todos tienen antes de dar el paso. Aquí van las respuestas honestas.
+            Respuestas directas. Sin rodeos.
           </p>
         </motion.div>
 
@@ -65,7 +81,7 @@ const FAQSection = () => {
                 key={index}
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                transition={{ delay: index * 0.07, duration: 0.4 }}
               >
                 <AccordionItem
                   value={`item-${index}`}
@@ -74,7 +90,7 @@ const FAQSection = () => {
                   <AccordionTrigger className="text-left font-semibold hover:no-underline py-4 text-sm md:text-base">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-4 text-sm">
+                  <AccordionContent className="text-muted-foreground pb-4 text-sm leading-relaxed">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

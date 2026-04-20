@@ -51,7 +51,7 @@ const TechStackSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section className="py-20 md:py-28 bg-secondary/30">
+    <section id="como-funciona" className="py-20 md:py-28 bg-secondary/30">
       <div className="section-container">
         <motion.div
           ref={ref}

@@ -1,39 +1,32 @@
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, Users, Zap, Sparkles } from "lucide-react";
+import { ArrowRight, TrendingUp, Users, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-20 gradient-mesh-warm overflow-hidden">
-      {/* Animated background elements */}
+      {/* Animated background blobs */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <motion.div 
+        <motion.div
           className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            x: [0, 30, 0],
-            y: [0, -20, 0]
-          }}
+          animate={{ scale: [1, 1.2, 1], x: [0, 30, 0], y: [0, -20, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div 
-          className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1, 1.3, 1],
-            x: [0, -40, 0],
-            y: [0, 30, 0]
-          }}
+        <motion.div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-brand/5 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.3, 1], x: [0, -40, 0], y: [0, 30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.div>
 
       <div className="section-container py-16 md:py-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
@@ -41,99 +34,95 @@ const HeroSection = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-6"
           >
-            <motion.div 
+            {/* Badge */}
+            <motion.div
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold border border-brand/20"
             >
               <motion.span
-                animate={{ rotate: [0, 15, -15, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <Sparkles size={16} />
-              </motion.span>
-              Del primer clic al cliente cerrado
+                className="w-2 h-2 rounded-full bg-brand"
+                animate={{ scale: [1, 1.4, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              />
+              Implementación en 15 días · Sin permanencias
             </motion.div>
 
-            <motion.h1 
+            {/* H1 */}
+            <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
             >
-              Convertimos leads en{" "}
+              Tu equipo solo habla con quienes{" "}
               <motion.span
                 className="text-primary inline-block"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+                transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
               >
-                clientes.
-              </motion.span>
-              <br />
-              Sin que tu equipo{" "}
-              <motion.span
-                className="text-primary inline-block"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
-              >
-                persiga a nadie.
+                ya quieren comprar.
               </motion.span>
             </motion.h1>
 
-            <motion.p 
+            {/* Subheadline */}
+            <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
               className="text-lg md:text-xl text-muted-foreground max-w-xl"
             >
-              Captamos el lead, lo nutrimos, lo cualificamos y lo agendamos
-              automáticamente. Tu comercial solo habla con quienes ya están
-              listos para comprar. Nosotros hacemos el resto.
+              Captamos, nutrimos y cualificamos tus leads automáticamente.
+              Tu equipo recibe la cita agendada y el perfil completo.
+              Solo queda cerrar.
             </motion.p>
 
-            <motion.div 
+            {/* Dual CTA */}
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-4 pt-2"
             >
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
-              >
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button variant="hero" size="xl" asChild>
                   <a href="/contacto" className="group">
-                    Hablemos de tu proyecto
+                    Agendar llamada gratis
                     <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                  </a>
+                </Button>
+              </motion.div>
+
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Button variant="heroOutline" size="xl" asChild>
+                  <a href="#como-funciona" className="group">
+                    Ver cómo funciona
+                    <ChevronDown size={20} className="ml-2 group-hover:translate-y-1 transition-transform duration-200" />
                   </a>
                 </Button>
               </motion.div>
             </motion.div>
 
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
               className="text-sm text-muted-foreground"
             >
-              ✓ Sin permanencias · ✓ Resultados desde el primer mes
+              ✓ Sin permanencias · ✓ Resultados desde el primer mes · ✓ Respuesta hoy
             </motion.p>
           </motion.div>
 
-          {/* Right Content - Dashboard Visualization */}
+          {/* Right — Dashboard */}
           <motion.div
             initial={{ opacity: 0, x: 60, rotateY: -15 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="relative perspective-1000"
           >
-            {/* Main Dashboard Card */}
             <div className="card-dashboard p-6 lg:p-8">
-              {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-semibold text-foreground">Panel de Resultados</h3>
                 <span className="text-xs text-success font-medium px-2 py-1 bg-success/10 rounded-full flex items-center gap-1">
@@ -142,18 +131,17 @@ const HeroSection = () => {
                 </span>
               </div>
 
-              {/* Stats Grid */}
               <div className="grid grid-cols-3 gap-4 mb-6">
                 {[
                   { value: "247", label: "Leads Generados" },
                   { value: "68%", label: "Tasa Conversión" },
-                  { value: "$84K", label: "Ingresos", highlight: true }
+                  { value: "$84K", label: "Ingresos", highlight: true },
                 ].map((stat) => (
-                  <div 
+                  <div
                     key={stat.label}
                     className="text-center p-3 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors"
                   >
-                    <p className={`text-2xl lg:text-3xl font-bold ${stat.highlight ? 'text-primary' : 'text-foreground'}`}>
+                    <p className={`text-2xl lg:text-3xl font-bold ${stat.highlight ? "text-primary" : "text-foreground"}`}>
                       {stat.value}
                     </p>
                     <p className="text-xs text-muted-foreground">{stat.label}</p>
@@ -161,7 +149,6 @@ const HeroSection = () => {
                 ))}
               </div>
 
-              {/* Chart Visualization */}
               <div className="relative h-32 bg-secondary rounded-lg p-4 overflow-hidden">
                 <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-2 h-20">
                   {[40, 55, 35, 70, 50, 85, 65, 90, 75, 95, 80, 100].map((height, i) => (
@@ -169,22 +156,17 @@ const HeroSection = () => {
                       key={i}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: `${height}%`, opacity: 1 }}
-                      transition={{ 
-                        duration: 0.8, 
-                        delay: 1 + i * 0.08,
-                        ease: [0.16, 1, 0.3, 1]
-                      }}
+                      transition={{ duration: 0.8, delay: 1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                       className="flex-1 bg-gradient-to-t from-primary to-primary/60 rounded-t hover:opacity-80 transition-opacity"
                     />
                   ))}
                 </div>
               </div>
 
-              {/* Recent Activity */}
               <div className="mt-6 space-y-3">
                 {[
-                  { icon: TrendingUp, iconBg: "bg-success/20", iconColor: "text-success", title: "Nuevo lead cualificado", subtitle: "Tech Solutions S.L. - hace 2 min" },
-                  { icon: Users, iconBg: "bg-primary/20", iconColor: "text-primary", title: "Reunión agendada automáticamente", subtitle: "Innovatech Corp - hace 15 min" }
+                  { icon: TrendingUp, iconBg: "bg-success/20", iconColor: "text-success", title: "Nuevo lead cualificado", subtitle: "Tech Solutions S.L. — hace 2 min" },
+                  { icon: Users, iconBg: "bg-primary/20", iconColor: "text-primary", title: "Reunión agendada automáticamente", subtitle: "Innovatech Corp — hace 15 min" },
                 ].map((activity, index) => (
                   <motion.div
                     key={activity.title}
@@ -206,7 +188,7 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Floating Elements */}
+            {/* Floating badges */}
             <motion.div
               initial={{ opacity: 0, scale: 0, rotate: -180 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -215,7 +197,7 @@ const HeroSection = () => {
               className="absolute -top-4 -right-4 card-dashboard p-4 shadow-lg cursor-pointer"
             >
               <div className="flex items-center gap-2">
-                <motion.div 
+                <motion.div
                   className="w-3 h-3 rounded-full bg-success"
                   animate={{ scale: [1, 1.3, 1] }}
                   transition={{ duration: 1, repeat: Infinity }}

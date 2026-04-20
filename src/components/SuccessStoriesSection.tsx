@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Building2, Code, Factory, Stethoscope } from "lucide-react";
+import { Building2, Code, Factory, Stethoscope, ArrowRight } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
 
 interface Metric {
@@ -13,19 +13,29 @@ interface Metric {
 
 interface SuccessStory {
   industry: string;
+  sector: string;
   icon: typeof Building2;
   period: string;
   metrics: Metric[];
   description: string;
   highlight?: boolean;
+  color: string;
+  iconBg: string;
+  iconColor: string;
+  badge: string;
 }
 
 const successStories: SuccessStory[] = [
   {
     industry: "Centro Médico Especializado",
+    sector: "Salud",
     icon: Stethoscope,
     period: "12 meses",
     highlight: true,
+    color: "from-emerald-500/10 to-emerald-600/5",
+    iconBg: "bg-emerald-500",
+    iconColor: "text-white",
+    badge: "bg-emerald-100 text-emerald-700",
     metrics: [
       { value: 1882, label: "Leads Totales" },
       { value: 40.5, suffix: "%", label: "Ahorro en Pauta" },
@@ -36,8 +46,13 @@ const successStories: SuccessStory[] = [
   },
   {
     industry: "Consultoría B2B",
+    sector: "B2B / Servicios",
     icon: Building2,
     period: "4 meses",
+    color: "from-primary/10 to-primary/5",
+    iconBg: "bg-primary",
+    iconColor: "text-white",
+    badge: "bg-blue-100 text-blue-700",
     metrics: [
       { value: 340, prefix: "+", suffix: "%", label: "Leads Cualificados" },
       { value: 45, suffix: "%", label: "Tasa de Conversión" },
@@ -48,8 +63,13 @@ const successStories: SuccessStory[] = [
   },
   {
     industry: "Software SaaS",
+    sector: "Tecnología",
     icon: Code,
     period: "6 meses",
+    color: "from-purple-500/10 to-purple-600/5",
+    iconBg: "bg-purple-500",
+    iconColor: "text-white",
+    badge: "bg-purple-100 text-purple-700",
     metrics: [
       { value: 520, prefix: "+", suffix: "%", label: "Tráfico Orgánico" },
       { value: 28, label: "Leads/Semana" },
@@ -60,8 +80,13 @@ const successStories: SuccessStory[] = [
   },
   {
     industry: "Servicios Industriales",
+    sector: "Industrial",
     icon: Factory,
     period: "3 meses",
+    color: "from-orange-500/10 to-orange-600/5",
+    iconBg: "bg-orange-500",
+    iconColor: "text-white",
+    badge: "bg-orange-100 text-orange-700",
     metrics: [
       { value: 12, suffix: "x", label: "Retorno en Pauta" },
       { value: 67, suffix: "%", label: "Reducción Costo/Lead" },
@@ -91,8 +116,7 @@ const SuccessStoriesSection = () => {
             <span className="text-muted-foreground">ya lo consiguieron</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            No te contamos lo que podemos hacer. Te mostramos lo que ya hemos hecho 
-            con negocios similares al tuyo.
+            Números reales, empresas reales. Sin filtros.
           </p>
         </motion.div>
 
@@ -102,75 +126,72 @@ const SuccessStoriesSection = () => {
               key={story.industry}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ 
-                duration: 0.5, 
-                delay: 0.1 * (index + 1),
-                ease: "easeOut"
-              }}
-              className={`card-dashboard p-6 ${
-                story.highlight 
-                  ? 'ring-2 ring-primary/30 bg-gradient-to-br from-card to-primary/5' 
-                  : ''
-              }`}
+              transition={{ duration: 0.5, delay: 0.1 * (index + 1), ease: "easeOut" }}
+              className={`card-dashboard p-6 bg-gradient-to-br ${story.color}`}
             >
-              {/* Header with industry and period */}
-              <div className="flex items-center justify-between mb-4">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-3">
-                  <div 
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                      story.highlight 
-                        ? 'bg-gradient-to-br from-primary to-primary/80' 
-                        : 'bg-primary/10'
-                    }`}
-                  >
-                    <story.icon size={24} className={story.highlight ? 'text-white' : 'text-primary'} />
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${story.iconBg}`}>
+                    <story.icon size={22} className={story.iconColor} />
                   </div>
                   <div>
-                    <span className="font-semibold text-foreground block">
+                    <span className="font-semibold text-foreground block text-sm">
                       {story.industry}
                     </span>
-                    <span 
-                      className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                        story.highlight 
-                          ? 'bg-primary text-white' 
-                          : 'bg-primary/10 text-primary'
-                      }`}
-                    >
-                      {story.period}
+                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${story.badge}`}>
+                      {story.sector}
                     </span>
                   </div>
                 </div>
+                <span className="text-xs font-semibold text-muted-foreground border border-border rounded-full px-3 py-1">
+                  {story.period}
+                </span>
               </div>
 
-              {/* Metrics Grid */}
-              <div className="grid grid-cols-3 gap-3 mb-4">
+              {/* Metrics */}
+              <div className="grid grid-cols-3 gap-3 mb-5">
                 {story.metrics.map((metric) => (
-                  <div 
-                    key={metric.label} 
-                    className="text-center p-3 rounded-lg bg-secondary"
-                  >
+                  <div key={metric.label} className="text-center p-3 rounded-xl bg-background/70 backdrop-blur-sm">
                     <p className="text-xl font-bold text-primary">
-                      <AnimatedCounter 
-                        end={metric.value} 
+                      <AnimatedCounter
+                        end={metric.value}
                         prefix={metric.prefix}
                         suffix={metric.suffix}
                         decimals={metric.value % 1 !== 0 ? 1 : 0}
                       />
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      {metric.label}
-                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">{metric.label}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Description */}
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              {/* Quote */}
+              <p className="text-muted-foreground text-sm leading-relaxed italic border-l-2 border-primary/30 pl-3">
                 "{story.description}"
               </p>
             </motion.div>
           ))}
         </div>
+
+        {/* CTA after stories */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-10 text-center"
+        >
+          <p className="text-muted-foreground text-sm mb-4">
+            ¿Tu sector no aparece? Hemos trabajado con más de 8 industrias.
+          </p>
+          <a
+            href="/contacto"
+            className="inline-flex items-center gap-2 text-primary font-semibold hover:underline text-sm group"
+          >
+            Cuéntanos sobre tu negocio
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );
