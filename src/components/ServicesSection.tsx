@@ -100,7 +100,7 @@ const ServicesSection = () => {
               }`}
             >
               {pkg.badge && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-full shadow">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand text-brand-foreground text-xs font-bold rounded-full shadow-sm">
                   {pkg.badge}
                 </span>
               )}

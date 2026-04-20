@@ -246,7 +246,7 @@ const Services = () => {
                 }`}
               >
                 {pkg.badge && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-full shadow">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand text-brand-foreground text-xs font-bold rounded-full shadow-sm">
                     {pkg.badge}
                   </span>
                 )}
@@ -338,7 +338,7 @@ const Services = () => {
                 }`}
               >
                 {service.highlight && (
-                  <span className="absolute -top-3 left-6 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+                  <span className="absolute -top-3 left-6 px-3 py-1 bg-brand text-brand-foreground text-xs font-semibold rounded-full">
                     Lo que nos diferencia
                   </span>
                 )}

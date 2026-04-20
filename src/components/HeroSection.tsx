@@ -45,7 +45,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold border border-brand/20"
             >
               <motion.span
                 animate={{ rotate: [0, 15, -15, 0] }}

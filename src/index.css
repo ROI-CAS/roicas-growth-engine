@@ -6,60 +6,61 @@
 
 @layer base {
   :root {
-    /* ROICAS Brand Colors - Balanced Palette */
+    /* ROICAS Brand Colors */
     --background: 0 0% 100%;
-    --foreground: 220 15% 20%;
+    --foreground: 220 18% 16%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 20%;
+    --card-foreground: 220 18% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 20%;
+    --popover-foreground: 220 18% 16%;
 
-    /* Primary Blue - Strategic Accent Only */
-    --primary: 220 100% 50%;
+    /* Primary Blue — acción, confianza, CTAs */
+    --primary: 221 76% 48%;
     --primary-foreground: 0 0% 100%;
 
-    /* Warm Secondary - Coral/Orange for Variety */
-    --secondary: 30 30% 96%;
-    --secondary-foreground: 220 15% 20%;
+    /* Brand Red — identidad ROICAS, badges, acentos */
+    --brand: 2 88% 44%;
+    --brand-foreground: 0 0% 100%;
 
-    /* Neutral Muted */
-    --muted: 220 10% 96%;
-    --muted-foreground: 220 10% 45%;
+    --secondary: 220 20% 97%;
+    --secondary-foreground: 220 18% 16%;
 
-    /* Warm Accent - Amber/Gold */
-    --accent: 35 100% 96%;
-    --accent-foreground: 25 90% 40%;
+    --muted: 220 14% 95%;
+    --muted-foreground: 220 10% 46%;
 
-    --destructive: 0 84% 60%;
+    --accent: 221 76% 48% / 0.06;
+    --accent-foreground: 221 76% 42%;
+
+    --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 10% 90%;
-    --input: 220 10% 90%;
-    --ring: 220 100% 50%;
+    --border: 220 14% 88%;
+    --input: 220 14% 88%;
+    --ring: 221 76% 48%;
 
     --radius: 0.75rem;
 
-    /* Success - Emerald */
-    --success: 158 64% 42%;
+    /* Success */
+    --success: 158 64% 38%;
     --success-foreground: 0 0% 100%;
 
-    /* Accent Gray - Logo Gray */
     --warm: 220 10% 45%;
     --warm-foreground: 0 0% 100%;
-    
-    /* Chart Colors - Diverse Palette */
-    --chart-blue: 220 100% 50%;
-    --chart-green: 158 64% 42%;
+
+    /* Chart Colors */
+    --chart-blue: 221 76% 48%;
+    --chart-green: 158 64% 38%;
     --chart-orange: 25 95% 53%;
     --chart-purple: 262 83% 58%;
     --chart-rose: 350 89% 60%;
 
     /* Shadows */
-    --shadow-card: 0 1px 3px 0 hsl(220 15% 20% / 0.07), 0 1px 2px -1px hsl(220 15% 20% / 0.06);
-    --shadow-card-hover: 0 12px 24px -4px hsl(220 100% 50% / 0.12), 0 4px 8px -4px hsl(220 15% 20% / 0.08);
-    --shadow-button: 0 4px 18px 0 hsl(220 100% 50% / 0.38);
+    --shadow-card: 0 1px 3px 0 hsl(220 18% 16% / 0.07), 0 1px 2px -1px hsl(220 18% 16% / 0.05);
+    --shadow-card-hover: 0 12px 28px -4px hsl(221 76% 48% / 0.14), 0 4px 8px -4px hsl(220 18% 16% / 0.07);
+    --shadow-button: 0 4px 18px 0 hsl(221 76% 48% / 0.38);
+    --shadow-brand: 0 4px 18px 0 hsl(2 88% 44% / 0.35);
 
     /* Sidebar */
     --sidebar-background: 0 0% 98%;
@@ -82,8 +83,10 @@
     --popover: 220 20% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 220 100% 60%;
+    --primary: 221 76% 58%;
     --primary-foreground: 0 0% 100%;
+    --brand: 2 88% 55%;
+    --brand-foreground: 0 0% 100%;
 
     --secondary: 220 20% 18%;
     --secondary-foreground: 210 40% 98%;
@@ -165,19 +168,19 @@
 
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(220 100% 55%) 0%, hsl(240 80% 60%) 100%);
+    background-image: linear-gradient(135deg, hsl(221 76% 48%) 0%, hsl(240 70% 58%) 100%);
   }
 
   .text-gradient-warm {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(220 100% 50%) 0%, hsl(250 90% 65%) 100%);
+    background-image: linear-gradient(135deg, hsl(221 76% 48%) 0%, hsl(250 75% 62%) 100%);
   }
 
   .gradient-mesh-warm {
     background:
-      radial-gradient(ellipse 90% 70% at 50% -10%, hsl(220 100% 55% / 0.13), transparent),
-      radial-gradient(ellipse 60% 60% at 100% 10%, hsl(250 80% 65% / 0.07), transparent),
-      radial-gradient(ellipse 40% 50% at 0% 60%, hsl(220 100% 55% / 0.05), transparent);
+      radial-gradient(ellipse 90% 70% at 50% -10%, hsl(221 76% 48% / 0.11), transparent),
+      radial-gradient(ellipse 45% 50% at 98% 5%, hsl(2 88% 44% / 0.07), transparent),
+      radial-gradient(ellipse 35% 45% at 2% 55%, hsl(221 76% 48% / 0.05), transparent);
   }
 }
 

@@ -31,7 +31,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="text-sm text-muted-foreground">
-            © {currentYear} ROICAS. Resultados, no promesas.
+            © {currentYear} ROICAS. El marketing que convierte.
           </p>
         </div>
       </div>
