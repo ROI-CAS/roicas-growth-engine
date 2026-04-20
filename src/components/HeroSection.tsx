@@ -2,8 +2,21 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import crmDashboard from "@/assets/crm-dashboard.png";
+import Lottie from "lottie-react";
+import { useEffect, useState } from "react";
+
+const PAPER_PLANE_URL = "https://assets3.lottiefiles.com/packages/lf20_x62chJ.json";
 
 const HeroSection = () => {
+  const [planeAnim, setPlaneAnim] = useState<object | null>(null);
+
+  useEffect(() => {
+    fetch(PAPER_PLANE_URL)
+      .then((r) => r.json())
+      .then(setPlaneAnim)
+      .catch(() => null);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 gradient-mesh-warm overflow-hidden">
       {/* Animated background blobs */}
@@ -57,14 +70,14 @@ const HeroSection = () => {
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
             >
-              Tu equipo solo habla con quienes{" "}
+              No necesitas más leads.{" "}
               <motion.span
                 className="text-primary inline-block"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
               >
-                ya quieren comprar.
+                Necesitas mejores leads.
               </motion.span>
             </motion.h1>
 
@@ -75,9 +88,20 @@ const HeroSection = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="text-lg md:text-xl text-muted-foreground max-w-xl"
             >
-              Captamos, nutrimos y cualificamos tus leads automáticamente.
-              Tu equipo recibe la cita agendada y el perfil completo.
-              Solo queda cerrar.
+              Diseñamos sistemas que atraen, nutren y califican prospectos
+              automáticamente, para que tu equipo solo hable con quienes
+              realmente tienen intención de compra.
+            </motion.p>
+
+            {/* Tagline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="text-lg font-semibold text-foreground"
+            >
+              Menos esfuerzo.{" "}
+              <span className="text-primary">Más cierres.</span>
             </motion.p>
 
             {/* Dual CTA */}
@@ -164,6 +188,22 @@ const HeroSection = () => {
               <p className="text-xs text-muted-foreground">Respuesta automática</p>
               <p className="text-lg font-bold text-primary">&lt;5 min</p>
             </motion.div>
+
+            {/* Lottie paper plane — decorative top-left corner */}
+            {planeAnim && (
+              <motion.div
+                initial={{ opacity: 0, x: -20, y: 20 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ delay: 1.6, duration: 0.8, ease: "easeOut" }}
+                className="absolute -top-10 left-6 pointer-events-none"
+              >
+                <Lottie
+                  animationData={planeAnim}
+                  loop
+                  style={{ width: 80, height: 80 }}
+                />
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </div>

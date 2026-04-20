@@ -17,40 +17,51 @@ const logos = [
   { src: findolor, alt: "FinDolor" },
 ];
 
+// Tripled so the infinite loop never shows a gap at any viewport width
+const track = [...logos, ...logos, ...logos];
+
 const LogoBarSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-30px" });
 
   return (
-    <section ref={ref} className="py-10 border-y border-border bg-secondary/40">
-      <div className="section-container">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center text-sm font-medium text-muted-foreground mb-8 uppercase tracking-widest"
-        >
-          Empresas que ya tienen su sistema activo
-        </motion.p>
+    <section ref={ref} className="py-10 border-y border-border bg-secondary/40 overflow-hidden">
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5 }}
+        className="text-center text-xs font-semibold text-muted-foreground mb-8 uppercase tracking-[0.2em]"
+      >
+        Empresas que ya tienen su sistema activo
+      </motion.p>
 
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-          {logos.map((logo, index) => (
-            <motion.div
-              key={logo.alt}
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: index * 0.07 }}
-              className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+      {/* Marquee wrapper — fade edges */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="relative"
+        style={{
+          maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+        }}
+      >
+        <div className="flex animate-marquee" style={{ width: "max-content" }}>
+          {track.map((logo, index) => (
+            <div
+              key={`${logo.alt}-${index}`}
+              className="flex items-center justify-center px-10 group cursor-default"
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="h-8 md:h-10 w-auto object-contain"
+                className="h-8 md:h-10 w-auto object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-400"
+                draggable={false}
               />
-            </motion.div>
+            </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

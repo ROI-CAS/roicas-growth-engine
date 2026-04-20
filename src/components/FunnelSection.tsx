@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Facebook, Instagram, Linkedin, Search, Mail, Phone, Users, Target, Calendar, Handshake, ArrowDown } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
+import Lottie from "lottie-react";
+
+const TROPHY_URL = "https://assets2.lottiefiles.com/packages/lf20_touohxv0.json";
 const sources = [{
   icon: Search,
   label: "Google Ads",
@@ -55,21 +58,28 @@ const funnelStages = [{
 }];
 const FunnelSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: true,
-    margin: "-100px"
-  });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [trophyAnim, setTrophyAnim] = useState<object | null>(null);
+
+  useEffect(() => {
+    fetch(TROPHY_URL)
+      .then((r) => r.json())
+      .then(setTrophyAnim)
+      .catch(() => null);
+  }, []);
   return <section className="py-20 md:py-28 bg-secondary overflow-hidden">
       <div className="section-container">
-        <motion.div ref={ref} initial={{
-        opacity: 0,
-        y: 30
-      }} animate={isInView ? {
-        opacity: 1,
-        y: 0
-      } : {}} transition={{
-        duration: 0.6
-      }} className="text-center mb-16">
+        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center mb-16">
+          {trophyAnim && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.2, type: "spring" }}
+              className="flex justify-center mb-2 pointer-events-none"
+            >
+              <Lottie animationData={trophyAnim} loop style={{ width: 90, height: 90 }} />
+            </motion.div>
+          )}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Así convertimos <span className="text-gradient">visitas en clientes</span>
           </h2>
