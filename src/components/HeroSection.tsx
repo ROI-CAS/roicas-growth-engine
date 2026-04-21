@@ -68,7 +68,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
             >
               No necesitas más leads.{" "}
               <motion.span
@@ -214,7 +214,7 @@ const HeroSection = () => {
                 <Lottie
                   animationData={planeAnim}
                   loop
-                  style={{ width: 80, height: 80 }}
+                  style={{ width: 160, height: 160 }}
                 />
               </motion.div>
             )}

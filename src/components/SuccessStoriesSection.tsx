@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Building2, Code, Factory, Stethoscope, ArrowRight, X, ZoomIn, Search } from "lucide-react";
+import { Building2, Code, Factory, Stethoscope, ArrowRight, X, ZoomIn, Search, TrendingUp, Users, Percent } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
 import seoCase01 from "@/assets/results/seo-case-01.png";
 import seoCase02 from "@/assets/results/seo-case-02.png";
 import seoCase03 from "@/assets/results/seo-case-03.png";
 
 const aggregateStats = [
-  { value: 85.6, suffix: "K", label: "Impresiones orgánicas/mes" },
-  { value: 342, label: "Keywords en top 3" },
-  { value: 1882, label: "Leads generados" },
-  { value: 40, suffix: "%", label: "Reducción coste por lead" },
+  { value: 85.6, suffix: "K", label: "Impresiones orgánicas/mes", icon: TrendingUp, color: "from-blue-500 to-indigo-600", bg: "bg-blue-500" },
+  { value: 342, label: "Keywords en top 3", icon: Search, color: "from-violet-500 to-purple-600", bg: "bg-violet-500" },
+  { value: 1882, label: "Leads generados", icon: Users, color: "from-emerald-500 to-teal-600", bg: "bg-emerald-500" },
+  { value: 40, suffix: "%", label: "Reducción coste por lead", icon: Percent, color: "from-amber-500 to-orange-500", bg: "bg-amber-500" },
 ];
 
 interface Metric {
@@ -197,24 +197,40 @@ const SuccessStoriesSection = () => {
           </p>
         </motion.div>
 
-        {/* Aggregate stats bar */}
+        {/* Elegant aggregate stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 p-6 rounded-2xl bg-primary/5 border border-primary/10"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
         >
-          {aggregateStats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-2xl md:text-3xl font-black text-primary">
-                <AnimatedCounter
-                  end={stat.value}
-                  suffix={stat.suffix}
-                  decimals={stat.value % 1 !== 0 ? 1 : 0}
-                />
-              </p>
-              <p className="text-xs text-muted-foreground mt-1 leading-snug">{stat.label}</p>
-            </div>
+          {aggregateStats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
+              whileHover={{ y: -4, scale: 1.02 }}
+              className="card-dashboard p-5 flex flex-col gap-3 relative overflow-hidden"
+            >
+              {/* Color accent top line */}
+              <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${stat.color}`} />
+
+              <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-md`}>
+                <stat.icon size={18} className="text-white" />
+              </div>
+
+              <div>
+                <p className="text-3xl font-black text-primary leading-none">
+                  <AnimatedCounter
+                    end={stat.value}
+                    suffix={stat.suffix}
+                    decimals={stat.value % 1 !== 0 ? 1 : 0}
+                  />
+                </p>
+                <p className="text-xs text-muted-foreground mt-1.5 leading-snug">{stat.label}</p>
+              </div>
+            </motion.div>
           ))}
         </motion.div>
 
