@@ -194,18 +194,14 @@ const FunnelSection = () => {
             </motion.div>
           ))}
 
-          {/* Funnel spout — tapers to a point */}
+          {/* Funnel spout */}
           <div className="flex justify-center">
             <motion.div
               initial={{ opacity: 0, scaleY: 0 }}
               animate={isInView ? { opacity: 1, scaleY: 1 } : {}}
-              transition={{ duration: 0.5, delay: 1.2 }}
-              style={{
-                transformOrigin: "top",
-                width: `${100 - 2 * 43}%`,
-                clipPath: "polygon(15% 0%, 85% 0%, 50% 100%)",
-              }}
-              className="h-16 bg-gradient-to-b from-rose-600 to-pink-950"
+              transition={{ duration: 0.4, delay: 1.2 }}
+              style={{ transformOrigin: "top", width: `${100 - 2 * 43}%` }}
+              className="h-8 bg-gradient-to-b from-rose-600 to-pink-900 rounded-b-2xl"
             />
           </div>
         </div>
