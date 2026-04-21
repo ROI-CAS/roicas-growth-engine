@@ -200,7 +200,7 @@ const FunnelSection = () => {
               initial={{ opacity: 0, scaleY: 0 }}
               animate={isInView ? { opacity: 1, scaleY: 1 } : {}}
               transition={{ duration: 0.4, delay: 1.2 }}
-              style={{ transformOrigin: "top", width: "12%", position: "relative", left: "-33px" }}
+              style={{ transformOrigin: "top", width: "11.3%", position: "relative", left: "-33px" }}
               className="h-8 bg-gradient-to-b from-rose-600 to-pink-900 rounded-b-2xl"
             />
           </div>
