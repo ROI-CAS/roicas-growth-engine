@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import SeoHead from "@/components/SeoHead";
 import {
   Globe,
   Search,
@@ -182,6 +183,11 @@ const Services = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SeoHead
+        title="Servicios de Marketing Digital | ROICAS Colombia"
+        description="Diseño web, SEO, publicidad digital, tiendas online y automatización con IA. Sistemas completos de captación y cierre de leads para empresas B2B en Colombia."
+        canonical="https://roicas.com/servicios"
+      />
       <Header />
 
       {/* Hero */}

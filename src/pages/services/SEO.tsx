@@ -4,6 +4,29 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
+import SeoHead from "@/components/SeoHead";
+
+const seoSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "SEO — Posicionamiento Web en Google",
+    provider: { "@type": "Organization", name: "ROICAS", url: "https://roicas.com" },
+    description: "Posicionamiento orgánico en Google para empresas B2B en Colombia. Auditoría técnica, investigación de palabras clave, contenido y linkbuilding.",
+    areaServed: "CO",
+    url: "https://roicas.com/servicios/seo",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      { "@type": "Question", name: "¿Cuánto tiempo tarda en verse resultados?", acceptedAnswer: { "@type": "Answer", text: "Los primeros movimientos se ven a partir del tercer mes. Resultados significativos, entre 6 y 12 meses." } },
+      { "@type": "Question", name: "¿El SEO reemplaza la publicidad paga?", acceptedAnswer: { "@type": "Answer", text: "Son complementarios. La publicidad da resultados inmediatos mientras el SEO construye la base orgánica." } },
+      { "@type": "Question", name: "¿Garantizan el primer puesto en Google?", acceptedAnswer: { "@type": "Answer", text: "Nadie puede garantizarlo honestamente. Lo que sí garantizamos es un trabajo técnico y de contenido serio que mejora consistentemente tu visibilidad orgánica." } },
+      { "@type": "Question", name: "¿Trabajan SEO local?", acceptedAnswer: { "@type": "Answer", text: "Sí. Si tu negocio atiende una zona geográfica concreta, optimizamos Google Business Profile y el SEO local para aparecer en las búsquedas de tu área." } },
+    ],
+  },
+];
 
 const benefits = [
   {
@@ -66,6 +89,12 @@ const fadeUp = {
 const SEO = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SeoHead
+        title="Agencia SEO en Colombia | Posicionamiento Web | ROICAS"
+        description="Posicionamos tu web en Google para que tus clientes te encuentren primero. 342 keywords en top 3 y 85K impresiones/mes para nuestros clientes. Sin permanencias."
+        canonical="https://roicas.com/servicios/seo"
+        schemaJson={seoSchema}
+      />
       <Header />
 
       {/* Hero */}

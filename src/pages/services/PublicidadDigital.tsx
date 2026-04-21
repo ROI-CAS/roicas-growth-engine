@@ -4,6 +4,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
+import SeoHead from "@/components/SeoHead";
+
+const pubDigitalSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Publicidad Digital — Google Ads y Meta Ads",
+  provider: { "@type": "Organization", name: "ROICAS", url: "https://roicas.com" },
+  description: "Gestión de campañas en Google Ads y Meta Ads con ROI medible desde el primer día. Optimización continua, segmentación precisa y reportes transparentes.",
+  areaServed: "CO",
+  url: "https://roicas.com/servicios/publicidad-digital",
+};
 
 const benefits = [
   {
@@ -70,6 +81,12 @@ const fadeUp = {
 const PublicidadDigital = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SeoHead
+        title="Publicidad Digital Google Ads y Meta Ads Colombia | ROICAS"
+        description="Campañas de Google Ads y Meta Ads con ROI medible desde el primer día. Leads cualificados, optimización continua y reportes transparentes para tu negocio."
+        canonical="https://roicas.com/servicios/publicidad-digital"
+        schemaJson={pubDigitalSchema}
+      />
       <Header />
 
       {/* Hero */}

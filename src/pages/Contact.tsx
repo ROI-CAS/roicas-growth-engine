@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import Header from "@/components/Header";
+import SeoHead from "@/components/SeoHead";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ContactForm from "@/components/ContactForm";
@@ -40,6 +41,11 @@ const Contact = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SeoHead
+        title="Contacto | Agenda una Consultoría Gratis | ROICAS"
+        description="Agenda una llamada gratuita con nuestro equipo. Hablamos de tu negocio, tus objetivos y te proponemos el sistema que mejor encaja. Sin permanencias ni compromiso."
+        canonical="https://roicas.com/contacto"
+      />
       <Header />
       
       {/* Hero Section */}

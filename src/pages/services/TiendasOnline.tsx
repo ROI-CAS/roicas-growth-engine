@@ -4,6 +4,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
+import SeoHead from "@/components/SeoHead";
+
+const tiendasSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Tiendas Online y E-commerce en Colombia",
+  provider: { "@type": "Organization", name: "ROICAS", url: "https://roicas.com" },
+  description: "E-commerce con WooCommerce para el mercado colombiano. Integración con PSE, Nequi y Bancolombia. Gestión de inventario, automatización post-venta y analytics de ventas.",
+  areaServed: "CO",
+  url: "https://roicas.com/servicios/tiendas-online",
+};
 
 const benefits = [
   {
@@ -70,6 +81,12 @@ const fadeUp = {
 const TiendasOnline = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SeoHead
+        title="Tiendas Online y E-commerce en Colombia | ROICAS"
+        description="E-commerce con WooCommerce para el mercado colombiano. PSE, Nequi y Bancolombia integrados. Vende mientras duermes. Gestión de inventario y automatización post-venta."
+        canonical="https://roicas.com/servicios/tiendas-online"
+        schemaJson={tiendasSchema}
+      />
       <Header />
 
       {/* Hero */}

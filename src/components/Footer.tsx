@@ -18,12 +18,12 @@ const Footer = () => {
             <Link to="/servicios" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Servicios
             </Link>
-            <a href="#nosotros" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/nosotros" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Sobre Nosotros
-            </a>
-            <a href="#contacto" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            </Link>
+            <Link to="/contacto" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Contacto
-            </a>
+            </Link>
             <Link to="/politica-privacidad" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Política de Privacidad
             </Link>

@@ -4,6 +4,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
+import SeoHead from "@/components/SeoHead";
+
+const disenoWebSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Diseño Web Profesional en WordPress",
+  provider: { "@type": "Organization", name: "ROICAS", url: "https://roicas.com" },
+  description: "Sitios web de alta conversión en WordPress. Mobile-first, SEO técnico incluido, entrega en 3–6 semanas. Diseño personalizado para empresas B2B en Colombia.",
+  areaServed: "CO",
+  url: "https://roicas.com/servicios/diseno-web",
+};
 
 const benefits = [
   {
@@ -70,6 +81,12 @@ const fadeUp = {
 const DisenoWeb = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SeoHead
+        title="Diseño Web Profesional en Colombia | WordPress | ROICAS"
+        description="Sitios web de alta conversión, mobile-first y con SEO técnico incluido. Entrega en 3–6 semanas. Diseño personalizado, no plantillas. Para empresas B2B en Colombia."
+        canonical="https://roicas.com/servicios/diseno-web"
+        schemaJson={disenoWebSchema}
+      />
       <Header />
 
       {/* Hero */}

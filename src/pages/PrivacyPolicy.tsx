@@ -1,10 +1,17 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import SeoHead from "@/components/SeoHead";
 
 const PrivacyPolicy = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SeoHead
+        title="Política de Privacidad | ROICAS"
+        description="Política de privacidad y tratamiento de datos personales de ROICAS. Consulta cómo recopilamos, usamos y protegemos tu información personal."
+        canonical="https://roicas.com/politica-privacidad"
+        noindex={true}
+      />
       <Header />
       
       <section className="pt-32 pb-20">

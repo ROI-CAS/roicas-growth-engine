@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Target, Users, Zap, Award, Heart, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
+import SeoHead from "@/components/SeoHead";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
@@ -57,6 +58,11 @@ const AboutUs = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SeoHead
+        title="Sobre ROICAS | Agencia de Marketing B2B en Colombia"
+        description="Conoce al equipo detrás de ROICAS. Especialistas en marketing automatizado, SEO y publicidad digital para empresas B2B que quieren crecer sin contratar más."
+        canonical="https://roicas.com/nosotros"
+      />
       <Header />
       
       {/* Hero Section */}

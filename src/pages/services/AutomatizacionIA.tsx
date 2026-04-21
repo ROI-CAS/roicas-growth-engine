@@ -4,6 +4,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
+import SeoHead from "@/components/SeoHead";
+
+const iaSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Automatización con IA para Ventas y Marketing",
+  provider: { "@type": "Organization", name: "ROICAS", url: "https://roicas.com" },
+  description: "Automatiza la captación y cualificación de leads con IA. Respuesta en menos de 5 minutos 24/7, bots conversacionales, CRM automatizado y flujos inteligentes.",
+  areaServed: "CO",
+  url: "https://roicas.com/servicios/automatizacion-ia",
+};
 
 const benefits = [
   {
@@ -84,6 +95,12 @@ const fadeUp = {
 const AutomatizacionIA = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SeoHead
+        title="Automatización con IA para Ventas | Bots y Flujos | ROICAS"
+        description="Automatiza la captación y cualificación de leads con IA. Respuesta en menos de 5 minutos 24/7. Bots conversacionales, CRM automatizado y seguimiento inteligente."
+        canonical="https://roicas.com/servicios/automatizacion-ia"
+        schemaJson={iaSchema}
+      />
       <Header />
 
       {/* Hero */}
