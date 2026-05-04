@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Globe, ShoppingCart, Search, Megaphone, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "react-router-dom";
-import logo from "@/assets/logo-web-roicas.webp";
+import logoDark from "@/assets/logo-web-roicas.webp";
+import logoLight from "@/assets/logo-roicas.webp";
 
 const serviceItems = [
   {
@@ -77,7 +78,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="/" className="flex items-center">
-            <img src={logo} alt="ROICAS" className="h-9 md:h-11 w-auto" />
+            <img src={isDarkHero ? logoDark : logoLight} alt="ROICAS" className="h-9 md:h-11 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
