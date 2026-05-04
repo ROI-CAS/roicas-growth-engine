@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Calendar, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackExitIntentShown, trackExitIntentConverted, trackExitIntentDismissed } from "@/lib/analytics";
 
 const ExitIntentPopup = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -12,6 +13,7 @@ const ExitIntentPopup = () => {
       if (e.clientY <= 0 && !hasTriggered) {
         setShowPopup(true);
         setHasTriggered(true);
+        trackExitIntentShown();
       }
     };
 
@@ -28,6 +30,11 @@ const ExitIntentPopup = () => {
 
   const handleClose = () => {
     setShowPopup(false);
+    trackExitIntentDismissed();
+  };
+
+  const handleConvert = () => {
+    trackExitIntentConverted();
   };
 
   return (
@@ -99,7 +106,7 @@ const ExitIntentPopup = () => {
 
                 <div className="flex flex-col gap-3 pt-2">
                   <Button variant="hero" size="lg" className="w-full group" asChild>
-                    <a href="/contacto">
+                    <a href="/contacto" onClick={handleConvert}>
                       Agendar mi consultoría gratis
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </a>

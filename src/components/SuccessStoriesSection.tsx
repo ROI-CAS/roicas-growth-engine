@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Building2, Code, Factory, Stethoscope, ArrowRight, X, ZoomIn, Search, TrendingUp, Users, Percent } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
+import { trackEvidenceLightboxOpened } from "@/lib/analytics";
 import seoCase01 from "@/assets/results/seo-case-01.png";
 import seoCase02 from "@/assets/results/seo-case-02.png";
 import seoCase03 from "@/assets/results/seo-case-03.png";
@@ -298,7 +299,7 @@ const SuccessStoriesSection = () => {
                         key={i}
                         whileHover={{ scale: 1.03, y: -2 }}
                         whileTap={{ scale: 0.98 }}
-                        onClick={() => setLightbox({ images: story.evidence!, index: i })}
+                        onClick={() => { setLightbox({ images: story.evidence!, index: i }); trackEvidenceLightboxOpened(i); }}
                         className="relative overflow-hidden rounded-lg border border-border/60 shadow-sm group"
                       >
                         <img

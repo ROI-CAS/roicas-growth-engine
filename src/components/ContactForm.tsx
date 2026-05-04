@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { MessageCircle, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import { trackFormStarted, trackFormSubmitted, trackLeadCaptured } from "@/lib/analytics";
 
 interface ContactFormProps {
   variant?: "full" | "compact";
@@ -20,6 +21,7 @@ const ContactForm = ({
   className = "",
 }: ContactFormProps) => {
   const { toast } = useToast();
+  const hasStarted = useRef(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -55,6 +57,8 @@ const ContactForm = ({
     await new Promise((resolve) => setTimeout(resolve, 1200));
     setIsSubmitting(false);
     setIsSuccess(true);
+    trackFormSubmitted(!!formData.company.trim(), window.location.pathname);
+    trackLeadCaptured("form");
 
     toast({
       title: "¡Recibido!",
@@ -87,6 +91,13 @@ const ContactForm = ({
     );
   }
 
+  const handleFirstFocus = () => {
+    if (!hasStarted.current) {
+      hasStarted.current = true;
+      trackFormStarted(window.location.pathname);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className={`card-dashboard p-8 ${className}`}>
       {showTitle && <h2 className="text-2xl font-bold mb-2">{title}</h2>}
@@ -103,6 +114,7 @@ const ContactForm = ({
             required
             placeholder="Tu nombre"
             value={formData.name}
+            onFocus={handleFirstFocus}
             onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
             className="h-12"
           />

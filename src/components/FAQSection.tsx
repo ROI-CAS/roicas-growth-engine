@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { trackFaqOpened } from "@/lib/analytics";
 
 const faqs = [
   {
@@ -27,7 +28,7 @@ const faqs = [
   {
     question: "¿Cuánto necesito invertir en publicidad?",
     answer:
-      "Depende del sector y objetivos. Como referencia, recomendamos mínimo $1,000-2,000 USD/mes en pauta para ver resultados consistentes. Lo definimos juntos en la primera llamada según tu mercado específico.",
+      "Depende del sector y objetivos. En Colombia, la mayoría de nuestros clientes empiezan con $300–600 USD/mes en pauta y escalan según resultados. Con ese presupuesto ya se pueden generar leads cualificados en Google Ads o Meta. Si tienes menos, lo hablamos — hay sectores donde se puede arrancar con menos y funciona. Lo definimos juntos en la primera llamada.",
   },
   {
     question: "No tengo web, ¿es problema?",
@@ -75,7 +76,17 @@ const FAQSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-3xl mx-auto"
         >
-          <Accordion type="single" collapsible className="space-y-3">
+          <Accordion
+            type="single"
+            collapsible
+            className="space-y-3"
+            onValueChange={(value) => {
+              if (value) {
+                const idx = parseInt(value.replace("item-", ""));
+                trackFaqOpened(faqs[idx].question, idx);
+              }
+            }}
+          >
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}

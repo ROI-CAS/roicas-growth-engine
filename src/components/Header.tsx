@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Globe, ShoppingCart, Search, Megaphone, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "react-router-dom";
 import logo from "@/assets/logo-roicas.webp";
 
 const serviceItems = [
@@ -47,6 +48,10 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const location = useLocation();
+
+  // Dark hero only on home page when not scrolled
+  const isDarkHero = location.pathname === "/" && !scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -60,9 +65,11 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-background/95 backdrop-blur-md shadow-md border-b border-border"
+          : isDarkHero
+          ? "bg-transparent border-b border-transparent"
           : "bg-background/80 backdrop-blur-sm border-b border-transparent"
       }`}
     >
@@ -77,7 +84,7 @@ const Header = () => {
           <nav className="hidden md:flex items-center gap-8">
             <a
               href="/"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+              className={`text-sm font-medium transition-colors relative group ${isDarkHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"}`}
             >
               Inicio
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -89,7 +96,7 @@ const Header = () => {
               onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
             >
-              <button className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group">
+              <button className={`flex items-center gap-1 text-sm font-medium transition-colors relative group ${isDarkHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"}`}>
                 Servicios
                 <motion.span
                   animate={{ rotate: servicesOpen ? 180 : 0 }}
@@ -138,14 +145,14 @@ const Header = () => {
 
             <a
               href="/nosotros"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+              className={`text-sm font-medium transition-colors relative group ${isDarkHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"}`}
             >
               Nosotros
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
             <a
               href="/contacto"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+              className={`text-sm font-medium transition-colors relative group ${isDarkHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"}`}
             >
               Contacto
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />

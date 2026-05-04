@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
+import {
+  trackWhatsAppPopupShown,
+  trackWhatsAppPopupDismissed,
+  trackWhatsAppClicked,
+  trackLeadCaptured,
+} from "@/lib/analytics";
 
 const WHATSAPP_NUMBER = "573114565403";
 const WHATSAPP_MESSAGE = "Hola, estoy interesado en sus servicios. ¿Podrían darme más información?";
@@ -16,6 +22,7 @@ const WhatsAppButton = () => {
     
     const timer = setTimeout(() => {
       setShowPopup(true);
+      trackWhatsAppPopupShown();
     }, 10000);
 
     return () => clearTimeout(timer);
@@ -26,11 +33,21 @@ const WhatsAppButton = () => {
     e.stopPropagation();
     setShowPopup(false);
     setDismissed(true);
+    trackWhatsAppPopupDismissed();
   };
 
-  const handleClick = () => {
+  const handlePopupClick = () => {
     setShowPopup(false);
     setDismissed(true);
+    trackWhatsAppClicked("popup");
+    trackLeadCaptured("whatsapp");
+  };
+
+  const handleButtonClick = () => {
+    setShowPopup(false);
+    setDismissed(true);
+    trackWhatsAppClicked("button");
+    trackLeadCaptured("whatsapp");
   };
 
   return (
@@ -68,7 +85,7 @@ const WhatsAppButton = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={handleClick}
+                onClick={handlePopupClick}
                 className="inline-block mt-1 text-xs font-medium text-[#25D366] hover:underline"
               >
                 Escríbenos ahora →
@@ -83,7 +100,7 @@ const WhatsAppButton = () => {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={handleClick}
+        onClick={handleButtonClick}
         className="flex items-center gap-3 group"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
