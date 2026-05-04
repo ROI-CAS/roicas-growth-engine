@@ -6,39 +6,39 @@
 
 @layer base {
   :root {
-    /* ROICAS Brand Colors */
-    --background: 0 0% 100%;
-    --foreground: 220 18% 16%;
+    /* ROICAS Brand Colors — identidad rojo/negro, sin azul */
+    --background: 40 20% 97%;         /* warm off-white #F8F7F4 */
+    --foreground: 220 15% 10%;        /* near-black */
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 18% 16%;
+    --card: 0 0% 100%;                /* tarjetas blancas sobre fondo cálido */
+    --card-foreground: 220 15% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 18% 16%;
+    --popover-foreground: 220 15% 10%;
 
-    /* Primary Blue — acción, confianza, CTAs */
-    --primary: 221 76% 48%;
+    /* Primary — negro/charcoal (CTAs en fondos claros, como landing) */
+    --primary: 220 15% 10%;
     --primary-foreground: 0 0% 100%;
 
-    /* Brand Red — identidad ROICAS, badges, acentos */
+    /* Brand Red — identidad ROICAS, acentos, CTA en oscuro */
     --brand: 2 88% 44%;
     --brand-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 97%;
-    --secondary-foreground: 220 18% 16%;
+    --secondary: 40 15% 93%;
+    --secondary-foreground: 220 15% 15%;
 
-    --muted: 220 14% 95%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 40 12% 91%;
+    --muted-foreground: 220 8% 46%;
 
-    --accent: 221 76% 48% / 0.06;
-    --accent-foreground: 221 76% 42%;
+    --accent: 40 15% 91%;
+    --accent-foreground: 220 15% 15%;
 
     --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 88%;
-    --input: 220 14% 88%;
-    --ring: 221 76% 48%;
+    --border: 40 12% 88%;
+    --input: 40 12% 88%;
+    --ring: 2 88% 44%;              /* brand red ring */
 
     --radius: 0.75rem;
 
@@ -46,72 +46,72 @@
     --success: 158 64% 38%;
     --success-foreground: 0 0% 100%;
 
-    --warm: 220 10% 45%;
+    --warm: 2 88% 44%;
     --warm-foreground: 0 0% 100%;
 
-    /* Chart Colors */
-    --chart-blue: 221 76% 48%;
+    /* Chart Colors — rojo como primario */
+    --chart-blue: 2 88% 44%;
     --chart-green: 158 64% 38%;
     --chart-orange: 25 95% 53%;
     --chart-purple: 262 83% 58%;
     --chart-rose: 350 89% 60%;
 
     /* Shadows */
-    --shadow-card: 0 1px 3px 0 hsl(220 18% 16% / 0.07), 0 1px 2px -1px hsl(220 18% 16% / 0.05);
-    --shadow-card-hover: 0 12px 28px -4px hsl(221 76% 48% / 0.14), 0 4px 8px -4px hsl(220 18% 16% / 0.07);
-    --shadow-button: 0 4px 18px 0 hsl(221 76% 48% / 0.38);
+    --shadow-card: 0 1px 3px 0 hsl(220 15% 10% / 0.07), 0 1px 2px -1px hsl(220 15% 10% / 0.04);
+    --shadow-card-hover: 0 12px 28px -4px hsl(220 15% 10% / 0.12), 0 4px 8px -4px hsl(220 15% 10% / 0.06);
+    --shadow-button: 0 4px 18px 0 hsl(2 88% 44% / 0.40);
     --shadow-brand: 0 4px 18px 0 hsl(2 88% 44% / 0.35);
 
     /* Sidebar */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-background: 40 15% 96%;
+    --sidebar-foreground: 220 10% 26%;
+    --sidebar-primary: 220 15% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 10% 90%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 40 12% 92%;
+    --sidebar-accent-foreground: 220 10% 15%;
+    --sidebar-border: 40 10% 88%;
+    --sidebar-ring: 2 88% 44%;
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 210 40% 98%;
+    --background: 220 15% 9%;
+    --foreground: 210 20% 96%;
 
-    --card: 220 20% 12%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 15% 12%;
+    --card-foreground: 210 20% 96%;
 
-    --popover: 220 20% 12%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 210 20% 96%;
 
-    --primary: 221 76% 58%;
+    --primary: 220 10% 14%;
     --primary-foreground: 0 0% 100%;
     --brand: 2 88% 55%;
     --brand-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 210 20% 96%;
 
-    --muted: 220 20% 18%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 215 12% 60%;
 
-    --accent: 220 30% 20%;
-    --accent-foreground: 220 100% 70%;
+    --accent: 220 15% 20%;
+    --accent-foreground: 40 15% 85%;
 
     --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 210 20% 96%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 220 100% 60%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 2 88% 55%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-background: 220 15% 8%;
+    --sidebar-foreground: 210 12% 90%;
+    --sidebar-primary: 220 10% 14%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 220 12% 16%;
+    --sidebar-accent-foreground: 210 12% 90%;
+    --sidebar-border: 220 12% 18%;
+    --sidebar-ring: 2 88% 55%;
   }
 }
 
@@ -149,7 +149,7 @@
   .card-dashboard:hover {
     box-shadow: var(--shadow-card-hover);
     transform: translateY(-3px);
-    border-color: hsl(220 100% 50% / 0.2);
+    border-color: hsl(2 88% 44% / 0.18);
   }
 
   .btn-primary-glow {
@@ -157,31 +157,33 @@
   }
 
   .btn-primary-glow:hover {
-    box-shadow: 0 6px 24px 0 hsl(220 100% 55% / 0.5);
+    box-shadow: 0 6px 24px 0 hsl(2 88% 44% / 0.55);
     transform: translateY(-1px) scale(1.02);
   }
 
+  /* Gradient mesh — solo rojo, sin azul */
   .gradient-mesh {
-    background: 
-      radial-gradient(ellipse 80% 80% at 50% -20%, hsl(220 100% 55% / 0.15), transparent),
-      radial-gradient(ellipse 60% 60% at 100% 0%, hsl(220 100% 55% / 0.08), transparent);
+    background:
+      radial-gradient(ellipse 80% 80% at 50% -20%, hsl(2 88% 44% / 0.08), transparent),
+      radial-gradient(ellipse 60% 60% at 100% 0%, hsl(2 88% 44% / 0.04), transparent);
   }
 
+  /* Text gradients — rojo marca */
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(221 76% 48%) 0%, hsl(240 70% 58%) 100%);
+    background-image: linear-gradient(135deg, hsl(2 88% 44%) 0%, hsl(10 82% 54%) 100%);
   }
 
   .text-gradient-warm {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(221 76% 48%) 0%, hsl(250 75% 62%) 100%);
+    background-image: linear-gradient(135deg, hsl(2 88% 44%) 0%, hsl(2 88% 60%) 100%);
   }
 
   .gradient-mesh-warm {
     background:
-      radial-gradient(ellipse 90% 70% at 50% -10%, hsl(221 76% 48% / 0.11), transparent),
-      radial-gradient(ellipse 45% 50% at 98% 5%, hsl(2 88% 44% / 0.07), transparent),
-      radial-gradient(ellipse 35% 45% at 2% 55%, hsl(221 76% 48% / 0.05), transparent);
+      radial-gradient(ellipse 90% 70% at 50% -10%, hsl(2 88% 44% / 0.07), transparent),
+      radial-gradient(ellipse 45% 50% at 98% 5%, hsl(2 88% 44% / 0.05), transparent),
+      radial-gradient(ellipse 35% 45% at 2% 55%, hsl(2 88% 44% / 0.03), transparent);
   }
 }
 
@@ -191,14 +193,8 @@
   }
 
   @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .animate-scale-in {
@@ -206,14 +202,8 @@
   }
 
   @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
   }
 
   .animate-blur-in {
@@ -221,16 +211,8 @@
   }
 
   @keyframes blurIn {
-    from {
-      opacity: 0;
-      filter: blur(10px);
-      transform: scale(1.1);
-    }
-    to {
-      opacity: 1;
-      filter: blur(0);
-      transform: scale(1);
-    }
+    from { opacity: 0; filter: blur(10px); transform: scale(1.1); }
+    to   { opacity: 1; filter: blur(0); transform: scale(1); }
   }
 
   .animate-3d-flip {
@@ -239,14 +221,8 @@
   }
 
   @keyframes flip3d {
-    from {
-      opacity: 0;
-      transform: perspective(1000px) rotateY(-90deg);
-    }
-    to {
-      opacity: 1;
-      transform: perspective(1000px) rotateY(0);
-    }
+    from { opacity: 0; transform: perspective(1000px) rotateY(-90deg); }
+    to   { opacity: 1; transform: perspective(1000px) rotateY(0); }
   }
 
   @keyframes marquee {
@@ -269,7 +245,7 @@
 
   .hover-lift:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px -10px hsl(var(--foreground) / 0.15);
+    box-shadow: 0 20px 40px -10px hsl(var(--foreground) / 0.12);
   }
 }
 

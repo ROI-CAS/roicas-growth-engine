@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Globe, ShoppingCart, Search, Megaphone, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "react-router-dom";
-import logo from "@/assets/logo-roicas.webp";
+import logo from "@/assets/logo-web-roicas.webp";
 
 const serviceItems = [
   {
@@ -161,8 +161,8 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button variant="hero" size="default" asChild>
-              <a href="/contacto">Agendar Consultoría</a>
+            <Button variant="default" size="default" className="rounded-full px-6 font-semibold" asChild>
+              <a href="/contacto">Quiero mi web</a>
             </Button>
           </div>
 

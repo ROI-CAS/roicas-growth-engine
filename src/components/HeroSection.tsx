@@ -1,19 +1,21 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import crmDashboard from "@/assets/crm-dashboard.png";
 import { trackCtaClicked } from "@/lib/analytics";
+
+const WHATSAPP_URL = "https://wa.me/573114565403?text=Hola%2C%20quiero%20información%20sobre%20sus%20servicios";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-20 bg-[#080808] overflow-hidden">
 
-      {/* Red glow — top-left large blob */}
+      {/* Red glow — top-left */}
       <div className="absolute -top-60 -left-60 w-[800px] h-[800px] rounded-full bg-brand/25 blur-[180px] pointer-events-none" />
-      {/* Red glow — bottom-right subtle */}
+      {/* Red glow — bottom-right */}
       <div className="absolute -bottom-40 -right-20 w-[500px] h-[500px] rounded-full bg-brand/12 blur-[140px] pointer-events-none" />
 
-      {/* Decorative arcs — brand red, like in the Facebook banner */}
+      {/* Decorative arcs — brand red */}
       <motion.div
         className="absolute top-0 left-0 h-full w-[420px] pointer-events-none"
         initial={{ opacity: 0 }}
@@ -27,7 +29,7 @@ const HeroSection = () => {
         </svg>
       </motion.div>
 
-      {/* Subtle dot grid */}
+      {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -46,19 +48,15 @@ const HeroSection = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-6"
           >
-            {/* Badge */}
+            {/* Eyebrow */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/20 text-brand text-sm font-semibold border border-brand/30"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="flex items-center gap-3"
             >
-              <motion.span
-                className="w-2 h-2 rounded-full bg-brand"
-                animate={{ scale: [1, 1.5, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
-              CRM & Automatización · Sin permanencias
+              <span className="h-px w-8 bg-brand" />
+              <span className="text-brand text-xs font-bold tracking-[0.18em] uppercase">Estudio Digital</span>
             </motion.div>
 
             {/* H1 */}
@@ -66,17 +64,18 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] text-white"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08] text-white"
             >
-              Automatizamos procesos,{" "}
+              Tu negocio merece una{" "}
               <motion.span
                 className="text-brand"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.55, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
               >
-                impulsamos tu crecimiento.
-              </motion.span>
+                presencia digital
+              </motion.span>{" "}
+              que venda
             </motion.h1>
 
             {/* Subheadline */}
@@ -86,30 +85,27 @@ const HeroSection = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="text-lg md:text-xl text-white/55 max-w-xl leading-relaxed"
             >
-              Diseñamos el sistema completo: captación, nutrición y
-              cualificación automática. Tu equipo solo habla con quienes
-              tienen intención real de compra.
+              Diseñamos tu web, configuramos tu CRM para gestionar citas y clientes,
+              y activamos campañas en Google y Meta Ads — con métricas claras
+              y entregas en tiempo.
             </motion.p>
 
-            {/* Features strip */}
+            {/* 4-column features */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="grid grid-cols-2 gap-3 pt-1"
+              className="grid grid-cols-2 gap-x-6 gap-y-3 pt-1"
             >
               {[
-                { label: "Automatización", desc: "Procesos que trabajan solos" },
-                { label: "Más eficiencia", desc: "Resultados, no actividad" },
-                { label: "Mejor experiencia", desc: "Leads que quieren comprar" },
-                { label: "Datos que deciden", desc: "ROI medible desde el día 1" },
+                "Sitio web que convierte",
+                "CRM para gestión de citas",
+                "Google & Meta Ads",
+                "Métricas y resultados reales",
               ].map((item) => (
-                <div key={item.label} className="flex items-start gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 shrink-0" />
-                  <div>
-                    <p className="text-sm font-semibold text-white/90">{item.label}</p>
-                    <p className="text-xs text-white/40">{item.desc}</p>
-                  </div>
+                <div key={item} className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
+                  <p className="text-sm text-white/70 font-medium">{item}</p>
                 </div>
               ))}
             </motion.div>
@@ -122,14 +118,16 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4 pt-2"
             >
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button variant="hero" size="xl" asChild>
+                <Button variant="hero" size="xl" className="rounded-full" asChild>
                   <a
-                    href="/contacto"
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group"
-                    onClick={() => trackCtaClicked("Solicita tu demo", "hero")}
+                    onClick={() => trackCtaClicked("Hablar por WhatsApp", "hero")}
                   >
-                    Solicita tu demo
-                    <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                    <MessageCircle size={20} className="mr-2" />
+                    Hablar por WhatsApp
                   </a>
                 </Button>
               </motion.div>
@@ -138,46 +136,51 @@ const HeroSection = () => {
                 <Button
                   variant="outline"
                   size="xl"
-                  className="border-white/20 text-white hover:bg-white/8 hover:border-white/35 hover:text-white bg-transparent"
+                  className="rounded-full border-white/20 text-white hover:bg-white/8 hover:border-white/35 hover:text-white bg-transparent"
                   asChild
                 >
                   <a
-                    href="#como-funciona"
-                    className="group"
-                    onClick={() => trackCtaClicked("Ver cómo funciona", "hero")}
+                    href="/servicios"
+                    onClick={() => trackCtaClicked("Ver paquetes y precios", "hero")}
                   >
-                    <Play size={16} className="mr-2 fill-white/70" />
-                    Ver cómo funciona
+                    Ver paquetes y precios
+                    <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
               </motion.div>
             </motion.div>
 
-            {/* Social proof chip */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 }}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 w-fit"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <p className="text-xs text-white/65 font-medium">
-                Resultado real:&nbsp;
-                <strong className="text-white font-semibold">342 keywords top 3</strong>
-                &nbsp;·&nbsp;
-                <strong className="text-white font-semibold">85K impresiones</strong>
-                &nbsp;en 7 meses
-              </p>
-            </motion.div>
-
+            {/* Trust line */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.0 }}
-              className="text-xs text-white/30"
+              transition={{ delay: 0.85 }}
+              className="flex items-center gap-2 text-xs text-white/35"
             >
-              ✓ Sin permanencias · ✓ Adaptado a tu negocio · ✓ Respuesta hoy
+              <svg viewBox="0 0 16 16" className="w-3.5 h-3.5 text-brand fill-current shrink-0">
+                <path d="M8 0L9.8 5.5H16L11 8.9L12.8 14.4L8 11L3.2 14.4L5 8.9L0 5.5H6.2L8 0Z" />
+              </svg>
+              Diagnóstico gratuito · Garantía de satisfacción
             </motion.p>
+
+            {/* Stats row */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0 }}
+              className="flex items-center gap-8 pt-2 border-t border-white/8"
+            >
+              {[
+                { value: "13", label: "años de experiencia" },
+                { value: "+100", label: "proyectos entregados" },
+                { value: "100%", label: "trato directo" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-xl font-bold text-white">{stat.value}</p>
+                  <p className="text-xs text-white/40">{stat.label}</p>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
 
           {/* ── Right — CRM Dashboard ── */}
@@ -187,52 +190,55 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            {/* Red glow behind the image */}
-            <div className="absolute inset-0 bg-brand/20 rounded-3xl blur-[60px] scale-90 pointer-events-none" />
+            {/* Red glow behind image */}
+            <div className="absolute inset-0 bg-brand/15 rounded-3xl blur-[50px] scale-90 pointer-events-none" />
 
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.3 }}
               className="relative rounded-2xl overflow-hidden border border-white/10"
               style={{
-                boxShadow: "0 0 0 1px rgba(255,255,255,0.06), 0 30px 70px -15px rgba(0,0,0,0.95), 0 0 90px -20px hsl(2 88% 44% / 0.35)",
+                boxShadow:
+                  "0 0 0 1px rgba(255,255,255,0.06), 0 30px 70px -15px rgba(0,0,0,0.95), 0 0 90px -20px hsl(2 88% 44% / 0.3)",
               }}
             >
               <img
                 src={crmDashboard}
-                alt="Pipeline de ventas automatizado — Panel CRM ROICAS"
+                alt="Panel CRM para gestión de citas y clientes — ROICAS"
                 className="w-full h-auto block"
               />
             </motion.div>
 
-            {/* Floating badge — top right (glassmorphism) */}
+            {/* Floating badge — RESULTADOS */}
             <motion.div
-              initial={{ opacity: 0, scale: 0, rotate: -180 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ delay: 1.2, type: "spring", stiffness: 200 }}
-              whileHover={{ scale: 1.08 }}
-              className="absolute -top-4 -right-4 backdrop-blur-md bg-white/8 border border-white/15 rounded-2xl p-4 shadow-2xl cursor-pointer"
+              initial={{ opacity: 0, scale: 0, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 1.3, type: "spring", stiffness: 200 }}
+              className="absolute -bottom-4 -right-2 md:-right-6 backdrop-blur-md bg-white rounded-2xl p-4 shadow-2xl cursor-pointer"
+            >
+              <p className="text-[10px] font-bold text-brand uppercase tracking-widest mb-1">Resultados</p>
+              <p className="text-2xl font-black text-foreground leading-none">+307</p>
+              <p className="text-xs text-muted-foreground mt-0.5">leads · 60 días</p>
+            </motion.div>
+
+            {/* Floating badge — citas agendadas */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 1.5, type: "spring", stiffness: 200 }}
+              className="absolute -top-4 -left-2 md:-left-6 backdrop-blur-md bg-white/10 border border-white/15 rounded-2xl p-3.5 shadow-2xl"
             >
               <div className="flex items-center gap-2">
                 <motion.div
-                  className="w-3 h-3 rounded-full bg-emerald-400"
-                  animate={{ scale: [1, 1.3, 1] }}
+                  className="w-2.5 h-2.5 rounded-full bg-emerald-400"
+                  animate={{ scale: [1, 1.4, 1] }}
                   transition={{ duration: 1, repeat: Infinity }}
                 />
-                <span className="text-sm font-bold text-white">295 oportunidades</span>
+                <div>
+                  <p className="text-xs font-bold text-white">Cita agendada</p>
+                  <p className="text-[10px] text-white/50">CRM · hace 3 min</p>
+                </div>
               </div>
-            </motion.div>
-
-            {/* Floating badge — bottom left (glassmorphism) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0, rotate: 180 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ delay: 1.4, type: "spring", stiffness: 200 }}
-              whileHover={{ scale: 1.08 }}
-              className="absolute -bottom-4 -left-4 backdrop-blur-md bg-white/8 border border-white/15 rounded-2xl p-4 shadow-2xl cursor-pointer"
-            >
-              <p className="text-xs text-white/50">Respuesta automática</p>
-              <p className="text-lg font-bold text-white">&lt;5 min</p>
             </motion.div>
           </motion.div>
 
