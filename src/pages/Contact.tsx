@@ -114,10 +114,10 @@ const Contact = () => {
                 transition={{ delay: index * 0.1 }}
                 className="p-4"
               >
-                <info.icon className="w-6 h-6 text-primary mx-auto mb-2" />
+                <info.icon className="w-6 h-6 text-brand mx-auto mb-2" />
                 <p className="font-medium text-sm">{info.title}</p>
                 {info.link ? (
-                  <a href={info.link} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a href={info.link} className="text-sm text-muted-foreground hover:text-brand transition-colors">
                     {info.value}
                   </a>
                 ) : (

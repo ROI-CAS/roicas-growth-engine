@@ -107,13 +107,13 @@ const AutomatizacionIA = () => {
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 gradient-mesh-warm relative overflow-hidden">
         <div className="section-container relative z-10">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 border border-primary/20">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold mb-6 border border-brand/20">
               <Bot size={14} />
               Automatización con IA
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Tu equipo comercial trabaja.{" "}
-              <span className="text-primary">La IA no descansa.</span>
+              <span className="text-gradient-warm">La IA no descansa.</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Implementamos flujos inteligentes y agentes conversacionales con IA que
@@ -140,9 +140,9 @@ const AutomatizacionIA = () => {
       <section className="py-20 md:py-24 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               El tiempo de respuesta{" "}
-              <span className="text-muted-foreground">lo cambia todo</span>
+              <span className="text-gradient-warm">lo cambia todo</span>
             </h2>
             <p className="text-lg text-muted-foreground">
               El 78% de los clientes compra al primero que le responde.
@@ -156,7 +156,7 @@ const AutomatizacionIA = () => {
               { stat: "3×", desc: "más citas agendadas con seguimiento automatizado" },
             ].map((item) => (
               <div key={item.stat} className="card-dashboard p-6 text-center">
-                <p className="text-4xl font-black text-primary mb-2">{item.stat}</p>
+                <p className="text-4xl font-black text-brand mb-2">{item.stat}</p>
                 <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
@@ -168,9 +168,9 @@ const AutomatizacionIA = () => {
       <section className="py-20 md:py-28">
         <div className="section-container">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Qué hace la IA{" "}
-              <span className="text-muted-foreground">por tu negocio</span>
+              <span className="text-gradient-warm">por tu negocio</span>
             </h2>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -183,8 +183,8 @@ const AutomatizacionIA = () => {
                 transition={{ delay: i * 0.1 }}
                 className="card-dashboard p-8 flex gap-5"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                  <b.icon className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center shrink-0">
+                  <b.icon className="w-6 h-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2">{b.title}</h3>
@@ -200,9 +200,9 @@ const AutomatizacionIA = () => {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Casos de uso{" "}
-              <span className="text-muted-foreground">más comunes</span>
+              <span className="text-gradient-warm">más comunes</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Estos son los flujos que implementamos con mayor frecuencia.
@@ -219,8 +219,8 @@ const AutomatizacionIA = () => {
                 transition={{ delay: i * 0.08 }}
                 className="card-dashboard p-6"
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Bot size={18} className="text-primary" />
+                <div className="w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center mb-4">
+                  <Bot size={18} className="text-brand" />
                 </div>
                 <h3 className="font-bold mb-2">{uc.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{uc.desc}</p>
@@ -234,7 +234,7 @@ const AutomatizacionIA = () => {
       <section className="py-20 md:py-28">
         <div className="section-container max-w-3xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Preguntas frecuentes</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Preguntas frecuentes</h2>
           </motion.div>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
@@ -258,9 +258,9 @@ const AutomatizacionIA = () => {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               ¿Cuántos leads estás perdiendo{" "}
-              <span className="text-muted-foreground">por falta de seguimiento?</span>
+              <span className="text-gradient-warm">por falta de seguimiento?</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               En una llamada de 20 minutos diseñamos contigo el primer flujo

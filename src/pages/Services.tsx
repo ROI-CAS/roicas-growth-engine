@@ -200,12 +200,12 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+            <span className="inline-block px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-medium mb-6">
               Nuestros Servicios
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               Del primer clic{" "}
-              <span className="text-primary">al cliente cerrado</span>
+              <span className="text-gradient-warm">al cliente cerrado</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8">
               Construimos el sistema completo: captamos el lead, lo nutrimos,
@@ -248,7 +248,7 @@ const Services = () => {
                 animate={packagesInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
                 className={`card-dashboard p-8 relative flex flex-col ${
-                  pkg.highlight ? "ring-2 ring-primary/40 bg-primary/5 scale-[1.02]" : ""
+                  pkg.highlight ? "ring-2 ring-brand/40 bg-brand/5 -translate-y-1 shadow-lg" : ""
                 }`}
               >
                 {pkg.badge && (
@@ -261,14 +261,14 @@ const Services = () => {
                   <div
                     className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${
                       pkg.highlight
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-primary text-brand-foreground"
                         : "bg-accent text-accent-foreground"
                     }`}
                   >
                     <pkg.icon size={28} />
                   </div>
                   <h3 className="text-2xl font-bold mb-1">{pkg.title}</h3>
-                  <p className="text-sm font-semibold text-primary">{pkg.subtitle}</p>
+                  <p className="text-sm font-semibold text-brand">{pkg.subtitle}</p>
                 </div>
 
                 <p className="text-muted-foreground text-sm leading-relaxed mb-6">
@@ -278,14 +278,14 @@ const Services = () => {
                 <ul className="space-y-3 mb-8 flex-1">
                   {pkg.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                      <CheckCircle2 size={16} className="text-brand shrink-0 mt-0.5" />
                       <span className="text-muted-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mb-6 px-4 py-3 rounded-lg bg-primary/10 border border-primary/20">
-                  <p className="text-xs font-semibold text-primary text-center">
+                <div className="mb-6 px-4 py-3 rounded-lg bg-brand/10 border border-brand/20">
+                  <p className="text-xs font-semibold text-brand text-center">
                     {pkg.promise}
                   </p>
                 </div>
@@ -307,7 +307,7 @@ const Services = () => {
 
           <p className="text-center text-sm text-muted-foreground mt-8">
             ¿No sabes cuál es el tuyo?{" "}
-            <a href="/contacto" className="text-primary font-medium hover:underline">
+            <a href="/contacto" className="text-brand font-medium hover:underline">
               Hablamos y te lo decimos sin compromiso.
             </a>
           </p>
@@ -340,7 +340,7 @@ const Services = () => {
                 animate={servicesInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.08 * (index + 1) }}
                 className={`card-dashboard p-8 relative ${
-                  service.highlight ? "ring-2 ring-primary/30 bg-primary/5" : ""
+                  service.highlight ? "ring-2 ring-brand/30 bg-brand/5" : ""
                 }`}
               >
                 {service.highlight && (
@@ -353,14 +353,14 @@ const Services = () => {
                   <div
                     className={`w-14 h-14 rounded-xl flex items-center justify-center shrink-0 ${
                       service.highlight
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-primary/10 text-primary"
+                        ? "bg-primary text-brand-foreground"
+                        : "bg-brand/10 text-brand"
                     }`}
                   >
                     <service.icon size={28} />
                   </div>
                   <div>
-                    <h2 className="text-xl lg:text-2xl font-bold text-primary">
+                    <h2 className="text-xl lg:text-2xl font-bold">
                       {service.title}
                     </h2>
                     <p className="text-muted-foreground font-medium text-sm">
@@ -376,7 +376,7 @@ const Services = () => {
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                      <CheckCircle2 size={16} className="text-brand shrink-0 mt-0.5" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -404,9 +404,9 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-2xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               ¿No sabes por dónde{" "}
-              <span className="text-muted-foreground">empezar</span>?
+              <span className="text-gradient-warm">empezar</span>?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               Es normal. Cada negocio es diferente. Cuéntanos sobre el tuyo y

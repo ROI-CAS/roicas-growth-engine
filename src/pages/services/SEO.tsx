@@ -101,13 +101,13 @@ const SEO = () => {
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 gradient-mesh-warm relative overflow-hidden">
         <div className="section-container relative z-10">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 border border-primary/20">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold mb-6 border border-brand/20">
               <Search size={14} />
               SEO
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Aparece primero cuando{" "}
-              <span className="text-primary">tu cliente ideal</span>{" "}
+              <span className="text-gradient-warm">tu cliente ideal</span>{" "}
               está buscando
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -134,9 +134,9 @@ const SEO = () => {
       <section className="py-20 md:py-24 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               El canal con{" "}
-              <span className="text-muted-foreground">mayor ROI a largo plazo</span>
+              <span className="text-gradient-warm">mayor ROI a largo plazo</span>
             </h2>
             <p className="text-lg text-muted-foreground">
               El 93% de las experiencias online empiezan con una búsqueda.
@@ -150,7 +150,7 @@ const SEO = () => {
               { stat: "14×", desc: "mayor ROI vs publicidad outbound" },
             ].map((item) => (
               <div key={item.stat} className="card-dashboard p-6 text-center">
-                <p className="text-4xl font-black text-primary mb-2">{item.stat}</p>
+                <p className="text-4xl font-black text-brand mb-2">{item.stat}</p>
                 <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
@@ -162,9 +162,9 @@ const SEO = () => {
       <section className="py-20 md:py-28">
         <div className="section-container">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Por qué el SEO{" "}
-              <span className="text-muted-foreground">es diferente</span>
+              <span className="text-gradient-warm">es diferente</span>
             </h2>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -177,8 +177,8 @@ const SEO = () => {
                 transition={{ delay: i * 0.1 }}
                 className="card-dashboard p-8 flex gap-5"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                  <b.icon className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center shrink-0">
+                  <b.icon className="w-6 h-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2">{b.title}</h3>
@@ -194,9 +194,9 @@ const SEO = () => {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Cómo trabajamos{" "}
-              <span className="text-muted-foreground">el SEO</span>
+              <span className="text-gradient-warm">el SEO</span>
             </h2>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -222,7 +222,7 @@ const SEO = () => {
       <section className="py-20 md:py-28">
         <div className="section-container max-w-3xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Preguntas frecuentes</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Preguntas frecuentes</h2>
           </motion.div>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
@@ -246,9 +246,9 @@ const SEO = () => {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               ¿Quieres saber dónde{" "}
-              <span className="text-muted-foreground">está tu web ahora mismo?</span>
+              <span className="text-gradient-warm">está tu web ahora mismo?</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               Hacemos una auditoría básica gratuita de tu sitio en la llamada.

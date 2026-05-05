@@ -93,13 +93,13 @@ const TiendasOnline = () => {
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 gradient-mesh-warm relative overflow-hidden">
         <div className="section-container relative z-10">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 border border-primary/20">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold mb-6 border border-brand/20">
               <ShoppingCart size={14} />
               Tiendas Online
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Tu tienda vende{" "}
-              <span className="text-primary">mientras duermes.</span>{" "}
+              <span className="text-gradient-warm">mientras duermes.</span>{" "}
               La tuya no.
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -126,9 +126,9 @@ const TiendasOnline = () => {
       <section className="py-20 md:py-24 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               El 68% de los carritos{" "}
-              <span className="text-muted-foreground">se abandonan sin comprar</span>
+              <span className="text-gradient-warm">se abandonan sin comprar</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               Checkout confuso, métodos de pago limitados, sin confianza visual.
@@ -142,7 +142,7 @@ const TiendasOnline = () => {
                 { stat: "24/7", desc: "tu tienda trabaja sin parar" },
               ].map((item) => (
                 <div key={item.stat} className="card-dashboard p-6 text-center">
-                  <p className="text-4xl font-black text-primary mb-2">{item.stat}</p>
+                  <p className="text-4xl font-black text-brand mb-2">{item.stat}</p>
                   <p className="text-sm text-muted-foreground">{item.desc}</p>
                 </div>
               ))}
@@ -155,9 +155,9 @@ const TiendasOnline = () => {
       <section className="py-20 md:py-28">
         <div className="section-container">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Más que una tienda,{" "}
-              <span className="text-muted-foreground">una máquina de ventas</span>
+              <span className="text-gradient-warm">una máquina de ventas</span>
             </h2>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -170,8 +170,8 @@ const TiendasOnline = () => {
                 transition={{ delay: i * 0.1 }}
                 className="card-dashboard p-8 flex gap-5"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                  <b.icon className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center shrink-0">
+                  <b.icon className="w-6 h-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2">{b.title}</h3>
@@ -188,9 +188,9 @@ const TiendasOnline = () => {
         <div className="section-container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div {...fadeUp}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Todo lo que incluye{" "}
-                <span className="text-muted-foreground">tu tienda</span>
+                <span className="text-gradient-warm">tu tienda</span>
               </h2>
               <p className="text-muted-foreground mb-8">
                 Sin módulos de pago adicionales ni sorpresas al final. Un precio,
@@ -212,7 +212,7 @@ const TiendasOnline = () => {
               <ul className="space-y-3">
                 {includes.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm">
-                    <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                    <CheckCircle2 size={16} className="text-brand shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{item}</span>
                   </li>
                 ))}
@@ -226,7 +226,7 @@ const TiendasOnline = () => {
       <section className="py-20 md:py-28">
         <div className="section-container max-w-3xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Preguntas frecuentes</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Preguntas frecuentes</h2>
           </motion.div>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
@@ -250,9 +250,9 @@ const TiendasOnline = () => {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               ¿Listo para vender online{" "}
-              <span className="text-muted-foreground">sin complicaciones?</span>
+              <span className="text-gradient-warm">sin complicaciones?</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               Una llamada de 20 minutos es suficiente para saber qué necesitas

@@ -55,9 +55,9 @@ const LeadMagnetSection = () => {
               initial={{ scale: 0 }}
               animate={isInView ? { scale: 1 } : {}}
               transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-              className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6"
+              className="w-20 h-20 rounded-2xl bg-brand/10 flex items-center justify-center mx-auto mb-6"
             >
-              <FileText className="w-10 h-10 text-primary" />
+              <FileText className="w-10 h-10 text-brand" />
             </motion.div>
 
             <h2 className="text-2xl md:text-3xl font-bold mb-4">

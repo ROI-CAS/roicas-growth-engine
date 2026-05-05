@@ -91,15 +91,15 @@ const ExitIntentPopup = () => {
 
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs">✓</span>
+                    <span className="w-5 h-5 rounded-full bg-brand/10 text-brand flex items-center justify-center text-xs">✓</span>
                     Análisis de tu embudo de ventas actual
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs">✓</span>
+                    <span className="w-5 h-5 rounded-full bg-brand/10 text-brand flex items-center justify-center text-xs">✓</span>
                     Identificación de oportunidades de mejora
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs">✓</span>
+                    <span className="w-5 h-5 rounded-full bg-brand/10 text-brand flex items-center justify-center text-xs">✓</span>
                     Plan de acción personalizado
                   </li>
                 </ul>

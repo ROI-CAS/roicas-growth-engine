@@ -75,10 +75,10 @@ const AboutUs = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="max-w-4xl mx-auto text-center"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+            <span className="inline-block px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-medium mb-6">
               Conoce a ROICAS
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Detrás de cada estrategia hay{" "}
               <span className="text-muted-foreground">personas que se involucran</span>
             </h1>
@@ -103,9 +103,9 @@ const AboutUs = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Creemos en hacer las cosas{" "}
-                <span className="text-muted-foreground">de otra manera</span>
+                <span className="text-gradient-warm">de otra manera</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
                 En ROICAS no perseguimos métricas de vanidad. No te vamos a mostrar 
@@ -125,8 +125,8 @@ const AboutUs = () => {
               className="card-dashboard p-8 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full" />
-              <Heart className="w-12 h-12 text-primary mb-4" />
-              <h3 className="text-2xl font-bold mb-2 text-primary">Compromiso Real</h3>
+              <Heart className="w-12 h-12 text-brand mb-4" />
+              <h3 className="text-2xl font-bold mb-2 text-brand">Compromiso Real</h3>
               <p className="text-muted-foreground">
                 Cuando dices que sí a trabajar con nosotros, te garantizamos una cosa: 
                 nos vamos a involucrar como si tu negocio fuera el nuestro. Porque en parte, lo es.
@@ -146,9 +146,9 @@ const AboutUs = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Lo que nos{" "}
-              <span className="text-muted-foreground">define</span>
+              <span className="text-gradient-warm">define</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               No son solo palabras bonitas. Son los principios que guían cada decisión que tomamos.
@@ -165,9 +165,9 @@ const AboutUs = () => {
                 className="card-dashboard text-center group"
               >
                 <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/10 to-muted flex items-center justify-center group-hover:from-primary/20 transition-colors">
-                  <value.icon className="w-7 h-7 text-primary" />
+                  <value.icon className="w-7 h-7 text-brand" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-primary">{value.title}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-brand">{value.title}</h3>
                 <p className="text-muted-foreground text-sm">{value.description}</p>
               </motion.div>
             ))}
@@ -184,9 +184,9 @@ const AboutUs = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Empresas que{" "}
-              <span className="text-muted-foreground">confían en nosotros</span>
+              <span className="text-gradient-warm">confían en nosotros</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Cada proyecto es una historia de colaboración y resultados compartidos.
@@ -230,9 +230,9 @@ const AboutUs = () => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               ¿Quieres saber si podemos{" "}
-              <span className="text-muted-foreground">ayudarte</span>?
+              <span className="text-gradient-warm">ayudarte</span>?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               No hacemos propuestas genéricas. Cuéntanos sobre tu negocio y te diremos 

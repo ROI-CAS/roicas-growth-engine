@@ -26,7 +26,7 @@ const ContactSection = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand">
                 ¿Listo para dar el{" "}
                 <span className="text-gradient-warm">siguiente paso</span>?
               </h2>
@@ -40,8 +40,8 @@ const ContactSection = () => {
               <div className="space-y-4">
                 {benefits.map((benefit) => (
                   <div key={benefit.text} className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/10 to-accent flex items-center justify-center">
-                      <benefit.icon size={20} className="text-primary" />
+                    <div className="w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center">
+                      <benefit.icon size={20} className="text-brand" />
                     </div>
                     <span className="font-medium">{benefit.text}</span>
                   </div>

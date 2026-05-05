@@ -189,7 +189,7 @@ const SuccessStoriesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Empresas como la tuya{" "}
             <span className="text-gradient-warm">ya lo consiguieron</span>
           </h2>
@@ -222,7 +222,7 @@ const SuccessStoriesSection = () => {
               </div>
 
               <div>
-                <p className="text-3xl font-black text-primary leading-none">
+                <p className="text-3xl font-black text-brand leading-none">
                   <AnimatedCounter
                     end={stat.value}
                     suffix={stat.suffix}
@@ -268,7 +268,7 @@ const SuccessStoriesSection = () => {
               <div className="grid grid-cols-3 gap-3 mb-5">
                 {story.metrics.map((metric) => (
                   <div key={metric.label} className="text-center p-3 rounded-xl bg-background/70 backdrop-blur-sm">
-                    <p className="text-xl font-bold text-primary">
+                    <p className="text-xl font-bold text-brand">
                       <AnimatedCounter
                         end={metric.value}
                         prefix={metric.prefix}
@@ -331,7 +331,7 @@ const SuccessStoriesSection = () => {
           </p>
           <a
             href="/contacto"
-            className="inline-flex items-center gap-2 text-primary font-semibold hover:underline text-sm group"
+            className="inline-flex items-center gap-2 text-brand font-semibold hover:underline text-sm group"
           >
             Cuéntanos sobre tu negocio
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

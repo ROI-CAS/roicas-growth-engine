@@ -26,7 +26,7 @@ const packages = [
   },
   {
     icon: TrendingUp,
-    bg: "bg-primary",
+    bg: "bg-brand",
     title: "Sistema de Crecimiento",
     subtitle: "Más leads, mejor calidad",
     description:
@@ -78,9 +78,9 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Un sistema completo,{" "}
-            <span className="text-muted-foreground">tres niveles de crecimiento</span>
+            <span className="text-gradient-warm">tres niveles de crecimiento</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             No vendemos servicios sueltos. Construimos el sistema que lleva a tu cliente
@@ -98,7 +98,7 @@ const ServicesSection = () => {
               transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
               className={`card-dashboard p-8 relative flex flex-col ${
                 pkg.highlight
-                  ? "ring-2 ring-primary/40 bg-primary/5 scale-[1.02]"
+                  ? "ring-2 ring-brand/40 bg-brand/5 -translate-y-1 shadow-lg"
                   : ""
               }`}
             >
@@ -119,7 +119,7 @@ const ServicesSection = () => {
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold mb-1">{pkg.title}</h3>
-                <p className="text-sm font-semibold text-primary">{pkg.subtitle}</p>
+                <p className="text-sm font-semibold text-brand">{pkg.subtitle}</p>
               </div>
 
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
@@ -132,7 +132,7 @@ const ServicesSection = () => {
                   <li key={feature} className="flex items-start gap-2 text-sm">
                     <CheckCircle2
                       size={16}
-                      className="text-primary shrink-0 mt-0.5"
+                      className="text-brand shrink-0 mt-0.5"
                     />
                     <span className="text-muted-foreground">{feature}</span>
                   </li>
@@ -140,8 +140,8 @@ const ServicesSection = () => {
               </ul>
 
               {/* Promise */}
-              <div className="mb-6 px-4 py-3 rounded-lg bg-primary/10 border border-primary/20">
-                <p className="text-xs font-semibold text-primary text-center">
+              <div className="mb-6 px-4 py-3 rounded-lg bg-brand/10 border border-brand/20">
+                <p className="text-xs font-semibold text-brand text-center">
                   {pkg.promise}
                 </p>
               </div>
@@ -172,7 +172,7 @@ const ServicesSection = () => {
           className="text-center text-sm text-muted-foreground mt-8"
         >
           ¿No sabes cuál es el tuyo?{" "}
-          <a href="/contacto" className="text-primary font-medium hover:underline">
+          <a href="/contacto" className="text-brand font-medium hover:underline">
             Hablamos y te lo decimos sin compromiso.
           </a>
         </motion.p>

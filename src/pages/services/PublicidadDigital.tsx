@@ -93,13 +93,13 @@ const PublicidadDigital = () => {
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 gradient-mesh-warm relative overflow-hidden">
         <div className="section-container relative z-10">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 border border-primary/20">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold mb-6 border border-brand/20">
               <Megaphone size={14} />
               Publicidad Digital
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Cada peso invertido{" "}
-              <span className="text-primary">tiene que traer resultados.</span>
+              <span className="text-gradient-warm">tiene que traer resultados.</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Gestionamos campañas en Google Ads y Meta Ads con una sola obsesión:
@@ -125,9 +125,9 @@ const PublicidadDigital = () => {
       <section className="py-20 md:py-24 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               La publicidad que funciona{" "}
-              <span className="text-muted-foreground">no es cuestión de suerte</span>
+              <span className="text-gradient-warm">no es cuestión de suerte</span>
             </h2>
             <p className="text-lg text-muted-foreground">
               La mayoría de empresas pierde dinero en publicidad digital porque no tiene
@@ -141,7 +141,7 @@ const PublicidadDigital = () => {
               { stat: "48h", desc: "para tener tus campañas activas y generando" },
             ].map((item) => (
               <div key={item.stat} className="card-dashboard p-6 text-center">
-                <p className="text-4xl font-black text-primary mb-2">{item.stat}</p>
+                <p className="text-4xl font-black text-brand mb-2">{item.stat}</p>
                 <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
@@ -153,9 +153,9 @@ const PublicidadDigital = () => {
       <section className="py-20 md:py-28">
         <div className="section-container">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Cómo gestionamos{" "}
-              <span className="text-muted-foreground">tu publicidad</span>
+              <span className="text-gradient-warm">tu publicidad</span>
             </h2>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -168,8 +168,8 @@ const PublicidadDigital = () => {
                 transition={{ delay: i * 0.1 }}
                 className="card-dashboard p-8 flex gap-5"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                  <b.icon className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center shrink-0">
+                  <b.icon className="w-6 h-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2">{b.title}</h3>
@@ -185,9 +185,9 @@ const PublicidadDigital = () => {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Las plataformas que{" "}
-              <span className="text-muted-foreground">dominamos</span>
+              <span className="text-gradient-warm">dominamos</span>
             </h2>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
@@ -200,12 +200,12 @@ const PublicidadDigital = () => {
                 transition={{ delay: i * 0.1 }}
                 className="card-dashboard p-8"
               >
-                <h3 className="text-xl font-bold mb-2 text-primary">{p.name}</h3>
+                <h3 className="text-xl font-bold mb-4">{p.name}</h3>
                 <p className="text-sm text-muted-foreground mb-4">{p.desc}</p>
                 <ul className="space-y-2">
                   {p.items.map((item) => (
                     <li key={item} className="flex items-center gap-2 text-sm">
-                      <CheckCircle2 size={14} className="text-primary shrink-0" />
+                      <CheckCircle2 size={14} className="text-brand shrink-0" />
                       <span className="text-muted-foreground">{item}</span>
                     </li>
                   ))}
@@ -220,7 +220,7 @@ const PublicidadDigital = () => {
       <section className="py-20 md:py-28">
         <div className="section-container max-w-3xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Preguntas frecuentes</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Preguntas frecuentes</h2>
           </motion.div>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
@@ -244,9 +244,9 @@ const PublicidadDigital = () => {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               ¿Cuánto estás perdiendo{" "}
-              <span className="text-muted-foreground">sin publicidad optimizada?</span>
+              <span className="text-gradient-warm">sin publicidad optimizada?</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               En una llamada de 20 minutos revisamos tu situación actual y te decimos

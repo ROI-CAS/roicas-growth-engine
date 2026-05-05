@@ -96,13 +96,13 @@ const DisenoWeb = () => {
             {...fadeUp}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 border border-primary/20">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold mb-6 border border-brand/20">
               <Globe size={14} />
               Diseño Web
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Tu web tiene que{" "}
-              <span className="text-primary">conseguir clientes,</span>{" "}
+              <span className="text-gradient-warm">conseguir clientes,</span>{" "}
               no solo existir
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -129,9 +129,9 @@ const DisenoWeb = () => {
       <section className="py-20 md:py-24 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               La mayoría de webs fallan{" "}
-              <span className="text-muted-foreground">antes de empezar</span>
+              <span className="text-gradient-warm">antes de empezar</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               Una web sin estrategia es solo un gasto. Tarda en cargar, nadie sabe qué ofreces
@@ -145,7 +145,7 @@ const DisenoWeb = () => {
                 { stat: "75%", desc: "de credibilidad percibida viene del diseño web" },
               ].map((item) => (
                 <div key={item.stat} className="card-dashboard p-6 text-center">
-                  <p className="text-4xl font-black text-primary mb-2">{item.stat}</p>
+                  <p className="text-4xl font-black text-brand mb-2">{item.stat}</p>
                   <p className="text-sm text-muted-foreground">{item.desc}</p>
                 </div>
               ))}
@@ -158,9 +158,9 @@ const DisenoWeb = () => {
       <section className="py-20 md:py-28">
         <div className="section-container">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Cómo construimos{" "}
-              <span className="text-muted-foreground">webs que funcionan</span>
+              <span className="text-gradient-warm">webs que funcionan</span>
             </h2>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -173,8 +173,8 @@ const DisenoWeb = () => {
                 transition={{ delay: i * 0.1 }}
                 className="card-dashboard p-8 flex gap-5"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                  <b.icon className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center shrink-0">
+                  <b.icon className="w-6 h-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2">{b.title}</h3>
@@ -191,9 +191,9 @@ const DisenoWeb = () => {
         <div className="section-container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div {...fadeUp}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Qué incluye{" "}
-                <span className="text-muted-foreground">tu nuevo sitio web</span>
+                <span className="text-gradient-warm">tu nuevo sitio web</span>
               </h2>
               <p className="text-muted-foreground mb-8">
                 Nada de sorpresas ni extras ocultos. Esto es lo que recibes
@@ -215,7 +215,7 @@ const DisenoWeb = () => {
               <ul className="space-y-3">
                 {includes.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm">
-                    <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                    <CheckCircle2 size={16} className="text-brand shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{item}</span>
                   </li>
                 ))}
@@ -229,7 +229,7 @@ const DisenoWeb = () => {
       <section className="py-20 md:py-28">
         <div className="section-container max-w-3xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold">
               Preguntas frecuentes
             </h2>
           </motion.div>
@@ -255,9 +255,9 @@ const DisenoWeb = () => {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="section-container">
           <motion.div {...fadeUp} className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               ¿Listo para una web que{" "}
-              <span className="text-muted-foreground">trabaja para ti?</span>
+              <span className="text-gradient-warm">trabaja para ti?</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               Cuéntanos tu proyecto en una llamada de 20 minutos.
