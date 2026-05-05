@@ -37,7 +37,7 @@ const HeroSection = () => {
       />
 
       <div className="section-container py-16 md:py-24 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[1fr_1.25fr] gap-12 lg:gap-16 items-center">
 
           {/* ── Left Content ── */}
           <motion.div

@@ -24,7 +24,7 @@ const features = [
   },
   {
     icon: Shield,
-    bg: "bg-violet-500",
+    bg: "bg-zinc-700",
     title: "Sin permanencias",
     description: "nos quedamos porque funciona, no por contrato",
   },

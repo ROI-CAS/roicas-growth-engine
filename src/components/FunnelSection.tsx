@@ -9,23 +9,21 @@ const TROPHY_URL = "https://assets2.lottiefiles.com/packages/lf20_touohxv0.json"
 
 const sources = [
   { icon: Search, label: "Google Ads", color: "bg-amber-500" },
-  { icon: Facebook, label: "Facebook", color: "bg-blue-600" },
+  { icon: Facebook, label: "Facebook", color: "bg-rose-600" },
   { icon: Instagram, label: "Instagram", color: "bg-pink-500" },
-  { icon: Linkedin, label: "LinkedIn", color: "bg-blue-700" },
+  { icon: Linkedin, label: "LinkedIn", color: "bg-zinc-600" },
   { icon: Mail, label: "Email", color: "bg-emerald-500" },
-  { icon: Phone, label: "Teléfono", color: "bg-slate-400" },
+  { icon: Phone, label: "Teléfono", color: "bg-slate-500" },
 ];
 
-// topOff / botOff = left (and right) margin % of the bar container
-// top of stage[i] must equal bottom of stage[i-1]
 const funnelStages = [
-  { icon: Users,     label: "Leads Captados",     value: 4827, pct: 100,  topOff: 0,  botOff: 14, gradient: "linear-gradient(to bottom, #3b82f6, #4338ca)", bg: "bg-blue-500" },
+  { icon: Users,     label: "Leads Captados",     value: 4827, pct: 100,  topOff: 0,  botOff: 14, gradient: "linear-gradient(to bottom, hsl(2 88% 44%), hsl(2 88% 34%))",    bg: "bg-brand" },
   { icon: Target,    label: "Leads Cualificados",  value: 1014, pct: 21,   topOff: 14, botOff: 27, gradient: "linear-gradient(to bottom, #34d399, #0f766e)", bg: "bg-emerald-500" },
   { icon: Calendar,  label: "Citas Agendadas",     value: 289,  pct: 6,    topOff: 27, botOff: 37, gradient: "linear-gradient(to bottom, #fbbf24, #ea580c)", bg: "bg-amber-500" },
   { icon: Handshake, label: "Clientes Cerrados",   value: 87,   pct: 1.8,  topOff: 37, botOff: 43, gradient: "linear-gradient(to bottom, #f87171, #be185d)", bg: "bg-rose-500" },
 ];
 
-const ROW_H = 88; // px per funnel stage
+const ROW_H = 88;
 
 const FunnelSection = () => {
   const ref = useRef(null);
@@ -40,13 +38,22 @@ const FunnelSection = () => {
   }, []);
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950">
+    <section className="py-20 md:py-28 relative overflow-hidden bg-[#080808]">
       {/* Background glow orbs */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/8 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/3 rounded-full blur-3xl" />
       </div>
+
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
 
       <div className="section-container relative z-10">
         {/* Header */}
@@ -69,11 +76,11 @@ const FunnelSection = () => {
           )}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
             Así convertimos{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+            <span className="text-brand">
               visitas en clientes
             </span>
           </h2>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+          <p className="text-lg text-white/55 max-w-2xl mx-auto">
             No importa de dónde lleguen tus leads. Nuestro sistema los captura,
             los cualifica y los acompaña hasta que estén listos para hablar contigo.
           </p>
@@ -92,12 +99,12 @@ const FunnelSection = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: 0.1 + index * 0.06 }}
-              className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm hover:bg-white/10 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm hover:bg-white/8 transition-colors"
             >
               <div className={`w-6 h-6 rounded-full ${source.color} flex items-center justify-center`}>
                 <source.icon size={12} className="text-white" />
               </div>
-              <span className="text-sm font-medium text-slate-200">{source.label}</span>
+              <span className="text-sm font-medium text-white/70">{source.label}</span>
             </motion.div>
           ))}
         </motion.div>
@@ -116,7 +123,7 @@ const FunnelSection = () => {
                 animate={{ y: [0, 8, 0], opacity: [0.3, 1, 0.3] }}
                 transition={{ duration: 1, repeat: Infinity, delay: i * 0.1, ease: "easeInOut" }}
               >
-                <ArrowDown className="w-5 h-5 text-blue-400/60" />
+                <ArrowDown className="w-5 h-5 text-brand/50" />
               </motion.div>
             ))}
           </div>
@@ -189,7 +196,7 @@ const FunnelSection = () => {
                 <p className="text-xl md:text-2xl font-black text-white leading-none">
                   <AnimatedCounter end={stage.value} />
                 </p>
-                <p className="text-xs text-slate-400 mt-0.5">{stage.pct}%</p>
+                <p className="text-xs text-white/40 mt-0.5">{stage.pct}%</p>
               </div>
             </motion.div>
           ))}
@@ -213,11 +220,11 @@ const FunnelSection = () => {
           transition={{ duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl mx-auto"
         >
-          <div className="relative p-8 md:p-10 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 backdrop-blur-md shadow-2xl overflow-hidden">
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative p-8 md:p-10 rounded-3xl bg-white/5 border border-white/12 backdrop-blur-md shadow-2xl overflow-hidden">
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-brand/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-brand/8 rounded-full blur-3xl pointer-events-none" />
             <div className="relative z-10 text-center">
-              <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mb-5">
+              <p className="text-white/40 text-xs font-bold uppercase tracking-widest mb-5">
                 Resultado Final del Sistema
               </p>
               <div className="flex items-baseline justify-center gap-1 mb-3">
@@ -227,8 +234,8 @@ const FunnelSection = () => {
                 </span>
                 <span className="text-3xl md:text-4xl font-black text-white">K+</span>
               </div>
-              <p className="text-slate-300 text-base mb-6">En ventas cerradas por clientes del sistema</p>
-              <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500/20 border border-emerald-400/30">
+              <p className="text-white/55 text-base mb-6">En ventas cerradas por clientes del sistema</p>
+              <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500/15 border border-emerald-400/25">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-emerald-300 font-bold text-lg">
                   ROI promedio: <AnimatedCounter end={9} />x

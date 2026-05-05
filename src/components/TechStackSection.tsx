@@ -9,14 +9,14 @@ const steps = [
     title: "Atracción",
     description: "Llevamos tráfico cualificado a tu negocio mediante Google Ads, Meta Ads y posicionamiento orgánico en buscadores.",
     icon: Megaphone,
-    bg: "bg-blue-500",
+    bg: "bg-brand",
   },
   {
     number: "02",
     title: "Captación",
     description: "Páginas de captura optimizadas que convierten visitas en contactos y los registran automáticamente en tu sistema.",
     icon: MousePointerClick,
-    bg: "bg-primary",
+    bg: "bg-zinc-600",
   },
   {
     number: "03",
@@ -37,7 +37,7 @@ const steps = [
     title: "Entrega al Comercial",
     description: "Tu equipo recibe la notificación con la ficha completa del lead y la cita ya agendada. Solo queda cerrar.",
     icon: Handshake,
-    bg: "bg-violet-500",
+    bg: "bg-zinc-600",
   },
 ];
 
@@ -68,7 +68,7 @@ const TechStackSection = () => {
         {/* Desktop: horizontal pipeline */}
         <div className="hidden lg:flex items-start gap-0 relative">
           {/* Connector line */}
-          <div className="absolute top-10 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-blue-500/30 via-primary/40 to-purple-500/30" />
+          <div className="absolute top-10 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-brand/20 via-brand/40 to-brand/10" />
 
           {steps.map((step, index) => (
             <motion.div
@@ -131,9 +131,9 @@ const TechStackSection = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-14 text-center"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/10 border border-primary/20">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <p className="text-sm font-medium text-primary">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-brand/10 border border-brand/20">
+            <span className="w-2 h-2 rounded-full bg-brand animate-pulse" />
+            <p className="text-sm font-medium text-brand">
               Resultado: tu equipo comercial solo habla con leads cualificados y con cita agendada
             </p>
           </div>

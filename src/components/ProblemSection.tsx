@@ -19,7 +19,7 @@ const ProblemSection = () => {
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Sabemos lo que sientes cuando{" "}
-            <span className="text-gradient">inviertes sin ver resultados</span>
+            <span className="text-gradient-warm">inviertes sin ver resultados</span>
           </h2>
 
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
@@ -99,7 +99,7 @@ const ProblemSection = () => {
             className="mt-10 text-lg font-medium text-foreground"
           >
             Tu éxito es nuestro éxito.{" "}
-            <span className="text-primary">
+            <span className="text-brand">
               Por eso nos implicamos como parte de tu equipo
             </span>
             .

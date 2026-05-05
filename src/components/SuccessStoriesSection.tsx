@@ -9,8 +9,8 @@ import seoCase02 from "@/assets/results/seo-case-02.png";
 import seoCase03 from "@/assets/results/seo-case-03.png";
 
 const aggregateStats = [
-  { value: 85.6, suffix: "K", label: "Impresiones orgánicas/mes", icon: TrendingUp, color: "from-blue-500 to-indigo-600", bg: "bg-blue-500" },
-  { value: 342, label: "Keywords en top 3", icon: Search, color: "from-violet-500 to-purple-600", bg: "bg-violet-500" },
+  { value: 85.6, suffix: "K", label: "Impresiones orgánicas/mes", icon: TrendingUp, color: "from-brand to-rose-700", bg: "bg-brand" },
+  { value: 342, label: "Keywords en top 3", icon: Search, color: "from-zinc-500 to-zinc-700", bg: "bg-zinc-600" },
   { value: 1882, label: "Leads generados", icon: Users, color: "from-emerald-500 to-teal-600", bg: "bg-emerald-500" },
   { value: 40, suffix: "%", label: "Reducción coste por lead", icon: Percent, color: "from-amber-500 to-orange-500", bg: "bg-amber-500" },
 ];
@@ -67,10 +67,10 @@ const successStories: SuccessStory[] = [
     sector: "B2B / Servicios",
     icon: Building2,
     period: "4 meses",
-    color: "from-primary/10 to-primary/5",
-    iconBg: "bg-primary",
+    color: "from-brand/10 to-brand/5",
+    iconBg: "bg-brand",
     iconColor: "text-white",
-    badge: "bg-blue-100 text-blue-700",
+    badge: "bg-brand/10 text-brand",
     metrics: [
       { value: 340, prefix: "+", suffix: "%", label: "Leads Cualificados" },
       { value: 45, suffix: "%", label: "Tasa de Conversión" },
@@ -84,10 +84,10 @@ const successStories: SuccessStory[] = [
     sector: "SEO Orgánico",
     icon: Search,
     period: "7 meses",
-    color: "from-violet-500/10 to-violet-600/5",
-    iconBg: "bg-violet-500",
+    color: "from-zinc-500/10 to-zinc-600/5",
+    iconBg: "bg-zinc-600",
     iconColor: "text-white",
-    badge: "bg-violet-100 text-violet-700",
+    badge: "bg-zinc-100 text-zinc-700",
     metrics: [
       { value: 342, label: "Keywords Top 3" },
       { value: 85.6, suffix: "K", label: "Impresiones/mes" },
@@ -191,7 +191,7 @@ const SuccessStoriesSection = () => {
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-primary">
             Empresas como la tuya{" "}
-            <span className="text-muted-foreground">ya lo consiguieron</span>
+            <span className="text-gradient-warm">ya lo consiguieron</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Números reales, empresas reales. Sin filtros.

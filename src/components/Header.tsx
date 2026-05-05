@@ -12,7 +12,7 @@ const serviceItems = [
     label: "Diseño Web",
     description: "Sitios WordPress de alta conversión",
     icon: Globe,
-    bg: "bg-blue-500",
+    bg: "bg-brand",
   },
   {
     href: "/servicios/tiendas-online",
@@ -40,7 +40,7 @@ const serviceItems = [
     label: "Automatización con IA",
     description: "Flujos inteligentes y bots que convierten",
     icon: Bot,
-    bg: "bg-violet-500",
+    bg: "bg-zinc-600",
   },
 ];
 
@@ -159,13 +159,6 @@ const Header = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
           </nav>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button variant="default" size="default" className="rounded-full px-6 font-semibold" asChild>
-              <a href="/contacto">Quiero mi web</a>
-            </Button>
-          </div>
 
           {/* Mobile Menu Button */}
           <button

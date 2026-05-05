@@ -45,7 +45,7 @@ const packages = [
   },
   {
     icon: Rocket,
-    bg: "bg-violet-500",
+    bg: "bg-zinc-600",
     title: "Sistema 360°",
     subtitle: "Escala sin contratar más",
     description:
