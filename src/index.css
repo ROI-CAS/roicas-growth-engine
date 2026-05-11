@@ -21,7 +21,8 @@
     --primary-foreground: 0 0% 100%;
 
     /* Brand Red — identidad ROICAS, acentos, CTA en oscuro */
-    --brand: 2 88% 44%;
+    --brand: 354 70% 40%;
+    --brand-hover: 354 75% 32%;
     --brand-foreground: 0 0% 100%;
 
     --secondary: 40 15% 93%;
@@ -38,7 +39,7 @@
 
     --border: 40 12% 88%;
     --input: 40 12% 88%;
-    --ring: 2 88% 44%;              /* brand red ring */
+    --ring: 354 70% 40%;            /* brand red ring */
 
     --radius: 0.75rem;
 
@@ -46,11 +47,11 @@
     --success: 158 64% 38%;
     --success-foreground: 0 0% 100%;
 
-    --warm: 2 88% 44%;
+    --warm: 354 70% 40%;
     --warm-foreground: 0 0% 100%;
 
     /* Chart Colors — rojo como primario */
-    --chart-blue: 2 88% 44%;
+    --chart-blue: 354 70% 40%;
     --chart-green: 158 64% 38%;
     --chart-orange: 25 95% 53%;
     --chart-purple: 262 83% 58%;
@@ -59,8 +60,8 @@
     /* Shadows */
     --shadow-card: 0 1px 3px 0 hsl(220 15% 10% / 0.07), 0 1px 2px -1px hsl(220 15% 10% / 0.04);
     --shadow-card-hover: 0 12px 28px -4px hsl(220 15% 10% / 0.12), 0 4px 8px -4px hsl(220 15% 10% / 0.06);
-    --shadow-button: 0 4px 18px 0 hsl(2 88% 44% / 0.40);
-    --shadow-brand: 0 4px 18px 0 hsl(2 88% 44% / 0.35);
+    --shadow-button: 0 4px 18px 0 hsl(354 70% 40% / 0.40);
+    --shadow-brand: 0 4px 18px 0 hsl(354 70% 40% / 0.35);
 
     /* Sidebar */
     --sidebar-background: 40 15% 96%;
@@ -85,7 +86,8 @@
 
     --primary: 220 10% 14%;
     --primary-foreground: 0 0% 100%;
-    --brand: 2 88% 55%;
+    --brand: 354 70% 50%;
+    --brand-hover: 354 75% 40%;
     --brand-foreground: 0 0% 100%;
 
     --secondary: 220 15% 18%;
@@ -102,7 +104,7 @@
 
     --border: 220 15% 20%;
     --input: 220 15% 20%;
-    --ring: 2 88% 55%;
+    --ring: 354 70% 50%;
 
     --sidebar-background: 220 15% 8%;
     --sidebar-foreground: 210 12% 90%;
@@ -111,7 +113,7 @@
     --sidebar-accent: 220 12% 16%;
     --sidebar-accent-foreground: 210 12% 90%;
     --sidebar-border: 220 12% 18%;
-    --sidebar-ring: 2 88% 55%;
+    --sidebar-ring: 354 70% 50%;
   }
 }
 
@@ -149,7 +151,7 @@
   .card-dashboard:hover {
     box-shadow: var(--shadow-card-hover);
     transform: translateY(-3px);
-    border-color: hsl(2 88% 44% / 0.18);
+    border-color: hsl(354 70% 40% / 0.18);
   }
 
   .btn-primary-glow {
@@ -157,33 +159,33 @@
   }
 
   .btn-primary-glow:hover {
-    box-shadow: 0 6px 24px 0 hsl(2 88% 44% / 0.55);
+    box-shadow: 0 6px 24px 0 hsl(354 70% 40% / 0.55);
     transform: translateY(-1px) scale(1.02);
   }
 
   /* Gradient mesh — solo rojo, sin azul */
   .gradient-mesh {
     background:
-      radial-gradient(ellipse 80% 80% at 50% -20%, hsl(2 88% 44% / 0.08), transparent),
-      radial-gradient(ellipse 60% 60% at 100% 0%, hsl(2 88% 44% / 0.04), transparent);
+      radial-gradient(ellipse 80% 80% at 50% -20%, hsl(354 70% 40% / 0.08), transparent),
+      radial-gradient(ellipse 60% 60% at 100% 0%, hsl(354 70% 40% / 0.04), transparent);
   }
 
   /* Text gradients — rojo marca */
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(2 88% 44%) 0%, hsl(10 82% 54%) 100%);
+    background-image: linear-gradient(135deg, hsl(354 70% 40%) 0%, hsl(354 65% 52%) 100%);
   }
 
   .text-gradient-warm {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(2 88% 44%) 0%, hsl(2 88% 60%) 100%);
+    background-image: linear-gradient(135deg, hsl(354 70% 40%) 0%, hsl(354 70% 55%) 100%);
   }
 
   .gradient-mesh-warm {
     background:
-      radial-gradient(ellipse 90% 70% at 50% -10%, hsl(2 88% 44% / 0.07), transparent),
-      radial-gradient(ellipse 45% 50% at 98% 5%, hsl(2 88% 44% / 0.05), transparent),
-      radial-gradient(ellipse 35% 45% at 2% 55%, hsl(2 88% 44% / 0.03), transparent);
+      radial-gradient(ellipse 90% 70% at 50% -10%, hsl(354 70% 40% / 0.07), transparent),
+      radial-gradient(ellipse 45% 50% at 98% 5%, hsl(354 70% 40% / 0.05), transparent),
+      radial-gradient(ellipse 35% 45% at 2% 55%, hsl(354 70% 40% / 0.03), transparent);
   }
 }
 

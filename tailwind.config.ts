@@ -56,6 +56,7 @@ export default {
         },
         brand: {
           DEFAULT: "hsl(var(--brand))",
+          hover: "hsl(var(--brand-hover))",
           foreground: "hsl(var(--brand-foreground))",
         },
         chart: {

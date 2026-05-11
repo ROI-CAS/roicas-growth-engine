@@ -17,7 +17,7 @@ const sources = [
 ];
 
 const funnelStages = [
-  { icon: Users,     label: "Leads Captados",     value: 4827, pct: 100,  topOff: 0,  botOff: 14, gradient: "linear-gradient(to bottom, hsl(2 88% 44%), hsl(2 88% 34%))",    bg: "bg-brand" },
+  { icon: Users,     label: "Leads Captados",     value: 4827, pct: 100,  topOff: 0,  botOff: 14, gradient: "linear-gradient(to bottom, hsl(354 70% 40%), hsl(354 70% 30%))",    bg: "bg-brand" },
   { icon: Target,    label: "Leads Cualificados",  value: 1014, pct: 21,   topOff: 14, botOff: 27, gradient: "linear-gradient(to bottom, #34d399, #0f766e)", bg: "bg-emerald-500" },
   { icon: Calendar,  label: "Citas Agendadas",     value: 289,  pct: 6,    topOff: 27, botOff: 37, gradient: "linear-gradient(to bottom, #fbbf24, #ea580c)", bg: "bg-amber-500" },
   { icon: Handshake, label: "Clientes Cerrados",   value: 87,   pct: 1.8,  topOff: 37, botOff: 43, gradient: "linear-gradient(to bottom, #f87171, #be185d)", bg: "bg-rose-500" },

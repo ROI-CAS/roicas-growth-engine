@@ -21,9 +21,9 @@ const HeroSection = () => {
         transition={{ duration: 2 }}
       >
         <svg viewBox="0 0 420 900" fill="none" className="h-full w-auto opacity-20">
-          <path d="M 210 -50 Q 420 200 210 450 Q 0 700 210 950" stroke="hsl(2 88% 44%)" strokeWidth="2.5" fill="none" />
-          <path d="M 130 -50 Q 340 200 130 450 Q -80 700 130 950" stroke="hsl(2 88% 44%)" strokeWidth="1.2" fill="none" opacity="0.5" />
-          <path d="M 50 -50 Q 260 200 50 450 Q -160 700 50 950" stroke="hsl(2 88% 44%)" strokeWidth="0.6" fill="none" opacity="0.25" />
+          <path d="M 210 -50 Q 420 200 210 450 Q 0 700 210 950" stroke="hsl(354 70% 40%)" strokeWidth="2.5" fill="none" />
+          <path d="M 130 -50 Q 340 200 130 450 Q -80 700 130 950" stroke="hsl(354 70% 40%)" strokeWidth="1.2" fill="none" opacity="0.5" />
+          <path d="M 50 -50 Q 260 200 50 450 Q -160 700 50 950" stroke="hsl(354 70% 40%)" strokeWidth="0.6" fill="none" opacity="0.25" />
         </svg>
       </motion.div>
 
@@ -196,7 +196,7 @@ const HeroSection = () => {
               className="relative rounded-2xl overflow-hidden border border-white/10"
               style={{
                 boxShadow:
-                  "0 0 0 1px rgba(255,255,255,0.06), 0 30px 70px -15px rgba(0,0,0,0.95), 0 0 90px -20px hsl(2 88% 44% / 0.3)",
+                  "0 0 0 1px rgba(255,255,255,0.06), 0 30px 70px -15px rgba(0,0,0,0.95), 0 0 90px -20px hsl(354 70% 40% / 0.3)",
               }}
             >
               <img
