@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Calendar, Shield, Zap } from "lucide-react";
+import { Calendar, Shield, Zap, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useBooking } from "@/contexts/BookingContext";
 import ContactForm from "./ContactForm";
 
 const ContactSection = () => {
+  const { openBooking } = useBooking();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -46,6 +49,23 @@ const ContactSection = () => {
                     <span className="font-medium">{benefit.text}</span>
                   </div>
                 ))}
+              </div>
+
+              {/* Booking CTA */}
+              <div className="pt-2">
+                <Button
+                  variant="hero"
+                  size="lg"
+                  onClick={openBooking}
+                  className="cursor-pointer group"
+                >
+                  <Calendar size={18} className="mr-2" />
+                  Agendar llamada de 20 min
+                  <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                </Button>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  O completa el formulario y te contactamos hoy.
+                </p>
               </div>
             </div>
 

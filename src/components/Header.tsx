@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Globe, ShoppingCart, Search, Megaphone, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useBooking } from "@/contexts/BookingContext";
 import logo from "@/assets/logo-roicas.webp";
 
 const serviceItems = [
@@ -43,6 +44,7 @@ const serviceItems = [
 ];
 
 const Header = () => {
+  const { openBooking } = useBooking();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -153,8 +155,8 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex">
-            <Button variant="hero" size="default" asChild>
-              <a href="/contacto">Agendar Consultoría</a>
+            <Button variant="hero" size="default" onClick={openBooking} className="cursor-pointer">
+              Agendar Consultoría
             </Button>
           </div>
 
@@ -249,10 +251,13 @@ const Header = () => {
                 </a>
 
                 <div className="pt-2 px-3">
-                  <Button variant="hero" size="default" className="w-full" asChild>
-                    <a href="/contacto" onClick={() => setIsMenuOpen(false)}>
-                      Agendar Consultoría
-                    </a>
+                  <Button
+                    variant="hero"
+                    size="default"
+                    className="w-full cursor-pointer"
+                    onClick={() => { setIsMenuOpen(false); openBooking(); }}
+                  >
+                    Agendar Consultoría
                   </Button>
                 </div>
               </div>

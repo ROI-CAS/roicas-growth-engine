@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useBooking } from "@/contexts/BookingContext";
 import crmDashboard from "@/assets/crm-dashboard.png";
 import { trackCtaClicked } from "@/lib/analytics";
 
@@ -18,6 +19,7 @@ const features = [
 ];
 
 const HeroSection = () => {
+  const { openBooking } = useBooking();
   return (
     <section className="relative min-h-screen flex items-center pt-20 bg-background overflow-hidden">
 
@@ -114,15 +116,14 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4 pt-2"
             >
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button variant="hero" size="xl" asChild>
-                  <a
-                    href="/contacto"
-                    className="group"
-                    onClick={() => trackCtaClicked("Solicita tu demo", "hero")}
-                  >
-                    Solicita tu demo
-                    <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-                  </a>
+                <Button
+                  variant="hero"
+                  size="xl"
+                  className="group cursor-pointer"
+                  onClick={() => { trackCtaClicked("Solicita tu demo", "hero"); openBooking(); }}
+                >
+                  Solicita tu demo
+                  <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                 </Button>
               </motion.div>
 
