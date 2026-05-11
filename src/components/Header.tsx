@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Globe, ShoppingCart, Search, Megaphone, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLocation } from "react-router-dom";
-import logoDark from "@/assets/logo-web-roicas.webp";
-import logoLight from "@/assets/logo-roicas.webp";
+import logo from "@/assets/logo-roicas.webp";
 
 const serviceItems = [
   {
@@ -49,11 +47,6 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const location = useLocation();
-
-  // Dark hero only on home page when not scrolled
-  const isDarkHero = location.pathname === "/" && !scrolled;
-
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -68,24 +61,22 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/95 backdrop-blur-md shadow-md border-b border-border"
-          : isDarkHero
-          ? "bg-transparent border-b border-transparent"
-          : "bg-background/80 backdrop-blur-sm border-b border-transparent"
+          ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+          : "bg-background/70 backdrop-blur-sm border-b border-transparent"
       }`}
     >
       <div className="section-container">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="/" className="flex items-center">
-            <img src={isDarkHero ? logoDark : logoLight} alt="ROICAS" className="h-9 md:h-11 w-auto" />
+            <img src={logo} alt="ROICAS" className="h-9 md:h-11 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <a
               href="/"
-              className={`text-sm font-medium transition-colors relative group ${isDarkHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"}`}
+              className="text-sm font-medium transition-colors relative group text-muted-foreground hover:text-foreground"
             >
               Inicio
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -97,7 +88,7 @@ const Header = () => {
               onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
             >
-              <button className={`flex items-center gap-1 text-sm font-medium transition-colors relative group ${isDarkHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"}`}>
+              <button className="flex items-center gap-1 text-sm font-medium transition-colors relative group text-muted-foreground hover:text-foreground">
                 Servicios
                 <motion.span
                   animate={{ rotate: servicesOpen ? 180 : 0 }}
@@ -146,19 +137,26 @@ const Header = () => {
 
             <a
               href="/nosotros"
-              className={`text-sm font-medium transition-colors relative group ${isDarkHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"}`}
+              className="text-sm font-medium transition-colors relative group text-muted-foreground hover:text-foreground"
             >
               Nosotros
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
             <a
               href="/contacto"
-              className={`text-sm font-medium transition-colors relative group ${isDarkHero ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"}`}
+              className="text-sm font-medium transition-colors relative group text-muted-foreground hover:text-foreground"
             >
               Contacto
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
           </nav>
+
+          {/* Desktop CTA */}
+          <div className="hidden md:flex">
+            <Button variant="hero" size="default" asChild>
+              <a href="/contacto">Agendar Consultoría</a>
+            </Button>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
