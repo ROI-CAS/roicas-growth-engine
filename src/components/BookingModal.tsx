@@ -75,10 +75,10 @@ const BookingModal = ({ open, onClose }: BookingModalProps) => {
                   </button>
                 </div>
 
-                {/* Fixed-height iframe — no external script needed */}
+                {/* sandbox blocks window.top navigation attempts from the HL widget */}
                 <iframe
                   src={BOOKING_URL}
-                  id="gEm0YwOkG4AarjCYtCq9_modal"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
                   style={{ width: "100%", border: "none", height: "740px", display: "block" }}
                   title="Agendar consultoría de 20 minutos con ROICAS"
                 />
