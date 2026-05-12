@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { X, Clock, Shield } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -8,22 +8,8 @@ interface BookingModalProps {
 }
 
 const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/gEm0YwOkG4AarjCYtCq9";
-const SCRIPT_SRC = "https://link.msgsndr.com/js/form_embed.js";
 
 const BookingModal = ({ open, onClose }: BookingModalProps) => {
-  const scriptLoaded = useRef(false);
-
-  useEffect(() => {
-    if (!open || scriptLoaded.current) return;
-    const existing = document.querySelector(`script[src="${SCRIPT_SRC}"]`);
-    if (existing) { scriptLoaded.current = true; return; }
-    const script = document.createElement("script");
-    script.src = SCRIPT_SRC;
-    script.async = true;
-    script.onload = () => { scriptLoaded.current = true; };
-    document.body.appendChild(script);
-  }, [open]);
-
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     if (open) document.addEventListener("keydown", handleKey);
@@ -89,7 +75,7 @@ const BookingModal = ({ open, onClose }: BookingModalProps) => {
                   </button>
                 </div>
 
-                {/* Calendar iframe — fixed height; form_embed.js handles internal resize */}
+                {/* Fixed-height iframe — no external script needed */}
                 <iframe
                   src={BOOKING_URL}
                   id="gEm0YwOkG4AarjCYtCq9_modal"
