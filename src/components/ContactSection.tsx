@@ -29,15 +29,14 @@ const ContactSection = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand">
-                ¿Listo para dar el{" "}
-                <span className="text-gradient-warm">siguiente paso</span>?
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+                Hablemos de{" "}
+                <span className="text-gradient-warm">tu negocio</span>
               </h2>
 
               <p className="text-lg text-muted-foreground">
-                Cuéntanos sobre tu negocio y te diremos honestamente si podemos 
-                ayudarte. Sin compromiso, sin presión. Solo una conversación 
-                para conocernos.
+                Agenda una llamada de 20 minutos o déjanos tu WhatsApp.
+                Te decimos honestamente si podemos ayudarte.
               </p>
 
               <div className="space-y-4">

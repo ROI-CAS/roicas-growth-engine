@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Clock, Calendar, MessageSquare } from "lucide-react";
 import Header from "@/components/Header";
@@ -18,8 +18,19 @@ const contactInfo = [
 
 type Tab = "calendar" | "form";
 
+const SCRIPT_SRC = "https://link.msgsndr.com/js/form_embed.js";
+
 const Contact = () => {
   const [activeTab, setActiveTab] = useState<Tab>("calendar");
+
+  useEffect(() => {
+    const existing = document.querySelector(`script[src="${SCRIPT_SRC}"]`);
+    if (existing) return;
+    const s = document.createElement("script");
+    s.src = SCRIPT_SRC;
+    s.async = true;
+    document.body.appendChild(s);
+  }, []);
 
   return (
     <main className="min-h-screen bg-background">
@@ -130,8 +141,7 @@ const Contact = () => {
                 <iframe
                   src={BOOKING_URL}
                   id="gEm0YwOkG4AarjCYtCq9_contact"
-                  style={{ width: "100%", border: "none", minHeight: "680px", display: "block" }}
-                  scrolling="no"
+                  style={{ width: "100%", border: "none", height: "740px", display: "block" }}
                   title="Agendar consultoría de 20 minutos con ROICAS"
                 />
               </motion.div>

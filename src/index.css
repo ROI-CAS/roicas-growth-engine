@@ -154,13 +154,8 @@
     border-color: hsl(354 70% 40% / 0.18);
   }
 
-  .btn-primary-glow {
-    box-shadow: var(--shadow-button);
-  }
-
   .btn-primary-glow:hover {
-    box-shadow: 0 6px 24px 0 hsl(354 70% 40% / 0.55);
-    transform: translateY(-1px) scale(1.02);
+    transform: translateY(-1px);
   }
 
   /* Gradient mesh — solo rojo, sin azul */

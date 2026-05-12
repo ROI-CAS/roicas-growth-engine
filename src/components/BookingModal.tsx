@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { X, Clock, Calendar, Shield } from "lucide-react";
+import { X, Clock, Shield } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface BookingModalProps {
@@ -25,9 +25,7 @@ const BookingModal = ({ open, onClose }: BookingModalProps) => {
   }, [open]);
 
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
+    const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     if (open) document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
   }, [open, onClose]);
@@ -53,44 +51,33 @@ const BookingModal = ({ open, onClose }: BookingModalProps) => {
             aria-hidden="true"
           />
 
-          {/* Modal */}
-          <motion.div
-            key="modal"
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[61] flex items-center justify-center p-4 pointer-events-none"
-          >
-            <div
-              className="pointer-events-auto w-full max-w-2xl max-h-[90vh] flex flex-col bg-background rounded-2xl border border-border shadow-2xl overflow-hidden"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Agendar consultoría de 20 minutos"
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-muted/30 shrink-0">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-brand/10 flex items-center justify-center">
-                    <Calendar size={17} className="text-brand" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground text-sm leading-tight">
-                      Agendar Consultoría
-                    </p>
-                    <p className="text-xs text-muted-foreground">Gratis · Sin compromiso</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="hidden sm:flex items-center gap-3 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <Clock size={12} />
-                      20 minutos
+          {/* Scroll container */}
+          <div className="fixed inset-0 z-[61] overflow-y-auto py-6 px-4">
+            <div className="flex min-h-full items-center justify-center">
+              <motion.div
+                key="modal"
+                initial={{ opacity: 0, scale: 0.95, y: 16 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 16 }}
+                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full max-w-2xl bg-background rounded-2xl border border-border shadow-2xl overflow-hidden"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Agendar consultoría de 20 minutos"
+              >
+                {/* Header */}
+                <div className="flex items-center justify-between px-5 py-3.5 border-b border-border bg-muted/30 shrink-0">
+                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                    <span className="flex items-center gap-1.5 font-medium text-foreground text-sm">
+                      Consultoría gratuita
                     </span>
                     <span className="flex items-center gap-1">
-                      <Shield size={12} />
-                      Sin permanencias
+                      <Clock size={11} />
+                      20 min
+                    </span>
+                    <span className="hidden sm:flex items-center gap-1">
+                      <Shield size={11} />
+                      Sin compromiso
                     </span>
                   </div>
                   <button
@@ -101,20 +88,17 @@ const BookingModal = ({ open, onClose }: BookingModalProps) => {
                     <X size={16} />
                   </button>
                 </div>
-              </div>
 
-              {/* Calendar iframe */}
-              <div className="flex-1 overflow-y-auto min-h-0">
+                {/* Calendar iframe — fixed height; form_embed.js handles internal resize */}
                 <iframe
                   src={BOOKING_URL}
-                  id="gEm0YwOkG4AarjCYtCq9_booking"
-                  style={{ width: "100%", border: "none", minHeight: "650px", display: "block" }}
-                  scrolling="no"
+                  id="gEm0YwOkG4AarjCYtCq9_modal"
+                  style={{ width: "100%", border: "none", height: "740px", display: "block" }}
                   title="Agendar consultoría de 20 minutos con ROICAS"
                 />
-              </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>

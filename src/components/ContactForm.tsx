@@ -1,12 +1,15 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 import { trackFormStarted, trackFormSubmitted, trackLeadCaptured } from "@/lib/analytics";
+
+const WEBHOOK_URL =
+  "https://services.leadconnectorhq.com/hooks/OSpBlSon5j5uMQmR9X5h/webhook-trigger/FZ5I63gzmjGXLvgpeArr";
 
 interface ContactFormProps {
   variant?: "full" | "compact";
@@ -17,7 +20,7 @@ interface ContactFormProps {
 
 const ContactForm = ({
   showTitle = true,
-  title = "Reserva tu llamada",
+  title = "Cuéntanos sobre tu negocio",
   className = "",
 }: ContactFormProps) => {
   const { toast } = useToast();
@@ -54,16 +57,25 @@ const ContactForm = ({
     }
 
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          phone: formData.whatsapp.trim(),
+          company: formData.company.trim() || null,
+          source: window.location.pathname,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+    } catch {
+      // fail silently — submission logged client-side
+    }
     setIsSubmitting(false);
     setIsSuccess(true);
     trackFormSubmitted(!!formData.company.trim(), window.location.pathname);
     trackLeadCaptured("form");
-
-    toast({
-      title: "¡Recibido!",
-      description: "Te escribimos por WhatsApp en menos de 2 horas.",
-    });
   };
 
   if (isSuccess) {
@@ -78,14 +90,11 @@ const ContactForm = ({
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
         >
-          <CheckCircle2 className="w-20 h-20 text-success mx-auto mb-6" />
+          <CheckCircle2 className="w-16 h-16 text-success mx-auto mb-5" />
         </motion.div>
-        <h3 className="text-2xl font-bold mb-3">¡Perfecto!</h3>
-        <p className="text-muted-foreground mb-2">
+        <h3 className="text-2xl font-bold mb-2">¡Recibido!</h3>
+        <p className="text-muted-foreground">
           Te escribimos por WhatsApp en menos de 2 horas.
-        </p>
-        <p className="text-sm text-muted-foreground">
-          Revisa tu WhatsApp — te enviamos la confirmación y el enlace para la llamada.
         </p>
       </motion.div>
     );
@@ -100,44 +109,50 @@ const ContactForm = ({
 
   return (
     <form onSubmit={handleSubmit} className={`card-dashboard p-8 ${className}`}>
-      {showTitle && <h2 className="text-2xl font-bold mb-2">{title}</h2>}
       {showTitle && (
-        <p className="text-sm text-muted-foreground mb-6">
-          20 minutos. Sin compromiso. Te decimos honestamente si podemos ayudarte.
-        </p>
+        <h2 className="text-2xl font-bold mb-6">{title}</h2>
       )}
 
       <div className="space-y-4 mb-6">
         <div>
-          <label className="block text-sm font-medium mb-2">Nombre *</label>
+          <label htmlFor="cf-name" className="block text-sm font-medium mb-2">
+            Nombre *
+          </label>
           <Input
+            id="cf-name"
             required
             placeholder="Tu nombre"
             value={formData.name}
             onFocus={handleFirstFocus}
-            onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
+            onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
             className="h-12"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">WhatsApp *</label>
+          <label htmlFor="cf-whatsapp" className="block text-sm font-medium mb-2">
+            WhatsApp *
+          </label>
           <Input
+            id="cf-whatsapp"
             required
             type="tel"
             placeholder="+57 300 123 4567"
             value={formData.whatsapp}
-            onChange={(e) => setFormData((prev) => ({ ...prev, whatsapp: e.target.value }))}
+            onChange={(e) => setFormData((p) => ({ ...p, whatsapp: e.target.value }))}
             className="h-12"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">Empresa</label>
+          <label htmlFor="cf-company" className="block text-sm font-medium mb-2">
+            Empresa
+          </label>
           <Input
+            id="cf-company"
             placeholder="Nombre de tu empresa"
             value={formData.company}
-            onChange={(e) => setFormData((prev) => ({ ...prev, company: e.target.value }))}
+            onChange={(e) => setFormData((p) => ({ ...p, company: e.target.value }))}
             className="h-12"
           />
         </div>
@@ -148,19 +163,25 @@ const ContactForm = ({
           id="privacy-form"
           checked={formData.acceptPrivacy}
           onCheckedChange={(checked) =>
-            setFormData((prev) => ({ ...prev, acceptPrivacy: checked as boolean }))
+            setFormData((p) => ({ ...p, acceptPrivacy: checked as boolean }))
           }
         />
-        <label htmlFor="privacy-form" className="text-sm text-muted-foreground">
+        <label htmlFor="privacy-form" className="text-sm text-muted-foreground leading-snug">
           Acepto la{" "}
-          <Link to="/politica-privacidad" className="text-primary hover:underline">
+          <Link to="/politica-privacidad" className="text-brand hover:underline">
             política de privacidad
           </Link>{" "}
           y autorizo el tratamiento de mis datos.
         </label>
       </div>
 
-      <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+      <Button
+        type="submit"
+        variant="hero"
+        size="lg"
+        className="w-full cursor-pointer"
+        disabled={isSubmitting}
+      >
         {isSubmitting ? (
           <motion.div
             animate={{ rotate: 360 }}
@@ -169,14 +190,14 @@ const ContactForm = ({
           />
         ) : (
           <>
-            <MessageCircle className="w-5 h-5 mr-2" />
-            Reservar mi llamada de 20 min
+            <Send className="w-4 h-4 mr-2" />
+            Enviar mensaje
           </>
         )}
       </Button>
 
       <p className="text-center text-xs text-muted-foreground mt-3">
-        Te respondemos por WhatsApp en menos de 2 horas
+        Te respondemos hoy por WhatsApp
       </p>
     </form>
   );
