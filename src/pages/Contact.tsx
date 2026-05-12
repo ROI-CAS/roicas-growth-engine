@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, Calendar, MessageSquare } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Calendar } from "lucide-react";
 import Header from "@/components/Header";
 import SeoHead from "@/components/SeoHead";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ContactForm from "@/components/ContactForm";
-
-const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/gEm0YwOkG4AarjCYtCq9";
+import { Button } from "@/components/ui/button";
+import { useBooking } from "@/contexts/BookingContext";
 
 const contactInfo = [
   { icon: Mail, title: "Email", value: "hola@roicas.com", link: "mailto:hola@roicas.com" },
@@ -16,21 +15,8 @@ const contactInfo = [
   { icon: Clock, title: "Horario", value: "Lun - Vie: 9am - 6pm", link: null },
 ];
 
-type Tab = "calendar" | "form";
-
-const SCRIPT_SRC = "https://link.msgsndr.com/js/form_embed.js";
-
 const Contact = () => {
-  const [activeTab, setActiveTab] = useState<Tab>("calendar");
-
-  useEffect(() => {
-    const existing = document.querySelector(`script[src="${SCRIPT_SRC}"]`);
-    if (existing) return;
-    const s = document.createElement("script");
-    s.src = SCRIPT_SRC;
-    s.async = true;
-    document.body.appendChild(s);
-  }, []);
+  const { openBooking } = useBooking();
 
   return (
     <main className="min-h-screen bg-background">
@@ -73,92 +59,43 @@ const Contact = () => {
               transition={{ delay: 0.4, duration: 0.7 }}
               className="text-lg text-muted-foreground"
             >
-              Elige cómo prefieres hablar con nosotros — agenda una llamada o
-              déjanos un mensaje.
+              Déjanos tus datos y te contactamos hoy, o agenda directamente
+              una llamada de 20 minutos.
             </motion.p>
+
+            {/* Calendar shortcut */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55, duration: 0.5 }}
+              className="mt-6"
+            >
+              <Button
+                variant="hero"
+                size="lg"
+                onClick={openBooking}
+                className="cursor-pointer"
+              >
+                <Calendar size={17} className="mr-2" />
+                Agendar llamada · 20 min
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Tab Switcher + Content */}
-      <section className="py-12 md:py-20">
+      {/* Form */}
+      <section className="py-14 md:py-20">
         <div className="section-container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="max-w-3xl mx-auto"
-          >
-            {/* Tabs */}
-            <div className="flex gap-2 p-1 bg-muted rounded-xl mb-8 w-fit mx-auto">
-              <button
-                onClick={() => setActiveTab("calendar")}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
-                  activeTab === "calendar"
-                    ? "bg-background text-foreground shadow-sm border border-border"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <Calendar size={15} />
-                Agenda llamada · 20 min
-              </button>
-              <button
-                onClick={() => setActiveTab("form")}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
-                  activeTab === "form"
-                    ? "bg-background text-foreground shadow-sm border border-border"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <MessageSquare size={15} />
-                Envíanos un mensaje
-              </button>
-            </div>
-
-            {/* Calendar tab */}
-            {activeTab === "calendar" && (
-              <motion.div
-                key="calendar"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="rounded-2xl border border-border overflow-hidden shadow-card"
-              >
-                {/* Calendar header context */}
-                <div className="px-6 py-4 border-b border-border bg-muted/30 flex items-center justify-between">
-                  <div>
-                    <p className="font-semibold text-foreground text-sm">Consultoría estratégica gratuita</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">
-                      20 minutos · Sin compromiso · Respuesta hoy
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-xs text-muted-foreground bg-background border border-border rounded-lg px-3 py-1.5">
-                    <Clock size={12} />
-                    20 min
-                  </div>
-                </div>
-
-                <iframe
-                  src={BOOKING_URL}
-                  id="gEm0YwOkG4AarjCYtCq9_contact"
-                  style={{ width: "100%", border: "none", height: "740px", display: "block" }}
-                  title="Agendar consultoría de 20 minutos con ROICAS"
-                />
-              </motion.div>
-            )}
-
-            {/* Form tab */}
-            {activeTab === "form" && (
-              <motion.div
-                key="form"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ContactForm variant="full" />
-              </motion.div>
-            )}
-          </motion.div>
+          <div className="max-w-xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <ContactForm variant="full" />
+            </motion.div>
+          </div>
         </div>
       </section>
 
