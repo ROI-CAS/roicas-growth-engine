@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 
-Object.defineProperty(window, "matchMedia", {
+if (typeof window !== "undefined") Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: (query: string) => ({
     matches: false,
@@ -34,7 +34,7 @@ const storageMock = (() => {
   };
 })();
 
-Object.defineProperty(window, "localStorage", {
+if (typeof window !== "undefined") Object.defineProperty(window, "localStorage", {
   value: storageMock,
   writable: true,
 });

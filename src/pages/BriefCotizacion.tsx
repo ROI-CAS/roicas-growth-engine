@@ -13,6 +13,7 @@ import {
   validateStep5,
 } from "@/lib/brief/briefLogic";
 import { submitBriefForm } from "@/lib/brief/briefSubmission";
+import { useToast } from "@/hooks/use-toast";
 import {
   trackBriefStarted,
   trackBriefStepCompleted,
@@ -102,6 +103,7 @@ const briefSchema = {
 };
 
 export const BriefCotizacion: React.FC = () => {
+  const { toast } = useToast();
   const [searchParams] = useSearchParams();
   const isAdminParam = searchParams.get("admin") === "roicas" || searchParams.get("view") === "leads";
 
@@ -194,9 +196,12 @@ export const BriefCotizacion: React.FC = () => {
       const result = await submitBriefForm(formData);
       if (result.success && result.lead) {
         setSubmittedLead(result.lead);
+      } else {
+        toast({ title: "No se pudo enviar", description: result.error, variant: "destructive" });
       }
     } catch (err) {
       console.error("Submission failed:", err);
+      toast({ title: "No se pudo enviar", description: "Tus datos siguen en el formulario. Inténtalo de nuevo o escríbenos por WhatsApp.", variant: "destructive" });
     } finally {
       setIsSubmitting(false);
     }

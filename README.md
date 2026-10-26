@@ -1,5 +1,20 @@
 # Welcome to your Lovable project
 
+## Correos con Resend (Vercel)
+
+Los formularios de contacto y cotización llaman a `/api/send-email`, que envía
+desde `ventas@roicas.com` hacia `herebus_cas@hotmail.com` usando Resend.
+El formulario confirma el envío cuando Resend devuelve un identificador de correo;
+esto confirma la aceptación por el proveedor, no la llegada a la bandeja de entrada.
+
+1. Verificar `roicas.com` en Resend y añadir los registros DNS que indique.
+2. Guardar `RESEND_API_KEY` como variable sensible del proyecto Vercel, en Production.
+3. Desplegar nuevamente después de configurar o cambiar la variable.
+
+La clave se usa solo en el servidor. No debe tener prefijo `VITE_` ni incluirse
+en GitHub. Los reintentos usan una clave de idempotencia para evitar correos duplicados.
+Las copias de cotizaciones en el navegador son locales; no son una base de datos central.
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID

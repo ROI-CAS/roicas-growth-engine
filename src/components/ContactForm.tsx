@@ -8,8 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 import { trackFormStarted, trackFormSubmitted, trackLeadCaptured } from "@/lib/analytics";
 
-const WEBHOOK_URL =
-  "https://services.leadconnectorhq.com/hooks/OSpBlSon5j5uMQmR9X5h/webhook-trigger/FZ5I63gzmjGXLvgpeArr";
+import { sendEmailSubmission } from "@/lib/emailSubmission";
 
 interface ContactFormProps {
   variant?: "full" | "compact";
@@ -25,6 +24,7 @@ const ContactForm = ({
 }: ContactFormProps) => {
   const { toast } = useToast();
   const hasStarted = useRef(false);
+  const requestId = useRef<string>();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -58,24 +58,24 @@ const ContactForm = ({
 
     setIsSubmitting(true);
     try {
-      await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          phone: formData.whatsapp.trim(),
-          company: formData.company.trim() || null,
-          source: window.location.pathname,
-          timestamp: new Date().toISOString(),
-        }),
+      requestId.current ??= crypto.randomUUID();
+      await sendEmailSubmission({
+        kind: "contact",
+        requestId: requestId.current,
+        name: formData.name.trim(),
+        phone: formData.whatsapp.trim(),
+        company: formData.company.trim(),
+        privacyConsent: formData.acceptPrivacy,
+        source: window.location.pathname,
       });
-    } catch {
-      // fail silently — submission logged client-side
+      setIsSuccess(true);
+      trackFormSubmitted(!!formData.company.trim(), window.location.pathname);
+      trackLeadCaptured("form");
+    } catch (error) {
+      toast({ title: "No se pudo enviar", description: error instanceof Error ? error.message : "Inténtalo de nuevo o escríbenos por WhatsApp.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    trackFormSubmitted(!!formData.company.trim(), window.location.pathname);
-    trackLeadCaptured("form");
   };
 
   if (isSuccess) {
