@@ -81,10 +81,9 @@ export const BriefSuccessView: React.FC<BriefSuccessViewProps> = ({ lead }) => {
               1
             </span>
             <div>
-              <p className="font-semibold text-foreground">Evaluación técnica sin costo</p>
+              <p className="font-semibold text-foreground">Revisamos tu idea</p>
               <p className="text-muted-foreground text-xs leading-relaxed">
-                Analizamos si tu tienda se adapta mejor a WooCommerce o Shopify y calculamos
-                el esfuerzo de catálogo e integraciones.
+                Entendemos lo que quieres vender y lo que necesita tu negocio.
               </p>
             </div>
           </div>
@@ -96,8 +95,7 @@ export const BriefSuccessView: React.FC<BriefSuccessViewProps> = ({ lead }) => {
             <div>
               <p className="font-semibold text-foreground">Propuesta clara y transparente</p>
               <p className="text-muted-foreground text-xs leading-relaxed">
-                Te enviamos alcance detallado, tiempos de entrega y recomendaciones de pasarelas
-                de pago (PSE, Wompi, etc.).
+                Te contamos qué incluiría tu tienda, cuánto costaría y cuánto tiempo tomaría.
               </p>
             </div>
           </div>
