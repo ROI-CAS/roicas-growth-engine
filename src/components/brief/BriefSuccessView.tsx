@@ -32,7 +32,7 @@ export const BriefSuccessView: React.FC<BriefSuccessViewProps> = ({ lead }) => {
   };
 
   const cleanPhone = lead.contact.full_whatsapp.replace(/\D/g, "");
-  const waContactUrl = `https://wa.me/573000000000?text=Hola%20ROICAS,%20acabo%20de%20enviar%20mi%20solicitud%20de%20cotizaci%C3%B3n%20con%20ID%20${lead.lead_id}%20para%20${encodeURIComponent(lead.business.business_name)}.`;
+  const waContactUrl = `https://wa.me/573114565403?text=Hola%20ROICAS,%20acabo%20de%20enviar%20mi%20solicitud%20de%20cotizaci%C3%B3n%20con%20ID%20${lead.lead_id}%20para%20${encodeURIComponent(lead.business.business_name)}.`;
 
   return (
     <motion.div
