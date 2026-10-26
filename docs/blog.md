@@ -2,6 +2,8 @@
 
 Los artículos publicados viven en `src/content/blog/*.json`. La plantilla genera HTML inicial, índice del artículo, autor, fechas visibles, tiempo de lectura, enlaces al servicio y datos estructurados BlogPosting y BreadcrumbList.
 
+La redacción y revisión deben seguir [los criterios editoriales del usuario](criterios-editoriales.md). Estos criterios también se aplican a los prompts de generación y revisión de artículos en n8n.
+
 Conservar borradores fuera de esa carpeta. Antes de elegir temas y títulos, contrastar consultas y páginas de Search Console para evitar competir con los servicios existentes. No usar resultados, testimonios ni métricas sin evidencia.
 
 Cada archivo sigue esta estructura. Las fechas deben reflejar publicación y actualización reales; no se renuevan automáticamente en cada despliegue.
