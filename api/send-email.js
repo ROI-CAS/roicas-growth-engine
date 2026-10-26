@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import { buildConfirmationEmail } from "../server/confirmation-email.js";
+import { buildInternalBriefHtml } from "../server/internal-brief-email.js";
 
 const shortText = z.string().trim().min(1).max(200);
 const phone = z.string().trim().regex(/^\+?[\d\s()-]{7,25}$/);
@@ -18,6 +19,13 @@ const submission = z.discriminatedUnion("kind", [
       contact: z.object({ contact_name: shortText, contact_email: z.string().email().max(254), full_whatsapp: phone }),
       consent: z.object({ accepted: z.literal(true) }),
       summary_text: z.string().trim().min(20).max(50000),
+      questionnaire: z.array(z.object({
+        title: z.string().trim().min(1).max(150),
+        answers: z.array(z.object({
+          question: z.string().trim().min(1).max(250),
+          answer: z.string().max(5000),
+        })).max(30),
+      })).max(8).optional(),
     }),
   }),
 ]);
@@ -66,7 +74,7 @@ export default async function handler(req, res) {
   subject = subject.replace(/[\r\n]/g, " ").slice(0, 250);
   const email = {
     from: "ROICAS Ventas <ventas@roicas.com>", to: ["herebus_cas@hotmail.com"], subject, text,
-    html: `<div style="font-family:Arial,sans-serif;max-width:720px;margin:auto"><h2>Solicitud desde ROICAS</h2><pre style="font-family:Arial,sans-serif;white-space:pre-wrap">${escapeHtml(text)}</pre></div>`,
+    html: input.kind === "brief" ? buildInternalBriefHtml(input.lead) : `<div style="font-family:Arial,sans-serif;max-width:720px;margin:auto"><h2>Solicitud desde ROICAS</h2><pre style="font-family:Arial,sans-serif;white-space:pre-wrap">${escapeHtml(text)}</pre></div>`,
     ...(replyTo ? { reply_to: replyTo } : {}),
   };
   const digest = createHash("sha256").update(JSON.stringify({ requestKey, email })).digest("hex");

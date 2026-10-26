@@ -4,7 +4,11 @@
 
 Los formularios de contacto y cotización llaman a `/api/send-email`, que envía
 desde `ventas@roicas.com` hacia `herebus_cas@hotmail.com` usando Resend.
-El cotizador tiene tres pasos sin preguntas técnicas ni presupuesto obligatorio.
+El cotizador tiene cinco bloques guiados: negocio, catálogo, operación, marca y
+funciones, y contacto. Incluye respuestas personalizadas por bloque y enlaces a
+materiales de identidad corporativa; no publica precios base ni pide presupuesto.
+El aviso interno presenta todas las preguntas y respuestas por secciones.
+Ambos correos usan el logo real de la web desde /logo-roicas-email.png.
 Después del aviso interno se envía una confirmación personalizada al correo del
 solicitante, con referencia y enlace a WhatsApp. Cada correo usa su propia clave
 de idempotencia; si falla la confirmación se permite reintentar sin duplicar el aviso.

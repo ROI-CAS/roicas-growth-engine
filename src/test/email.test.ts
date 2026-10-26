@@ -13,6 +13,7 @@ const brief = {
     lead_id: "ROI-EC-TEST", business: { business_name: "Tienda" },
     contact: { contact_name: "Cliente", contact_email: "cliente@example.com", full_whatsapp: "+573114565403" },
     consent: { accepted: true }, summary_text: "Cotización completa <script>alert(1)</script>",
+    questionnaire: [{ title: "Imagen corporativa", answers: [{question:"¿Tienes logo?",answer:"Sí, conservar el logo <script>alert(1)</script>"}] }],
   },
 };
 
@@ -48,6 +49,8 @@ describe("Resend server integration", () => {
     expect(email.html).toContain("&lt;script&gt;");
     expect(email.html).not.toContain("<script>");
     expect(email.text).toBe(brief.lead.summary_text);
+    expect(email.html).toContain("¿Tienes logo?");
+    expect(email.html).toContain("logo-roicas-email.png");
   });
   it("keeps the same idempotency key when retrying a brief", async () => {
     await handler(request(brief), response());
@@ -63,6 +66,8 @@ describe("Resend server integration", () => {
     expect(confirmation.to).toEqual(["cliente@example.com"]);
     expect(confirmation.reply_to).toBe("ventas@roicas.com");
     expect(confirmation.html).toContain("ROI-EC-TEST");
+    expect(confirmation.html).toContain("logo-roicas-email.png");
+    expect(confirmation.html).not.toContain("IDEAS QUE SE CONVIERTEN EN NEGOCIO");
     expect(confirmation.html).toContain("https://wa.me/573114565403");
     expect(confirmation.html).not.toContain(brief.lead.summary_text);
     expect(res.body.confirmationId).toBe("email-test-id");

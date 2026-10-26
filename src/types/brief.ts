@@ -119,6 +119,7 @@ export type NotificationStatus = "sent" | "notification_pending" | "failed";
 
 // Form State across the 5 steps
 export interface BriefFormData {
+  additional_answers?: Record<string, string>;
   // Step 1: Tu negocio
   business_name: string;
   project_stage: ProjectStage | "";
@@ -174,6 +175,8 @@ export interface BriefFormData {
 
 // Complete Structured Lead Record (matches Section 8 of PRD)
 export interface BriefLeadRecord {
+  additional_answers?: Record<string, string>;
+  questionnaire?: { title: string; answers: { question: string; answer: string }[] }[];
   lead_id: string;
   created_at: string;
   source: string;

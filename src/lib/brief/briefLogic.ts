@@ -564,6 +564,7 @@ export function buildLeadRecord(data: BriefFormData, leadId?: string): BriefLead
   const fullWhatsapp = `${cleanPrefix} ${cleanPhone}`.trim();
 
   const record: BriefLeadRecord = {
+    additional_answers: Object.fromEntries(Object.entries(sanitized.additional_answers || {}).map(([key, value]) => [key, value.trim().slice(0, 2000)])),
     lead_id: id,
     created_at: now,
     source: "brief_tienda_online",

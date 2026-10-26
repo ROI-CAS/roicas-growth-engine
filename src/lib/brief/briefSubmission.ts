@@ -1,6 +1,6 @@
 import { BriefFormData, BriefLeadRecord } from "@/types/brief";
 import { buildLeadRecord } from "./briefLogic";
-import { simpleBriefSummary } from "./simpleBrief";
+import { buildBriefQuestionnaire, detailedBriefSummary } from "./detailedBrief";
 import { saveLeadLocally, updateLeadStatus, getLeadById } from "./briefStorage";
 import { sendEmailSubmission } from "@/lib/emailSubmission";
 import { trackBriefSubmitted, trackBriefSubmitFailed, trackLeadCaptured } from "@/lib/analytics";
@@ -18,7 +18,8 @@ export async function submitBriefForm(data: BriefFormData, previousLead?: BriefL
     return { success: false, error: "No pudimos procesar la solicitud." };
   }
   const lead = previousLead || buildLeadRecord(data);
-  lead.summary_text = simpleBriefSummary(lead);
+  lead.questionnaire = buildBriefQuestionnaire(lead);
+  lead.summary_text = detailedBriefSummary(lead);
   // Recovery copy in this browser; this is not a server-side record or confirmed delivery.
   saveLeadLocally(lead);
   try {
