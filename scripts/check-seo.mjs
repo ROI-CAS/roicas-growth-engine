@@ -1,0 +1,32 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { JSDOM } from "jsdom";
+const { siteRoutes, SITE_URL, publishedArticles } = await import("../dist-ssr/entry-server.js");
+const routes = [...siteRoutes, "/blog", ...publishedArticles.map(post => `/blog/${post.slug}`)];
+const titles = new Set();
+for (const route of routes) {
+  const html = await readFile(`dist/${route === "/" ? "index" : route.slice(1)}.html`, "utf8");
+  const document = new JSDOM(html).window.document;
+  assert.equal(document.querySelectorAll("title").length, 1, `${route}: título duplicado`);
+  assert(!titles.has(document.title), `${route}: título igual a otra página`);
+  titles.add(document.title);
+  assert(document.querySelector("#root h1"), `${route}: falta contenido inicial`);
+  assert.equal(document.querySelectorAll('meta[name="description"]').length, 1);
+  assert.equal(document.querySelector('link[rel="canonical"]')?.href, `${SITE_URL}${route}`);
+  assert.equal(document.querySelector('meta[property="og:url"]')?.content, `${SITE_URL}${route}`);
+  for (const script of document.querySelectorAll('script[type="application/ld+json"]')) JSON.parse(script.textContent);
+  const image = document.querySelector('meta[property="og:image"]')?.content;
+  assert.equal(image, `${SITE_URL}/og-image.png`);
+}
+const sitemap = await readFile("dist/sitemap.xml", "utf8");
+assert(!sitemap.includes("https://roicas.com"));
+assert(!sitemap.includes("/404"));
+if (!publishedArticles.length) assert(!sitemap.includes("/blog"));
+const notFound = await readFile("dist/404.html", "utf8");
+assert(notFound.includes('content="noindex, follow"'));
+const image = await readFile("dist/og-image.png");
+assert.equal(image.subarray(1, 4).toString(), "PNG");
+const config = JSON.parse(await readFile("vercel.json", "utf8"));
+assert.equal(config.cleanUrls, true);
+assert.equal(config.rewrites, undefined, "No debe reaparecer el catch-all que produce soft 404");
+console.log(`SEO verificado: ${routes.length} páginas con HTML, títulos únicos, canonical, metadatos y JSON-LD. Sitemap, imagen y 404 correctos.`);

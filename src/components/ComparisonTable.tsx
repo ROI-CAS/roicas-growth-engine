@@ -59,7 +59,7 @@ const rows = [
     freelancer: true,
     diy: true,
   },
-];
+] as const;
 
 type CellValue = boolean | "partial";
 

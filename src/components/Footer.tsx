@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-roicas.webp";
+import { publishedArticles } from "@/lib/blog";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,6 +16,7 @@ const Footer = () => {
 
           {/* Links */}
           <nav className="flex flex-wrap items-center justify-center gap-6">
+            {publishedArticles.length > 0 && <Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground">Blog</Link>}
             <Link to="/servicios" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Servicios
             </Link>

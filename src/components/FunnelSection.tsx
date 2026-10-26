@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { lazy, Suspense, useRef, useEffect, useState } from "react";
 import { Facebook, Instagram, Linkedin, Search, Mail, Phone, Users, Target, Calendar, Handshake, ArrowDown } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
-import Lottie from "lottie-react";
+const Lottie = lazy(() => import("lottie-react"));
 
 const TROPHY_URL = "https://assets2.lottiefiles.com/packages/lf20_touohxv0.json";
 
@@ -71,7 +71,9 @@ const FunnelSection = () => {
               transition={{ duration: 0.7, delay: 0.2, type: "spring", stiffness: 150 }}
               className="flex justify-center mb-4 pointer-events-none"
             >
-              <Lottie animationData={trophyAnim} loop style={{ width: 150, height: 150 }} />
+              <Suspense fallback={<div style={{ width: 150, height: 150 }} aria-hidden="true" />}>
+                <Lottie animationData={trophyAnim} loop style={{ width: 150, height: 150 }} />
+              </Suspense>
             </motion.div>
           )}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">

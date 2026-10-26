@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown, Globe, ShoppingCart, Search, Megaphone, Bot } fro
 import { Button } from "@/components/ui/button";
 import { useBooking } from "@/contexts/BookingContext";
 import logo from "@/assets/logo-roicas.webp";
+import { publishedArticles } from "@/lib/blog";
 
 const serviceItems = [
   {
@@ -76,6 +77,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
+            {publishedArticles.length > 0 && <a href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground">Blog</a>}
             <a
               href="/"
               className="text-sm font-medium transition-colors relative group text-muted-foreground hover:text-foreground"
@@ -180,6 +182,7 @@ const Header = () => {
               className="md:hidden overflow-hidden bg-background border-t border-border"
             >
               <div className="py-4 space-y-1">
+                {publishedArticles.length > 0 && <a href="/blog" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground">Blog</a>}
                 <a
                   href="/"
                   className="block px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"

@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { canonicalUrl, SITE_URL } from "@/lib/site";
 
 interface SeoHeadProps {
   title: string;
@@ -7,9 +8,10 @@ interface SeoHeadProps {
   ogImage?: string;
   noindex?: boolean;
   schemaJson?: object | object[];
+  article?: { published: string; modified: string; author: string };
 }
 
-const BASE_OG_IMAGE = "https://roicas.com/og-image.jpg";
+const BASE_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 const SeoHead = ({
   title,
@@ -18,7 +20,9 @@ const SeoHead = ({
   ogImage = BASE_OG_IMAGE,
   noindex = false,
   schemaJson,
+  article,
 }: SeoHeadProps) => {
+  canonical = canonicalUrl(canonical);
   const schemas = schemaJson
     ? Array.isArray(schemaJson) ? schemaJson : [schemaJson]
     : [];
@@ -28,14 +32,17 @@ const SeoHead = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonical} />
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
+      <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
 
       {/* Open Graph */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={article ? "article" : "website"} />
+      {article && <meta property="article:published_time" content={article.published} />}
+      {article && <meta property="article:modified_time" content={article.modified} />}
+      {article && <meta property="article:author" content={article.author} />}
       <meta property="og:locale" content="es_CO" />
       <meta property="og:site_name" content="ROICAS" />
 
@@ -49,7 +56,7 @@ const SeoHead = ({
       {/* JSON-LD */}
       {schemas.map((schema, i) => (
         <script key={i} type="application/ld+json">
-          {JSON.stringify(schema)}
+          {JSON.stringify(schema).replace(/https:\/\/roicas\.com(?=[/"#])/g, SITE_URL).replace(/</g, "\\u003c")}
         </script>
       ))}
     </Helmet>

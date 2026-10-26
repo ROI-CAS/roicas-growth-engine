@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { StaticRouter } from "react-router-dom/server";
 import { BookingProvider } from "@/contexts/BookingContext";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
@@ -16,15 +17,19 @@ import SEO from "./pages/services/SEO";
 import PublicidadDigital from "./pages/services/PublicidadDigital";
 import AutomatizacionIA from "./pages/services/AutomatizacionIA";
 import BriefCotizacion from "./pages/BriefCotizacion";
+import Blog from "./pages/Blog";
+import BlogArticle from "./pages/BlogArticle";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+const App = ({ url }: { url?: string }) => {
+  const Router = url === undefined ? BrowserRouter : StaticRouter;
+  return (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <Router location={url}>
       <BookingProvider>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -39,13 +44,16 @@ const App = () => (
           <Route path="/nosotros" element={<AboutUs />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/politica-privacidad" element={<PrivacyPolicy />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogArticle />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BookingProvider>
-      </BrowserRouter>
+      </Router>
     </TooltipProvider>
   </QueryClientProvider>
-);
+  );
+};
 
 export default App;
