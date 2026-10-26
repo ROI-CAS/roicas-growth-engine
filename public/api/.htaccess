@@ -1,0 +1,5 @@
+# Protect storage and log files from direct download
+<FilesMatch "\.(json|jsonl|log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

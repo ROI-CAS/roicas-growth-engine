@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 import SeoHead from "@/components/SeoHead";
+import { Link } from "react-router-dom";
 
 const tiendasSchema = {
   "@context": "https://schema.org",
@@ -108,13 +109,13 @@ const TiendasOnline = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="xl" asChild>
-                <a href="/contacto" className="group">
-                  Quiero mi tienda online
+                <Link to="/cotizar-tienda-online" className="group">
+                  Cotizar mi tienda online
                   <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
               </Button>
               <Button variant="outline" size="xl" asChild>
-                <a href="/contacto">Hablar con un experto</a>
+                <Link to="/contacto">Hablar con un experto</Link>
               </Button>
             </div>
           </motion.div>
@@ -197,10 +198,10 @@ const TiendasOnline = () => {
                 una tienda completa.
               </p>
               <Button variant="hero" size="lg" asChild>
-                <a href="/contacto" className="group">
-                  Solicitar presupuesto
+                <Link to="/cotizar-tienda-online" className="group">
+                  Iniciar brief de cotización
                   <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
               </Button>
             </motion.div>
             <motion.div
@@ -255,15 +256,20 @@ const TiendasOnline = () => {
               <span className="text-gradient-warm">sin complicaciones?</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Una llamada de 20 minutos es suficiente para saber qué necesitas
-              y darte una propuesta concreta.
+              Responde unas breves preguntas en nuestro brief de 5 pasos y recibe una propuesta
+              clara con la plataforma y arquitectura ideal para tu negocio.
             </p>
-            <Button variant="hero" size="xl" asChild>
-              <a href="/contacto" className="group">
-                Agendar llamada gratis
-                <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/cotizar-tienda-online" className="group">
+                  Cotizar mi tienda online
+                  <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="xl" asChild>
+                <Link to="/contacto">Hablar con un asesor</Link>
+              </Button>
+            </div>
             <p className="text-sm text-muted-foreground mt-4">✓ Sin permanencias · ✓ Presupuesto sin compromiso</p>
           </motion.div>
         </div>

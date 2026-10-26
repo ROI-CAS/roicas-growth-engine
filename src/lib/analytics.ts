@@ -34,8 +34,33 @@ export const trackFormSubmitted = (has_company: boolean, form_location: string) 
  * North Star: leads_captured / week
  * GA4 goal: mark this as a key event in GA4 > Admin > Events
  */
-export const trackLeadCaptured = (source: "form" | "whatsapp" | "exit_popup") =>
+export const trackLeadCaptured = (source: "form" | "whatsapp" | "exit_popup" | "brief_form") =>
   trackEvent("lead_captured", { source });
+
+// ── Brief E-commerce Analytics (without PII) ─────────────────────────────────
+
+export const trackBriefStarted = (step = 1) =>
+  trackEvent("brief_started", { step });
+
+export const trackBriefStepCompleted = (step: number, step_name: string) =>
+  trackEvent("brief_step_completed", { step, step_name });
+
+export const trackBriefValidationFailed = (step: number, failed_fields_count: number) =>
+  trackEvent("brief_validation_failed", { step, failed_fields_count });
+
+export const trackBriefSubmitted = (
+  lead_id: string,
+  complexity_hint: string,
+  platform_preference: string
+) =>
+  trackEvent("brief_submitted", {
+    lead_id,
+    complexity_hint,
+    platform_preference,
+  });
+
+export const trackBriefSubmitFailed = (reason: string) =>
+  trackEvent("brief_submit_failed", { error_reason: reason.slice(0, 100) });
 
 // ── Engagement ────────────────────────────────────────────────────────────────
 
