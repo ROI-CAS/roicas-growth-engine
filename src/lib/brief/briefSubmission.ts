@@ -1,5 +1,6 @@
 import { BriefFormData, BriefLeadRecord } from "@/types/brief";
 import { buildLeadRecord } from "./briefLogic";
+import { simpleBriefSummary } from "./simpleBrief";
 import { saveLeadLocally, updateLeadStatus, getLeadById } from "./briefStorage";
 import { sendEmailSubmission } from "@/lib/emailSubmission";
 import { trackBriefSubmitted, trackBriefSubmitFailed, trackLeadCaptured } from "@/lib/analytics";
@@ -12,11 +13,12 @@ export interface SubmissionResult {
   notificationStatus?: "sent" | "notification_pending" | "failed";
 }
 
-export async function submitBriefForm(data: BriefFormData): Promise<SubmissionResult> {
+export async function submitBriefForm(data: BriefFormData, previousLead?: BriefLeadRecord): Promise<SubmissionResult> {
   if (data.website_source_hp?.trim()) {
     return { success: false, error: "No pudimos procesar la solicitud." };
   }
-  const lead = buildLeadRecord(data);
+  const lead = previousLead || buildLeadRecord(data);
+  lead.summary_text = simpleBriefSummary(lead);
   // Recovery copy in this browser; this is not a server-side record or confirmed delivery.
   saveLeadLocally(lead);
   try {

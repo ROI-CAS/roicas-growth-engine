@@ -4,6 +4,10 @@
 
 Los formularios de contacto y cotización llaman a `/api/send-email`, que envía
 desde `ventas@roicas.com` hacia `herebus_cas@hotmail.com` usando Resend.
+El cotizador tiene tres pasos sin preguntas técnicas ni presupuesto obligatorio.
+Después del aviso interno se envía una confirmación personalizada al correo del
+solicitante, con referencia y enlace a WhatsApp. Cada correo usa su propia clave
+de idempotencia; si falla la confirmación se permite reintentar sin duplicar el aviso.
 El formulario confirma el envío cuando Resend devuelve un identificador de correo;
 esto confirma la aceptación por el proveedor, no la llegada a la bandeja de entrada.
 

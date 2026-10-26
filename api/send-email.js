@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
+import { buildConfirmationEmail } from "../server/confirmation-email.js";
 
 const shortText = z.string().trim().min(1).max(200);
 const phone = z.string().trim().regex(/^\+?[\d\s()-]{7,25}$/);
@@ -76,12 +77,27 @@ export default async function handler(req, res) {
         Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json",
         "Idempotency-Key": `roicas/${input.kind}/${digest}`,
       },
-      body: JSON.stringify(email), signal: AbortSignal.timeout(20000),
+      body: JSON.stringify(email), signal: AbortSignal.timeout(10000),
     });
     const result = await response.json();
     if (!response.ok || typeof result.id !== "string" || !result.id) {
       console.error("email_provider_rejected", { status: response.status, code: result?.name });
       return res.status(502).json({ success: false, error: "No pudimos enviar tu solicitud. Inténtalo de nuevo o escríbenos por WhatsApp." });
+    }
+    if (input.kind === "brief") {
+      const confirmation = buildConfirmationEmail(input.lead);
+      const confirmationHash = createHash("sha256").update(JSON.stringify({ requestKey, confirmation })).digest("hex");
+      const confirmationResponse = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json", "Idempotency-Key": `roicas/confirmation/${confirmationHash}` },
+        body: JSON.stringify(confirmation), signal: AbortSignal.timeout(8000),
+      });
+      const receipt = await confirmationResponse.json();
+      if (!confirmationResponse.ok || typeof receipt.id !== "string" || !receipt.id) {
+        console.error("confirmation_email_rejected", { status: confirmationResponse.status, code: receipt?.name });
+        return res.status(502).json({ success: false, error: "Recibimos tu solicitud, pero no pudimos confirmar el correo de respuesta. Reintenta el envío o escríbenos por WhatsApp." });
+      }
+      return res.status(200).json({ success: true, id: result.id, confirmationId: receipt.id });
     }
     return res.status(200).json({ success: true, id: result.id });
   } catch {

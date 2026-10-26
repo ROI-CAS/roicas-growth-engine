@@ -51,8 +51,7 @@ export const BriefSuccessView: React.FC<BriefSuccessViewProps> = ({ lead }) => {
         ¡Recibimos tu solicitud!
       </h2>
       <p className="text-base text-muted-foreground max-w-lg mx-auto mb-6 leading-relaxed">
-        Revisaremos los requisitos de tu negocio y te contactaremos con una propuesta ajustada
-        a tu medida.
+        Enviamos una confirmación a {lead.contact.contact_email}. Revisaremos tu idea y te contactaremos con una propuesta a tu medida. Si no la ves, revisa spam.
       </p>
 
       {/* Reference ID Pill */}

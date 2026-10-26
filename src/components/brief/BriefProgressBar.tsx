@@ -17,7 +17,7 @@ export const BriefProgressBar: React.FC<BriefProgressBarProps> = ({
   onStepClick,
   furthestStepReached,
 }) => {
-  const progressPercent = Math.round(((currentStep - 1) / (totalSteps - 1)) * 100);
+  const progressPercent = Math.round(((currentStep - 1) / totalSteps) * 100);
   const currentTitle = stepTitles[currentStep - 1] || "";
 
   return (

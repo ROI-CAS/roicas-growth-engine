@@ -194,8 +194,8 @@ const TiendasOnline = () => {
                 <span className="text-gradient-warm">tu tienda</span>
               </h2>
               <p className="text-muted-foreground mb-8">
-                Sin módulos de pago adicionales ni sorpresas al final. Un precio,
-                una tienda completa.
+                Definimos contigo lo que necesita tu tienda y preparamos una
+                cotización a la medida del proyecto.
               </p>
               <Button variant="hero" size="lg" asChild>
                 <Link to="/cotizar-tienda-online" className="group">

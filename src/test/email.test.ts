@@ -53,7 +53,28 @@ describe("Resend server integration", () => {
     await handler(request(brief), response());
     await handler(request({ ...brief, lead: { ...brief.lead, internal: { notification_status: "notification_pending" } } }), response());
     const headers = vi.mocked(fetch).mock.calls.map((call) => call[1].headers);
-    expect(headers[0]["Idempotency-Key"]).toBe(headers[1]["Idempotency-Key"]);
+    expect(headers[0]["Idempotency-Key"]).toBe(headers[2]["Idempotency-Key"]);
+    expect(headers[1]["Idempotency-Key"]).toBe(headers[3]["Idempotency-Key"]);
+  });
+  it("sends the branded confirmation only to the validated customer email", async () => {
+    const res = response();
+    await handler(request(brief), res);
+    const confirmation = JSON.parse(vi.mocked(fetch).mock.calls[1][1].body as string);
+    expect(confirmation.to).toEqual(["cliente@example.com"]);
+    expect(confirmation.reply_to).toBe("ventas@roicas.com");
+    expect(confirmation.html).toContain("ROI-EC-TEST");
+    expect(confirmation.html).toContain("https://wa.me/573114565403");
+    expect(confirmation.html).not.toContain(brief.lead.summary_text);
+    expect(res.body.confirmationId).toBe("email-test-id");
+  });
+  it("does not claim confirmation when only the internal email was accepted", async () => {
+    vi.mocked(fetch).mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({ id: "internal-id" }) } as Response)
+      .mockResolvedValueOnce({ ok: false, status: 429, json: async () => ({ name: "rate_limit_exceeded" }) } as Response);
+    const res = response();
+    await handler(request(brief), res);
+    expect(res.statusCode).toBe(502);
+    expect(res.body.success).toBe(false);
+    expect(res.body.error).toContain("Recibimos tu solicitud");
   });
   it("fails when the server secret is missing", async () => {
     vi.stubEnv("RESEND_API_KEY", "");
