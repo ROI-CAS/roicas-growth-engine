@@ -1,30 +1,61 @@
-import { ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { trackWhatsAppClicked } from "@/lib/analytics";
 
 const WHATSAPP_NUMBER = "573114565403";
 const WHATSAPP_MESSAGE = "Hola, estoy interesado en sus servicios. ¿Podrían darme más información?";
+const COOKIE_EVENT = "roicas-cookie-preference-saved";
+const MESSAGE_SESSION_KEY = "roicas-whatsapp-message-seen";
 
 export default function WhatsAppButton() {
+  const [messageVisible, setMessageVisible] = useState(false);
+  const [cookiePending, setCookiePending] = useState(false);
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+  useEffect(() => {
+    setCookiePending(!localStorage.getItem("cookie-consent"));
+    const hideAfter = window.setTimeout(() => setMessageVisible(false), 7000);
+
+    if (!sessionStorage.getItem(MESSAGE_SESSION_KEY)) {
+      setMessageVisible(true);
+      sessionStorage.setItem(MESSAGE_SESSION_KEY, "true");
+    }
+
+    const onPreferenceSaved = () => setCookiePending(false);
+    window.addEventListener(COOKIE_EVENT, onPreferenceSaved);
+    return () => {
+      window.clearTimeout(hideAfter);
+      window.removeEventListener(COOKIE_EVENT, onPreferenceSaved);
+    };
+  }, []);
+
+  const position = cookiePending
+    ? "bottom-[6.75rem] sm:bottom-24"
+    : "bottom-4 sm:bottom-6";
 
   return (
     <aside
-      className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6"
+      className={`fixed right-4 z-50 flex items-center gap-2.5 transition-[bottom] duration-300 sm:right-6 ${position}`}
       aria-label="Atención por WhatsApp"
     >
+      {messageVisible && (
+        <div
+          className="whatsapp-prompt rounded-full bg-[#128C4E] px-3.5 py-2.5 text-xs font-semibold text-white shadow-[0_5px_18px_rgba(18,140,78,0.28)] sm:px-4 sm:text-sm"
+          aria-hidden="true"
+        >
+          ¿Hablamos de tu proyecto?
+        </div>
+      )}
       <a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"
         onClick={() => trackWhatsAppClicked("button")}
-        className="group relative flex min-h-14 items-center gap-2.5 rounded-full bg-[#25D366] px-4 text-sm font-semibold text-white shadow-[0_6px_22px_rgba(17,125,65,0.3)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#1fbd5b] hover:shadow-[0_10px_28px_rgba(17,125,65,0.4)] active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:min-h-16 sm:gap-3 sm:px-5 sm:text-base"
+        className="group flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_5px_18px_rgba(18,140,78,0.35)] transition duration-200 hover:scale-105 hover:bg-[#20c760] hover:shadow-[0_8px_24px_rgba(18,140,78,0.42)] active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:active:scale-100"
       >
-        <svg viewBox="0 0 32 32" className="h-7 w-7 shrink-0 fill-current sm:h-8 sm:w-8" aria-hidden="true">
-          <path d="M19.11 17.21c-.27-.13-1.6-.79-1.84-.88-.25-.09-.43-.13-.61.13-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.13-1.13-.42-2.16-1.33-.8-.71-1.34-1.6-1.49-1.86-.16-.27-.02-.41.12-.54.12-.12.27-.32.4-.48.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.07-.13-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47l-.52-.01c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.97 2.63 1.11 2.81.13.18 1.91 2.92 4.62 4.09.65.28 1.15.45 1.55.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.29.23-.64.23-1.18.16-1.29-.07-.11-.25-.18-.52-.31zM16.02 5.33c-5.9 0-10.69 4.79-10.69 10.69 0 1.88.49 3.72 1.43 5.34l-1.52 5.55 5.69-1.49a10.62 10.62 0 0 0 5.09 1.3h.01c5.9 0 10.69-4.79 10.69-10.69 0-2.86-1.11-5.55-3.13-7.57a10.62 10.62 0 0 0-7.57-3.13zm0 19.49h-.01a8.81 8.81 0 0 1-4.49-1.23l-.32-.19-3.37.88.9-3.29-.21-.34a8.84 8.84 0 0 1-1.36-4.69c0-4.89 3.98-8.87 8.87-8.87 2.37 0 4.6.92 6.27 2.6a8.81 8.81 0 0 1 2.6 6.27c0 4.89-3.98 8.87-8.88 8.87z" />
+        <svg viewBox="0 0 24 24" className="h-8 w-8 fill-current" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
         </svg>
-        <span>Hablemos por WhatsApp</span>
-        <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none" aria-hidden="true" />
       </a>
     </aside>
   );

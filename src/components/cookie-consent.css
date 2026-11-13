@@ -1,19 +1,94 @@
 .roicas-site-footer .roicas-cookie-consent {
-  flex: 1 1 28rem;
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 60;
+  border-top: 1px solid hsl(var(--border));
+  background: hsl(var(--background));
   color: hsl(var(--muted-foreground));
+  box-shadow: 0 -8px 28px rgb(0 0 0 / 0.12);
+}
+
+.roicas-cookie-consent__inner {
+  display: flex;
+  width: min(100% - 2rem, var(--roicas-content-width, 1200px));
+  min-height: 68px;
+  margin-inline: auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
 }
 
 .roicas-site-footer .roicas-cookie-consent p {
+  max-width: 42rem;
   margin: 0;
+  font-size: 0.78rem;
 }
 
 .roicas-site-footer .roicas-cookie-consent a {
   display: inline;
   min-height: 0;
-  color: inherit;
+  color: hsl(var(--foreground));
   font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .roicas-site-footer .roicas-cookie-consent a:hover {
+  color: hsl(var(--brand));
+}
+
+.roicas-cookie-consent__actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.roicas-cookie-consent__actions button {
+  min-height: 40px;
+  border: 1px solid hsl(var(--border));
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
   color: hsl(var(--foreground));
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.roicas-cookie-consent__actions button:hover {
+  border-color: hsl(var(--foreground) / 0.32);
+  background: hsl(var(--foreground) / 0.05);
+}
+
+.roicas-cookie-consent__actions button:focus-visible {
+  outline: 2px solid hsl(var(--brand));
+  outline-offset: 2px;
+}
+
+.whatsapp-prompt {
+  animation: whatsapp-prompt-in 280ms ease-out both;
+}
+
+@keyframes whatsapp-prompt-in {
+  from { opacity: 0; transform: translateX(6px) scale(0.98); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@media (max-width: 640px) {
+  .roicas-cookie-consent__inner {
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding-block: 0.75rem max(0.75rem, env(safe-area-inset-bottom));
+  }
+
+  .roicas-cookie-consent__actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-prompt { animation: none; }
 }
