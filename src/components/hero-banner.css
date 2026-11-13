@@ -266,22 +266,13 @@
   position: absolute;
   right: 0;
   top: 50%;
-  width: min(54%, 620px);
+  width: min(45vw, 540px);
   height: auto;
   aspect-ratio: 1 / 1;
   transform: translateY(-50%);
   object-fit: contain;
   object-position: right center;
   opacity: 1;
-}
-
-@media (min-width: 1025px) {
-  .rb-background video {
-    width: auto;
-    height: 100%;
-    max-width: none;
-    max-height: 100%;
-  }
 }
 
 @media (max-width: 767px) {
