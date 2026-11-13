@@ -169,13 +169,17 @@ export default function DisenoWeb() {
       <Header />
 
       <main id="contenido-principal" className="roicas-web-design">
-        <section className="rwd-hero rsp-hero" aria-labelledby="web-title">
+        <section className="rwd-hero rsp-hero rsp-service-hero rsp-image-hero rsp-web-hero" aria-labelledby="web-title">
           <ParticlesBackground particleCount={24} speed={0.22} />
           <div className="section-container rwd-hero-layout rsp-hero-content">
             <div>
               <p className="rwd-label">Diseño web e integraciones</p>
               <h1 id="web-title">Diseño web para <span>empresas en Colombia.</span></h1>
               <p className="rwd-hero-description">Construimos sitios a medida y los conectamos con tus redes, tu medición y el CRM que ya usa tu equipo.</p>
+              <picture className="rsp-mobile-hero-image">
+                <source media="(max-width: 767px)" srcSet="/images/services/hero-web-mobile.webp" />
+                <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Diseños de sitios web y tiendas online en computador y móvil." width={1080} height={1080} loading="lazy" decoding="async" />
+              </picture>
               <div className="rwd-actions">
                 <button className="rwd-button rwd-button-light" type="button" onClick={book}>
                   Agendar consultoría <ArrowRight size={18} aria-hidden="true" />
@@ -184,15 +188,6 @@ export default function DisenoWeb() {
               </div>
               <p className="rwd-note">Consultoría gratuita · 20 minutos</p>
             </div>
-            <img
-              className="rwd-hero-image"
-              src="/images/pillars/strategy-web-presencia.webp"
-              alt="Dos monitores con páginas web en proceso de diseño"
-              width={800}
-              height={450}
-              fetchPriority="high"
-              decoding="async"
-            />
           </div>
         </section>
 

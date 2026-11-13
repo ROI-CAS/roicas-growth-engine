@@ -51,10 +51,10 @@ export default function HeroSection() {
             <source media="(min-width: 768px)" srcSet="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" />
             <img
               className="rb-placeholder"
-              src="/images/pillars/process-step-1-estrategia.webp"
-              width={800}
-              height={450}
-              alt="Equipo reunido para planificar una estrategia digital"
+              src="/images/services/hero-home-mobile.webp"
+              width={1080}
+              height={1080}
+              alt="Tienda online en computador y móvil con productos listos para comprar"
               decoding="async"
             />
           </picture>

@@ -99,12 +99,16 @@ export default function AutomatizacionIA() {
         schemaJson={serviceSchema} />
       <Header />
       <main id="contenido-principal" className="roicas-web-design roicas-service-page">
-        <section className="rwd-hero rsp-hero" aria-labelledby="service-title">
+        <section className="rwd-hero rsp-hero rsp-service-hero rsp-image-hero rsp-crm-hero" aria-labelledby="service-title">
           <ParticlesBackground particleCount={24} speed={0.22} />
           <div className="section-container rwd-hero-layout rsp-hero-content">
             <div>
               <h1 id="service-title">Automatización de <span>WhatsApp y CRM.</span></h1>
               <p className="rwd-hero-description">Conectamos WhatsApp, formularios y CRM para organizar las consultas. Configuramos agentes con IA cuando aportan a las reglas de tu equipo.</p>
+              <picture className="rsp-mobile-hero-image">
+                <source media="(max-width: 767px)" srcSet="/images/services/hero-crm-mobile.webp" />
+                <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Panel de CRM en computador y móvil con contactos y oportunidades." width={1080} height={1080} loading="lazy" decoding="async" />
+              </picture>
               <div className="rwd-actions">
                 <button className="rwd-button rwd-button-light" type="button" onClick={book}>
                   Agendar consultoría <ArrowRight size={18} aria-hidden="true" />
@@ -115,8 +119,6 @@ export default function AutomatizacionIA() {
               </div>
               <p className="rwd-note">Consultoría gratuita · 20 minutos</p>
             </div>
-            <img className="rwd-hero-image rsp-hero-image" src={"/images/pillars/strategy-crm-ghl.webp"} alt="Persona con auriculares atendiendo una consulta desde su computador"
-              width={800} height={450} fetchPriority="high" decoding="async" />
           </div>
         </section>
 

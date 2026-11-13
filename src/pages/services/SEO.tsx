@@ -109,12 +109,16 @@ export default function SEO() {
         schemaJson={[serviceSchema, faqSchema]} />
       <Header />
       <main id="contenido-principal" className="roicas-web-design roicas-service-page">
-        <section className="rwd-hero rsp-hero" aria-labelledby="service-title">
+        <section className="rwd-hero rsp-hero rsp-service-hero rsp-image-hero rsp-seo-hero" aria-labelledby="service-title">
           <ParticlesBackground particleCount={24} speed={0.22} />
           <div className="section-container rwd-hero-layout rsp-hero-content">
             <div>
               <h1 id="service-title">Agencia SEO <span>en Colombia.</span></h1>
               <p className="rwd-hero-description">Ayudamos a que Google entienda tu sitio y a que tus clientes encuentren páginas que responden a sus búsquedas.</p>
+              <picture className="rsp-mobile-hero-image">
+                <source media="(max-width: 767px)" srcSet="/images/services/hero-seo-mobile.webp" />
+                <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Ilustración del posicionamiento en buscadores y crecimiento web." width={1080} height={1080} loading="lazy" decoding="async" />
+              </picture>
               <div className="rwd-actions">
                 <button className="rwd-button rwd-button-light" type="button" onClick={book}>
                   Agendar consultoría <ArrowRight size={18} aria-hidden="true" />
@@ -125,8 +129,6 @@ export default function SEO() {
               </div>
               <p className="rwd-note">Consultoría gratuita · 20 minutos</p>
             </div>
-            <img className="rwd-hero-image rsp-hero-image" src={"/images/pillars/strategy-seo-ads.webp"} alt="Portátil con gráficos ilustrativos de análisis"
-              width={800} height={450} fetchPriority="high" decoding="async" />
           </div>
         </section>
 

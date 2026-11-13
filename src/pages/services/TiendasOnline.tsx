@@ -91,7 +91,7 @@ export default function TiendasOnline() {
         schemaJson={serviceSchema} />
       <Header />
       <main id="contenido-principal" className="roicas-web-design roicas-service-page">
-        <section className="rwd-hero rsp-hero rsp-store-hero" aria-labelledby="service-title">
+        <section className="rwd-hero rsp-hero rsp-service-hero rsp-store-hero" aria-labelledby="service-title">
           <ParticlesBackground particleCount={24} speed={0.22} />
           <div className="section-container rwd-hero-layout rsp-hero-content">
             <div>

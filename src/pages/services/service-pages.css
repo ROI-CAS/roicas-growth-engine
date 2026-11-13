@@ -4,20 +4,74 @@
   overflow: hidden;
 }
 
+.rsp-service-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 4rem;
+}
+
+.rsp-service-hero .rsp-hero-content {
+  transform: translateY(2rem);
+}
+
+@media (min-width: 1024px) {
+  .rsp-service-hero .rsp-hero-content {
+    transform: translateY(2.5rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .rsp-service-hero {
+    min-height: 42rem;
+  }
+}
+
 .roicas-service-page .rsp-hero {
   background: #100e14;
 }
 
-.roicas-service-page .rsp-store-hero {
-  background-image: linear-gradient(90deg, rgb(12 11 16 / 0.08), transparent 64%),
-    url("/images/services/tienda-online.webp");
-  background-position: center right;
-  background-size: cover;
-}
+.rsp-store-hero { --rsp-hero-art: url("/images/services/tienda-online-hero.webp"); }
 
-.rsp-store-mobile-image {
+.rsp-store-mobile-image,
+.rsp-mobile-hero-image {
   display: none;
 }
+
+.rsp-web-hero { --rsp-hero-art: url("/images/services/hero-web.webp"); }
+.rsp-seo-hero { --rsp-hero-art: url("/images/services/hero-seo.webp"); }
+.rsp-crm-hero { --rsp-hero-art: url("/images/services/hero-crm.webp"); }
+.rsp-ads-hero { --rsp-hero-art: url("/images/services/hero-social-campaigns.webp"); }
+
+.rsp-service-hero.rsp-store-hero::before,
+.rsp-service-hero.rsp-image-hero::before {
+  content: "";
+  position: absolute;
+  inset: -1rem;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(90deg, #100e14 0%, rgb(16 14 20 / 0.9) 16%, transparent 30%),
+    linear-gradient(270deg, #100e14 0%, rgb(16 14 20 / 0.7) 5%, transparent 10%),
+    var(--rsp-hero-art);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%, 100% 100%, auto 100%;
+  transform: scale(1.015);
+  transform-origin: center;
+  transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .rsp-service-hero.rsp-store-hero:hover::before,
+  .rsp-service-hero.rsp-image-hero:hover::before {
+    transform: perspective(1200px) rotateX(0.45deg) rotateY(-0.6deg) scale(1.04);
+  }
+
+  .rsp-service-hero:not(.rsp-store-hero):not(.rsp-image-hero):hover .rsp-hero-image {
+    transform: perspective(1200px) rotateX(0.45deg) rotateY(-0.6deg) translateY(-4px) scale(1.015);
+  }
+}
+
 
 .rsp-hero > canvas {
   opacity: 0.68;
@@ -89,9 +143,20 @@
     aspect-ratio: 16 / 9;
   }
 
-  .roicas-service-page .rsp-store-hero {
-    background-image: none;
-    background-color: #100e14;
+  .rsp-service-hero.rsp-store-hero::before,
+  .rsp-service-hero.rsp-web-hero::before,
+  .rsp-service-hero.rsp-seo-hero::before,
+  .rsp-service-hero.rsp-crm-hero::before {
+    display: none;
+  }
+
+  .rsp-service-hero.rsp-ads-hero::before {
+    background-image: linear-gradient(180deg, #100e14 0%, rgb(16 14 20 / 0.76) 48%, rgb(16 14 20 / 0.32) 76%, #100e14 100%),
+      var(--rsp-hero-art);
+    background-position: center center, center bottom;
+    background-size: 100% 100%, 100% auto;
+    transform: none;
+    transition: none;
   }
 
   .rsp-store-mobile-image {
@@ -103,12 +168,33 @@
     border-radius: 1rem;
   }
 
+  .rsp-mobile-hero-image {
+    display: block;
+    width: 100%;
+    margin: 1rem 0 1.5rem;
+    overflow: hidden;
+    border: 1px solid #ffffff26;
+    border-radius: 1rem;
+  }
+
+  .rsp-mobile-hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
   .rsp-store-hero .rwd-hero-layout {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .rsp-service-hero::before,
+  .rsp-service-hero .rsp-hero-image {
+    transition: none;
+    transform: none;
+  }
+
   .rsp-tabs > button {
     transition: none;
   }

@@ -91,7 +91,7 @@ export default function PublicidadDigital() {
         schemaJson={serviceSchema} />
       <Header />
       <main id="contenido-principal" className="roicas-web-design roicas-service-page">
-        <section className="rwd-hero rsp-hero" aria-labelledby="service-title">
+        <section className="rwd-hero rsp-hero rsp-service-hero rsp-image-hero rsp-ads-hero" aria-labelledby="service-title">
           <ParticlesBackground particleCount={24} speed={0.22} />
           <div className="section-container rwd-hero-layout rsp-hero-content">
             <div>
@@ -107,8 +107,6 @@ export default function PublicidadDigital() {
               </div>
               <p className="rwd-note">Consultoría gratuita · 20 minutos</p>
             </div>
-            <img className="rwd-hero-image rsp-hero-image" src={"/images/pillars/process-step-1-estrategia.webp"} alt="Personas reunidas con portátiles y notas de trabajo"
-              width={800} height={450} fetchPriority="high" decoding="async" />
           </div>
         </section>
 
