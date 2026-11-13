@@ -58,7 +58,7 @@ export default function HeroSection() {
               decoding="async"
             />
           </picture>
-          <p className="rb-description">Diseñamos sitios web y tiendas online, gestionamos SEO, publicidad y contenido para redes. Conectamos formularios, píxeles, WhatsApp y CRM para identificar de dónde llegan las consultas y ayudar a tu equipo a darles seguimiento con automatización e IA.</p>
+          <p className="rb-description">No solo creamos tu presencia digital. Conectamos las herramientas que tu negocio necesita para atraer, convertir y gestionar clientes.</p>
           <ul className="rb-proof-points" aria-label="Cómo trabaja la estrategia digital">
             <li><span className="rb-proof-check" aria-hidden="true" />Presencia en buscadores</li>
             <li><span className="rb-proof-check" aria-hidden="true" />Seguimiento conectado</li>
