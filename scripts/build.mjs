@@ -12,7 +12,7 @@ const cleanTemplate = template
 const routes = [...siteRoutes, "/blog", ...publishedArticles.map(post => `/blog/${post.slug}`)];
 const nonIndexedRoutes = ["/web-express/black-november"];
 for (const route of [...routes, ...nonIndexedRoutes, "/404"]) {
-  const { html, head } = render(route);
+  const { html, head } = await render(route);
   if (!html.includes("<h1")) throw new Error(`Falta H1 en ${route}`);
   const result = cleanTemplate.replace("</head>", () => `${head}\n</head>`)
     .replace('<div id="root"></div>', () => `<div id="root">${html}</div>`)

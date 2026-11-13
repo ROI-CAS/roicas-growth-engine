@@ -1,3 +1,4 @@
+import "../styles.generated.css";
 import { CampaignNotice } from "@/modules/web-express/components/BlackNovemberLanding";
 import { useCampaignClock } from "@/modules/web-express/lib/campaign-server";
 import {

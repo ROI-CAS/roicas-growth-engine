@@ -1,5 +1,5 @@
 // GA4 event tracking utility — ROICAS
-// gtag is loaded globally via index.html script tag
+// gtag is initialized only after cookie consent and loaded when the browser is idle.
 
 type EventParams = Record<string, string | number | boolean | undefined>;
 

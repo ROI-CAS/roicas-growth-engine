@@ -1,4 +1,5 @@
 import { lazy, Suspense, type ReactNode } from "react";
+import "../styles.generated.css";
 import { useScrollDepth } from "@/modules/diagnostico/hooks/use-scroll-depth";
 import { Navbar } from "@/modules/diagnostico/components/landing/Navbar";
 import { Hero } from "@/modules/diagnostico/components/landing/Hero";

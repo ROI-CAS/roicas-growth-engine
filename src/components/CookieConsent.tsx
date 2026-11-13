@@ -5,13 +5,20 @@ export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!localStorage.getItem("cookie-consent")) setVisible(true);
+    const preference = localStorage.getItem("cookie-consent");
+    if (!preference) setVisible(true);
+    else if (preference === "accepted") {
+      void import("@/lib/googleAnalytics").then(({ initializeGoogleAnalytics }) => initializeGoogleAnalytics());
+    }
   }, []);
 
   function savePreference(value: "accepted" | "declined") {
     localStorage.setItem("cookie-consent", value);
     setVisible(false);
     window.dispatchEvent(new Event("roicas-cookie-preference-saved"));
+    if (value === "accepted") {
+      void import("@/lib/googleAnalytics").then(({ initializeGoogleAnalytics }) => initializeGoogleAnalytics());
+    }
   }
 
   if (!visible) return null;

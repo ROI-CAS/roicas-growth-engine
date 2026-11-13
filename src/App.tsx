@@ -1,15 +1,6 @@
+import { lazy, Suspense } from "react";
 import { MotionConfig } from "framer-motion";
 import "./roicas-reform.css";
-import ProductPage from "./modules/ProductPage";
-import Diagnostico from "./modules/diagnostico/pages/Index";
-import DiagnosticoPrivacy from "./modules/diagnostico/pages/Privacidad";
-import WebExpress from "./modules/web-express/routes/index";
-import WebExpressCampaign from "./modules/web-express/routes/black-november";
-import WebExpressPrivacy from "./modules/web-express/routes/privacidad";
-import WebExpressTerms from "./modules/web-express/routes/terminos";
-import WPDoctor from "./pages/WPDoctor";
-import "./modules/diagnostico/styles.generated.css";
-import "./modules/web-express/styles.generated.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,23 +8,33 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, matchPath, useLocation } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
 import { BookingProvider } from "@/contexts/BookingContext";
-import Index from "./pages/Index";
-import Services from "./pages/Services";
-import AboutUs from "./pages/AboutUs";
-import Contact from "./pages/Contact";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import NotFound from "./pages/NotFound";
-import DisenoWeb from "./pages/services/DisenoWeb";
-import TiendasOnline from "./pages/services/TiendasOnline";
-import SEO from "./pages/services/SEO";
-import PublicidadDigital from "./pages/services/PublicidadDigital";
-import AutomatizacionIA from "./pages/services/AutomatizacionIA";
-import BriefCotizacion from "./pages/BriefCotizacion";
-import Blog from "./pages/Blog";
-import BlogArticle from "./pages/BlogArticle";
 import ScrollToTop from "./components/ScrollToTop";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { publishedArticles } from "@/lib/blog";
+
+// Download route code and route-specific styles only when a visitor opens that route.
+const ProductPage = lazy(() => import("./modules/ProductPage"));
+const Diagnostico = lazy(() => import("./modules/diagnostico/pages/Index"));
+const DiagnosticoPrivacy = lazy(() => import("./modules/diagnostico/pages/Privacidad"));
+const WebExpress = lazy(() => import("./modules/web-express/routes/index"));
+const WebExpressCampaign = lazy(() => import("./modules/web-express/routes/black-november"));
+const WebExpressPrivacy = lazy(() => import("./modules/web-express/routes/privacidad"));
+const WebExpressTerms = lazy(() => import("./modules/web-express/routes/terminos"));
+const WPDoctor = lazy(() => import("./pages/WPDoctor"));
+const Index = lazy(() => import("./pages/Index"));
+const Services = lazy(() => import("./pages/Services"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Contact = lazy(() => import("./pages/Contact"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const DisenoWeb = lazy(() => import("./pages/services/DisenoWeb"));
+const TiendasOnline = lazy(() => import("./pages/services/TiendasOnline"));
+const SEO = lazy(() => import("./pages/services/SEO"));
+const PublicidadDigital = lazy(() => import("./pages/services/PublicidadDigital"));
+const AutomatizacionIA = lazy(() => import("./pages/services/AutomatizacionIA"));
+const BriefCotizacion = lazy(() => import("./pages/BriefCotizacion"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogArticle = lazy(() => import("./pages/BlogArticle"));
 
 const queryClient = new QueryClient();
 
@@ -68,6 +69,7 @@ const App = ({ url }: { url?: string }) => {
       <Router location={url}>
       <ScrollToTop />
       <BookingProvider>
+        <Suspense fallback={<div className="min-h-[50vh]" aria-busy="true" />}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/servicios" element={<Services />} />
@@ -93,6 +95,7 @@ const App = ({ url }: { url?: string }) => {
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
         <SiteWhatsApp />
       </BookingProvider>
       </Router>

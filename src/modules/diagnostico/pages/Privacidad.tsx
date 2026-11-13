@@ -1,4 +1,5 @@
 import { ArrowLeft } from "lucide-react";
+import "../styles.generated.css";
 import { Link } from "react-router-dom";
 
 export default function Privacidad() {

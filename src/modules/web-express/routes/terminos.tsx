@@ -1,4 +1,5 @@
 
+import "../styles.generated.css";
 import { LegalPage } from "@/modules/web-express/components/LegalPage";
 import {
   SITE_URL,

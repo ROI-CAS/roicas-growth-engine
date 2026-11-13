@@ -1,3 +1,4 @@
+import "../styles.generated.css";
 import { useLocation } from "react-router-dom";
 
 import { LegalPage } from "@/modules/web-express/components/LegalPage";
