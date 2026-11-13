@@ -46,7 +46,7 @@ export default function HeroSection() {
       <div className="rb-layout">
         <div className="rb-content">
           <p className="rb-badge"><span className="rb-badge-dot" aria-hidden="true" />Estrategia digital 360°</p>
-          <h1 id="home-title">Atrae clientes con<br /><span>web, campañas y seguimiento conectado.</span></h1>
+          <h1 id="home-title">Estrategia de <span>marketing digital</span><br />para empresas que quieren crecer</h1>
           <picture>
             <source media="(min-width: 768px)" srcSet="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" />
             <img
@@ -58,7 +58,7 @@ export default function HeroSection() {
               decoding="async"
             />
           </picture>
-          <p className="rb-description">Diseñamos tu web para atraer y convertir. Conectamos SEO y campañas de Google y Meta con WhatsApp y tu CRM para dar seguimiento a cada oportunidad y entender qué canales funcionan.</p>
+          <p className="rb-description">Diseñamos sitios web y tiendas online, gestionamos SEO, publicidad y contenido para redes. Conectamos formularios, píxeles, WhatsApp y CRM para identificar de dónde llegan las consultas y ayudar a tu equipo a darles seguimiento con automatización e IA.</p>
           <ul className="rb-proof-points" aria-label="Cómo trabaja la estrategia digital">
             <li><span className="rb-proof-check" aria-hidden="true" />Presencia en buscadores</li>
             <li><span className="rb-proof-check" aria-hidden="true" />Seguimiento conectado</li>

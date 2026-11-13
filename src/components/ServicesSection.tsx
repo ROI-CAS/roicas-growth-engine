@@ -126,9 +126,9 @@ export default function ServicesSection() {
         <BlurFade inView blur="3px" offset={8} duration={0.45} className="rsi-intro">
           <div>
             <p className="rsi-eyebrow">Soluciones para tu negocio</p>
-            <h2 id="solutions-title">Tu estrategia, <span>conectada</span></h2>
+            <h2 id="solutions-title">Atrae clientes con una web, campañas y seguimiento comercial</h2>
           </div>
-          <p>Unimos tu web, la captación y el seguimiento comercial para que cada etapa lleve a la siguiente. Puedes empezar por una necesidad o trabajar la estrategia completa.</p>
+          <p>Elige el servicio que responde a la prioridad de tu negocio. Puedes contratarlo por separado o combinarlo con otros según lo que necesites.</p>
         </BlurFade>
 
         <Tabs.Root className="rsi-tabs-container" defaultValue="web" activationMode="manual" orientation={isNarrow ? "vertical" : "horizontal"}>
