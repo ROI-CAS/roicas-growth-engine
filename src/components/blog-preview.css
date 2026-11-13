@@ -1,0 +1,201 @@
+/* Blog & Guías Editorial Preview - ROICAS */
+
+.roicas-guides-section {
+  padding: clamp(80px, 8vw, 110px) clamp(24px, 4vw, 56px);
+  background: linear-gradient(180deg, #f9f7f4 0%, #f2ede5 100%);
+  border-top: 1px solid #e4ded6;
+  color: #232028;
+}
+
+.rgb-inner {
+  max-width: var(--roicas-content-width);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.rgb-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.rgb-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: hsl(var(--brand));
+  margin: 0 0 14px 0;
+}
+
+.roicas-home .rgb-header h2 {
+  font-family: inherit;
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 750;
+  color: #1a1720;
+  margin: 0;
+}
+
+.rgb-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 650;
+  color: #231f28;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  transition: color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.rgb-all-link:hover {
+  color: hsl(var(--brand));
+  transform: translateX(3px);
+}
+
+.rgb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 2.5vw, 32px);
+}
+
+.rgb-card {
+  background: #ffffff;
+  border: 1px solid #e3ddd4;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px -8px rgba(35, 30, 42, 0.06);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s, border-color 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.rgb-card:hover {
+  transform: translateY(-4px);
+  border-color: #d1c8bd;
+  box-shadow: 0 18px 40px -8px rgba(35, 30, 42, 0.12);
+}
+
+.rgb-card-thumb-wrap {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  background: #ede7df;
+}
+
+.rgb-card-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.rgb-card:hover .rgb-card-thumb {
+  transform: scale(1.04);
+}
+
+.rgb-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.rgb-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6a6272;
+  margin-bottom: 12px;
+}
+
+.rgb-card-badge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #f3ece4;
+  color: hsl(var(--brand));
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.roicas-home .rgb-card-body h3 {
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: #1a1720;
+  margin: 0 0 16px 0;
+  transition: color 0.2s;
+}
+
+.rgb-card:hover h3 {
+  color: hsl(var(--brand));
+}
+
+.rgb-card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 650;
+  color: hsl(var(--brand));
+  padding-top: 14px;
+  border-top: 1px solid #f0ebe4;
+}
+
+.rgb-card-footer svg {
+  transition: transform 0.2s;
+}
+
+.rgb-card:hover .rgb-card-footer svg {
+  transform: translateX(4px);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .rgb-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Móvil */
+@media (max-width: 767px) {
+  .roicas-guides-section {
+    padding: 56px 20px;
+  }
+  .rgb-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .rgb-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roicas-guides-section * {
+    transition: none !important;
+  }
+  .rgb-card:hover {
+    transform: none;
+  }
+}
+

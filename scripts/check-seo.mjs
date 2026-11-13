@@ -16,7 +16,9 @@ for (const route of routes) {
   assert.equal(document.querySelector('meta[property="og:url"]')?.content, `${SITE_URL}${route}`);
   for (const script of document.querySelectorAll('script[type="application/ld+json"]')) JSON.parse(script.textContent);
   const image = document.querySelector('meta[property="og:image"]')?.content;
-  assert.equal(image, `${SITE_URL}/og-image.png`);
+  const imageUrl = new URL(image);
+  assert.equal(imageUrl.origin, SITE_URL);
+  await readFile(`dist${decodeURIComponent(imageUrl.pathname)}`);
 }
 const sitemap = await readFile("dist/sitemap.xml", "utf8");
 assert(!sitemap.includes("https://roicas.com"));
@@ -28,5 +30,5 @@ const image = await readFile("dist/og-image.png");
 assert.equal(image.subarray(1, 4).toString(), "PNG");
 const config = JSON.parse(await readFile("vercel.json", "utf8"));
 assert.equal(config.cleanUrls, true);
-assert.equal(config.rewrites, undefined, "No debe reaparecer el catch-all que produce soft 404");
+assert((config.rewrites ?? []).every(rule => rule.source.startsWith("/api/")), "No debe reaparecer un catch-all de páginas que produzca soft 404");
 console.log(`SEO verificado: ${routes.length} páginas con HTML, títulos únicos, canonical, metadatos y JSON-LD. Sitemap, imagen y 404 correctos.`);

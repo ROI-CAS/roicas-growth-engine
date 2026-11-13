@@ -18,7 +18,7 @@ const brief = {
 };
 
 const response = () => {
-  const res = { statusCode: 0, body: null as any, setHeader: vi.fn(), status: vi.fn(), json: vi.fn() };
+  const res = { statusCode: 0, body: null as Record<string, unknown>, setHeader: vi.fn(), status: vi.fn(), json: vi.fn() };
   res.status.mockImplementation((code) => { res.statusCode = code; return res; });
   res.json.mockImplementation((body) => { res.body = body; return res; });
   return res;

@@ -1,0 +1,1419 @@
+/* Servicios & Soluciones Interactivas - ROICAS */
+
+.roicas-solutions-interactive {
+  padding: clamp(80px, 8vw, 110px) clamp(24px, 4vw, 56px);
+  background: linear-gradient(180deg, #fbf9f6 0%, #f3eee8 100%);
+  border-bottom: 1px solid #e5dfd7;
+  scroll-margin-top: 90px;
+  color: #232028;
+  position: relative;
+}
+
+.rsi-inner {
+  max-width: var(--roicas-content-width);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.rsi-strategy-anchor {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  scroll-margin-top: 90px;
+}
+
+.rsi-intro {
+  display: flex;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+
+.rsi-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: hsl(var(--brand));
+  margin: 0 0 16px;
+}
+
+.roicas-home .rsi-intro h2 {
+  font-family: inherit;
+  font-size: clamp(32px, 3.4vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  color: #1a1720;
+  margin: 0;
+}
+
+.rsi-intro h2 span {
+  color: hsl(var(--brand));
+}
+
+.rsi-intro>p {
+  max-width: 44ch;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #55505b;
+  margin: 0;
+}
+
+/* Selector de Pestañas Interactivo tipo Tarjeta con Hover Elegante */
+.rsi-tabs-container {
+  width: 100%;
+}
+
+.rsi-tablist {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  position: relative;
+  margin-bottom: 24px;
+  border-bottom: none;
+}
+
+.rsi-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 76px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border: 1.5px solid #e5dfd7;
+  border-radius: 14px;
+  color: #433d4b;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.04);
+}
+
+.rsi-tab-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #f5f0e9;
+  color: #6a6372;
+  flex-shrink: 0;
+  transition: all 0.22s ease;
+}
+
+.rsi-tab-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.rsi-tab-step {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #6a6372;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.rsi-stage-dot {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #928694;
+  transition: background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.rsi-tab[aria-selected="true"] .rsi-tab-step {
+  color: hsl(var(--brand));
+}
+
+.rsi-tab[aria-selected="true"] .rsi-stage-dot {
+  background: hsl(var(--brand));
+  box-shadow: 0 0 0 3px hsl(var(--brand) / 0.12);
+}
+
+@media (min-width: 768px) {
+  .rsi-tablist {
+    padding-top: 25px;
+  }
+
+  .rsi-tablist::before {
+    content: "";
+    position: absolute;
+    inset-inline: calc((100% - 32px) / 6);
+    top: 7px;
+    height: 1px;
+    background: #c9bcc8;
+    pointer-events: none;
+  }
+
+  .rsi-stage-dot {
+    position: absolute;
+    top: -19px;
+    left: 50%;
+    width: 9px;
+    height: 9px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 3px #f8f7f4;
+    pointer-events: none;
+  }
+
+  .rsi-tab[aria-selected="true"] .rsi-stage-dot {
+    box-shadow: 0 0 0 3px #f8f7f4, 0 0 0 5px hsl(var(--brand) / 0.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rsi-stage-dot { transition: none; }
+}
+
+.rsi-tab-title {
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #1f1b26;
+}
+
+.rsi-tab-sub {
+  font-size: 12.5px;
+  color: #797180;
+  line-height: 1.2;
+}
+
+.rsi-tab-arrow {
+  margin-left: auto;
+  opacity: 0.35;
+  flex-shrink: 0;
+  color: #797180;
+  transition: transform 0.22s ease, opacity 0.22s ease, color 0.22s ease;
+}
+
+/* Hover elegante: elevación sutil de 2px, borde con tinte de marca y realce de icono */
+.rsi-tab:hover {
+  background: #ffffff;
+  border-color: rgba(220, 38, 38, 0.35);
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02);
+  transform: translateY(-2px);
+  color: #1a1720;
+}
+
+.rsi-tab:hover .rsi-tab-icon-wrap {
+  background: hsl(var(--brand) / 0.1);
+  color: hsl(var(--brand));
+  transform: scale(1.06);
+}
+
+.rsi-tab:hover .rsi-tab-arrow {
+  opacity: 0.85;
+  color: hsl(var(--brand));
+  transform: translateY(2px);
+}
+
+/* Pestaña activa: marco de marca sólido, sombra sutil envolvente y badge prominente */
+.rsi-tab.rsi-tab-active,
+.rsi-tab[aria-selected="true"] {
+  background: #ffffff;
+  border-color: hsl(var(--brand));
+  box-shadow: 0 12px 28px -6px rgba(220, 38, 38, 0.16), 0 2px 8px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+  color: #1a1720;
+}
+
+.rsi-tab.rsi-tab-active .rsi-tab-icon-wrap,
+.rsi-tab[aria-selected="true"] .rsi-tab-icon-wrap {
+  background: hsl(var(--brand));
+  color: #ffffff;
+  box-shadow: 0 4px 12px hsl(var(--brand) / 0.35);
+}
+
+.rsi-tab.rsi-tab-active .rsi-tab-title,
+.rsi-tab[aria-selected="true"] .rsi-tab-title {
+  font-weight: 700;
+  color: #18151e;
+}
+
+.rsi-tab.rsi-tab-active .rsi-tab-sub,
+.rsi-tab[aria-selected="true"] .rsi-tab-sub {
+  color: hsl(var(--brand));
+  font-weight: 500;
+}
+
+.rsi-tab.rsi-tab-active .rsi-tab-arrow,
+.rsi-tab[aria-selected="true"] .rsi-tab-arrow {
+  opacity: 1;
+  color: hsl(var(--brand));
+}
+
+.rsi-tab svg {
+  flex-shrink: 0;
+}
+
+.roicas-solutions-interactive :is(a, button, summary, [role="tabpanel"]):focus-visible {
+  outline: 3px solid hsl(var(--brand));
+  outline-offset: 4px;
+}
+
+/* Panel de Contenido */
+.rsi-panel {
+  padding: clamp(20px, 4vw, 52px);
+  border: 1px solid #e5dfd7;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 18px 44px -34px rgba(32, 18, 25, 0.4);
+}
+
+.rsi-panel-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+  min-height: 332px;
+  animation: rsiPanelReveal 220ms ease-out both;
+}
+
+.rsi-panel[hidden] {
+  display: none;
+}
+
+@keyframes rsiPanelReveal {
+  from {
+    opacity: 0.78;
+    transform: translateY(4px);
+  }
+}
+
+.rsi-visual {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #0c0b12;
+  box-shadow: 0 18px 36px -20px rgba(12, 11, 17, 0.45);
+}
+
+/* Rayo láser / barrido de luz Motion Graphics */
+.rsi-scanline-beam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(56, 189, 248, 0.08) 35%,
+      rgba(255, 255, 255, 0.38) 50%,
+      rgba(56, 189, 248, 0.14) 65%,
+      transparent 100%);
+  pointer-events: none;
+  z-index: 25;
+  transform: skewX(-20deg);
+}
+
+.rsi-visual>img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.rsi-visual:hover>img {
+  transform: scale(1.025);
+}
+
+.roicas-home .rsi-copy h3 {
+  font-family: inherit;
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  color: #1b1820;
+  margin: 0 0 20px;
+  max-width: 24ch;
+}
+
+.rsi-copy>p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: #55505b;
+  max-width: 48ch;
+}
+
+.rsi-copy ul {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0;
+  display: grid;
+  gap: 14px;
+}
+
+.rsi-copy li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #342e39;
+}
+
+.rsi-copy li>span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: hsl(var(--brand));
+  flex-shrink: 0;
+}
+
+.rsi-panel-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  margin-top: 32px;
+}
+
+.rsi-primary,
+.rsi-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 52px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.rsi-primary {
+  background: hsl(var(--brand));
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 0 26px;
+  box-shadow: 0 6px 18px -2px hsl(var(--brand) / 0.35);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.rsi-primary:hover {
+  background: hsl(var(--brand-hover));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -2px hsl(var(--brand) / 0.45);
+}
+
+.rsi-primary:active {
+  transform: scale(0.98);
+}
+
+.rsi-secondary {
+  color: #2b2631;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  transition: color 0.2s;
+}
+
+.rsi-secondary:hover {
+  color: hsl(var(--brand));
+}
+
+.rsi-panel-actions svg {
+  transition: transform 0.2s;
+}
+
+.rsi-panel-actions a:hover svg {
+  transform: translateX(4px);
+}
+
+.rsi-demo {
+  margin-top: 24px;
+  border-top: 1px solid #e5dfd7;
+}
+
+.rsi-demo > summary {
+  display: flex;
+  width: fit-content;
+  min-height: 48px;
+  align-items: center;
+  gap: 10px;
+  color: #433d4b;
+  font-size: 14px;
+  font-weight: 650;
+  list-style: none;
+  cursor: pointer;
+  transition: color 180ms ease;
+}
+
+.rsi-demo > summary::-webkit-details-marker {
+  display: none;
+}
+
+.rsi-demo > summary:hover {
+  color: hsl(var(--brand));
+}
+
+.rsi-demo > summary svg {
+  flex-shrink: 0;
+  transition: transform 180ms ease;
+}
+
+.rsi-demo[open] > summary svg {
+  transform: rotate(180deg);
+}
+
+.rsi-demo[open] > summary {
+  margin-bottom: 8px;
+}
+
+.rsi-demo-status {
+  min-height: 80px;
+  margin: 0;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f5f0e9;
+  color: #433d4b;
+}
+
+/* Flujo de atención para tab 3 */
+.rsi-flow {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #f4ebe5 0%, #ece0d8 100%);
+  padding: clamp(28px, 4vw, 44px);
+}
+
+.rsi-flow>p {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #4f3f47;
+  margin: 0 0 4px;
+}
+
+.rsi-flow-step {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px 24px;
+  color: hsl(var(--brand));
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.rsi-flow-step:not(:last-of-type):after {
+  content: "";
+  position: absolute;
+  left: 35px;
+  bottom: -20px;
+  height: 20px;
+  width: 2px;
+  background: hsl(var(--brand) / 0.4);
+}
+
+.rsi-flow-step span {
+  display: grid;
+  gap: 4px;
+}
+
+.rsi-flow-step strong {
+  font-size: 15px;
+  font-weight: 650;
+  color: #2b2229;
+}
+
+.rsi-flow-step small {
+  font-size: 13px;
+  color: #4a4048;
+}
+
+.rsi-flow-note {
+  font-size: 12px;
+  color: #4a4048;
+  font-weight: 500;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .rsi-panel-content {
+    gap: 28px;
+  }
+
+  .rsi-intro {
+    gap: 32px;
+  }
+
+}
+
+/* Móvil */
+@media (max-width: 767px) {
+  .roicas-solutions-interactive {
+    padding: 56px 20px;
+  }
+
+  .rsi-intro {
+    display: block;
+    margin-bottom: 28px;
+  }
+
+  .rsi-intro>p {
+    margin-top: 18px;
+    font-size: 16px;
+  }
+
+  .roicas-home .rsi-intro h2 {
+    font-size: 32px;
+  }
+
+  .rsi-tablist {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    border-bottom: 0;
+  }
+
+  .rsi-tab {
+    min-height: 64px;
+    padding: 12px 16px;
+    border: 1.5px solid #e5dfd7;
+    border-radius: 12px;
+    font-size: 14px;
+    transform: none !important;
+  }
+
+  .rsi-tab-icon-wrap {
+    width: 38px;
+    height: 38px;
+  }
+
+  .rsi-tab-title {
+    font-size: 14.5px;
+  }
+
+  .rsi-tab-sub {
+    font-size: 11.5px;
+  }
+
+  .rsi-tab.rsi-tab-active,
+  .rsi-tab[aria-selected="true"] {
+    border-color: hsl(var(--brand));
+    background: #ffffff;
+    box-shadow: 0 4px 14px -2px rgba(220, 38, 38, 0.12);
+  }
+
+  .rsi-panel-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    min-height: 0;
+  }
+
+  .roicas-home .rsi-copy h3 {
+    font-size: 26px;
+  }
+
+  .rsi-copy>p {
+    font-size: 16px;
+  }
+
+  .rsi-flow {
+    padding: 22px;
+    gap: 14px;
+  }
+
+  .rsi-flow-step {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .rsi-flow-step strong {
+    font-size: 13px;
+  }
+
+  .rsi-flow-step small {
+    font-size: 11px;
+  }
+}
+
+/* ==========================================================================
+   ROICAS SERVICES INTERACTIVE HUDS (21st.dev Style Architecture)
+   ========================================================================== */
+
+.rsi-hud {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  background: radial-gradient(circle at 90% 10%, rgba(255, 92, 103, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 10% 90%, rgba(35, 20, 50, 0.6) 0%, transparent 60%),
+    #0c0b12;
+  border-radius: 20px;
+  padding: clamp(16px, 2.5vw, 24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+/* 1. Header de Navegador / Estado */
+.rsi-hud-browser-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rsi-hud-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.rsi-hud-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.rsi-hud-dot-red {
+  background: #ff5f56;
+}
+
+.rsi-hud-dot-yellow {
+  background: #ffbd2e;
+}
+
+.rsi-hud-dot-green {
+  background: #27c93f;
+}
+
+.rsi-hud-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  color: #c9c3d4;
+  letter-spacing: -0.01em;
+}
+
+.rsi-hud-lighthouse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #34d399;
+}
+
+.rsi-hud-score-pill {
+  background: rgba(52, 211, 153, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 999px;
+  padding: 2px 7px;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+/* 2. Cinta de Velocidad */
+.rsi-hud-speed-ribbon {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rsi-hud-metric-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.rsi-hud-metric-label {
+  color: #9d96a8;
+}
+
+/* 3. Pestañas Interactivas del HUD */
+.rsi-hud-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rsi-hud-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #b8b1c4;
+  font-size: 12px;
+  font-weight: 550;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rsi-hud-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.rsi-hud-tab.active {
+  background: hsl(var(--brand-on-dark) / 0.18);
+  border-color: hsl(var(--brand-on-dark) / 0.45);
+  color: hsl(var(--brand-on-dark));
+  font-weight: 650;
+}
+
+/* 4. Canvas Central */
+.rsi-hud-canvas {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 16px;
+  overflow: hidden;
+}
+
+.rsi-hud-card-mockup {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.rsi-hud-mock-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rsi-hud-mock-logo {
+  width: 80px;
+  height: 12px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.rsi-hud-mock-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rsi-hud-mock-nav span:not(.rsi-hud-mock-cta) {
+  width: 40px;
+  height: 8px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.rsi-hud-mock-cta {
+  background: hsl(var(--brand-on-dark));
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.rsi-hud-mock-body h4 {
+  font-size: 17px;
+  font-weight: 650;
+  color: #ffffff;
+  margin: 8px 0 6px;
+  line-height: 1.3;
+}
+
+.rsi-hud-mock-body p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #b1a9bc;
+  margin: 0 0 12px;
+}
+
+.rsi-hud-mock-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: hsl(var(--brand-on-dark));
+}
+
+.rsi-hud-mock-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.rsi-hud-mock-stat-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rsi-hud-mock-stat-num {
+  font-size: 18px;
+  font-weight: 700;
+  color: #34d399;
+}
+
+.rsi-hud-mock-stat-txt {
+  font-size: 11px;
+  color: #a49cb0;
+}
+
+/* Vista Móvil & Conversión */
+.rsi-hud-mobile-mockup {
+  max-width: 260px;
+  margin: 0 auto;
+  background: #14131c;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rsi-hud-phone-island {
+  width: 48px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 99px;
+  margin: 0 auto 4px;
+}
+
+.rsi-hud-phone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rsi-hud-phone-title {
+  font-size: 12px;
+  font-weight: 650;
+  color: #ffffff;
+}
+
+.rsi-hud-badge-live {
+  font-size: 9px;
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: 99px;
+  padding: 2px 6px;
+  font-weight: 600;
+}
+
+.rsi-hud-phone-text {
+  font-size: 11px;
+  color: #bfb7ca;
+  line-height: 1.4;
+  margin: 4px 0 8px;
+}
+
+.rsi-hud-phone-cta-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #25d366;
+  color: #0b2210;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+}
+
+.rsi-hud-phone-trust-strip {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: #8c8496;
+  padding-top: 4px;
+}
+
+/* Vista Schema Code */
+.rsi-hud-code-block {
+  width: 100%;
+}
+
+.rsi-hud-code-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #9d96a8;
+  margin-bottom: 8px;
+}
+
+.rsi-hud-code-block pre {
+  margin: 0;
+  padding: 10px;
+  background: #08070b;
+  border-radius: 8px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: #38bdf8;
+  overflow-x: auto;
+}
+
+/* Footer del HUD */
+.rsi-hud-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rsi-hud-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #b2abbd;
+}
+
+/* ==========================================================================
+   HUD 2: SEARCH ACQUISITION & SERP
+   ========================================================================== */
+
+.rsi-hud-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 8px 14px;
+}
+
+.rsi-hud-search-input {
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 500;
+  flex: 1;
+}
+
+.rsi-hud-search-badge {
+  font-size: 11px;
+  color: #8f889c;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.rsi-hud-query-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rsi-hud-query-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #b6b0c2;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rsi-hud-query-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.rsi-hud-query-pill.active {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #7dd3fc;
+  font-weight: 650;
+}
+
+.rsi-hud-query-pos {
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.rsi-hud-serp-card {
+  background: #13121b;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rsi-hud-serp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rsi-hud-serp-url-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rsi-hud-serp-favicon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.rsi-hud-serp-url-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.rsi-hud-serp-brand {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.rsi-hud-serp-breadcrumb {
+  font-size: 10px;
+  color: #8c8699;
+}
+
+.rsi-hud-serp-rank-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 650;
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  border-radius: 99px;
+  padding: 3px 8px;
+}
+
+.rsi-hud-serp-title {
+  font-size: 15px;
+  font-weight: 650;
+  color: #60a5fa;
+  margin: 4px 0 0;
+  line-height: 1.3;
+}
+
+.rsi-hud-serp-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.rsi-hud-serp-stars {
+  color: #f59e0b;
+  letter-spacing: 1px;
+}
+
+.rsi-hud-serp-score {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.rsi-hud-serp-reviews {
+  color: #928b9e;
+}
+
+.rsi-hud-serp-snippet {
+  font-size: 12px;
+  color: #b7b0c2;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.rsi-hud-serp-sitelinks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rsi-hud-sitelink-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.rsi-hud-sitelink-item span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #93c5fd;
+}
+
+.rsi-hud-sitelink-item small {
+  font-size: 10px;
+  color: #8c8598;
+}
+
+.rsi-hud-traffic-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.rsi-hud-stat-box {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rsi-hud-stat-title {
+  font-size: 11px;
+  color: #9c94a8;
+  margin-bottom: 2px;
+}
+
+.rsi-hud-stat-box strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.rsi-hud-stat-box small {
+  font-size: 10px;
+  color: #837c8e;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   HUD 3: CRM AUTOMATION & WHATSAPP
+   ========================================================================== */
+
+.rsi-hud-crm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rsi-hud-crm-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: hsl(var(--brand-on-dark));
+  margin-bottom: 4px;
+}
+
+.rsi-hud-crm-header h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.rsi-hud-sla-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: 99px;
+  padding: 4px 10px;
+}
+
+.rsi-hud-pipeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rsi-hud-pipeline-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rsi-hud-pipeline-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateX(3px);
+}
+
+.rsi-hud-pipeline-item.active {
+  background: rgba(255, 92, 103, 0.1);
+  border-color: rgba(255, 92, 103, 0.35);
+}
+
+.rsi-hud-pipeline-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rsi-hud-step-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8c8599;
+  font-family: ui-monospace, monospace;
+}
+
+.rsi-hud-step-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--brand-on-dark));
+  flex-shrink: 0;
+}
+
+.rsi-hud-step-info strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 650;
+  color: #ffffff;
+}
+
+.rsi-hud-step-info p {
+  font-size: 11px;
+  color: #b2abbd;
+  margin: 1px 0 0;
+  max-width: 36ch;
+}
+
+.rsi-hud-pipeline-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.rsi-hud-pipeline-badge {
+  font-size: 10px;
+  font-weight: 650;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #d1cbdb;
+}
+
+.rsi-hud-pipeline-telemetry {
+  font-size: 10px;
+  color: #34d399;
+  font-weight: 500;
+}
+
+.rsi-hud-crm-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rsi-hud-crm-stat {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.rsi-hud-crm-stat strong {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.rsi-hud-crm-stat span {
+  font-size: 10px;
+  color: #9d96a8;
+  margin-top: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roicas-solutions-interactive * {
+    transition: none !important;
+  }
+
+  .rsi-visual:hover>img {
+    transform: none;
+  }
+
+  .rsi-panel-content {
+    animation: none;
+  }
+}

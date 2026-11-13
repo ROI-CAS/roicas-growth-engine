@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================
+   Roicas — Design System
+   Latino vibrante: rojo carmesí + crema cálido
+   Todos los colores en HSL.
+   =========================================== */
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 36 38% 97%;          /* crema cálido */
+    --foreground: 20 14% 10%;          /* tinta casi negra */
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 10%;
+
+    /* Brand — refinado: rojo más sobrio, accent terracota silencioso */
+    --primary: 354 70% 40%;            /* rojo carmesí desaturado */
+    --primary-foreground: 36 38% 97%;
+    --primary-glow: 12 65% 50%;        /* terracota */
+    --primary-deep: 354 75% 30%;
+
+    --secondary: 36 24% 93%;
+    --secondary-foreground: 20 14% 14%;
+
+    --muted: 36 18% 91%;
+    --muted-foreground: 20 8% 40%;
+
+    --accent: 28 55% 62%;              /* terracota cálido apagado */
+    --accent-foreground: 20 14% 10%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 14% 88%;
+    --input: 30 14% 88%;
+    --ring: 354 70% 40%;
+    --hairline: 20 14% 10% / 0.06;
+
+    --ink: 20 14% 10%;
+    --ink-soft: 20 10% 22%;
+    --cream: 36 38% 97%;
+    --cream-deep: 36 30% 92%;
+
+    --radius: 1rem;
+
+    /* Gradients & shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-warm: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    --gradient-cream: linear-gradient(180deg, hsl(36 40% 98%), hsl(36 30% 94%));
+
+    --shadow-soft: 0 1px 2px hsl(20 14% 10% / 0.04), 0 4px 16px -8px hsl(20 14% 10% / 0.06);
+    --shadow-card: 0 2px 4px hsl(20 14% 10% / 0.04), 0 12px 32px -18px hsl(20 14% 10% / 0.08);
+    --shadow-brand: 0 8px 24px -12px hsl(var(--primary) / 0.18);
+
+    --sidebar-background: 36 38% 97%;
+    --sidebar-foreground: 20 14% 14%;
+    --sidebar-primary: 354 84% 42%;
+    --sidebar-primary-foreground: 36 38% 97%;
+    --sidebar-accent: 36 30% 92%;
+    --sidebar-accent-foreground: 20 14% 14%;
+    --sidebar-border: 30 18% 86%;
+    --sidebar-ring: 354 84% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  .tabular-nums { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+  .hairline { border-color: hsl(var(--hairline)); }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Archivo", "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-stretch: 100%;
+    letter-spacing: -0.015em;
+  }
+  .font-sans {
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .bg-grain {
+    background-image:
+      radial-gradient(hsl(20 14% 10% / 0.025) 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (max-width: 767px) {
+    .reveal {
+      transform: translateY(8px);
+      transition-duration: 0.35s;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:-bottom-1 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card)];
+  }
+}
+
+/* Infinite slider — CSS-only, no JS reflow */
+@keyframes logo-scroll-x {
+  to { transform: translateX(-50%); }
+}
+@keyframes logo-scroll-x-rev {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+@keyframes logo-scroll-y {
+  to { transform: translateY(-50%); }
+}
+@keyframes logo-scroll-y-rev {
+  from { transform: translateY(-50%); }
+  to   { transform: translateY(0); }
+}
+
+.slider-track {
+  animation-duration: var(--slider-duration, 25s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.slider-container:hover .slider-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-track {
+    animation: none;
+  }
+}
+
+/* Entradas al diagnóstico y contenido de apoyo progresivo. */
+.diagnostic-hero__image { max-height: 480px; object-position: center; }
+.diagnostic-details { margin-block: 24px; }
+.diagnostic-details > summary { padding: 20px 0; border-block: 1px solid hsl(var(--border)); font-size: 18px; font-weight: 600; cursor: pointer; color: hsl(var(--primary)); }
+.diagnostic-details > summary:focus-visible { outline: 3px solid hsl(var(--primary)); outline-offset: 4px; }
+@media (max-width: 1023px) { .diagnostic-hero__image { max-height: 280px; } }

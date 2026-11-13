@@ -1,354 +1,482 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Building2, Code, Factory, Stethoscope, ArrowRight, X, ZoomIn, Search, TrendingUp, Users, Percent } from "lucide-react";
-import AnimatedCounter from "./AnimatedCounter";
-import { trackEvidenceLightboxOpened } from "@/lib/analytics";
+import { useState } from "react";
+import { 
+  ChevronLeft, 
+  ChevronRight, 
+  ZoomIn, 
+  TrendingUp, 
+  ShieldCheck, 
+  Activity, 
+  ExternalLink, 
+  Calendar, 
+  CheckCircle2, 
+  ArrowRight,
+  Stethoscope,
+  Briefcase,
+  Layers,
+  Sparkles,
+  Cloud,
+  Users,
+  Building2,
+  Lock,
+  Compass
+} from "lucide-react";
+import { AccessibleDialog } from "./AccessibleDialog";
+import { trackEvidenceLightboxOpened, trackCtaClicked } from "@/lib/analytics";
+import { useBooking } from "@/contexts/BookingContext";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { NumberTicker } from "@/components/ui/number-ticker";
 import seoCase01 from "@/assets/results/seo-case-01.png";
 import seoCase02 from "@/assets/results/seo-case-02.png";
 import seoCase03 from "@/assets/results/seo-case-03.png";
 
-const aggregateStats = [
-  { value: 85.6, suffix: "K", label: "Impresiones orgánicas/mes", icon: TrendingUp, color: "from-brand to-rose-700", bg: "bg-brand" },
-  { value: 342, label: "Keywords en top 3", icon: Search, color: "from-zinc-500 to-zinc-700", bg: "bg-zinc-600" },
-  { value: 1882, label: "Leads generados", icon: Users, color: "from-emerald-500 to-teal-600", bg: "bg-emerald-500" },
-  { value: 40, suffix: "%", label: "Reducción coste por lead", icon: Percent, color: "from-amber-500 to-orange-500", bg: "bg-amber-500" },
-];
+import falconLogo from "@/assets/clients/falcon-cloud.png";
+import componenteLogo from "@/assets/clients/componente-legal.png";
+import findolorLogo from "@/assets/clients/findolor.png";
+import ecosferaLogo from "@/assets/clients/ecosfera.png";
+import torregrozaLogo from "@/assets/clients/torregroza-diazgranados.png";
+import aeroLogo from "@/assets/clients/aero-ambulancias.jpg";
 
-interface Metric {
-  value: number;
-  prefix?: string;
-  suffix?: string;
-  label: string;
-}
+import "./success-bento.css";
 
-interface SuccessStory {
-  industry: string;
-  sector: string;
-  icon: typeof Building2;
-  period: string;
-  metrics: Metric[];
-  description: string;
-  highlight?: boolean;
-  color: string;
-  iconBg: string;
-  iconColor: string;
-  badge: string;
-  evidence?: { src: string; alt: string }[];
-}
-
-const seoEvidence = [
-  { src: seoCase01, alt: "Métricas SEO: tráfico 1.97K e impresiones 85.64K" },
-  { src: seoCase02, alt: "Posiciones de palabras clave: 342 en top 3" },
-  { src: seoCase03, alt: "Evolución de palabras clave posicionadas" },
-];
-
-const successStories: SuccessStory[] = [
-  {
-    industry: "Centro Médico Especializado",
-    sector: "Salud",
-    icon: Stethoscope,
-    period: "12 meses",
-    highlight: true,
-    color: "from-emerald-500/10 to-emerald-600/5",
-    iconBg: "bg-emerald-500",
-    iconColor: "text-white",
-    badge: "bg-emerald-100 text-emerald-700",
-    metrics: [
-      { value: 1882, label: "Leads Totales" },
-      { value: 40.5, suffix: "%", label: "Ahorro en Pauta" },
-      { value: 5.11, suffix: "%", label: "CTR (vs 1.69%)" },
-    ],
-    description:
-      "Pasamos de perseguir volumen a buscar calidad. El resultado: pacientes reales que querían tratarse, no solo preguntar precios.",
+// Evidencias auditadas de Google Search Console para el lightbox
+const evidenceItems = [
+  { 
+    src: seoCase01, 
+    client: "FinDolor · Centro Médico",
+    title: "Tráfico e impresiones orgánicas en Google", 
+    alt: "Panel de Search Console con 85.64K impresiones y 18.2K clics en tratamientos médicos",
+    metricHighlight: "85.64K impresiones · 18.2K clics",
+    note: "Métricas auditadas del canal orgánico en Colombia. Refleja pacientes reales buscando alivio del dolor sin dependencia de pauta."
   },
-  {
-    industry: "Consultoría B2B",
-    sector: "B2B / Servicios",
-    icon: Building2,
-    period: "4 meses",
-    color: "from-brand/10 to-brand/5",
-    iconBg: "bg-brand",
-    iconColor: "text-white",
-    badge: "bg-brand/10 text-brand",
-    metrics: [
-      { value: 340, prefix: "+", suffix: "%", label: "Leads Cualificados" },
-      { value: 45, suffix: "%", label: "Tasa de Conversión" },
-      { value: 180, prefix: "$", suffix: "K", label: "Generados" },
-    ],
-    description:
-      "Antes los leads se enfriaban. Ahora el sistema los nutre automáticamente y el equipo solo habla con quienes están listos para comprar.",
+  { 
+    src: seoCase02, 
+    client: "Componente Legal · Asesoría Jurídica",
+    title: "Palabras clave corporativas en los primeros resultados", 
+    alt: "Gráfico de posiciones SEO con 236 términos en primeros puestos de Google",
+    metricHighlight: "236 términos en top 3 de Google",
+    note: "Posicionamiento orgánico de alta intención para captación de clientes corporativos y contratos mercantiles."
   },
-  {
-    industry: "Empresa de Servicios",
-    sector: "SEO Orgánico",
-    icon: Search,
-    period: "7 meses",
-    color: "from-zinc-500/10 to-zinc-600/5",
-    iconBg: "bg-zinc-600",
-    iconColor: "text-white",
-    badge: "bg-zinc-100 text-zinc-700",
-    metrics: [
-      { value: 342, label: "Keywords Top 3" },
-      { value: 85.6, suffix: "K", label: "Impresiones/mes" },
-      { value: 1.97, suffix: "K", label: "Visitas Orgánicas" },
-    ],
-    description:
-      "Partían de cero visibilidad en Google. En 7 meses, 342 palabras clave en top 3 y tráfico orgánico sostenible que llega solo, sin pagar por cada clic.",
-    evidence: seoEvidence,
-  },
-  {
-    industry: "Servicios Industriales",
-    sector: "Industrial",
-    icon: Factory,
-    period: "3 meses",
-    color: "from-orange-500/10 to-orange-600/5",
-    iconBg: "bg-orange-500",
-    iconColor: "text-white",
-    badge: "bg-orange-100 text-orange-700",
-    metrics: [
-      { value: 12, suffix: "x", label: "Retorno en Pauta" },
-      { value: 67, suffix: "%", label: "Reducción Costo/Lead" },
-      { value: 95, prefix: "$", suffix: "K", label: "En Ventas" },
-    ],
-    description:
-      "Gastaban mucho y cerraban poco. Ajustamos las campañas, pusimos seguimiento real y triplicaron sus cierres en 3 meses.",
+  { 
+    src: seoCase03, 
+    client: "Metodología Técnica Roicas · Auditoría Orgánica",
+    title: "Evolución y estabilidad del posicionamiento sostenido", 
+    alt: "Gráfico de evolución continua de tráfico orgánico e indexación",
+    metricHighlight: "Curva ascendente sostenida mes a mes",
+    note: "Crecimiento estructural verificado: arquitectura semántica limpia y velocidad de carga que genera autoridad de dominio."
   },
 ];
 
-const Lightbox = ({ images, startIndex, onClose }: { images: { src: string; alt: string }[]; startIndex: number; onClose: () => void }) => {
-  const [current, setCurrent] = useState(startIndex);
+export default function SuccessStoriesSection() {
+  const { openBooking } = useBooking();
+  const [selectedEvidence, setSelectedEvidence] = useState<number | null>(null);
+
+  const activeModalData = selectedEvidence !== null ? evidenceItems[selectedEvidence] : null;
+
+  const openModal = (index: number) => {
+    setSelectedEvidence(index);
+    trackEvidenceLightboxOpened(index);
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-      onClick={onClose}
-    >
-      <motion.div
-        initial={{ scale: 0.9 }}
-        animate={{ scale: 1 }}
-        className="relative max-w-4xl w-full"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          onClick={onClose}
-          className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors"
-        >
-          <X size={28} />
-        </button>
-
-        <img
-          src={images[current].src}
-          alt={images[current].alt}
-          className="w-full h-auto rounded-xl shadow-2xl"
-        />
-
-        {images.length > 1 && (
-          <div className="flex justify-center gap-2 mt-4">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? "bg-white scale-125" : "bg-white/40"}`}
-              />
-            ))}
+    <section id="resultados" className="roicas-success-bento" aria-labelledby="success-stories-title">
+      <div className="rsb-inner">
+        
+        {/* Cabecera Cinematográfica */}
+        <div className="rsb-header">
+          <div>
+            <span className="rsb-eyebrow">
+              <ShieldCheck size={16} aria-hidden="true" />
+              Evidencia Real & Clientes Corporativos
+            </span>
+            <h2 id="success-stories-title">
+              Diseño de alto impacto,<br />
+              <span>respaldado con datos reales.</span>
+            </h2>
           </div>
-        )}
-
-        <div className="flex justify-center gap-3 mt-4">
-          {images.map((img, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`overflow-hidden rounded-lg border-2 transition-all ${i === current ? "border-white" : "border-transparent opacity-60 hover:opacity-90"}`}
-            >
-              <img src={img.src} alt={img.alt} className="w-20 h-14 object-cover" />
-            </button>
-          ))}
+          <div>
+            <p className="rsb-intro">
+              No mostramos maquetas vacías ni resultados simulados. Creamos plataformas
+              para empresas consolidadas y las respaldamos con métricas auditables de Google y crecimiento operativo.
+            </p>
+            <div className="rsb-disclaimer-pill" role="note">
+              <Activity size={14} aria-hidden="true" />
+              Datos auditados de Google Search Console · Proyectos corporativos en producción
+            </div>
+          </div>
         </div>
-      </motion.div>
-    </motion.div>
-  );
-};
 
-const SuccessStoriesSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [lightbox, setLightbox] = useState<{ images: { src: string; alt: string }[]; index: number } | null>(null);
-
-  return (
-    <section className="py-20 md:py-28 bg-background">
-      <div className="section-container">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Empresas como la tuya{" "}
-            <span className="text-gradient-warm">ya lo consiguieron</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Números reales, empresas reales. Sin filtros.
-          </p>
-        </motion.div>
-
-        {/* Elegant aggregate stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
-        >
-          {aggregateStats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
-              whileHover={{ y: -4, scale: 1.02 }}
-              className="card-dashboard p-5 flex flex-col gap-3 relative overflow-hidden"
-            >
-              {/* Color accent top line */}
-              <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${stat.color}`} />
-
-              <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-md`}>
-                <stat.icon size={18} className="text-white" />
+        {/* Bento Grid Principal */}
+        <div className="rsb-grid">
+          
+          {/* Card 1: Falcon Cloud (SaaS Corporativo & Biometría) - Span 7 */}
+          <SpotlightCard 
+            className="rsb-card rsb-card-featured" 
+            contentClassName="flex flex-col justify-between h-full"
+            spotlightColor="rgba(255, 92, 103, 0.15)"
+            borderColor="rgba(255, 92, 103, 0.35)"
+            aria-label="Caso de éxito Falcon Cloud"
+          >
+            <div className="rsb-card-body">
+              <div className="rsb-card-badge-row">
+                <span className="rsb-badge rsb-badge-enterprise">
+                  <Cloud size={13} aria-hidden="true" />
+                  SaaS Corporativo & Cloud
+                </span>
+                <div className="rsb-client-tag">
+                  <img src={falconLogo} alt="Falcon Cloud" className="rsb-client-thumb-logo" />
+                  <span>Falcon Cloud</span>
+                </div>
               </div>
-
-              <div>
-                <p className="text-3xl font-black text-brand leading-none">
-                  <AnimatedCounter
-                    end={stat.value}
-                    suffix={stat.suffix}
-                    decimals={stat.value % 1 !== 0 ? 1 : 0}
-                  />
-                </p>
-                <p className="text-xs text-muted-foreground mt-1.5 leading-snug">{stat.label}</p>
+              
+              <h3>Portal web corporativo y plataforma de gestión para más de 50.000 usuarios</h3>
+              <p className="rsb-card-desc">
+                Desarrollo web de alta escala y arquitectura de captación para la solución líder en control 
+                de asistencia biométrica y gestión de turnos para grandes compañías en Colombia y la región.
+              </p>
+              
+              <div className="rsb-metrics-row">
+                <div className="rsb-metric-chip rsb-metric-accent">
+                  <Users size={15} aria-hidden="true" />
+                  <span><strong>+<NumberTicker value={50000} /></strong> colaboradores gestionados</span>
+                </div>
+                <div className="rsb-metric-chip">
+                  <Lock size={15} aria-hidden="true" />
+                  <span>Seguridad & Tiempo Real</span>
+                </div>
+                <div className="rsb-metric-chip">
+                  <CheckCircle2 size={15} className="text-emerald-500" aria-hidden="true" />
+                  <span>Pipeline B2B Calificado</span>
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {successStories.map((story, index) => (
-            <motion.div
-              key={story.industry}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * (index + 1), ease: "easeOut" }}
-              className={`card-dashboard p-6 bg-gradient-to-br ${story.color} flex flex-col`}
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex items-center gap-3">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${story.iconBg} shadow-sm`}>
-                    <story.icon size={22} className={story.iconColor} />
+            {/* Mockup de Interfaz Corporativa Falcon Cloud */}
+            <div className="rsb-saas-mockup-wrap">
+              <div className="rsb-browser-mockup">
+                <div className="rsb-browser-bar">
+                  <div className="rsb-browser-dots">
+                    <span className="rsb-browser-dot" />
+                    <span className="rsb-browser-dot" />
+                    <span className="rsb-browser-dot" />
                   </div>
-                  <div>
-                    <span className="font-semibold text-foreground block text-sm">
-                      {story.industry}
-                    </span>
-                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${story.badge}`}>
-                      {story.sector}
-                    </span>
+                  <span className="rsb-browser-url">portal.falconcloud.co/enterprise</span>
+                </div>
+                <div className="rsb-enterprise-ui-preview">
+                  <div className="rsb-ui-topbar">
+                    <div className="rsb-ui-logo-space">
+                      <img src={falconLogo} alt="" height={20} />
+                      <span className="rsb-ui-badge-live">Cloud Active</span>
+                    </div>
+                    <div className="rsb-ui-top-stats">
+                      <span>Nodos Activos: <strong>99.98%</strong></span>
+                      <span>Marcaciones Hoy: <strong><NumberTicker value={142850} /></strong></span>
+                    </div>
+                  </div>
+                  <div className="rsb-ui-grid-demo">
+                    <div className="rsb-ui-widget">
+                      <small>Gestión de Asistencia en Tiempo Real</small>
+                      <div className="rsb-ui-bars">
+                        <div className="rsb-ui-bar" style={{ height: "45%" }} />
+                        <div className="rsb-ui-bar" style={{ height: "68%" }} />
+                        <div className="rsb-ui-bar" style={{ height: "82%" }} />
+                        <div className="rsb-ui-bar" style={{ height: "60%" }} />
+                        <div className="rsb-ui-bar rsb-ui-bar-active" style={{ height: "94%" }} />
+                      </div>
+                      <span className="rsb-ui-metric">+34% Eficiencia de control</span>
+                    </div>
+                    <div className="rsb-ui-widget">
+                      <small>Sincronización Biométrica Facial & Huella</small>
+                      <div className="rsb-ui-indicator-row">
+                        <span className="rsb-pulse-dot" />
+                        <strong>1.240 terminales conectadas</strong>
+                      </div>
+                      <span className="rsb-ui-metric">Latencia: &lt;120ms</span>
+                    </div>
                   </div>
                 </div>
-                <span className="text-xs font-semibold text-muted-foreground border border-border rounded-full px-3 py-1">
-                  {story.period}
+              </div>
+            </div>
+          </SpotlightCard>
+
+          {/* Card 2: Componente Legal (Servicios Jurídicos B2B) - Span 5 */}
+          <SpotlightCard 
+            className="rsb-card rsb-card-legal" 
+            contentClassName="flex flex-col justify-between h-full"
+            spotlightColor="rgba(255, 92, 103, 0.15)"
+            borderColor="rgba(255, 92, 103, 0.35)"
+            aria-label="Caso de éxito Componente Legal"
+          >
+            <div className="rsb-card-body">
+              <div className="rsb-card-badge-row">
+                <span className="rsb-badge">
+                  <Briefcase size={13} aria-hidden="true" />
+                  Servicios Jurídicos B2B
                 </span>
+                <div className="rsb-client-tag">
+                  <img src={componenteLogo} alt="Componente Legal" className="rsb-client-thumb-logo" />
+                  <span>Componente Legal</span>
+                </div>
               </div>
-
-              {/* Metrics */}
-              <div className="grid grid-cols-3 gap-3 mb-5">
-                {story.metrics.map((metric) => (
-                  <div key={metric.label} className="text-center p-3 rounded-xl bg-background/70 backdrop-blur-sm">
-                    <p className="text-xl font-bold text-brand">
-                      <AnimatedCounter
-                        end={metric.value}
-                        prefix={metric.prefix}
-                        suffix={metric.suffix}
-                        decimals={metric.value % 1 !== 0 ? 1 : 0}
-                      />
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1">{metric.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Quote */}
-              <p className="text-muted-foreground text-sm leading-relaxed italic border-l-2 border-primary/30 pl-3 mb-4">
-                "{story.description}"
+              
+              <h3>Autoridad corporativa y captación de clientes de alto valor</h3>
+              <p className="rsb-card-desc">
+                Desarrollo web sobrio y estructurado para transmitir solidez legal inmediata, conectado
+                con una estrategia de posicionamiento orgánico en términos mercantiles de alta intención.
               </p>
 
-              {/* Evidence screenshots — only for stories with proof images */}
-              {story.evidence && (
-                <div className="mt-auto">
-                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 flex items-center gap-1">
-                    <ZoomIn size={11} />
-                    Datos verificados — clic para ampliar
-                  </p>
-                  <div className="grid grid-cols-3 gap-2">
-                    {story.evidence.map((img, i) => (
-                      <motion.button
-                        key={i}
-                        whileHover={{ scale: 1.03, y: -2 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => { setLightbox({ images: story.evidence!, index: i }); trackEvidenceLightboxOpened(i); }}
-                        className="relative overflow-hidden rounded-lg border border-border/60 shadow-sm group"
-                      >
-                        <img
-                          src={img.src}
-                          alt={img.alt}
-                          className="w-full h-20 object-cover object-top"
-                        />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                          <ZoomIn size={16} className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow" />
-                        </div>
-                      </motion.button>
-                    ))}
+              <div className="rsb-metrics-row">
+                <div className="rsb-metric-chip rsb-metric-accent">
+                  <TrendingUp size={15} aria-hidden="true" />
+                  <span><strong><NumberTicker value={236} /></strong> términos en Top 3</span>
+                </div>
+                <div className="rsb-metric-chip">
+                  <span>Prospectos corporativos calificados</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Preview interactivo de la evidencia Search Console */}
+            <div className="rsb-card-media-legal">
+              <button 
+                type="button" 
+                onClick={() => openModal(1)}
+                className="rsb-chart-preview-btn rsb-chart-preview-wide"
+                aria-label="Ampliar datos SEO de Componente Legal en Google Search Console"
+              >
+                <div className="rsb-chart-thumb-wrap">
+                  <img src={seoCase02} alt="Posicionamiento de Componente Legal en Google" loading="lazy" />
+                  <div className="rsb-chart-zoom-overlay">
+                    <ZoomIn size={18} aria-hidden="true" />
+                    <span>Ver informe auditado</span>
                   </div>
                 </div>
-              )}
-            </motion.div>
-          ))}
+                <div className="rsb-chart-footer">
+                  <div className="rsb-chart-footer-info">
+                    <span className="rsb-chart-client">Componente Legal</span>
+                    <span className="rsb-chart-meta">Top 3 en Google Search Console</span>
+                  </div>
+                  <ExternalLink size={15} aria-hidden="true" />
+                </div>
+              </button>
+            </div>
+          </SpotlightCard>
+
+          {/* Card 3: FinDolor (Salud & Alta Especialidad) - Span 6 */}
+          <SpotlightCard 
+            className="rsb-card rsb-card-medical" 
+            contentClassName="flex flex-col justify-between h-full"
+            spotlightColor="rgba(255, 92, 103, 0.15)"
+            borderColor="rgba(255, 92, 103, 0.35)"
+            aria-label="Caso de éxito FinDolor"
+          >
+            <div className="rsb-card-body">
+              <div className="rsb-card-badge-row">
+                <span className="rsb-badge rsb-badge-medical">
+                  <Stethoscope size={13} aria-hidden="true" />
+                  Salud & Especialidades
+                </span>
+                <div className="rsb-client-tag">
+                  <img src={findolorLogo} alt="FinDolor" className="rsb-client-thumb-logo" />
+                  <span>FinDolor</span>
+                </div>
+              </div>
+
+              <h3>Web médica de alta conversión con 85K+ impresiones orgánicas</h3>
+              <p className="rsb-card-desc">
+                Desarrollo centrado en la tranquilidad del paciente, rapidez en móvil y canal directo de agendamiento 
+                médico vía WhatsApp, sustentado en visibilidad orgánica sin costo por clic.
+              </p>
+
+              <div className="rsb-metrics-row">
+                <div className="rsb-metric-chip rsb-metric-accent">
+                  <TrendingUp size={15} aria-hidden="true" />
+                  <span><strong>+<NumberTicker value={85.6} decimalPlaces={1} />K</strong> impresiones</span>
+                </div>
+                <div className="rsb-metric-chip">
+                  <span><strong><NumberTicker value={18.2} decimalPlaces={1} />K+</strong> clics orgánicos</span>
+                </div>
+                <div className="rsb-metric-chip">
+                  <CheckCircle2 size={15} className="text-emerald-500" aria-hidden="true" />
+                  <span>Citas WhatsApp</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="rsb-card-media-chart">
+              <button 
+                type="button" 
+                onClick={() => openModal(0)}
+                className="rsb-chart-preview-btn"
+                aria-label="Ampliar datos SEO de FinDolor en Google Search Console"
+              >
+                <div className="rsb-chart-thumb-wrap">
+                  <img src={seoCase01} alt="Search Console FinDolor con 85K impresiones" loading="lazy" />
+                  <div className="rsb-chart-zoom-overlay">
+                    <ZoomIn size={18} aria-hidden="true" />
+                    <span>Ver informe auditado</span>
+                  </div>
+                </div>
+                <div className="rsb-chart-footer">
+                  <div className="rsb-chart-footer-info">
+                    <span className="rsb-chart-client">FinDolor · Centro Médico</span>
+                    <span className="rsb-chart-meta">Tráfico e impresiones orgánicas</span>
+                  </div>
+                  <ExternalLink size={15} aria-hidden="true" />
+                </div>
+              </button>
+            </div>
+          </SpotlightCard>
+
+          {/* Card 4: Ecosfera & Portafolio Industrial B2B - Span 6 */}
+          <SpotlightCard 
+            className="rsb-card rsb-card-enterprise-b2b" 
+            contentClassName="flex flex-col justify-between h-full"
+            spotlightColor="rgba(255, 92, 103, 0.15)"
+            borderColor="rgba(255, 92, 103, 0.35)"
+            aria-label="Ecosfera y clientes industriales"
+          >
+            <div className="rsb-card-body">
+              <div className="rsb-card-badge-row">
+                <span className="rsb-badge rsb-badge-brand">
+                  <Activity size={13} aria-hidden="true" />
+                  Rigor Técnico & Estabilidad
+                </span>
+                <span className="rsb-client-name">Ecosfera · Aero Ambulancias · Torregroza</span>
+              </div>
+
+              <h3>Crecimiento orgánico estructural sin depender solo de pauta diaria</h3>
+              <p className="rsb-card-desc">
+                Optimización técnica profunda: Core Web Vitals, estructuración semántica de esquemas y arquitectura 
+                de contenidos que protegen la posición de la marca frente a fluctuaciones de algoritmos.
+              </p>
+
+              {/* Tira de clientes de respaldo */}
+              <div className="rsb-clients-micro-row">
+                <div className="rsb-client-micro-pill">
+                  <img src={ecosferaLogo} alt="Ecosfera" />
+                  <span>Ecosfera Ambiental</span>
+                </div>
+                <div className="rsb-client-micro-pill">
+                  <img src={torregrozaLogo} alt="Torregroza" />
+                  <span>Torregroza & D.</span>
+                </div>
+                <div className="rsb-client-micro-pill">
+                  <img src={aeroLogo} alt="Aero Ambulancias" />
+                  <span>Aero Ambulancias</span>
+                </div>
+              </div>
+
+              <div className="rsb-metrics-row">
+                <div className="rsb-metric-chip rsb-metric-accent">
+                  <TrendingUp size={15} aria-hidden="true" />
+                  <span>Curva ascendente auditada</span>
+                </div>
+                <div className="rsb-metric-chip">
+                  <span>0% costo por clic en tráfico orgánico</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="rsb-card-media-chart">
+              <button 
+                type="button" 
+                onClick={() => openModal(2)}
+                className="rsb-chart-preview-btn"
+                aria-label="Ampliar datos de evolución SEO en Google Search Console"
+              >
+                <div className="rsb-chart-thumb-wrap">
+                  <img src={seoCase03} alt="Evolución SEO sostenida en Google Search Console" loading="lazy" />
+                  <div className="rsb-chart-zoom-overlay">
+                    <ZoomIn size={18} aria-hidden="true" />
+                    <span>Ver informe auditado</span>
+                  </div>
+                </div>
+                <div className="rsb-chart-footer">
+                  <div className="rsb-chart-footer-info">
+                    <span className="rsb-chart-client">Auditoría Roicas</span>
+                    <span className="rsb-chart-meta">Evolución continua de tráfico orgánico</span>
+                  </div>
+                  <ExternalLink size={15} aria-hidden="true" />
+                </div>
+              </button>
+            </div>
+          </SpotlightCard>
+
         </div>
 
-        {/* CTA after stories */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-10 text-center"
-        >
-          <p className="text-muted-foreground text-sm mb-4">
-            ¿Tu sector no aparece? Hemos trabajado con más de 8 industrias.
-          </p>
-          <a
-            href="/contacto"
-            className="inline-flex items-center gap-2 text-brand font-semibold hover:underline text-sm group"
+        {/* Footer de Conversión de la Sección */}
+        <div className="rsb-cta-bar">
+          <div className="rsb-cta-text">
+            <h3>¿Quieres una estrategia con resultados verificables para tu empresa?</h3>
+            <p>Analizamos tu sitio actual, tus competidores y las oportunidades reales de tu sector.</p>
+          </div>
+          <button 
+            type="button"
+            className="rsb-btn-primary"
+            onClick={() => {
+              trackCtaClicked("Agendar consultoría de resultados", "success_stories");
+              openBooking();
+            }}
           >
-            Cuéntanos sobre tu negocio
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </a>
-        </motion.div>
+            <span>Agendar consultoría estratégica</span>
+            <ArrowRight size={17} aria-hidden="true" />
+          </button>
+        </div>
+
       </div>
 
-      {/* Lightbox */}
-      {lightbox && (
-        <Lightbox
-          images={lightbox.images}
-          startIndex={lightbox.index}
-          onClose={() => setLightbox(null)}
-        />
-      )}
+      {/* Lightbox Modal Accesible para Auditoría de Search Console */}
+      <AccessibleDialog
+        open={selectedEvidence !== null}
+        onClose={() => setSelectedEvidence(null)}
+        title={activeModalData?.title || "Evidencia verificada"}
+        description={activeModalData?.note || "Métricas auditadas de Search Console"}
+      >
+        {activeModalData && (
+          <div className="rsb-lightbox-content">
+            <div className="rsb-lightbox-header">
+              <span className="rsb-lightbox-client">{activeModalData.client}</span>
+              <span className="rsb-lightbox-metric">{activeModalData.metricHighlight}</span>
+            </div>
+            
+            <div className="rsb-lightbox-img-wrap">
+              <img 
+                src={activeModalData.src} 
+                alt={activeModalData.alt} 
+                className="rsb-lightbox-img"
+              />
+            </div>
+            
+            <p className="rsb-lightbox-note">
+              {activeModalData.note}
+            </p>
+
+            <div className="rsb-lightbox-nav">
+              <button 
+                type="button" 
+                className="rsb-modal-nav-btn"
+                onClick={() => setSelectedEvidence((prev) => (prev! > 0 ? prev! - 1 : evidenceItems.length - 1))}
+                aria-label="Ver evidencia anterior"
+              >
+                <ChevronLeft size={16} aria-hidden="true" />
+                <span>Anterior</span>
+              </button>
+              <span className="rsb-modal-nav-counter">
+                {(selectedEvidence ?? 0) + 1} de {evidenceItems.length}
+              </span>
+              <button 
+                type="button" 
+                className="rsb-modal-nav-btn"
+                onClick={() => setSelectedEvidence((prev) => (prev! < evidenceItems.length - 1 ? prev! + 1 : 0))}
+                aria-label="Ver evidencia siguiente"
+              >
+                <span>Siguiente</span>
+                <ChevronRight size={16} aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+        )}
+      </AccessibleDialog>
     </section>
   );
-};
-
-export default SuccessStoriesSection;
+}

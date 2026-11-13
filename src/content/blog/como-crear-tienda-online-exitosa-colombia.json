@@ -1,0 +1,139 @@
+{
+  "slug": "como-crear-tienda-online-exitosa-colombia",
+  "status": "published",
+  "title": "Cómo Crear una Tienda Online Exitosa en Colombia: Guía 2026",
+  "description": "Guía práctica para vender online en Colombia: pasarelas locales (Wompi, PSE, Nequi), logística de envíos y estrategias para disparar tu conversión.",
+  "category": "Tiendas Online",
+  "author": "Equipo ROICAS Growth",
+  "authorRole": "Especialistas en E-commerce & CRO",
+  "authorAvatar": "/blog/avatar-1.jpg",
+  "coverImage": "/blog/tiendas-online.jpg",
+  "published": "2026-10-27",
+  "modified": "2026-10-27",
+  "introduction": "Vender por internet en Colombia ya no es cuestión de subir fotos a un catálogo y sentarse a esperar ventas. El comprador colombiano tiene hábitos de compra muy particulares. Exige pagar por PSE o Nequi sin enredos. Quiere saber exactamente cuánto tarda el envío a Bogotá, Medellín o Cali. Y si la tienda tarda más de 2 segundos en cargar en su celular, simplemente se va a comprarle a otro. En esta guía desglosamos la infraestructura técnica, logística y comercial que necesitas para construir una tienda online rentable en el mercado colombiano.",
+  "sections": [
+    {
+      "heading": "1. Pasarelas de pago imprescindibles para el comprador colombiano",
+      "paragraphs": [
+        "El mayor punto de fricción en el e-commerce colombiano no está en el carrito, sino en la pasarela. En mercados como Estados Unidos o Europa la tarjeta de crédito domina casi todo. En Colombia, más del 55% de las compras en línea se liquidan mediante débito bancario por PSE y transferencias inmediatas con billeteras como Nequi y Daviplata.",
+        "Si tu pasarela de pagos redirige al usuario a una ventana externa sospechosa o le pide llenar 15 campos antes de autorizar el débito, tu tasa de abandono se disparará por encima del 70%. Soluciones modernas como Wompi, Bold o ePayco permiten cobros con comisión clara (alrededor del 2.65% + $900 COP) y ofrecen un checkout transparente y confiable."
+      ],
+      "callout": {
+        "type": "warning",
+        "title": "Cuidado con los bloqueos antifraude erróneos",
+        "text": "Muchos e-commerce en Colombia pierden hasta el 25% de sus ventas legítimas porque tienen filtros antifraude genéricos configurados para tarjetas internacionales que rechazan transacciones bancarias normales de Bancolombia, Davivienda o Nequi."
+      },
+      "checklist": [
+        "Integración nativa con PSE y botón directo de Nequi sin salir de la tienda",
+        "Reglas antifraude calibradas para no bloquear compradores legítimos de bancos locales",
+        "Confirmación automática de orden con emisión de recibo y factura electrónica DIAN"
+      ]
+    },
+    {
+      "heading": "2. Arquitectura de checkout y experiencia móvil de alta velocidad",
+      "paragraphs": [
+        "Más del 82% de las transacciones online en Colombia se inician en teléfonos inteligentes bajo conexiones 4G variables. Una tienda que tarda 4 segundos en abrir pierde hasta el 40% de sus potenciales compradores antes de que vean el primer producto.",
+        "El checkout debe ser en una sola página (One-Step Checkout). No obligues a tus clientes a crear una cuenta con contraseña antes de comprar. Permite la compra como invitado con autocompletado de departamentos y municipios colombianos para agilizar el proceso y disparar la tasa de conversión."
+      ],
+      "image": {
+        "url": "/blog/tiendas-online.svg",
+        "alt": "Diagrama de arquitectura de checkout optimizado para e-commerce en Colombia",
+        "caption": "Figura 1: Flujo de checkout en una sola pantalla con pasarelas locales e impacto directo en la tasa de conversión (+28.4%)."
+      },
+      "checklist": [
+        "Tiempo de carga inferior a 1.8 segundos medido en Google PageSpeed",
+        "Formulario de compra sin registro obligatorio previo y campos estrictamente necesarios",
+        "Botón flotante de WhatsApp para resolver dudas rápidas antes de pagar"
+      ]
+    },
+    {
+      "heading": "3. Logística y envíos: la promesa de entrega que genera recompra",
+      "paragraphs": [
+        "El costo sorpresa del flete es la razón número uno por la que un cliente colombiano abandona la compra. Si alguien agrega un producto de $120.000 COP y al final del proceso le aparecen $25.000 COP de envío imprevisto, se siente engañado.",
+        "Para solucionar esto, conecta tu inventario con plataformas de envíos masivos o transportadoras como Coordinadora, Envía o Servientrega con cálculo automático de tarifas por ciudad. Establecer un umbral de envío gratis (por ejemplo, compras superiores a $150.000 COP) es la palanca más efectiva para elevar el ticket promedio en Colombia."
+      ],
+      "callout": {
+        "type": "metric",
+        "title": "Impacto del envío gratis inteligente en Colombia",
+        "text": "Fijar el envío gratis entre un 20% y 30% por encima del ticket medio actual incrementa el valor promedio por pedido (AOV) de forma inmediata sin sacrificar el margen neto."
+      },
+      "checklist": [
+        "Calculador de fletes visible en la ficha de producto antes de ir al carrito",
+        "Estrategia de envío gratis escalonada para subir el ticket medio de pedido",
+        "Notificaciones automáticas por correo y WhatsApp con el número de guía en tiempo real"
+      ]
+    },
+    {
+      "heading": "4. Medición de datos: las métricas que definen la rentabilidad real",
+      "paragraphs": [
+        "Tener una tienda online sin analítica es conducir a oscuras. No basta con mirar el volumen total de ventas al final del mes; necesitas saber de dónde vienen tus clientes y cuánto te cuesta adquirirlos.",
+        "Debes vigilar semanalmente tu Tasa de Conversión (que en Colombia promedia entre el 1.2% y el 2.8% para tiendas optimizadas), tu Costo de Adquisición de Clientes (CAC) frente al valor de vida del cliente (LTV), y el porcentaje de recompra mensual para asegurar que tu inversión en pauta digital sea verdaderamente sostenible."
+      ],
+      "checklist": [
+        "Google Analytics 4 y Píxel de Meta configurados con API de conversiones",
+        "Seguimiento de carritos abandonados con recordatorio por WhatsApp a los 30 minutos",
+        "Monitoreo semanal del retorno sobre la inversión publicitaria (ROAS)"
+      ]
+    }
+  ],
+  "comparisonTable": {
+    "title": "Tienda en Plantilla Genérica vs Tienda ROICAS Growth",
+    "subtitle": "Por qué las tiendas tradicionales en WordPress o plantillas pesadas se quedan estancadas frente a una plataforma optimizada",
+    "columnA": "Tienda Genérica / Enfoque Tradicional",
+    "columnB": "Con ROICAS Growth Engine",
+    "rows": [
+      {
+        "criterion": "Velocidad de carga en móviles",
+        "valA": "4.5 a 7 segundos (plantillas pesadas con 30+ plugins)",
+        "valB": "Menos de 1.5 segundos (código optimizado y CDN ultra rápida)"
+      },
+      {
+        "criterion": "Proceso de Checkout",
+        "valA": "Checkout en 3 pasos con registro obligatorio y redirección externa",
+        "valB": "Checkout en 1 sola pantalla con PSE, Nequi y Wompi nativo"
+      },
+      {
+        "criterion": "Integración con WhatsApp y CRM",
+        "valA": "Enlace básico de chat sin trazabilidad de ventas",
+        "valB": "Agentes automatizados que rescatan carritos y sincronizan clientes"
+      },
+      {
+        "criterion": "Facturación y Despachos",
+        "valA": "Digitación manual de facturas y guías al final del día",
+        "valB": "Emisión automática de factura electrónica DIAN y guías de envío"
+      },
+      {
+        "criterion": "Tasa de conversión promedio",
+        "valA": "0.6% a 1.1% (fuga masiva de carritos en el checkout)",
+        "valB": "2.2% a 3.8% (embudo pulido para el comprador colombiano)"
+      }
+    ]
+  },
+  "roicasSolution": {
+    "title": "Cómo te ayudamos en ROICAS a construir tu tienda rentable",
+    "description": "No nos limitamos a entregarte un diseño visual bonito. Desarrollamos la máquina comercial completa: desde la pasarela de pagos y la logística nacional hasta los embudos de pauta para atraer compradores calificados.",
+    "deliverables": [
+      {
+        "title": "Arquitectura y Desarrollo a Medida",
+        "description": "Tienda ultra rápida con experiencia móvil Mobile-First y checkout de alta conversión optimizado para Colombia."
+      },
+      {
+        "title": "Pasarelas de Pago Locales Configuradas",
+        "description": "Integración completa y verificada con Wompi, Bold o PSE, sin bloqueos bancarios ni comisiones sorpresa."
+      },
+      {
+        "title": "Automatización Logística y DIAN",
+        "description": "Conexión con transportadoras para cálculo de fletes en vivo y sincronización con facturación electrónica."
+      },
+      {
+        "title": "Estrategia de Crecimiento y Pauta Digital",
+        "description": "Configuración de Google Analytics 4, API de conversiones de Meta y acompañamiento en campañas de adquisición."
+      }
+    ],
+    "ctaText": "Cotizar mi tienda online con ROICAS"
+  },
+  "service": {
+    "label": "Crear mi tienda online con ROICAS",
+    "href": "/servicios/tiendas-online"
+  }
+}

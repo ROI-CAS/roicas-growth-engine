@@ -1,60 +1,53 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Zap, SlidersHorizontal, BarChart3, Shield } from "lucide-react";
+import { Zap, SlidersHorizontal, BarChart3, ShieldCheck } from "lucide-react";
 
 const features = [
   {
     icon: Zap,
-    bg: "bg-amber-400",
-    title: "Completamente automatizado",
-    description: "funciona 24/7 sin trabajo manual",
+    title: "100% Automatizado",
+    description: "Sistemas activos 24/7 sin cuellos de botella manuales",
   },
   {
     icon: SlidersHorizontal,
-    bg: "bg-rose-500",
-    title: "Diseñado a tu medida",
-    description: "sin soluciones genéricas de agencia",
+    title: "Arquitectura a la Medida",
+    description: "Ingeniería adaptada a tu modelo de negocio y márgenes",
   },
   {
     icon: BarChart3,
-    bg: "bg-teal-500",
-    title: "ROI medible desde el mes 1",
-    description: "sabes exactamente qué genera cada peso",
+    title: "ROI Medible en Pesos (COP)",
+    description: "Trazabilidad exacta de cada peso invertido en adquisición",
   },
   {
-    icon: Shield,
-    bg: "bg-zinc-700",
-    title: "Sin permanencias",
-    description: "nos quedamos porque funciona, no por contrato",
+    icon: ShieldCheck,
+    title: "Cero Permanencias",
+    description: "Nos ganamos tu continuidad mes a mes con resultados",
   },
 ];
 
-const FeaturesStrip = () => {
+export default function FeaturesStrip() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
-    <section ref={ref} className="py-10 border-b border-border bg-background">
+    <section ref={ref} className="py-8 border-y border-border/80 bg-card/40 backdrop-blur-sm">
       <div className="section-container">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {features.map((f, i) => (
             <motion.div
               key={f.title}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="flex items-start gap-3 group"
+              className="flex items-center gap-3.5 group"
             >
-              {/* Solid color icon square — LottieFiles style */}
-              <div
-                className={`${f.bg} w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-200`}
-              >
-                <f.icon size={18} className="text-white" strokeWidth={2.2} />
+              <div className="w-10 h-10 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center shrink-0 group-hover:bg-brand group-hover:text-white transition-all duration-300 text-brand shadow-sm">
+                <f.icon size={18} strokeWidth={2.2} />
               </div>
               <div>
-                <p className="text-sm font-bold text-foreground leading-tight">{f.title}</p>
-                <p className="text-xs text-muted-foreground mt-0.5 leading-snug">{f.description}</p>
+                <p className="text-xs sm:text-sm font-bold text-foreground leading-tight">{f.title}</p>
+                <p className="text-[11px] sm:text-xs text-muted-foreground mt-0.5 leading-snug">{f.description}</p>
               </div>
             </motion.div>
           ))}
@@ -62,6 +55,4 @@ const FeaturesStrip = () => {
       </div>
     </section>
   );
-};
-
-export default FeaturesStrip;
+}

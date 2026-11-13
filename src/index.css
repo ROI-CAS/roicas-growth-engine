@@ -6,6 +6,7 @@
 
 @layer base {
   :root {
+    --roicas-content-width: 80rem;
     /* ROICAS Brand Colors — identidad rojo/negro, sin azul */
     --background: 40 20% 97%;         /* warm off-white #F8F7F4 */
     --foreground: 220 15% 10%;        /* near-black */
@@ -24,6 +25,10 @@
     --brand: 354 70% 40%;
     --brand-hover: 354 75% 32%;
     --brand-foreground: 0 0% 100%;
+
+    /* Brand Red Luminous — contraste WCAG AA/AAA para textos y acentos en fondos oscuros */
+    --brand-on-dark: 356 100% 68%;
+    --brand-on-dark-glow: 356 100% 68% / 0.35;
 
     --secondary: 40 15% 93%;
     --secondary-foreground: 220 15% 15%;
@@ -138,7 +143,10 @@
 
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    width: 100%;
+    min-width: 0;
+    max-width: var(--roicas-content-width);
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   .card-dashboard {
@@ -243,6 +251,49 @@
   .hover-lift:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px -10px hsl(var(--foreground) / 0.12);
+  }
+
+  /* Scrollbar hiding utilities across all browsers */
+  .no-scrollbar::-webkit-scrollbar,
+  .scrollbar-none::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    -webkit-appearance: none !important;
+  }
+  .no-scrollbar,
+  .scrollbar-none {
+    -ms-overflow-style: none !important; /* IE and Edge */
+    scrollbar-width: none !important;    /* Firefox */
+  }
+
+  /* Luxury Glassmorphism & Atmospheric Depth */
+  .glass-dark {
+    background: rgba(13, 14, 18, 0.88);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 70px -15px rgba(0, 0, 0, 0.45), 0 0 40px -10px hsl(354 70% 40% / 0.15);
+  }
+
+  .glow-card {
+    position: relative;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glow-card:hover {
+    border-color: hsl(var(--brand) / 0.4);
+    box-shadow: 0 20px 48px -12px hsl(var(--brand) / 0.15), 0 0 24px -4px hsl(var(--brand) / 0.08);
+    transform: translateY(-3px);
+  }
+
+  .ambient-glow-brand {
+    background: radial-gradient(circle at 50% 50%, hsl(354 70% 40% / 0.18) 0%, transparent 70%);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 30px hsl(354 70% 50% / 0.35);
   }
 }
 

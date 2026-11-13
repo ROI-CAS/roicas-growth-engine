@@ -8,9 +8,7 @@ import {
   Copy,
   Check,
   ArrowRight,
-  MessageCircle,
   FileText,
-  Clock,
   Sparkles,
   ChevronDown,
   ChevronUp,
@@ -23,16 +21,18 @@ interface BriefSuccessViewProps {
 
 export const BriefSuccessView: React.FC<BriefSuccessViewProps> = ({ lead }) => {
   const [copied, setCopied] = useState(false);
+  const [copyError, setCopyError] = useState("");
   const [showSummary, setShowSummary] = useState(false);
 
-  const handleCopyId = () => {
-    navigator.clipboard.writeText(lead.lead_id);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+  const handleCopyId = async () => {
+    try {
+      await navigator.clipboard.writeText(lead.lead_id);
+      setCopied(true);
+      setCopyError("");
+    } catch {
+      setCopyError("No se pudo copiar. Selecciona el número de referencia y cópialo manualmente.");
+    }
   };
-
-  const cleanPhone = lead.contact.full_whatsapp.replace(/\D/g, "");
-  const waContactUrl = `https://wa.me/573114565403?text=Hola%20ROICAS,%20acabo%20de%20enviar%20mi%20solicitud%20de%20cotizaci%C3%B3n%20con%20ID%20${lead.lead_id}%20para%20${encodeURIComponent(lead.business.business_name)}.`;
 
   return (
     <motion.div
@@ -62,12 +62,13 @@ export const BriefSuccessView: React.FC<BriefSuccessViewProps> = ({ lead }) => {
           type="button"
           onClick={handleCopyId}
           aria-label="Copiar número de referencia"
-          className="ml-1 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+          className="ml-1 min-h-11 min-w-11 inline-flex items-center justify-center p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
         >
           {copied ? <Check className="w-3.5 h-3.5 text-success" /> : <Copy className="w-3.5 h-3.5" />}
         </button>
       </div>
 
+      <p role="status" className="mb-5 text-sm text-muted-foreground">{copyError || (copied ? "Número de referencia copiado." : "")}</p>
       {/* Next Steps Timeline Card */}
       <div className="card-dashboard p-6 text-left mb-8 space-y-4">
         <h3 className="text-sm font-bold uppercase tracking-wider text-brand flex items-center gap-2">
@@ -107,7 +108,7 @@ export const BriefSuccessView: React.FC<BriefSuccessViewProps> = ({ lead }) => {
             <div>
               <p className="font-semibold text-foreground">Contacto personalizado</p>
               <p className="text-muted-foreground text-xs leading-relaxed">
-                Te escribiremos a <strong>{lead.contact.contact_email}</strong> y por WhatsApp en menos de 24 horas hábiles.
+                Te escribiremos a <strong>{lead.contact.contact_email}</strong> y por WhatsApp para avanzar con tu propuesta.
               </p>
             </div>
           </div>
@@ -119,6 +120,8 @@ export const BriefSuccessView: React.FC<BriefSuccessViewProps> = ({ lead }) => {
         <button
           type="button"
           onClick={() => setShowSummary(!showSummary)}
+          aria-expanded={showSummary}
+          aria-controls="submitted-brief-summary"
           className="w-full flex items-center justify-between p-3.5 rounded-xl border border-border bg-card text-xs font-semibold text-foreground hover:bg-muted/30 transition-colors cursor-pointer"
         >
           <span className="flex items-center gap-2">
@@ -129,7 +132,7 @@ export const BriefSuccessView: React.FC<BriefSuccessViewProps> = ({ lead }) => {
         </button>
 
         {showSummary && (
-          <div className="mt-2 p-4 rounded-xl border border-border bg-muted/20 font-mono text-xs whitespace-pre-wrap max-h-72 overflow-y-auto">
+          <div id="submitted-brief-summary" className="mt-2 p-4 rounded-xl border border-border bg-muted/20 font-mono text-xs whitespace-pre-wrap max-h-72 overflow-y-auto">
             {lead.summary_text}
           </div>
         )}

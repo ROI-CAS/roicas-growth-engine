@@ -1,0 +1,39 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "wpdoctor-admin",
+  "account_id": "65b9d77fd1f62e237dce8a2c6e5a8288",
+  "main": "../../apps/admin/worker.ts",
+  "compatibility_date": "2026-10-15",
+  // Access protege este hostname; el Worker valida además firma, audiencia y rol.
+  "workers_dev": true,
+  "preview_urls": false,
+  "keep_vars": true,
+  "assets": {
+    "directory": "../../dist/site",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "wpdoctor-production",
+    "database_id": "d795e6fd-29fe-4b3c-bf0a-a4d4e823f143",
+    "migrations_dir": "../migrations"
+  }],
+  "vars": {
+    "ENVIRONMENT": "production",
+    "APP_BASE_URL": "https://doctor.roicas.com",
+    "ADMIN_BASE_URL": "https://wpdoctor-admin.casinmiedo.workers.dev",
+    "ACCESS_TEAM_DOMAIN": "roicas.cloudflareaccess.com",
+    "ACCESS_AUD": "841d70d5fc1a7d182d10695006b04bd4dbe68456213e71716d44607f9e199f5d",
+    "PUBLIC_DIAGNOSIS_ENABLED": "false",
+    "DIAGNOSIS_ENGINE": "disabled",
+    "BROWSER_DIAGNOSTICS_MODE": "disabled",
+    "DIAGNOSTIC_DELIVERY_ENABLED": "false",
+    "LEGAL_APPROVED": "false",
+    "BUSINESS_NAME": "César Silva · Roicas — Marketing y Automatizaciones",
+    "BUSINESS_EMAIL": "hello@roicas.com",
+    "PRIVACY_CONTACT": "hello@roicas.com",
+    "WHATSAPP_PUBLIC_NUMBER": "573114565403"
+  },
+  "observability": { "enabled": false }
+}

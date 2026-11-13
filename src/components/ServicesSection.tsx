@@ -1,184 +1,164 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { CheckCircle2, Zap, TrendingUp, Rocket, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import * as Tabs from "@radix-ui/react-tabs";
+import { ArrowRight, ChevronDown, Globe2, Megaphone, Workflow } from "lucide-react";
+import { BlurFade } from "@/components/ui/blur-fade";
+import "./solutions-interactive.css";
 
-const packages = [
+type DemoModule = typeof import("@/components/ui/services-interactive-huds");
+
+function loadDemo(name: keyof DemoModule) {
+  return lazy(() => import("@/components/ui/services-interactive-huds").then(
+    (module) => ({ default: module[name] }),
+    () => ({ default: () => <p className="rsi-demo-status" role="status">No pudimos cargar la demostración. Puedes consultar el servicio en los enlaces de arriba.</p> }),
+  ));
+}
+
+const solutions = [
   {
-    icon: Zap,
-    bg: "bg-amber-500",
-    title: "Sistema Base",
-    subtitle: "Deja de perder leads",
-    description:
-      "Para empresas que ya reciben contactos pero los están perdiendo por falta de seguimiento. Organizamos y automatizamos tu proceso de ventas desde el día 1.",
-    features: [
-      "CRM y pipeline de ventas visual",
-      "Captura automática de contactos",
-      "Secuencia de bienvenida en menos de 5 minutos",
-      "Agendamiento automático de citas",
-      "Notificación instantánea al comercial",
-      "Reportes semanales de resultados",
-    ],
-    promise: "En 15 días tu equipo deja de perseguir leads.",
-    highlight: false,
-    badge: null,
+    id: "web",
+    step: "Presencia",
+    tab: "Crear o mejorar mi web",
+    subtitle: "Sitios web y tiendas online",
+    icon: Globe2,
+    title: "Una web que explique tu valor y facilite el contacto",
+    description: "Diseñamos sitios y tiendas online en WordPress alrededor de tu oferta, con contenido y navegación claros para orientar a tus clientes.",
+    details: ["Diseño móvil y rendimiento optimizado", "Dominio, hosting y código de tu empresa, sin permanencia", "WhatsApp y formularios listos para recibir cotizaciones"],
+    links: [["Ver desarrollo web", "/servicios/diseno-web"], ["Ver tiendas online", "/servicios/tiendas-online"]],
+    image: "/images/pillars/strategy-web-presencia.webp",
+    imageAlt: "Diseño de un sitio web adaptable a distintos dispositivos",
+    demoLabel: "Ver demo de diseño web",
+    Demo: loadDemo("WebArchitectureHud"),
   },
   {
-    icon: TrendingUp,
-    bg: "bg-brand",
-    title: "Sistema de Crecimiento",
-    subtitle: "Más leads, mejor calidad",
-    description:
-      "Para empresas que quieren escalar la captación con publicidad y automatizar todo el proceso de conversión. Generamos demanda y la convertimos en oportunidades reales.",
-    features: [
-      "Todo lo del Sistema Base",
-      "Campañas en Google Ads y Meta Ads",
-      "Páginas de captura optimizadas para conversión",
-      "Nutrición automática multicanal",
-      "Cualificación y scoring inteligente de leads",
-      "Reportes de ROI por canal de captación",
-    ],
-    promise: "Leads cualificados, no solo contactos. Tu cierre mejora desde el primer mes.",
-    highlight: true,
-    badge: "Más popular",
+    id: "attract",
+    step: "Atracción",
+    tab: "Atraer clientes",
+    subtitle: "SEO y publicidad digital",
+    icon: Megaphone,
+    title: "Que te encuentren cuando necesitan lo que ofreces",
+    description: "Mejoramos tu presencia en buscadores y creamos campañas para que personas interesadas encuentren tu negocio en Bogotá o en todo el país.",
+    details: ["SEO y contenido para búsquedas comerciales", "Campañas en Google Ads y Meta con optimización de costos", "Medición de consultas y rendimiento por canal"],
+    links: [["Ver SEO", "/servicios/seo"], ["Ver publicidad", "/servicios/publicidad-digital"]],
+    image: "/images/pillars/strategy-seo-ads.webp",
+    imageAlt: "Vista de trabajo sobre visibilidad en buscadores y publicidad digital",
+    demoLabel: "Ver demo de captación",
+    Demo: loadDemo("SearchAcquisitionHud"),
   },
   {
-    icon: Rocket,
-    bg: "bg-zinc-600",
-    title: "Sistema 360°",
-    subtitle: "Escala sin contratar más",
-    description:
-      "El sistema completo de revenue. Desde atraer al desconocido hasta cerrar y retener al cliente. Tu equipo comercial recibe oportunidades, no tareas.",
-    features: [
-      "Todo lo del Sistema de Crecimiento",
-      "SEO y posicionamiento orgánico sostenible",
-      "Web o landing page de alta conversión",
-      "Agente conversacional con IA activo 24/7",
-      "Gestión de reputación y reseñas automáticas",
-      "Reunión estratégica mensual de optimización",
-    ],
-    promise: "De desconocido a cliente cerrado. Completamente automatizado.",
-    highlight: false,
-    badge: null,
+    id: "follow",
+    step: "Seguimiento",
+    tab: "Dar seguimiento",
+    subtitle: "WhatsApp y CRM GoHighLevel",
+    icon: Workflow,
+    title: "Que cada consulta reciba seguimiento",
+    description: "Conectamos tu web, WhatsApp y GoHighLevel (GHL) para que tu equipo pueda atender consultas y avanzar cada oportunidad desde un solo lugar.",
+    details: ["Contactos de WhatsApp y formularios en un solo CRM", "Respuestas y recordatorios automáticos por WhatsApp", "Calificación de contactos y seguimiento de cotizaciones"],
+    links: [["Ver automatización y CRM", "/servicios/automatizacion-ia"]],
+    image: "/images/pillars/strategy-crm-ghl.webp",
+    imageAlt: "Vista de un flujo de atención comercial con WhatsApp y CRM",
+    demoLabel: "Ver demo de seguimiento",
+    Demo: loadDemo("CrmAutomationHud"),
   },
 ];
 
-const ServicesSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+function SolutionPanel({ solution }: { solution: (typeof solutions)[number] }) {
+  const [demoOpen, setDemoOpen] = useState(false);
+  const { title, description, details, links, image, imageAlt, demoLabel, Demo } = solution;
 
   return (
-    <section id="servicios" className="py-20 md:py-28">
-      <div className="section-container">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Un sistema completo,{" "}
-            <span className="text-gradient-warm">tres niveles de crecimiento</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            No vendemos servicios sueltos. Construimos el sistema que lleva a tu cliente
-            potencial desde el primer contacto hasta el cierre — y tu equipo solo aparece
-            cuando el lead ya está listo.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          {packages.map((pkg, index) => (
-            <motion.div
-              key={pkg.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
-              className={`card-dashboard p-8 relative flex flex-col ${
-                pkg.highlight
-                  ? "ring-2 ring-brand/40 bg-brand/5 -translate-y-1 shadow-lg"
-                  : ""
-              }`}
-            >
-              {pkg.badge && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand text-brand-foreground text-xs font-bold rounded-full shadow-sm">
-                  {pkg.badge}
-                </span>
-              )}
-
-              {/* Level + icon */}
-              <div className="mb-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-14 h-14 rounded-xl ${pkg.bg} flex items-center justify-center shadow-md`}>
-                    <pkg.icon size={26} className="text-white" strokeWidth={2} />
-                  </div>
-                  <span className="text-4xl font-black text-border select-none">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold mb-1">{pkg.title}</h3>
-                <p className="text-sm font-semibold text-brand">{pkg.subtitle}</p>
-              </div>
-
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                {pkg.description}
-              </p>
-
-              {/* Features */}
-              <ul className="space-y-3 mb-8 flex-1">
-                {pkg.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm">
-                    <CheckCircle2
-                      size={16}
-                      className="text-brand shrink-0 mt-0.5"
-                    />
-                    <span className="text-muted-foreground">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Promise */}
-              <div className="mb-6 px-4 py-3 rounded-lg bg-brand/10 border border-brand/20">
-                <p className="text-xs font-semibold text-brand text-center">
-                  {pkg.promise}
-                </p>
-              </div>
-
-              <Button
-                variant={pkg.highlight ? "hero" : "outline"}
-                size="default"
-                className="w-full"
-                asChild
-              >
-                <a href="/contacto" className="group">
-                  Quiero este sistema
-                  <ArrowRight
-                    size={16}
-                    className="ml-2 group-hover:translate-x-1 transition-transform"
-                  />
-                </a>
-              </Button>
-            </motion.div>
-          ))}
+    <>
+      <div className="rsi-panel-content">
+        <div className="rsi-copy">
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <ul>
+            {details.map((detail) => (
+              <li key={detail}>
+                <span aria-hidden="true" />
+                {detail}
+              </li>
+            ))}
+          </ul>
+          <div className="rsi-panel-actions">
+            {links.map(([label, href], index) => (
+              <Link className={index === 0 ? "rsi-primary" : "rsi-secondary"} to={href} key={href}>
+                {label}
+                <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
         </div>
+        <div className="rsi-visual">
+          <img src={image} alt={imageAlt} width={800} height={450} loading="lazy" decoding="async" />
+        </div>
+      </div>
+      <details className="rsi-demo" onToggle={(event) => setDemoOpen(event.currentTarget.open)}>
+        <summary>
+          <span>{demoLabel}</span>
+          <ChevronDown size={18} aria-hidden="true" />
+        </summary>
+        {demoOpen && (
+          <Suspense fallback={<p className="rsi-demo-status" role="status">Cargando demostración…</p>}>
+            <Demo />
+          </Suspense>
+        )}
+      </details>
+    </>
+  );
+}
 
-        {/* Bottom note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center text-sm text-muted-foreground mt-8"
-        >
-          ¿No sabes cuál es el tuyo?{" "}
-          <a href="/contacto" className="text-brand font-medium hover:underline">
-            Hablamos y te lo decimos sin compromiso.
-          </a>
-        </motion.p>
+export default function ServicesSection() {
+  const [isNarrow, setIsNarrow] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 767px)");
+    const updateOrientation = () => setIsNarrow(media.matches);
+    updateOrientation();
+    media.addEventListener("change", updateOrientation);
+    return () => media.removeEventListener("change", updateOrientation);
+  }, []);
+
+  return (
+    <section id="servicios" className="roicas-solutions-interactive" aria-labelledby="solutions-title">
+      <span id="estrategia" className="rsi-strategy-anchor" aria-hidden="true" />
+      <div className="rsi-inner">
+        <BlurFade inView blur="3px" offset={8} duration={0.45} className="rsi-intro">
+          <div>
+            <p className="rsi-eyebrow">Soluciones para tu negocio</p>
+            <h2 id="solutions-title">Tu estrategia, <span>conectada</span></h2>
+          </div>
+          <p>Unimos tu web, la captación y el seguimiento comercial para que cada etapa lleve a la siguiente. Puedes empezar por una necesidad o trabajar la estrategia completa.</p>
+        </BlurFade>
+
+        <Tabs.Root className="rsi-tabs-container" defaultValue="web" activationMode="manual" orientation={isNarrow ? "vertical" : "horizontal"}>
+          <Tabs.List className="rsi-tablist" aria-label="Qué necesita tu negocio">
+            {solutions.map(({ id, step, tab, subtitle, icon: Icon }, index) => (
+              <Tabs.Trigger key={id} value={id} className="rsi-tab">
+                <span className="rsi-tab-icon-wrap">
+                  <Icon size={20} aria-hidden="true" />
+                </span>
+                <span className="rsi-tab-body">
+                  <span className="rsi-tab-step">
+                    <span className="rsi-stage-dot" aria-hidden="true" />
+                    0{index + 1} · {step}
+                  </span>
+                  <span className="rsi-tab-title">{tab}</span>
+                  <span className="rsi-tab-sub">{subtitle}</span>
+                </span>
+                <ChevronDown size={18} className="rsi-tab-arrow" aria-hidden="true" />
+              </Tabs.Trigger>
+            ))}
+          </Tabs.List>
+
+          {solutions.map((solution) => (
+            <Tabs.Content key={solution.id} value={solution.id} className="rsi-panel">
+              <SolutionPanel solution={solution} />
+            </Tabs.Content>
+          ))}
+        </Tabs.Root>
+
       </div>
     </section>
   );
-};
-
-export default ServicesSection;
+}

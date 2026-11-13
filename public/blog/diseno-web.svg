@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080C14" />
+      <stop offset="50%" stop-color="#140B0E" />
+      <stop offset="100%" stop-color="#05080E" />
+    </linearGradient>
+    <linearGradient id="brandRedGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B51828" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#881337" stop-opacity="0" />
+    </linearGradient>
+    <pattern id="grid5" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2B161B" stroke-width="0.75" stroke-opacity="0.4" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bg5)" />
+  <rect width="1200" height="750" fill="url(#grid5)" />
+
+  <circle cx="280" cy="220" r="320" fill="url(#brandRedGlow)" />
+  <circle cx="950" cy="500" r="280" fill="#3B82F6" fill-opacity="0.15" />
+
+  <g transform="translate(140, 100)">
+    <rect width="920" height="550" rx="24" fill="#0A0E17" opacity="0.4" transform="translate(0, 16)" />
+    <rect width="920" height="550" rx="24" fill="#151114" stroke="#331A21" stroke-width="1.5" />
+
+    <!-- Window Bar -->
+    <rect width="920" height="54" rx="24" fill="#1E1418" />
+    <circle cx="36" cy="27" r="6" fill="#EF4444" />
+    <circle cx="56" cy="27" r="6" fill="#F59E0B" />
+    <circle cx="76" cy="27" r="6" fill="#10B981" />
+    <text x="460" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#FECDD3" text-anchor="middle">ROICAS Web Architecture • Diagnóstico de Conversión y Velocidad UX</text>
+
+    <!-- Desktop Screen Preview Mockup -->
+    <g transform="translate(48, 86)">
+      <rect width="520" height="310" rx="16" fill="#0D0D12" stroke="#2E1C22" stroke-width="1" />
+
+      <!-- Mockup Hero Layout -->
+      <rect x="24" y="24" width="220" height="18" rx="6" fill="#B51828" fill-opacity="0.3" />
+      <rect x="24" y="52" width="340" height="28" rx="6" fill="#FFFFFF" fill-opacity="0.9" />
+      <rect x="24" y="90" width="280" height="14" rx="4" fill="#94A3B8" fill-opacity="0.6" />
+      <rect x="24" y="112" width="240" height="14" rx="4" fill="#94A3B8" fill-opacity="0.6" />
+
+      <!-- CTA Button Mockup -->
+      <rect x="24" y="146" width="160" height="42" rx="10" fill="#B51828" />
+      <text x="104" y="172" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">Cotizar Proyecto →</text>
+
+      <!-- Visual Graphic Grid -->
+      <g transform="translate(320, 140)">
+        <rect width="176" height="146" rx="12" fill="#1A131A" stroke="#3D212A" stroke-width="1" />
+        <circle cx="88" cy="60" r="34" fill="none" stroke="#10B981" stroke-width="6" stroke-dasharray="180,40" />
+        <text x="88" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#10B981" text-anchor="middle">100</text>
+        <text x="88" y="114" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#94A3B8" text-anchor="middle">Core Web Vitals</text>
+      </g>
+    </g>
+
+    <!-- Mobile Device Mockup Floating on Right -->
+    <g transform="translate(600, 86)">
+      <rect width="272" height="416" rx="28" fill="#0A0B10" stroke="#3D212A" stroke-width="2.5" />
+      <!-- Notch -->
+      <rect x="96" y="10" width="80" height="16" rx="8" fill="#1F151B" />
+
+      <!-- Mobile Content -->
+      <g transform="translate(20, 48)">
+        <text x="0" y="20" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="#B51828">RESPONSIVE FIRST</text>
+        <text x="0" y="44" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF">Sitio Web B2B</text>
+        <text x="0" y="64" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94A3B8">Que vende en automático</text>
+
+        <rect y="84" width="232" height="74" rx="12" fill="#1A141A" stroke="#2D1C22" stroke-width="1" />
+        <text x="16" y="112" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94A3B8">TASA DE REBOTE</text>
+        <text x="16" y="142" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" fill="#10B981">-42%</text>
+
+        <rect y="170" width="232" height="44" rx="10" fill="#B51828" />
+        <text x="116" y="197" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">Agendar Consultoría</text>
+
+        <!-- Social Proof -->
+        <rect y="228" width="232" height="110" rx="12" fill="#141014" stroke="#2E1B22" stroke-width="1" />
+        <text x="16" y="254" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">El test de los 5 segundos</text>
+        <text x="16" y="276" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#94A3B8">Si tu propuesta no es clara</text>
+        <text x="16" y="292" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#94A3B8">en 5 segundos, el usuario sale.</text>
+      </g>
+    </g>
+
+    <!-- Bottom Metric Strip -->
+    <g transform="translate(48, 416)">
+      <rect width="520" height="86" rx="14" fill="#0D0D12" stroke="#2E1C22" stroke-width="1" />
+      <g transform="translate(24, 20)">
+        <text x="0" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">MÉTRICA ROICAS</text>
+        <text x="0" y="44" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">Conversión de Visitante a Lead</text>
+        <text x="360" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="800" fill="#10B981">+65%</text>
+      </g>
+    </g>
+  </g>
+</svg>

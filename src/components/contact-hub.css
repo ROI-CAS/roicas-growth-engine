@@ -1,0 +1,315 @@
+/* Hub de Contacto & Agendamiento - ROICAS */
+
+.roicas-contact-hub {
+  padding: 104px 40px;
+  background: #111015;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 80px;
+}
+
+/* Sutil resplandor de fondo */
+.roicas-contact-hub::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(circle, hsl(var(--brand) / 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rch-inner {
+  max-width: var(--roicas-content-width);
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Cabecera */
+.rch-header {
+  text-align: center;
+  max-width: 68ch;
+  margin: 0 auto 64px auto;
+}
+
+.rch-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: hsl(var(--brand-on-dark));
+  margin: 0 0 16px 0;
+}
+
+.roicas-home .rch-header h2 {
+  font-family: inherit;
+  font-size: clamp(34px, 3.8vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 18px 0;
+}
+
+.roicas-home .rch-header h2 span {
+  color: hsl(var(--brand-on-dark));
+  text-shadow: 0 0 28px hsl(var(--brand-on-dark) / 0.35);
+}
+
+.rch-intro {
+  font-size: 17px;
+  line-height: 1.65;
+  color: #d1cbdb;
+  margin: 0;
+}
+
+/* Grid Split: 2 Tarjetas de Conversión */
+.rch-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: stretch;
+}
+
+/* Tarjeta Base */
+.rch-card {
+  border-radius: 24px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Tarjeta Izquierda: Agendamiento Inmediato */
+.rch-card-booking {
+  background: #18161e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+}
+
+.rch-card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: hsl(var(--brand-on-dark) / 0.15);
+  color: hsl(var(--brand-on-dark));
+  width: fit-content;
+  margin-bottom: 20px;
+}
+
+.roicas-home .rch-card-booking h3 {
+  font-family: inherit;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+}
+
+.rch-card-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #c8c2d1;
+  margin: 0 0 28px 0;
+}
+
+/* Lista de Beneficios de la Sesión */
+.rch-benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: grid;
+  gap: 14px;
+}
+
+.rch-benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ded9e2;
+}
+
+.rch-benefit-item strong {
+  color: #ffffff;
+}
+
+.rch-benefit-icon {
+  flex-shrink: 0;
+  color: hsl(var(--brand));
+  margin-top: 2px;
+}
+
+/* Acciones de la Tarjeta de Booking */
+.rch-booking-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rch-btn-calendar {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 0 24px;
+  background: #ffffff;
+  color: #17151c;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 650;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+}
+
+.rch-btn-calendar:hover {
+  background: #f0ecf2;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.15);
+}
+
+.rch-btn-calendar:focus-visible {
+  outline: 3px solid hsl(var(--brand));
+  outline-offset: 4px;
+}
+
+.rch-wa-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: #bbb4c0;
+  text-decoration: none;
+  transition: color 0.2s;
+  padding: 4px 0;
+}
+
+.rch-wa-link:hover {
+  color: #25d366;
+}
+
+/* Tarjeta Derecha: Formulario Asíncrono */
+.rch-card-form {
+  background: #1c1923;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+}
+
+.roicas-home .rch-card-form h3 {
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.rch-form-desc {
+  font-size: 14px;
+  color: #a9a2af;
+  margin: 0 0 24px 0;
+}
+
+/* Sobrescritura de inputs del ContactForm dentro del hub oscuro */
+.rch-card-form form {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.rch-card-form label {
+  color: #e5e0e8 !important;
+  font-size: 13px !important;
+}
+
+.rch-card-form input {
+  background: #25222e !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.rch-card-form input:focus {
+  border-color: hsl(var(--brand)) !important;
+  box-shadow: 0 0 0 2px hsl(var(--brand) / 0.25) !important;
+}
+
+.rch-card-form input::placeholder {
+  color: #8c8594 !important;
+}
+
+.rch-card-form button[type="submit"] {
+  background: hsl(var(--brand)) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  min-height: 52px !important;
+  box-shadow: 0 8px 24px hsl(var(--brand) / 0.3) !important;
+  transition: transform 0.2s, background 0.2s !important;
+}
+
+.rch-card-form button[type="submit"]:hover {
+  background: hsl(var(--brand-hover)) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Responsividad */
+@media (max-width: 1000px) {
+  .rch-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .rch-card {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .roicas-contact-hub {
+    padding: 64px 20px;
+  }
+  .roicas-home .rch-header h2 {
+    font-size: 30px;
+  }
+  .rch-card {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+  .roicas-home .rch-card-booking h3,
+  .roicas-home .rch-card-form h3 {
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rch-btn-calendar,
+  .rch-card-form button[type="submit"],
+  .rch-wa-link {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+

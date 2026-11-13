@@ -10,7 +10,8 @@ const cleanTemplate = template
   .replace(/\s*<title>[\s\S]*?<\/title>/g, "")
   .replace(/\s*<meta\s+(?:name="(?:description|twitter:[^"]+)"|property="og:[^"]+")[^>]*>/g, "");
 const routes = [...siteRoutes, "/blog", ...publishedArticles.map(post => `/blog/${post.slug}`)];
-for (const route of [...routes, "/404"]) {
+const nonIndexedRoutes = ["/web-express/black-november"];
+for (const route of [...routes, ...nonIndexedRoutes, "/404"]) {
   const { html, head } = render(route);
   if (!html.includes("<h1")) throw new Error(`Falta H1 en ${route}`);
   const result = cleanTemplate.replace("</head>", () => `${head}\n</head>`)

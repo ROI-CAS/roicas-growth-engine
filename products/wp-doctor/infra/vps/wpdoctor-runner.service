@@ -1,0 +1,27 @@
+[Unit]
+Description=WP Doctor isolated scan controller
+After=docker.service network-online.target
+Requires=docker.service
+
+[Service]
+Type=simple
+User=wpdoctor-runner
+Group=wpdoctor-runner
+SupplementaryGroups=docker
+WorkingDirectory=/opt/wpdoctor-runner
+EnvironmentFile=/etc/wpdoctor-runner.env
+ExecStart=/opt/wpdoctor-runner/node/bin/node /opt/wpdoctor-runner/controller.mjs
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=125
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+RestrictSUIDSGID=true
+UMask=0077
+MemoryMax=192M
+CPUQuota=10%
+
+[Install]
+WantedBy=multi-user.target

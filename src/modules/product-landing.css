@@ -1,0 +1,167 @@
+.product-bridge {
+  background: #f8f3ee;
+  color: #30282a;
+  border-bottom: 1px solid #e5dad5;
+}
+
+.product-bridge__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0 1rem;
+  width: min(100% - 2rem, 76rem);
+  min-height: 3rem;
+  margin-inline: auto;
+  font-size: 0.875rem;
+}
+
+.product-bridge__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  color: #8f1b30;
+  font-weight: 700;
+  text-underline-offset: 0.25em;
+}
+
+.product-bridge__back:hover {
+  text-decoration: underline;
+}
+
+.product-bridge__back:focus-visible {
+  outline: 2px solid #8f1b30;
+  outline-offset: 2px;
+  border-radius: 0.3rem;
+}
+
+.product-bridge__name {
+  font-weight: 650;
+}
+
+.web-express-scope .express-product-hero .express-hero__inner {
+  row-gap: 0;
+  padding-block: clamp(2rem, 5vw, 4.5rem);
+}
+
+.web-express-scope .express-product-hero h1 {
+  max-width: 14ch;
+  text-wrap: balance;
+}
+
+.web-express-scope .express-product-hero .express-hero__visual {
+  overflow: hidden;
+  border: 1px solid #e5dad5;
+}
+
+.web-express-scope .express-product-hero .express-hero__actions :is(a, button) {
+  white-space: normal;
+}
+
+.diagnostico-scope .product-diagnostic-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+  background: #100e14;
+  color: #fff;
+}
+
+.product-diagnostic-hero > canvas {
+  opacity: 0.68;
+}
+
+.product-diagnostic-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.75rem, 6vw, 5rem);
+}
+
+.product-diagnostic-hero__title {
+  max-width: 14ch;
+  font-size: clamp(2.25rem, 5.8vw, 4.65rem);
+  font-weight: 750;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.product-diagnostic-hero__title span {
+  color: #f2a0ad;
+}
+
+.product-diagnostic-hero__lead,
+.product-diagnostic-hero__note {
+  max-width: 55ch;
+  color: #e4dce5;
+  line-height: 1.6;
+}
+
+.product-diagnostic-hero__lead {
+  margin-top: 1.2rem;
+  font-size: clamp(1.02rem, 2vw, 1.17rem);
+}
+
+.product-diagnostic-hero__note {
+  margin-top: 1rem;
+  font-size: 0.92rem;
+}
+
+.product-diagnostic-hero__actions {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+.product-diagnostic-hero__actions button {
+  height: auto;
+  min-height: 48px;
+  padding-block: 0.75rem;
+  white-space: normal;
+}
+
+.product-diagnostic-hero__actions button:focus-visible {
+  outline: 2px solid #f2a0ad;
+  outline-offset: 3px;
+}
+
+.diagnostico-scope .product-diagnostic-hero__image {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid #ffffff33;
+  border-radius: 1rem;
+}
+
+@media (max-width: 767px) {
+  .product-diagnostic-hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .diagnostico-scope .product-diagnostic-hero__image {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 540px) {
+  .product-diagnostic-hero__actions button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-diagnostic-hero__actions button,
+  .product-diagnostic-hero__actions button:hover {
+    transition: none;
+    transform: none;
+  }
+}

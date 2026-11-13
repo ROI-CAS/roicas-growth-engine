@@ -1,286 +1,209 @@
-import { motion } from "framer-motion";
-import { Bot, CheckCircle2, ArrowRight, Zap, MessageSquare, Clock, BrainCircuit } from "lucide-react";
+import * as Tabs from "@radix-ui/react-tabs";
+import { ArrowDown, ArrowRight, Check, ChevronDown, MessageCircle, Workflow, BellRing } from "lucide-react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import { Button } from "@/components/ui/button";
 import SeoHead from "@/components/SeoHead";
+import ParticlesBackground from "@/components/ui/ParticlesBackground";
+import { useBooking } from "@/contexts/BookingContext";
+import { trackCtaClicked } from "@/lib/analytics";
+import "./diseno-web.css";
+import "./service-pages.css";
 
-const iaSchema = {
+const canonical = "/servicios/automatizacion-ia";
+const description = "Automatizamos la atención y el seguimiento comercial con IA, WhatsApp y CRM. Configura respuestas, asignación y recordatorios según tu operación.";
+const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Automatización con IA para Ventas y Marketing",
+  name: "Automatización con IA y CRM",
   provider: { "@type": "Organization", name: "ROICAS", url: "https://roicas.com" },
-  description: "Automatiza la captación y cualificación de leads con IA. Respuesta en menos de 5 minutos 24/7, bots conversacionales, CRM automatizado y flujos inteligentes.",
+  description,
   areaServed: "CO",
-  url: "https://roicas.com/servicios/automatizacion-ia",
+  url: `https://roicas.com${canonical}`,
 };
 
-const benefits = [
+const capabilities = [
   {
-    icon: Clock,
-    title: "Respuesta en menos de 5 minutos, 24/7",
-    description: "Un lead que no recibe respuesta en los primeros 5 minutos tiene un 80% menos de probabilidad de cerrar. Nuestros sistemas responden al instante, siempre.",
+    id: "atencion",
+    label: "Atención",
+    icon: MessageCircle,
+    title: "Recibe y orienta cada consulta",
+    description: "Configuramos agentes con tus servicios, respuestas frecuentes y preguntas de clasificación. Los casos que requieren revisión pasan a una persona según las reglas acordadas.",
+    items: ["Preguntas frecuentes","Clasificación inicial","Derivación al equipo"],
   },
   {
-    icon: MessageSquare,
-    title: "Bots conversacionales que cualifican",
-    description: "No son bots genéricos. Son agentes configurados con tu tono, tu propuesta de valor y tus preguntas de cualificación. El lead llega a tu equipo ya filtrado.",
+    id: "crm",
+    label: "Asignación y agenda",
+    icon: Workflow,
+    title: "Organiza la oportunidad en tu CRM",
+    description: "Según las integraciones disponibles, registramos datos de la consulta, asignamos responsables y conectamos recordatorios o agenda.",
+    items: ["Registro en CRM","Asignación","Agenda y notificaciones"],
   },
   {
-    icon: Zap,
-    title: "Flujos que nutren sin trabajo manual",
-    description: "Secuencias de emails, WhatsApp y SMS activadas por el comportamiento del lead. Cada mensaje en el momento correcto, sin que tengas que tocarlo.",
-  },
-  {
-    icon: BrainCircuit,
-    title: "IA que aprende de tu negocio",
-    description: "Entrenamos al agente con tu información: servicios, preguntas frecuentes, objeciones y casos de uso. Cuanto más lo usas, mejor responde.",
+    id: "seguimiento",
+    label: "Seguimiento",
+    icon: BellRing,
+    title: "Seguimiento con reglas claras",
+    description: "Configuramos seguimientos, mensajes de bienvenida, reactivación o solicitud de reseñas. Elegimos canales y momentos según tu operación y permisos.",
+    items: ["WhatsApp, correo o SMS","Bienvenida y reactivación","Solicitud de reseñas"],
   },
 ];
 
-const useCases = [
+const method = [
   {
-    title: "Atención al cliente 24/7",
-    desc: "Responde preguntas frecuentes, gestiona solicitudes y deriva casos complejos a tu equipo humano.",
+    title: "Mapeamos tu atención",
+    description: "Revisamos por dónde llegan las consultas, qué información pide tu equipo y en qué casos necesita intervenir.",
+    deliverable: "Mapa del flujo y reglas",
   },
   {
-    title: "Cualificación automática de leads",
-    desc: "El bot hace las preguntas clave, score al lead y agenda la reunión directamente en el calendario de tu comercial.",
+    title: "Conectamos y probamos",
+    description: "Configuramos los canales, el CRM y las respuestas acordadas. Probamos casos frecuentes, agenda, derivación y excepciones.",
+    deliverable: "Flujo probado antes de activar",
   },
   {
-    title: "Seguimiento post-contacto",
-    desc: "Si el lead no respondió, el sistema lo reactiva automáticamente a las 24h, 72h y 7 días con mensajes distintos.",
-  },
-  {
-    title: "Onboarding de nuevos clientes",
-    desc: "Flujo automático de bienvenida, recogida de información y primeros pasos sin intervención manual.",
-  },
-  {
-    title: "Recuperación de oportunidades perdidas",
-    desc: "Detecta leads inactivos en el pipeline y lanza campañas de reactivación personalizadas automáticamente.",
-  },
-  {
-    title: "Gestión de reseñas y reputación",
-    desc: "Solicita reseñas automáticamente a clientes satisfechos y gestiona las respuestas negativas antes de que escalen.",
+    title: "Activamos y ajustamos",
+    description: "Revisamos conversaciones, asignaciones y tareas. Acordamos qué ajustes y seguimiento incluye el servicio.",
+    deliverable: "Flujo activo y pautas de uso",
   },
 ];
 
 const faqs = [
   {
-    q: "¿Esto requiere que yo tenga conocimientos técnicos?",
-    a: "No. Nosotros configuramos todo el sistema, los flujos y los bots. Tú solo tienes que aprobar los mensajes y recibir las notificaciones cuando haya una acción que requiera tu atención.",
+    question: "¿Mi equipo necesita conocimientos técnicos?",
+    answer: "Configuramos los flujos y revisamos contigo los mensajes, accesos y reglas. Tu equipo valida los casos y mantiene el control de las decisiones comerciales.",
   },
   {
-    q: "¿En qué canales funciona la automatización?",
-    a: "Email, WhatsApp Business, SMS y chat web. Podemos activar uno o varios canales dependiendo de dónde esté tu audiencia.",
+    question: "¿Con qué canales puede funcionar?",
+    answer: "Podemos trabajar con WhatsApp Business, correo, SMS y chat web. Definimos los canales según tus herramientas, permisos y alcance.",
   },
   {
-    q: "¿Los bots suenan robóticos?",
-    a: "No si están bien configurados. Entrenamos el lenguaje con tu tono de marca. La mayoría de usuarios no saben que hablan con un bot en las primeras interacciones.",
+    question: "¿Se puede conectar a mi CRM actual?",
+    answer: "Revisamos qué integraciones y accesos ofrece tu CRM. Si el proyecto lo requiere, también podemos evaluar GoHighLevel.",
   },
   {
-    q: "¿Qué pasa con leads que tienen preguntas complejas?",
-    a: "El sistema detecta cuando la pregunta supera su alcance y escala la conversación a un humano con el historial completo. Nunca pierde el contexto.",
+    question: "¿Qué ocurre si el agente no puede resolver una consulta?",
+    answer: "El flujo puede derivar la conversación a tu equipo. El contexto que recibe la persona depende de los datos y las integraciones disponibles.",
   },
 ];
 
-const fadeUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6 },
-};
+export default function AutomatizacionIA() {
+  const { openBooking } = useBooking();
+  const book = () => {
+    trackCtaClicked("Agendar consultoría", "servicio-automatizacionia");
+    openBooking();
+  };
 
-const AutomatizacionIA = () => {
   return (
-    <main className="min-h-screen bg-background">
-      <SeoHead
-        title="Automatización con IA para Ventas | Bots y Flujos | ROICAS"
-        description="Automatiza la captación y cualificación de leads con IA. Respuesta en menos de 5 minutos 24/7. Bots conversacionales, CRM automatizado y seguimiento inteligente."
-        canonical="https://roicas.com/servicios/automatizacion-ia"
-        schemaJson={iaSchema}
-      />
+    <>
+      <SeoHead title="Automatización con IA para Ventas | Bots y Flujos | ROICAS" description={description} canonical={canonical}
+        schemaJson={serviceSchema} />
       <Header />
-
-      {/* Hero */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 gradient-mesh-warm relative overflow-hidden">
-        <div className="section-container relative z-10">
-          <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold mb-6 border border-brand/20">
-              <Bot size={14} />
-              Automatización con IA
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Tu equipo comercial trabaja.{" "}
-              <span className="text-gradient-warm">La IA no descansa.</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Implementamos flujos inteligentes y agentes conversacionales con IA que
-              captan, nutren y cualifican leads automáticamente — las 24 horas,
-              los 7 días de la semana.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="xl" asChild>
-                <a href="/contacto" className="group">
-                  Automatizar mi proceso de ventas
-                  <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+      <main id="contenido-principal" className="roicas-web-design roicas-service-page">
+        <section className="rwd-hero rsp-hero" aria-labelledby="service-title">
+          <ParticlesBackground particleCount={24} speed={0.22} />
+          <div className="section-container rwd-hero-layout rsp-hero-content">
+            <div>
+              <h1 id="service-title">Automatización de <span>WhatsApp y CRM.</span></h1>
+              <p className="rwd-hero-description">Conectamos WhatsApp, formularios y CRM para organizar las consultas. Configuramos agentes con IA cuando aportan a las reglas de tu equipo.</p>
+              <div className="rwd-actions">
+                <button className="rwd-button rwd-button-light" type="button" onClick={book}>
+                  Agendar consultoría <ArrowRight size={18} aria-hidden="true" />
+                </button>
+                <a className="rwd-link" href="#alcance">
+                  Ver qué incluye <ArrowDown size={17} aria-hidden="true" />
                 </a>
-              </Button>
-              <Button variant="outline" size="xl" asChild>
-                <a href="/contacto">Ver demo en vivo</a>
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-primary/5 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
-      </section>
-
-      {/* Stats */}
-      <section className="py-20 md:py-24 bg-muted/30">
-        <div className="section-container">
-          <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              El tiempo de respuesta{" "}
-              <span className="text-gradient-warm">lo cambia todo</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              El 78% de los clientes compra al primero que le responde.
-              Con automatización inteligente, siempre eres tú el primero.
-            </p>
-          </motion.div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            {[
-              { stat: "78%", desc: "compra al primero que responde" },
-              { stat: "80%", desc: "menos probabilidad de cerrar si no respondes en 5 min" },
-              { stat: "3×", desc: "más citas agendadas con seguimiento automatizado" },
-            ].map((item) => (
-              <div key={item.stat} className="card-dashboard p-6 text-center">
-                <p className="text-4xl font-black text-brand mb-2">{item.stat}</p>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
-            ))}
+              <p className="rwd-note">Consultoría gratuita · 20 minutos</p>
+            </div>
+            <img className="rwd-hero-image rsp-hero-image" src={"/images/pillars/strategy-crm-ghl.webp"} alt="Persona con auriculares atendiendo una consulta desde su computador"
+              width={800} height={450} fetchPriority="high" decoding="async" />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Benefits */}
-      <section className="py-20 md:py-28">
-        <div className="section-container">
-          <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Qué hace la IA{" "}
-              <span className="text-gradient-warm">por tu negocio</span>
-            </h2>
-          </motion.div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {benefits.map((b, i) => (
-              <motion.div
-                key={b.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="card-dashboard p-8 flex gap-5"
-              >
-                <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center shrink-0">
-                  <b.icon className="w-6 h-6 text-brand" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold mb-2">{b.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{b.description}</p>
-                </div>
-              </motion.div>
-            ))}
+        <section id="alcance" className="rwd-section rwd-technology" aria-labelledby="service-scope">
+          <div className="section-container">
+            <div className="rwd-section-heading">
+              <h2 id="service-scope">Qué ocurre después de una consulta</h2>
+              <p>Diseñamos cada flujo con tu equipo. Acordamos qué puede resolver un agente, cuándo interviene una persona y qué debe quedar en el CRM.</p>
+            </div>
+            <Tabs.Root defaultValue={capabilities[0].id} className="rwd-connections">
+              <Tabs.List className="rwd-connection-tabs rsp-tabs" aria-label="Qué ocurre después de una consulta">
+                {capabilities.map(({ id, label, icon: Icon }) => (
+                  <Tabs.Trigger className="rwd-connection-tab" key={id} value={id}>
+                    <Icon size={19} aria-hidden="true" /> {label}
+                  </Tabs.Trigger>
+                ))}
+              </Tabs.List>
+              {capabilities.map(({ id, title, description, items }) => (
+                <Tabs.Content forceMount className="rwd-connection-panel" key={id} value={id}>
+                  <div className="rwd-connection-copy">
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                  </div>
+                  <ul className="rsp-capabilities">
+                    {items.map(item => (
+                      <li key={item}><Check size={17} aria-hidden="true" /> {item}</li>
+                    ))}
+                  </ul>
+                </Tabs.Content>
+              ))}
+            </Tabs.Root>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Use Cases */}
-      <section className="py-20 md:py-28 bg-muted/30">
-        <div className="section-container">
-          <motion.div {...fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Casos de uso{" "}
-              <span className="text-gradient-warm">más comunes</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Estos son los flujos que implementamos con mayor frecuencia.
-              Pero cada sistema se diseña a medida de tu proceso.
-            </p>
-          </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {useCases.map((uc, i) => (
-              <motion.div
-                key={uc.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="card-dashboard p-6"
-              >
-                <div className="w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center mb-4">
-                  <Bot size={18} className="text-brand" />
-                </div>
-                <h3 className="font-bold mb-2">{uc.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{uc.desc}</p>
-              </motion.div>
-            ))}
+        <section id="metodologia" className="rwd-section" aria-labelledby="service-method">
+          <div className="section-container">
+            <div className="rwd-section-heading"><h2 id="service-method">Cómo trabajamos</h2></div>
+            <ol className="rwd-method-grid rsp-method">
+              {method.map(({ title, description, deliverable }) => (
+                <li className="rwd-method-step" key={title}>
+                  <div className="rwd-step-copy">
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                    <p className="rwd-deliverable"><Check size={17} aria-hidden="true" /> <strong>{deliverable}</strong></p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FAQ */}
-      <section className="py-20 md:py-28">
-        <div className="section-container max-w-3xl mx-auto">
-          <motion.div {...fadeUp} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">Preguntas frecuentes</h2>
-          </motion.div>
-          <div className="space-y-4">
-            {faqs.map((faq, i) => (
-              <motion.div
-                key={faq.q}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="card-dashboard p-6"
-              >
-                <h3 className="font-semibold mb-2">{faq.q}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
+        <section className="rwd-section rsp-faq-section" aria-labelledby="service-faq">
+          <div className="section-container rwd-split rwd-faq">
+            <div className="rwd-section-heading">
+              <h2 id="service-faq">Preguntas frecuentes</h2>
+              <ul className="rsp-related" aria-label="Servicios relacionados">
+                <li><Link className="rwd-link" to="/servicios/diseno-web">Conectar los formularios de mi web <ArrowRight size={16} aria-hidden="true" /></Link></li>
+                <li><Link className="rwd-link" to="/servicios/publicidad-digital">Captar consultas con campañas <ArrowRight size={16} aria-hidden="true" /></Link></li>
+              </ul>
+            </div>
+            <div>
+              {faqs.map(({ question, answer }) => (
+                <details key={question}>
+                  <summary>{question} <ChevronDown size={19} aria-hidden="true" /></summary>
+                  <p>{answer}</p>
+                </details>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="py-20 md:py-28 bg-muted/30">
-        <div className="section-container">
-          <motion.div {...fadeUp} className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              ¿Cuántos leads estás perdiendo{" "}
-              <span className="text-gradient-warm">por falta de seguimiento?</span>
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              En una llamada de 20 minutos diseñamos contigo el primer flujo
-              que puedes activar esta semana.
-            </p>
-            <Button variant="hero" size="xl" asChild>
-              <a href="/contacto" className="group">
-                Agendar llamada gratis
-                <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
-            <p className="text-sm text-muted-foreground mt-4">✓ Sin permanencias · ✓ Primera implementación en días</p>
-          </motion.div>
-        </div>
-      </section>
-
+        <section className="rwd-section rwd-close" aria-labelledby="service-contact">
+          <div className="section-container rwd-close-layout">
+            <div>
+              <h2 id="service-contact">Revisemos cómo atiende tu equipo</h2>
+              <p>Cuéntanos cómo llegan las consultas y qué tareas quieres organizar o automatizar.</p>
+            </div>
+            <div className="rwd-actions">
+              <button className="rwd-button rwd-button-light" type="button" onClick={book}>
+                  Agendar consultoría <ArrowRight size={18} aria-hidden="true" />
+                </button>
+              <Link className="rwd-link" to="/contacto">Enviar consulta <ArrowRight size={17} aria-hidden="true" /></Link>
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
-      <WhatsAppButton />
-    </main>
+    </>
   );
-};
-
-export default AutomatizacionIA;
+}

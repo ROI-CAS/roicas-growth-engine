@@ -1,67 +1,35 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 
-const CookieConsent = () => {
-  const [showBanner, setShowBanner] = useState(false);
+export default function CookieConsent() {
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookie-consent");
-    if (!consent) {
-      // Show after a small delay
-      const timer = setTimeout(() => setShowBanner(true), 2000);
-      return () => clearTimeout(timer);
-    }
+    if (!localStorage.getItem("cookie-consent")) setVisible(true);
   }, []);
 
-  const handleAccept = () => {
-    localStorage.setItem("cookie-consent", "accepted");
-    setShowBanner(false);
-  };
+  function savePreference(value: "accepted" | "declined") {
+    localStorage.setItem("cookie-consent", value);
+    setVisible(false);
+  }
 
-  const handleDecline = () => {
-    localStorage.setItem("cookie-consent", "declined");
-    setShowBanner(false);
-  };
+  if (!visible) return null;
 
   return (
-    <AnimatePresence>
-      {showBanner && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.3 }}
-          className="fixed bottom-20 left-4 right-4 md:left-6 md:right-auto md:max-w-sm z-40"
-        >
-          <div className="bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg p-4">
-            <p className="text-xs text-muted-foreground leading-relaxed mb-3">
-              Usamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra{" "}
-              <a 
-                href="/politica-privacidad" 
-                className="text-primary hover:underline"
-              >
-                política de privacidad
-              </a>.
-            </p>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={handleAccept}
-                className="flex-1 text-xs font-medium bg-primary text-primary-foreground py-2 px-3 rounded-md hover:bg-primary/90 transition-colors"
-              >
-                Aceptar
-              </button>
-              <button
-                onClick={handleDecline}
-                className="text-xs text-muted-foreground hover:text-foreground py-2 px-3 transition-colors"
-              >
-                Rechazar
-              </button>
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <aside aria-label="Preferencias de cookies" className="border-b border-border bg-background">
+      <div className="section-container flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="max-w-2xl text-sm leading-relaxed text-foreground">
+          Elige tu preferencia de cookies. Consulta cómo usamos tus datos en la{" "}
+          <a href="/politica-privacidad" className="underline underline-offset-4">política de privacidad</a>.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <button type="button" onClick={() => savePreference("accepted")} className="min-h-11 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+            Aceptar cookies
+          </button>
+          <button type="button" onClick={() => savePreference("declined")} className="min-h-11 rounded-md border border-border px-4 text-sm font-medium hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+            Rechazar
+          </button>
+        </div>
+      </div>
+    </aside>
   );
-};
-
-export default CookieConsent;
+}

@@ -1,0 +1,29 @@
+# Solo desarrollo local. Deploy remoto: scripts/configure.mjs con IDs reales.
+name = "wpdoctor-public-local"
+main = "../../apps/public/worker.ts"
+compatibility_date = "2026-10-15"
+workers_dev = false
+preview_urls = false
+
+[assets]
+directory = "../../dist/site"
+binding = "ASSETS"
+run_worker_first = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "wpdoctor-local"
+migrations_dir = "../migrations"
+
+[vars]
+ENVIRONMENT = "local"
+APP_BASE_URL = "http://localhost:8787"
+ADMIN_BASE_URL = "http://localhost:8788"
+PUBLIC_DIAGNOSIS_ENABLED = "false"
+TURNSTILE_SITE_KEY = ""
+ACCESS_TEAM_DOMAIN = ""
+ACCESS_AUD = ""
+LEGAL_APPROVED = "false"
+
+[observability]
+enabled = false

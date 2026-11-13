@@ -1,257 +1,94 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Target, Users, Zap, Award, Heart, ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ClipboardCheck, MessagesSquare, Workflow } from "lucide-react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import SeoHead from "@/components/SeoHead";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import { Button } from "@/components/ui/button";
-
-// Client logos
+import ParticlesBackground from "@/components/ui/ParticlesBackground";
 import logoFalcon from "@/assets/clients/falcon-cloud.png";
 import logoComponenteLegal from "@/assets/clients/componente-legal.png";
 import logoTorregroza from "@/assets/clients/torregroza-diazgranados.png";
 import logoEcosfera from "@/assets/clients/ecosfera.png";
 import logoAeroAmbulancias from "@/assets/clients/aero-ambulancias.jpg";
 import logoFindolor from "@/assets/clients/findolor.png";
-
-const values = [
-  {
-    icon: Target,
-    title: "Resultados Reales",
-    description: "No vendemos humo. Cada estrategia está diseñada para que veas el impacto en tu negocio."
-  },
-  {
-    icon: Users,
-    title: "Somos Tu Equipo",
-    description: "No somos solo proveedores. Nos involucramos en tu proyecto como si fuera nuestro."
-  },
-  {
-    icon: Zap,
-    title: "Agilidad",
-    description: "Decisiones rápidas basadas en datos. Sin burocracia ni reuniones innecesarias."
-  },
-  {
-    icon: Award,
-    title: "Mejora Continua",
-    description: "Nunca dejamos de optimizar. Lo que funciona hoy, mañana puede funcionar mejor."
-  }
-];
+import "./institutional.css";
 
 const clients = [
-  { name: "Falcon Cloud", logo: logoFalcon, url: "https://www.falconcloud.co/", sector: "Gestión de Personal" },
-  { name: "Ecosfera", logo: logoEcosfera, url: "https://www.grupoecosfera.com/", sector: "Consultoría Estratégica" },
-  { name: "Componente Legal", logo: logoComponenteLegal, url: "https://www.componentelegal.com/", sector: "Legal Tech" },
-  { name: "Torregroza & Diazgranados", logo: logoTorregroza, url: "#", sector: "Servicios Jurídicos" },
+  { name: "Falcon Cloud", logo: logoFalcon, url: "https://www.falconcloud.co/", sector: "Gestión de personal" },
+  { name: "Ecosfera", logo: logoEcosfera, url: "https://www.grupoecosfera.com/", sector: "Consultoría estratégica" },
+  { name: "Componente Legal", logo: logoComponenteLegal, url: "https://www.componentelegal.com/", sector: "Tecnología legal" },
+  { name: "Torregroza & Diazgranados", logo: logoTorregroza, sector: "Servicios jurídicos" },
   { name: "Aero Ambulancias", logo: logoAeroAmbulancias, url: "https://aeroambulanciassas.com/", sector: "Salud" },
   { name: "FinDolor", logo: logoFindolor, url: "https://www.findolor.com/", sector: "Salud" },
 ];
 
-const AboutUs = () => {
-  const heroRef = useRef(null);
-  const valuesRef = useRef(null);
-  const clientsRef = useRef(null);
-  const heroInView = useInView(heroRef, { once: true });
-  const valuesInView = useInView(valuesRef, { once: true, margin: "-100px" });
-  const clientsInView = useInView(clientsRef, { once: true, margin: "-100px" });
+const approach = [
+  { icon: ClipboardCheck, title: "Acordamos el alcance contigo", description: "Revisamos tu situación y definimos en la propuesta qué se entrega, en qué plazo y con qué soporte." },
+  { icon: Workflow, title: "Conectamos el trabajo de cada canal", description: "Coordinamos la web, la captación y el seguimiento comercial según las necesidades de tu proyecto." },
+  { icon: MessagesSquare, title: "Revisamos lo que sucede después", description: "Cuando el servicio incluye medición, revisamos indicadores como consultas, citas o ventas para orientar las mejoras." },
+];
 
+export default function AboutUs() {
   return (
-    <main className="min-h-screen bg-background">
-      <SeoHead
-        title="Sobre ROICAS | Agencia de Marketing B2B en Colombia"
-        description="Conoce al equipo detrás de ROICAS. Especialistas en marketing automatizado, SEO y publicidad digital para empresas B2B que quieren crecer sin contratar más."
-        canonical="https://roicas.com/nosotros"
-      />
+    <div className="min-h-screen bg-background">
+      <SeoHead title="Nosotros | Agencia de marketing digital en Colombia | ROICAS" description="Conoce cómo trabaja Roicas, agencia de marketing digital en Colombia. Conectamos diseño web, captación y automatización comercial." canonical="https://roicas.com/nosotros" />
       <Header />
-      
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 gradient-mesh-warm relative overflow-hidden">
-        <div className="section-container relative z-10">
-          <motion.div
-            ref={heroRef}
-            initial={{ opacity: 0, y: 30 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <span className="inline-block px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-medium mb-6">
-              Conoce a ROICAS
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Detrás de cada estrategia hay{" "}
-              <span className="text-muted-foreground">personas que se involucran</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Somos un equipo pequeño pero comprometido. No tenemos cientos de clientes 
-              porque preferimos hacer bien nuestro trabajo con cada uno.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Background decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 via-transparent to-transparent rounded-full blur-3xl pointer-events-none opacity-50" />
-      </section>
-
-      {/* Mission Section */}
-      <section className="py-20 md:py-28">
-        <div className="section-container">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Creemos en hacer las cosas{" "}
-                <span className="text-gradient-warm">de otra manera</span>
-              </h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                En ROICAS no perseguimos métricas de vanidad. No te vamos a mostrar 
-                informes llenos de impresiones y alcance si eso no se traduce en 
-                oportunidades reales para tu negocio.
-              </p>
-              <p className="text-lg text-muted-foreground">
-                Nos medimos por lo que importa: leads cualificados, reuniones agendadas, 
-                ventas cerradas. Y si algo no funciona, lo cambiamos. Sin egos, sin excusas.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="card-dashboard p-8 relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full" />
-              <Heart className="w-12 h-12 text-brand mb-4" />
-              <h3 className="text-2xl font-bold mb-2 text-brand">Compromiso Real</h3>
-              <p className="text-muted-foreground">
-                Cuando dices que sí a trabajar con nosotros, te garantizamos una cosa: 
-                nos vamos a involucrar como si tu negocio fuera el nuestro. Porque en parte, lo es.
-              </p>
-            </motion.div>
+      <main id="contenido-principal" className="roicas-institutional">
+        <section className="ri-hero ri-about-hero" aria-labelledby="about-title">
+          <ParticlesBackground particleCount={30} speed={0.25} className="opacity-60" />
+          <div className="section-container ri-hero-layout">
+            <div className="ri-enter">
+              <p className="ri-label">Agencia de marketing digital en Colombia</p>
+              <h1 id="about-title">Somos <span>Roicas</span></h1>
+              <p className="ri-hero-lead">Reunimos diseño web, marketing digital y automatización comercial para ayudar a empresas a organizar cómo se presentan, atraen clientes y atienden sus consultas.</p>
+              <div className="ri-actions">
+                <a href="#como-trabajamos" className="ri-button ri-button-light">Ver cómo trabajamos <ArrowRight size={18} aria-hidden="true" /></a>
+              </div>
+            </div>
+            <img className="ri-hero-image ri-enter" src="/images/pillars/process-step-1-estrategia.webp" width={800} height={450} alt="Vista de una reunión de planificación alrededor de una mesa de trabajo" fetchPriority="high" decoding="async" />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Values Section */}
-      <section className="py-20 md:py-28 bg-muted/30">
-        <div className="section-container">
-          <motion.div
-            ref={valuesRef}
-            initial={{ opacity: 0, y: 20 }}
-            animate={valuesInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Lo que nos{" "}
-              <span className="text-gradient-warm">define</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              No son solo palabras bonitas. Son los principios que guían cada decisión que tomamos.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={valuesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="card-dashboard text-center group"
-              >
-                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/10 to-muted flex items-center justify-center group-hover:from-primary/20 transition-colors">
-                  <value.icon className="w-7 h-7 text-brand" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-brand">{value.title}</h3>
-                <p className="text-muted-foreground text-sm">{value.description}</p>
-              </motion.div>
-            ))}
+        <section id="como-trabajamos" className="ri-section" aria-labelledby="about-approach-title">
+          <div className="section-container ri-split">
+            <div className="ri-copy">
+              <h2 id="about-approach-title">Cómo trabajamos contigo</h2>
+              <p>El punto de partida es entender qué necesita tu empresa y qué puedes aprovechar de lo que ya tienes.</p>
+            </div>
+            <ul className="ri-ruled-list">
+              {approach.map(({ icon: Icon, title, description }) => (
+                <li className="ri-approach-item" key={title}>
+                  <span className="ri-icon"><Icon size={22} aria-hidden="true" /></span>
+                  <div className="ri-copy"><h3>{title}</h3><p>{description}</p></div>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Clients Grid Section */}
-      <section ref={clientsRef} className="py-20 md:py-28">
-        <div className="section-container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={clientsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Empresas que{" "}
-              <span className="text-gradient-warm">confían en nosotros</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Cada proyecto es una historia de colaboración y resultados compartidos.
-            </p>
-          </motion.div>
-
-          {/* Grid de logos */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {clients.map((client, index) => (
-              <motion.a
-                key={client.name}
-                href={client.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={clientsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="card-dashboard p-6 flex flex-col items-center justify-center hover:border-primary/30 transition-all group hover:shadow-lg"
-              >
-                <div className="h-16 flex items-center justify-center mb-3">
-                  <img 
-                    src={client.logo} 
-                    alt={`Logo de ${client.name}`} 
-                    className="max-h-16 max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <p className="text-xs text-muted-foreground text-center">{client.sector}</p>
-              </motion.a>
-            ))}
+        <section className="ri-section ri-paper" aria-labelledby="about-clients-title">
+          <div className="section-container">
+            <h2 id="about-clients-title" className="ri-section-heading">Empresas con las que hemos trabajado</h2>
+            <ul className="ri-client-grid">
+              {clients.map(({ name, logo, url, sector }) => {
+                const content = <><img src={logo} alt="" width={140} height={64} loading="lazy" decoding="async" /><strong>{name}</strong><span>{sector}</span></>;
+                return (
+                  <li key={name}>
+                    {url ? <a className="ri-client" href={url} target="_blank" rel="noopener noreferrer">{content}<ArrowUpRight size={16} aria-hidden="true" /></a> : <div className="ri-client">{content}</div>}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-20 md:py-28 bg-muted/30">
-        <div className="section-container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              ¿Quieres saber si podemos{" "}
-              <span className="text-gradient-warm">ayudarte</span>?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              No hacemos propuestas genéricas. Cuéntanos sobre tu negocio y te diremos 
-              honestamente si somos la agencia adecuada para ti. Sin compromiso, sin presión.
-            </p>
-            <Button variant="hero" size="xl" asChild>
-              <a href="/contacto" className="group">
-                Hablemos sin compromiso
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
+        <section className="ri-section ri-band" aria-labelledby="about-contact-title">
+          <div className="section-container ri-band-layout">
+            <div className="ri-copy"><h2 id="about-contact-title">Hablemos de tu proyecto</h2><p>Cuéntanos qué necesitas resolver y revisemos por dónde empezar.</p></div>
+            <Link to="/contacto" className="ri-button ri-button-light">Contactar a Roicas <ArrowRight size={18} aria-hidden="true" /></Link>
+          </div>
+        </section>
+      </main>
       <Footer />
-      <WhatsAppButton />
-    </main>
+    </div>
   );
-};
-
-export default AboutUs;
+}

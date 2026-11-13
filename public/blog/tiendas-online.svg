@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080C14" />
+      <stop offset="50%" stop-color="#0D131F" />
+      <stop offset="100%" stop-color="#05080E" />
+    </linearGradient>
+    <linearGradient id="emeraldGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="brandGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B51828" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#B51828" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1A2333" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0E1624" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="btnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E293B" stroke-width="0.75" stroke-opacity="0.4" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="750" fill="url(#bg)" />
+  <rect width="1200" height="750" fill="url(#grid)" />
+
+  <!-- Ambient Glow Circles -->
+  <circle cx="250" cy="220" r="320" fill="url(#emeraldGlow)" />
+  <circle cx="980" cy="520" r="280" fill="url(#brandGlow)" />
+
+  <!-- Main Floating Dashboard Card -->
+  <g transform="translate(140, 100)">
+    <!-- Shadow & Card Body -->
+    <rect width="920" height="550" rx="24" fill="#0A0E17" opacity="0.4" transform="translate(0, 16)" />
+    <rect width="920" height="550" rx="24" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Top Window Bar -->
+    <rect width="920" height="54" rx="24" fill="#131B2B" />
+    <circle cx="36" cy="27" r="6" fill="#EF4444" />
+    <circle cx="56" cy="27" r="6" fill="#F59E0B" />
+    <circle cx="76" cy="27" r="6" fill="#10B981" />
+    <text x="460" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#94A3B8" text-anchor="middle">ROICAS E-Commerce Engine • Checkout Optimizado en 1 Paso</text>
+
+    <!-- Left Column: Checkout Form Mockup -->
+    <g transform="translate(48, 86)">
+      <rect width="460" height="416" rx="16" fill="#0D1422" stroke="#1E293B" stroke-width="1" />
+      <text x="24" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#FFFFFF">Finalizar Compra Rápida</text>
+      <text x="24" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748B">Sin contraseñas forzadas • Compra protegida con cifrado SSL</text>
+
+      <!-- Input 1: Datos de Entrega -->
+      <g transform="translate(24, 78)">
+        <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">DESTINO EN COLOMBIA</text>
+        <rect y="8" width="412" height="42" rx="10" fill="#151D2E" stroke="#334155" stroke-width="1" />
+        <text x="16" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#E2E8F0">Bogotá D.C. • Cra 11 # 82-01, Chicó</text>
+      </g>
+
+      <!-- Input 2: Pasarela de Pago Local -->
+      <g transform="translate(24, 150)">
+        <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">MÉTODO DE PAGO INMEDIATO</text>
+        <g transform="translate(0, 8)">
+          <!-- Option 1: PSE -->
+          <rect width="130" height="48" rx="10" fill="#1E293B" stroke="#10B981" stroke-width="1.5" />
+          <text x="65" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#10B981" text-anchor="middle">PSE Débito</text>
+
+          <!-- Option 2: Nequi -->
+          <rect x="140" width="130" height="48" rx="10" fill="#151D2E" stroke="#334155" stroke-width="1" />
+          <text x="205" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#CBD5E1" text-anchor="middle">Nequi / Davi</text>
+
+          <!-- Option 3: Tarjetas -->
+          <rect x="280" width="132" height="48" rx="10" fill="#151D2E" stroke="#334155" stroke-width="1" />
+          <text x="346" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#CBD5E1" text-anchor="middle">Tarjeta 1-Clic</text>
+        </g>
+      </g>
+
+      <!-- Resumen de Costos -->
+      <g transform="translate(24, 230)">
+        <text x="0" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#94A3B8">Subtotal (2 productos)</text>
+        <text x="412" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#E2E8F0" text-anchor="end">$280.000 COP</text>
+
+        <text x="0" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#94A3B8">Envío Servientrega</text>
+        <text x="412" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#10B981" text-anchor="end">¡GRATIS!</text>
+
+        <line x1="0" y1="56" x2="412" y2="56" stroke="#1E293B" stroke-width="1" />
+
+        <text x="0" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Total a Pagar</text>
+        <text x="412" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="800" fill="#10B981" text-anchor="end">$280.000 COP</text>
+      </g>
+
+      <!-- Pay Button -->
+      <g transform="translate(24, 342)">
+        <rect width="412" height="48" rx="12" fill="url(#btnGrad)" />
+        <text x="206" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">Completar Pago Seguro →</text>
+      </g>
+    </g>
+
+    <!-- Right Column: Conversion Metrics & Real-time Graph -->
+    <g transform="translate(536, 86)">
+      <!-- Metric Card 1: Conversion Boost -->
+      <rect width="336" height="124" rx="16" fill="#0D1422" stroke="#1E293B" stroke-width="1" />
+      <text x="24" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#94A3B8">TASA DE CHECKOUT COMPLETADO</text>
+      <text x="24" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="800" fill="#10B981">+28.4%</text>
+      <rect x="220" y="44" width="92" height="26" rx="6" fill="#10B981" fill-opacity="0.15" />
+      <text x="266" y="61" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#10B981" text-anchor="middle">vs Estándar</text>
+      <text x="24" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748B">Reducción total de carritos abandonados</text>
+
+      <!-- Metric Card 2: Speed -->
+      <g transform="translate(0, 142)">
+        <rect width="336" height="124" rx="16" fill="#0D1422" stroke="#1E293B" stroke-width="1" />
+        <text x="24" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#94A3B8">VELOCIDAD EN CELULARES</text>
+        <text x="24" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="800" fill="#FFFFFF">0.8 s</text>
+        <rect x="220" y="44" width="92" height="26" rx="6" fill="#3B82F6" fill-opacity="0.15" />
+        <text x="266" y="61" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#60A5FA" text-anchor="middle">Core Vitals</text>
+        <text x="24" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748B">Carga ultra-fluida en 4G/5G</text>
+      </g>
+
+      <!-- Badge Card 3: ROICAS Guarantee -->
+      <g transform="translate(0, 284)">
+        <rect width="336" height="132" rx="16" fill="url(#bg)" stroke="#B51828" stroke-width="1.2" />
+        <circle cx="44" cy="46" r="18" fill="#B51828" fill-opacity="0.2" />
+        <path d="M 38 46 L 43 51 L 51 41" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+        <text x="74" y="44" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Arquitectura Headless</text>
+        <text x="74" y="62" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#94A3B8">Diseñada por ROICAS</text>
+        <text x="24" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#CBD5E1">WooCommerce + Pasarelas Nacionales integradas desde el día 1.</text>
+      </g>
+    </g>
+  </g>
+</svg>
+

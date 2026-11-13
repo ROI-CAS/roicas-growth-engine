@@ -25,3 +25,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local configuration and generated product styles
+.env.local
+products/**/node_modules/
+products/**/.cache/
+products/**/.wrangler/
+src/modules/**/styles.generated.css
+test-results/
+
+# Local agent/workflow material and original source media; only optimized assets
+# referenced by the app belong in the published repository.
+.agents/
+.codex/
+agents/
+skills-lock.json
+IMAGENES SERVICIOS/

@@ -1,0 +1,139 @@
+{
+  "slug": "redisenar-sitio-web-para-aumentar-conversiones",
+  "status": "published",
+  "title": "Cuándo Rediseñar tu Web: 5 Señales de que Estás Perdiendo Clientes",
+  "description": "Señales críticas de obsolescencia web: velocidad lenta, baja tasa de conversión y diseño que no transmite confianza a tus prospectos en Colombia.",
+  "category": "Diseño Web",
+  "author": "Equipo ROICAS Design",
+  "authorRole": "Diseñadores de Experiencia de Usuario & CRO",
+  "authorAvatar": "/blog/avatar-5.jpg",
+  "coverImage": "/blog/diseno-web.jpg",
+  "published": "2026-10-23",
+  "modified": "2026-10-23",
+  "introduction": "Un sitio web corporativo no es una tarjeta de presentación estática; es el principal vendedor de tu empresa trabajando las 24 horas del día. Si tu página fue diseñada hace tres o cuatro años bajo estándares visuales y técnicos antiguos, es muy probable que esté ahuyentando a clientes potenciales sin que te des cuenta. En esta guía te explicamos cómo diagnosticar si tu plataforma web necesita un rediseño estratégico enfocado en conversiones.",
+  "sections": [
+    {
+      "heading": "1. Tiempo de carga superior a 3 segundos en conexiones móviles",
+      "paragraphs": [
+        "En Colombia, más del 80% de tus potenciales clientes visitan tu página desde un teléfono celular a través de redes móviles 4G. Si tu sitio web tarda más de 3 segundos en mostrar el contenido principal, más del 50% de los usuarios abandonará la página antes de leer tu propuesta de valor.",
+        "Las plataformas construidas sobre plantillas pesadas de WordPress o constructores visuales lentos como Elementor acumulan cientos de scripts innecesarios. Un sitio moderno con código a la medida carga en menos de 1 segundo, ofreciendo una experiencia instantánea que genera confianza inmediata."
+      ],
+      "image": {
+        "url": "/blog/diseno-web.svg",
+        "alt": "Prototipo de rediseño de interfaz web orientada a la conversión y velocidad móvil",
+        "caption": "Figura 1: Prototipo de página web corporativa orientada a la conversión (+65% en generación de prospectos) con arquitectura Mobile-First."
+      },
+      "checklist": [
+        "Verificación de Core Web Vitals en Google PageSpeed Insights",
+        "Compresión moderna de imágenes en formatos ligeros WebP o AVIF",
+        "Eliminación de plugins obsoletos y código JavaScript que bloquea la renderización"
+      ]
+    },
+    {
+      "heading": "2. Tráfico constante pero cero solicitudes de cotización o llamadas",
+      "paragraphs": [
+        "Tener cientos de visitas mensuales pero una bandeja de entrada vacía es el síntoma inequívoco de una falla en la arquitectura de conversión. Un diseño efectivo guía la mirada del visitante mediante jerarquía visual clara, testimonios creíbles y botones de acción (CTA) directos.",
+        "Si tus formularios de contacto solicitan 10 datos innecesarios o tu botón de WhatsApp está escondido al final de un pie de página desordenado, la fricción acabará con la intención de compra de tu prospecto."
+      ],
+      "callout": {
+        "type": "tip",
+        "title": "La regla de oro de los formularios de cotización",
+        "text": "Cada campo extra que pides en un formulario web (como cédula, dirección completa o departamento) reduce la tasa de conversión entre un 10% y un 15%. Para iniciar una conversación comercial calificada solo necesitas: Nombre, WhatsApp y la necesidad puntual."
+      },
+      "checklist": [
+        "Botón flotante de WhatsApp visible permanentemente en dispositivos móviles",
+        "Formularios simplificados que solo pidan nombre, teléfono y necesidad puntual",
+        "Llamadas a la acción (CTA) con propuestas de valor concretas en lugar del simple 'Enviar'"
+      ]
+    },
+    {
+      "heading": "3. Estética visual que no proyecta la verdadera categoría de tu empresa",
+      "paragraphs": [
+        "La primera impresión digital se forja en los primeros 50 milisegundos de navegación. Si tu empresa vende contratos de servicios de millones de pesos en Colombia pero tu sitio web parece una plantilla genérica descuidada de hace una década, los clientes dudarán de tu solidez técnica y seriedad operativa.",
+        "Un rediseño profesional con tipografía moderna, paleta de colores coherente y maquetación limpia transmite autoridad de mercado y justifica tarifas más altas frente a la competencia."
+      ],
+      "callout": {
+        "type": "warning",
+        "title": "El costo invisible del diseño amateur",
+        "text": "Tus clientes corporativos comparan tu sitio con las mejores empresas de la industria. Si tu web se ve anticuada o no se adapta bien a pantallas de iPhone o Android, asumirán que la calidad de tus servicios es igual de descuidada."
+      },
+      "checklist": [
+        "Diseño adaptativo Mobile-First pensado prioritariamente para teléfonos",
+        "Fotografía real de tu equipo o casos de éxito en lugar de fotos de stock falsas",
+        "Sección dedicada de casos de estudio con resultados cuantificables de clientes"
+      ]
+    },
+    {
+      "heading": "4. Cómo justificar la inversión de un rediseño web con métricas",
+      "paragraphs": [
+        "Rediseñar tu sitio web no es un gasto decorativo; es una decisión financiera con impacto directo en el flujo de caja. Si tu página actual tiene 1.000 visitas al mes y convierte al 0.5% (5 prospectos), rediseñarla para elevar la tasa de conversión al 2.5% significa pasar a 25 prospectos mensuales con el mismo tráfico.",
+        "Para una empresa con un ticket promedio de servicio de $2.000.000 COP, cuadruplicar los prospectos recibidos cubre la inversión del desarrollo en sus primeros meses de puesta en marcha. Realizar pruebas de usabilidad y grabar sesiones de navegación reales con mapas de calor revela exactamente los puntos de fricción donde tus clientes se confunden y abandonan la página sin contactarte."
+      ],
+      "checklist": [
+        "Medición previa de la tasa de conversión actual para tener una línea base",
+        "Mapa de calor (Heatmaps) para entender dónde se atascan los usuarios antes del rediseño",
+        "Comparativa de ventas y contactos generados en los 90 días posteriores al lanzamiento"
+      ]
+    }
+  ],
+  "comparisonTable": {
+    "title": "Sitio Web Tradicional / Antiguo vs Web Diseñada por ROICAS",
+    "subtitle": "La diferencia entre tener una tarjeta de presentación estática o una máquina de ventas activa",
+    "columnA": "Sitio Web Antiguo / Genérico",
+    "columnB": "Plataforma Web ROICAS",
+    "rows": [
+      {
+        "criterion": "Tecnología y Rendimiento",
+        "valA": "Plantillas pesadas de WordPress que tardan más de 4 segundos",
+        "valB": "React + Vite ultra rápido, carga en menos de 1 segundo"
+      },
+      {
+        "criterion": "Experiencia Móvil",
+        "valA": "Elementos desordenados o textos diminutos en teléfonos",
+        "valB": "Diseño Mobile-First 100% fluido y ergonómico para celular"
+      },
+      {
+        "criterion": "Enfoque de Conversión (CRO)",
+        "valA": "Texto corporativo aburrido sin llamados claros a la acción",
+        "valB": "Jerarquía visual persuasiva con cotizadores y WhatsApp"
+      },
+      {
+        "criterion": "Seguridad y Mantenimiento",
+        "valA": "Vulnerable a ataques, virus y caídas constantes de servidor",
+        "valB": "Infraestructura Serverless blindada, sin bases de datos lentas"
+      },
+      {
+        "criterion": "Generación de Negocio",
+        "valA": "Bandeja de entrada vacía que no justifica el costo del hosting",
+        "valB": "Multiplicación de prospectos calificados para tu equipo de ventas"
+      }
+    ]
+  },
+  "roicasSolution": {
+    "title": "Cómo diseñamos tu nuevo sitio web para multiplicar tus ventas",
+    "description": "Fusionamos diseño visual de primer nivel con ingeniería de software y psicología de conversión. Diseñamos páginas visualmente impecables y construidas desde el código para facturar.",
+    "deliverables": [
+      {
+        "title": "Estructura Estratégica de Conversión (Wireframing)",
+        "description": "Definimos la arquitectura de la información y los puntos de contacto para que el usuario no se pierda."
+      },
+      {
+        "title": "Diseño UI/UX Personalizado y de Alta Gama",
+        "description": "Línea visual exclusiva que refleja la solidez, prestigio y categoría de tu marca en el mercado."
+      },
+      {
+        "title": "Desarrollo de Código a la Medida (React / SSR)",
+        "description": "Velocidad de carga inmediata, seguridad total y puntuación de 95+ en Google PageSpeed."
+      },
+      {
+        "title": "Integración Comercial y Analítica Completa",
+        "description": "Conexión con WhatsApp, cotizadores interactivos y Google Analytics 4 para medir cada contacto."
+      }
+    ],
+    "ctaText": "Cotizar el rediseño de mi sitio web"
+  },
+  "service": {
+    "label": "Solicitar rediseño de mi sitio web",
+    "href": "/servicios/diseno-web"
+  }
+}

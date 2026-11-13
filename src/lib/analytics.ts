@@ -29,7 +29,7 @@ export const trackFormSubmitted = (has_company: boolean, form_location: string) 
 
 /**
  * Lead captured — North Star conversion event.
- * Fires on every confirmed lead: form submit or direct WhatsApp click.
+ * Fires only on a confirmed submission. WhatsApp clicks use whatsapp_clicked.
  *
  * North Star: leads_captured / week
  * GA4 goal: mark this as a key event in GA4 > Admin > Events

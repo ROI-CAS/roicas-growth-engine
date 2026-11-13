@@ -1,0 +1,73 @@
+.roicas-site-header :is(.roicas-nav-link, .roicas-service-link, .roicas-service-menu-all) {
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.roicas-site-header .roicas-nav-link[aria-current="page"],
+.roicas-site-header .roicas-nav-link[data-section-active] {
+  color: hsl(var(--brand));
+  font-weight: 700;
+}
+
+.roicas-site-header :is(.roicas-service-link[aria-current="page"], .roicas-service-menu-all) {
+  background-color: hsl(var(--brand) / 0.07);
+}
+
+.roicas-site-header .roicas-service-menu-all:hover {
+  background-color: hsl(var(--brand) / 0.12);
+}
+
+.roicas-site-header :is(.roicas-nav-link, .roicas-service-menu-all) svg {
+  transition: transform 180ms ease;
+}
+
+.roicas-site-header .roicas-service-menu-all:hover svg {
+  transform: translateX(3px);
+}
+
+.roicas-site-footer.roicas-footer {
+  background: #f5f1ed;
+}
+
+.roicas-site-footer a {
+  max-width: 100%;
+  min-height: 44px;
+  overflow-wrap: anywhere;
+}
+
+.roicas-site-footer a:focus-visible {
+  outline: 2px solid hsl(var(--brand));
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roicas-site-header :is(.roicas-nav-link, .roicas-service-link, .roicas-service-menu-all, svg) {
+    transition: none;
+  }
+
+  .roicas-site-header .roicas-service-menu-all:hover svg {
+    transform: none;
+  }
+}
+.roicas-site-header [hidden] {
+  display: none;
+}
+
+.roicas-skip-link {
+  position: absolute;
+  z-index: 1;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: hsl(var(--brand));
+  color: #fff;
+  font-weight: 700;
+  transform: translateY(calc(-100% - 1rem));
+}
+
+.roicas-skip-link:focus {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 3px;
+  transform: none;
+}
+

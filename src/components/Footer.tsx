@@ -1,44 +1,50 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-roicas.webp";
-import { publishedArticles } from "@/lib/blog";
+import "./site-navigation.css";
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
+export default function Footer() {
   return (
-    <footer className="py-12 border-t border-border">
+    <footer className="roicas-footer roicas-site-footer">
       <div className="section-container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img src={logo} alt="ROICAS" className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity" />
-          </Link>
-
-          {/* Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-6">
-            {publishedArticles.length > 0 && <Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground">Blog</Link>}
-            <Link to="/servicios" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Servicios
-            </Link>
-            <Link to="/nosotros" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Sobre Nosotros
-            </Link>
-            <Link to="/contacto" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Contacto
-            </Link>
-            <Link to="/politica-privacidad" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Política de Privacidad
-            </Link>
+        <div className="roicas-footer-grid">
+          <div>
+            <Link to="/" aria-label="Roicas, inicio"><img src={logo} width={160} height={48} alt="ROICAS" className="h-10 w-auto" /></Link>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">Diseño web, marketing digital y automatización para empresas en Colombia.</p>
+          </div>
+          <nav aria-label="Servicios en el pie de página">
+            <h2>Servicios</h2>
+            <ul>
+              <li><Link to="/servicios">Ver todos los servicios</Link></li>
+              <li><Link to="/servicios/diseno-web">Diseño web</Link></li>
+              <li><Link to="/servicios/tiendas-online">Tiendas online</Link></li>
+              <li><Link to="/servicios/seo">SEO</Link></li>
+              <li><Link to="/servicios/publicidad-digital">Publicidad digital</Link></li>
+              <li><Link to="/servicios/automatizacion-ia">Automatización con IA</Link></li>
+            </ul>
           </nav>
-
-          {/* Copyright */}
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} ROICAS. El marketing que convierte.
-          </p>
+          <nav aria-label="Información de Roicas">
+            <h2>Roicas</h2>
+            <ul>
+              <li><Link to="/nosotros">Nosotros</Link></li>
+              <li><Link to="/blog">Blog</Link></li>
+              <li><Link to="/contacto">Contacto</Link></li>
+            </ul>
+          </nav>
+          <nav aria-label="Canales de contacto">
+            <h2>Hablemos</h2>
+            <ul>
+              <li><a href="mailto:hola@roicas.com">hola@roicas.com</a></li>
+              <li><a href="tel:+573114565403">+57 311 456 5403</a></li>
+              <li><a href="https://wa.me/573114565403" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div className="roicas-footer-bottom">
+          <p>© {new Date().getFullYear()} ROICAS · Colombia</p>
+          <Link to="/politica-privacidad">Política de privacidad</Link>
         </div>
       </div>
     </footer>
   );
-};
+}
 
-export default Footer;

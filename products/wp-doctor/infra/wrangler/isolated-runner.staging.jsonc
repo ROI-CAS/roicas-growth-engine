@@ -1,0 +1,18 @@
+{
+  "$schema":"../../node_modules/wrangler/config-schema.json",
+  "name":"wpdoctor-isolated-runner-staging",
+  "account_id":"65b9d77fd1f62e237dce8a2c6e5a8288",
+  "main":"../../apps/isolated-runner/worker.ts",
+  "compatibility_date":"2026-10-17",
+  "compatibility_flags":["nodejs_compat"],
+  "workers_dev":false,
+  "preview_urls":false,
+  "containers":[
+    {"class_name":"RendererContainer","image":"../../.cache/isolated-container/Dockerfile","instance_type":"basic","max_instances":1},
+    {"class_name":"EgressContainer","image":"../../.cache/isolated-container/Dockerfile","instance_type":"basic","max_instances":1}
+  ],
+  "durable_objects":{"bindings":[{"name":"RENDERERS","class_name":"RendererContainer"},{"name":"EGRESS","class_name":"EgressContainer"}]},
+  "migrations":[{"tag":"isolated-v1","new_sqlite_classes":["RendererContainer","EgressContainer"]}],
+  "vars":{"RUNNER_MODE":"isolated-laboratory","RUNNER_APPROVED_HOSTS":"[\"doctor.roicas.com\"]"},
+  "observability":{"enabled":false}
+}

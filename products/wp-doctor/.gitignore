@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.wrangler/
+.vercel/
+.cache/
+.dev.vars*
+.env
+.env.*
+!.env.example
+coverage/
+test-results/
+playwright-report/
+reports/
+infra/wrangler/*.generated.json
+cloudflare.*.json
+*.log

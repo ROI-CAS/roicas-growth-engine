@@ -1,69 +1,83 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { ShieldCheck, Zap, MessageCircle, Lock } from "lucide-react";
 import falconCloud from "@/assets/clients/falcon-cloud.png";
-import ecosfera from "@/assets/clients/ecosfera.png";
+import findolor from "@/assets/clients/findolor.png";
 import componenteLegal from "@/assets/clients/componente-legal.png";
+import ecosfera from "@/assets/clients/ecosfera.png";
 import torregroza from "@/assets/clients/torregroza-diazgranados.png";
 import aeroAmbulancias from "@/assets/clients/aero-ambulancias.jpg";
-import findolor from "@/assets/clients/findolor.png";
+import "./client-strip.css";
 
-const logos = [
-  { src: falconCloud, alt: "Falcon Cloud" },
-  { src: ecosfera, alt: "Ecosfera" },
-  { src: componenteLegal, alt: "Componente Legal" },
-  { src: torregroza, alt: "Torregroza & Diazgranados" },
-  { src: aeroAmbulancias, alt: "Aero Ambulancias" },
-  { src: findolor, alt: "FinDolor" },
+const clientLogos = [
+  { src: falconCloud, alt: "Falcon Cloud", name: "Falcon Cloud" },
+  { src: findolor, alt: "FinDolor", name: "FinDolor" },
+  { src: componenteLegal, alt: "Componente Legal", name: "Componente Legal" },
+  { src: ecosfera, alt: "Ecosfera", name: "Ecosfera" },
+  { src: torregroza, alt: "Torregroza & Diazgranados", name: "Torregroza" },
+  { src: aeroAmbulancias, alt: "Aero Ambulancias", name: "Aero Ambulancias" },
 ];
 
-// Tripled so the infinite loop never shows a gap at any viewport width
-const track = [...logos, ...logos, ...logos];
+const guarantees = [
+  {
+    icon: Lock,
+    title: "Sitio 100% tuyo",
+    desc: "Dominio, hosting y código a tu nombre. Sin contratos de amarre.",
+  },
+  {
+    icon: Zap,
+    title: "Carga rápida en móvil",
+    desc: "Diseño ligero que carga en segundos en cualquier conexión.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Listo para vender",
+    desc: "Formularios y WhatsApp conectados para responder cotizaciones rápido.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Garantía y soporte",
+    desc: "Acompañamiento directo con el equipo que desarrolló tu web.",
+  },
+];
 
-const LogoBarSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-30px" });
-
+export default function LogoBarSection() {
   return (
-    <section ref={ref} className="py-10 border-y border-border bg-secondary/40 overflow-hidden">
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
-        className="text-center text-sm text-muted-foreground mb-8"
-      >
-        Empresas que confían en nuestro sistema para crecer
-      </motion.p>
+    <section className="roicas-trust-strip" aria-label="Confianza y garantías Roicas">
+      <div className="rts-inner">
+        {/* Título sutil de respaldo */}
+        <p className="rts-heading">
+          Empresas que confían en Roicas para su presencia web y captación de clientes
+        </p>
 
-      {/* Marquee wrapper — fade edges */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="relative"
-        style={{
-          maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-        }}
-      >
-        <div className="flex animate-marquee" style={{ width: "max-content" }}>
-          {track.map((logo, index) => (
-            <div
-              key={`${logo.alt}-${index}`}
-              className="flex items-center justify-center px-10 group cursor-default"
-            >
+        {/* Tira fluida de logos */}
+        <div className="rts-logos-track" role="list">
+          {clientLogos.map((client) => (
+            <div key={client.name} className="rts-logo-item" role="listitem">
               <img
-                src={logo.src}
-                alt={logo.alt}
-                className="h-8 md:h-10 w-auto object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-400"
-                draggable={false}
+                src={client.src}
+                alt={client.alt}
+                className="rts-logo-img"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           ))}
         </div>
-      </motion.div>
+
+        {/* Tira horizontal de garantías (sin números densos ni tecnicismos) */}
+        <div className="rts-guarantees-grid">
+          {guarantees.map(({ icon: Icon, title, desc }) => (
+            <div key={title} className="rts-guarantee-pill">
+              <div className="rts-guarantee-icon">
+                <Icon size={16} aria-hidden="true" />
+              </div>
+              <div className="rts-guarantee-text">
+                <strong>{title}</strong>
+                <span>{desc}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
-};
-
-export default LogoBarSection;
+}

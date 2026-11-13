@@ -39,6 +39,8 @@ export const BriefProgressBar: React.FC<BriefProgressBarProps> = ({
           className="h-full bg-gradient-to-r from-brand to-rose-500 transition-all duration-300 ease-out"
           style={{ width: `${progressPercent}%` }}
           role="progressbar"
+          aria-label="Pasos del formulario completados"
+          aria-valuetext={`Paso ${currentStep} de ${totalSteps}: ${currentTitle}`}
           aria-valuenow={progressPercent}
           aria-valuemin={0}
           aria-valuemax={100}
@@ -60,7 +62,7 @@ export const BriefProgressBar: React.FC<BriefProgressBarProps> = ({
               disabled={!isClickable}
               onClick={() => isClickable && onStepClick?.(stepNumber)}
               className={cn(
-                "group flex items-center gap-1.5 text-xs transition-colors",
+                "group min-h-11 min-w-11 flex items-center justify-center gap-1.5 rounded-lg text-xs transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2",
                 isClickable ? "cursor-pointer" : "cursor-not-allowed opacity-40",
                 isCurrent ? "font-bold text-brand" : "text-muted-foreground hover:text-foreground"
               )}

@@ -1,0 +1,340 @@
+/* Estilos de Sección FAQ & Acordeón Dark Luxury - ROICAS */
+
+.roicas-faq-section {
+  padding: clamp(90px, 9vw, 130px) clamp(24px, 4vw, 56px);
+  background: radial-gradient(circle at 15% 25%, rgba(212, 43, 43, 0.1) 0%, transparent 55%),
+              radial-gradient(circle at 85% 75%, rgba(35, 20, 50, 0.45) 0%, transparent 60%),
+              #0c0b11;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  scroll-margin-top: 80px;
+  position: relative;
+  isolation: isolate;
+}
+
+.rfq-inner {
+  max-width: var(--roicas-content-width);
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Layout Split: Lateral Informativo + Acordeón */
+.rfq-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: clamp(40px, 6vw, 84px);
+  align-items: flex-start;
+}
+
+/* Columna Lateral */
+.rfq-sidebar {
+  position: sticky;
+  top: 104px;
+}
+
+.rfq-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: hsl(var(--brand-on-dark));
+  margin: 0 0 16px 0;
+}
+
+.roicas-home .rfq-sidebar h2 {
+  font-family: inherit;
+  font-size: clamp(32px, 3.4vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  font-weight: 750;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+}
+
+.roicas-home .rfq-sidebar h2 span {
+  color: hsl(var(--brand-on-dark));
+  text-shadow: 0 0 28px hsl(var(--brand-on-dark) / 0.35);
+}
+
+.rfq-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #d1cbdb;
+  margin: 0 0 32px 0;
+}
+
+/* Tarjeta de Contacto Directo en Sidebar */
+.rfq-help-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: clamp(22px, 2.5vw, 28px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+}
+
+.rfq-help-card h4 {
+  font-size: 17px;
+  font-weight: 650;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 10px 0;
+}
+
+.rfq-help-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #c8c2d0;
+  margin: 0 0 20px 0;
+}
+
+.rfq-help-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.rfq-help-btn-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 10px;
+  background: #059669;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.rfq-help-btn-wa:hover {
+  background: #10b981;
+  transform: translateY(-2px);
+}
+
+.rfq-help-btn-calendar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.rfq-help-btn-calendar:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Columna de Acordeón */
+.rfq-content {
+  min-width: 0;
+}
+
+/* Filtros por Categoría */
+.rfq-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.rfq-cat-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 550;
+  color: #d1cbd8;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.rfq-cat-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.rfq-cat-btn.is-active {
+  background: #ffffff;
+  color: #121017;
+  font-weight: 650;
+  border-color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Acordeón Radix */
+.rfq-accordion-root {
+  display: grid;
+  gap: 14px;
+}
+
+.rfq-accordion-card {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.rfq-accordion-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.rfq-accordion-card[data-state="open"] {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Trigger / Botón de la Pregunta */
+.rfq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.rfq-question-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.rfq-item-badge {
+  display: inline-flex;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: hsl(var(--brand-on-dark) / 0.14);
+  font-size: 11px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: hsl(var(--brand-on-dark));
+}
+
+.rfq-question-text {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 650;
+  color: #ffffff;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+.rfq-trigger:hover .rfq-question-text {
+  color: #ffffff;
+}
+
+.rfq-chevron {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #c4becc;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s, color 0.2s;
+}
+
+.rfq-trigger[data-state="open"] .rfq-chevron {
+  transform: rotate(180deg);
+  background: hsl(var(--brand-on-dark));
+  border-color: hsl(var(--brand-on-dark));
+  color: #0c0b11;
+}
+
+/* Cuerpo de la Respuesta */
+.rfq-content-body {
+  padding: 0 24px 24px 24px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #ded9e7;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 4px;
+  padding-top: 16px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .rfq-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .rfq-sidebar {
+    position: static;
+  }
+}
+
+/* Móvil */
+@media (max-width: 767px) {
+  .roicas-faq-section {
+    padding: 60px 20px;
+  }
+  .rfq-categories {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
+    margin-right: -20px;
+    padding-right: 20px;
+    scrollbar-width: none;
+  }
+  .rfq-categories::-webkit-scrollbar {
+    display: none;
+  }
+  .rfq-trigger {
+    padding: 18px 18px;
+  }
+  .rfq-question-text {
+    font-size: 15px;
+  }
+  .rfq-content-body {
+    padding: 0 18px 18px 18px;
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roicas-faq-section * {
+    transition: none !important;
+  }
+  .rfq-chevron {
+    transition: none;
+  }
+}

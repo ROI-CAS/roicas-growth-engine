@@ -1,0 +1,86 @@
+.rsp-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.roicas-service-page .rsp-hero {
+  background: #100e14;
+}
+
+.rsp-hero > canvas {
+  opacity: 0.68;
+}
+
+.rsp-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.roicas-service-page .rsp-hero h1 {
+  max-width: 17ch;
+}
+
+.rsp-hero .rsp-hero-image {
+  aspect-ratio: 16 / 10;
+}
+
+.rwd-connection-tabs.rsp-tabs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rsp-tabs > button {
+  flex: 1 1 8.5rem;
+  cursor: pointer;
+}
+
+.rsp-capabilities {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.rsp-capabilities li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2.8rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #ffffff26;
+  border-radius: 0.7rem;
+  line-height: 1.45;
+}
+
+.rsp-capabilities svg {
+  flex: none;
+  color: #f3a9b6;
+}
+
+.rsp-method .rwd-method-step {
+  border-top-color: var(--rwd-wine);
+}
+
+.rsp-faq-section {
+  background: var(--rwd-paper);
+}
+
+.rsp-related {
+  margin-top: 1rem;
+}
+
+.rsp-related .rwd-link {
+  justify-content: flex-start;
+  color: var(--rwd-wine);
+}
+
+@media (max-width: 767px) {
+  .rsp-hero .rsp-hero-image {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rsp-tabs > button {
+    transition: none;
+  }
+}

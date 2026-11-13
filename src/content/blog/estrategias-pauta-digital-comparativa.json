@@ -1,0 +1,139 @@
+{
+  "slug": "estrategias-pauta-digital-comparativa",
+  "status": "published",
+  "title": "Publicidad Digital: Google Ads vs Meta Ads ¿Cuál Elegir en tu Empresa?",
+  "description": "Comparativa estratégica de pauta digital: descubre cuándo invertir en intención de búsqueda en Google y cuándo en generación de demanda en Meta Ads.",
+  "category": "Publicidad Digital",
+  "author": "Equipo ROICAS Growth",
+  "authorRole": "Consultores de Pauta de Alto Rendimiento",
+  "authorAvatar": "/blog/avatar-4.jpg",
+  "coverImage": "/blog/pauta-digital.jpg",
+  "published": "2026-10-24",
+  "modified": "2026-10-24",
+  "introduction": "Una de las dudas más frecuentes de los empresarios en Colombia al asignar su presupuesto de marketing es si deben volcar su inversión a Google Ads (campañas de búsqueda y Performance Max) o a Meta Ads (anuncios en Instagram y Facebook). Ambas plataformas son extraordinarias, pero funcionan bajo dinámicas psicológicas y de compra radicalmente opuestas. En esta comparativa te explicamos cómo complementarlas para no botar dinero en clics vacíos.",
+  "sections": [
+    {
+      "heading": "1. Google Ads: capturar la demanda con intención de compra inmediata",
+      "paragraphs": [
+        "Google Ads es el rey de la intención activa. Cuando alguien entra a Google y busca 'software de nómina para empresas en Medellín' o 'diseño de tiendas Shopify Colombia', no está navegando por ocio; tiene un dolor puntual y la tarjeta de crédito lista para resolverlo.",
+        "El costo por clic (CPC) en Google suele ser más elevado que en redes sociales, pero la tasa de conversión a cotización es sustancialmente superior porque el prospecto ya tiene clara su necesidad. En sectores de alta competencia en Colombia (como software empresarial, salud o servicios legales), el clic puede oscilar entre $2.500 y $12.000 COP, por lo que cada visita debe aterrizar en una página que convierta de inmediato. Si vendes servicios B2B, productos de ticket medio o soluciones de urgencia, Google Search debe ser el cimiento de tu estrategia."
+      ],
+      "image": {
+        "url": "/blog/pauta-digital.svg",
+        "alt": "Comparativa entre canal de búsqueda Google Ads vs canal de redes sociales Meta Ads",
+        "caption": "Figura 1: Comparación de métricas de adquisición: intención transaccional en Google Ads frente a generación de demanda y escala de marca en Meta Ads."
+      },
+      "checklist": [
+        "Palabras clave de concordancia exacta y de frase con exclusión de términos basura",
+        "Páginas de aterrizaje (Landing Pages) hiperenfocadas en la oferta sin menús de fuga",
+        "Extensiones de llamada telefónica y enlaces a cotizadores interactivos"
+      ]
+    },
+    {
+      "heading": "2. Meta Ads: generar demanda visual y despertar el interés del público",
+      "paragraphs": [
+        "En Instagram y Facebook el usuario no está buscando activamente tu producto; está viendo fotos, videos y noticias. Por eso, Meta Ads se basa en generar demanda latente mediante impacto visual, ganchos emocionales y ofertas irresistibles.",
+        "Es el canal ideal para e-commerce B2C, moda, productos de consumo masivo, lanzamientos de marca y retargeting agresivo. Con los algoritmos de Advantage+ y el aprendizaje automático de Meta, puedes encontrar clientes con intereses hiperespecíficos a un costo por mil impresiones (CPM) muy competitivo."
+      ],
+      "callout": {
+        "type": "tip",
+        "title": "La regla de los 3 segundos en video (Reels)",
+        "text": "El 70% del éxito de un anuncio en Meta depende del 'gancho' en los primeros 3 segundos. Si tu video empieza con tu logotipo institucional en lugar de mostrar de golpe el problema o resultado que ofreces, el usuario deslizará hacia arriba sin mirar."
+      },
+      "checklist": [
+        "Creativos dinámicos en video vertical (Reels) que enganchen en los primeros 3 segundos",
+        "Estrategia de retargeting para recuperar carritos y visitantes que no convirtieron",
+        "Pruebas A/B semanales de titulares, copys y ángulos de dolor del comprador"
+      ]
+    },
+    {
+      "heading": "3. El embudo híbrido: cómo lograr el máximo Retorno (ROAS)",
+      "paragraphs": [
+        "Las marcas que más escalan en Colombia no eligen una sola plataforma; las combinan en un sistema de embudo cruzado. Por ejemplo: captas un visitante cualificado que buscó en Google, y si no compra de inmediato, lo acompañas durante las siguientes dos semanas en Instagram y Facebook con testimonios y pruebas sociales.",
+        "Este modelo reduce drásticamente el Costo por Adquisición (CAC) y eleva el Retorno sobre la Inversión Publicitaria (ROAS) por encima de 4x en tiendas online y empresas de servicios profesionales."
+      ],
+      "callout": {
+        "type": "metric",
+        "title": "Rentabilidad de embudos cruzados en Colombia",
+        "text": "Empresas que integran Google Search para captación y Meta Ads para retargeting logran un costo por prospecto calificado hasta un 35% más económico que aquellas que solo usan una red aislada."
+      },
+      "checklist": [
+        "Instalación de la API de conversiones de Meta (CAPI) para eludir bloqueos de cookies",
+        "Seguimiento avanzado de conversiones con valor monetario en pesos (COP)",
+        "Distribución presupuestal inteligente: 60% en captación y 40% en retargeting"
+      ]
+    },
+    {
+      "heading": "4. Cuándo pausar una campaña y cómo optimizar el presupuesto",
+      "paragraphs": [
+        "El mayor error al hacer pauta es dejar anuncios corriendo sin verificar métricas semana tras semana. Si un anuncio acumula más de 100 clics o $150.000 COP invertidos sin generar ni un solo contacto o venta calificada, debe pausarse de inmediato para probar un nuevo ángulo.",
+        "Establecer límites estrictos de Costo por Lead (CPL) o Costo por Adquisición te permite escalar únicamente las creatividades que están aportando facturación neta a tu negocio."
+      ],
+      "checklist": [
+        "Revisión semanal de términos de búsqueda negativos en Google",
+        "Renovación quincenal de creativos en Meta para combatir la fatiga publicitaria",
+        "Reporte mensual de rentabilidad neta contrastando inversión publicitaria vs ventas"
+      ]
+    }
+  ],
+  "comparisonTable": {
+    "title": "Manejo Típico de Pauta vs Gestión de Alto Rendimiento ROICAS",
+    "subtitle": "Por qué tantas empresas queman presupuesto publicitario sin ver retornos tangibles en ventas",
+    "columnA": "Agencia Tradicional / Manejo Típico",
+    "columnB": "Gestión de Pauta con ROICAS",
+    "rows": [
+      {
+        "criterion": "Destino del tráfico",
+        "valA": "Envían a la home genérica de la web (el cliente se pierde)",
+        "valB": "Landing pages dedicadas y optimizadas para cada anuncio"
+      },
+      {
+        "criterion": "Optimización de campañas",
+        "valA": "Campañas 'en piloto automático' que nadie revisa en semanas",
+        "valB": "Optimización semanal de términos negativos, pujas y creativos"
+      },
+      {
+        "criterion": "Trazabilidad técnica",
+        "valA": "Píxeles básicos de navegador afectados por bloqueadores",
+        "valB": "API de conversiones del servidor (CAPI) con datos 100% exactos"
+      },
+      {
+        "criterion": "Métricas reportadas",
+        "valA": "Métricas de vanidad: 'alcance', 'impresiones' y 'me gusta'",
+        "valB": "Retorno real en pesos: ROAS, Costo por Lead y ventas cerradas"
+      },
+      {
+        "criterion": "Atención al prospecto",
+        "valA": "Prospectos abandonados horas enteras en formularios",
+        "valB": "Integración inmediata con WhatsApp y CRM en segundos"
+      }
+    ]
+  },
+  "roicasSolution": {
+    "title": "Cómo escalamos las ventas de tu empresa con pauta digital",
+    "description": "No vendemos clics ni impresiones vacías. Construimos embudos publicitarios de principio a fin: desde las páginas de aterrizaje y creativos hasta el seguimiento de prospectos para maximizar tu retorno.",
+    "deliverables": [
+      {
+        "title": "Diseño de Landing Pages de Alta Conversión",
+        "description": "Creamos páginas rápidas y persuasivas diseñadas exclusivamente para convertir visitantes en clientes."
+      },
+      {
+        "title": "Estructura de Campañas en Google Search y Meta",
+        "description": "Segmentación hiperprecisa por palabras clave con intención comercial y públicos con capacidad de pago."
+      },
+      {
+        "title": "Instalación Avanzada de Seguimiento (CAPI y GA4)",
+        "description": "Configuramos la API de conversiones para medir cada peso invertido sin pérdida de datos por cookies."
+      },
+      {
+        "title": "Optimización Continua y Pruebas A/B",
+        "description": "Monitoreo constante de creativos, copys y exclusión de clics basura para bajar tu costo de adquisición."
+      }
+    ],
+    "ctaText": "Escalar mis ventas con pauta ROICAS"
+  },
+  "service": {
+    "label": "Escalar las ventas de mi empresa con pauta",
+    "href": "/servicios/publicidad-digital"
+  }
+}

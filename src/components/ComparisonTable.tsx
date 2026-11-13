@@ -67,18 +67,18 @@ const Cell = ({ value }: { value: CellValue }) => {
   if (value === true)
     return (
       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-emerald-100 text-emerald-600">
-        <Check size={14} strokeWidth={2.5} />
+        <Check size={14} strokeWidth={2.5} aria-hidden="true" /><span className="sr-only">Incluido</span>
       </span>
     );
   if (value === "partial")
     return (
       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-100 text-amber-500">
-        <Minus size={14} strokeWidth={2.5} />
+        <Minus size={14} strokeWidth={2.5} aria-hidden="true" /><span className="sr-only">Parcialmente incluido</span>
       </span>
     );
   return (
     <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-rose-100 text-rose-500">
-      <X size={14} strokeWidth={2.5} />
+      <X size={14} strokeWidth={2.5} aria-hidden="true" /><span className="sr-only">No incluido</span>
     </span>
   );
 };
@@ -94,9 +94,6 @@ const ComparisonTable = () => {
           transition={{ duration: 0.7 }}
           className="text-center mb-14"
         >
-          <p className="text-sm font-semibold text-brand uppercase tracking-widest mb-3">
-            Comparativa
-          </p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             ¿Por qué ROICAS y no otra opción?
           </h2>
@@ -110,25 +107,29 @@ const ComparisonTable = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="overflow-x-auto rounded-2xl border border-border shadow-card"
+          className="overflow-x-auto rounded-xl border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          role="region"
+          aria-label="Comparativa de servicios; desplázate horizontalmente para ver las columnas"
+          tabIndex={0}
         >
           <table className="w-full min-w-[640px] text-sm">
+            <caption className="sr-only">Comparativa de prestaciones por tipo de proveedor</caption>
             <thead>
               <tr className="border-b border-border bg-muted/40">
-                <th className="text-left px-6 py-4 font-semibold text-foreground w-[38%]">
+                <th scope="col" className="text-left px-6 py-4 font-semibold text-foreground w-[38%]">
                   Qué obtienes
                 </th>
-                <th className="px-4 py-4 text-center font-bold text-brand w-[16%]">
+                <th scope="col" className="px-4 py-4 text-center font-bold text-brand w-[16%]">
                   <span className="block text-base">ROICAS</span>
                 </th>
-                <th className="px-4 py-4 text-center font-medium text-muted-foreground w-[16%]">
+                <th scope="col" className="px-4 py-4 text-center font-medium text-muted-foreground w-[16%]">
                   <span className="block">Agencia</span>
                   <span className="block text-xs font-normal">tradicional</span>
                 </th>
-                <th className="px-4 py-4 text-center font-medium text-muted-foreground w-[15%]">
+                <th scope="col" className="px-4 py-4 text-center font-medium text-muted-foreground w-[15%]">
                   <span className="block">Freelancer</span>
                 </th>
-                <th className="px-4 py-4 text-center font-medium text-muted-foreground w-[15%]">
+                <th scope="col" className="px-4 py-4 text-center font-medium text-muted-foreground w-[15%]">
                   <span className="block">Hazlo</span>
                   <span className="block text-xs font-normal">tú solo</span>
                 </th>
@@ -140,9 +141,9 @@ const ComparisonTable = () => {
                   key={row.feature}
                   className={`transition-colors hover:bg-accent/40 ${i % 2 === 0 ? "" : "bg-muted/20"}`}
                 >
-                  <td className="px-6 py-3.5 font-medium text-foreground">
+                  <th scope="row" className="text-left px-6 py-3.5 font-medium text-foreground">
                     {row.feature}
-                  </td>
+                  </th>
                   <td className="px-4 py-3.5 text-center">
                     <div className="flex justify-center">
                       <Cell value={row.roicas} />

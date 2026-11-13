@@ -4,6 +4,9 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/api/wompi/webhook", "destination": "/api/web-express?action=wompi" }
+  ],
   "redirects": [
     { "source": "/brief-tienda-online", "destination": "/cotizar-tienda-online", "permanent": true }
   ]

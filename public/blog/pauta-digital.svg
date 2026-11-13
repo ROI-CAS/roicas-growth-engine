@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080C14" />
+      <stop offset="50%" stop-color="#160E14" />
+      <stop offset="100%" stop-color="#05080E" />
+    </linearGradient>
+    <linearGradient id="roseGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F43F5E" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#BE123C" stop-opacity="0" />
+    </linearGradient>
+    <pattern id="grid4" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2D1720" stroke-width="0.75" stroke-opacity="0.4" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bg4)" />
+  <rect width="1200" height="750" fill="url(#grid4)" />
+
+  <circle cx="280" cy="220" r="320" fill="url(#roseGlow)" />
+  <circle cx="950" cy="500" r="280" fill="#06B6D4" fill-opacity="0.15" />
+
+  <g transform="translate(140, 100)">
+    <rect width="920" height="550" rx="24" fill="#0A0E17" opacity="0.4" transform="translate(0, 16)" />
+    <rect width="920" height="550" rx="24" fill="#151219" stroke="#331D27" stroke-width="1.5" />
+
+    <!-- Window Bar -->
+    <rect width="920" height="54" rx="24" fill="#1E1620" />
+    <circle cx="36" cy="27" r="6" fill="#EF4444" />
+    <circle cx="56" cy="27" r="6" fill="#F59E0B" />
+    <circle cx="76" cy="27" r="6" fill="#10B981" />
+    <text x="460" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#FDA4AF" text-anchor="middle">ROICAS Paid Media Intelligence • Comparativa Multicanal Búsqueda vs Redes</text>
+
+    <!-- Channel Comparison 1: Motores de Búsqueda -->
+    <g transform="translate(48, 86)">
+      <rect width="400" height="416" rx="16" fill="#0E0D12" stroke="#2E1B24" stroke-width="1" />
+      <circle cx="36" cy="36" r="14" fill="#3B82F6" fill-opacity="0.2" />
+      <text x="36" y="41" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#60A5FA" text-anchor="middle">G</text>
+      <text x="62" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Canal de Búsqueda</text>
+      <text x="62" y="52" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94A3B8">Captura de intención activa</text>
+
+      <!-- Stat Box -->
+      <g transform="translate(20, 76)">
+        <rect width="360" height="90" rx="12" fill="#18141F" stroke="#382230" stroke-width="1" />
+        <text x="20" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">TASA DE CONVERSIÓN WEB</text>
+        <text x="20" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="800" fill="#10B981">6.4%</text>
+        <text x="140" y="64" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#E2E8F0">Alta intención de compra</text>
+      </g>
+
+      <!-- Feature points -->
+      <g transform="translate(24, 190)">
+        <text x="0" y="20" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#E2E8F0">✓ Prospectos buscando solución hoy</text>
+        <text x="0" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#E2E8F0">✓ CPC enfocado en alta rentabilidad</text>
+        <text x="0" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#E2E8F0">✓ Páginas de aterrizaje dedicadas</text>
+      </g>
+
+      <!-- Badge -->
+      <g transform="translate(20, 340)">
+        <rect width="360" height="48" rx="10" fill="#3B82F6" fill-opacity="0.15" stroke="#3B82F6" stroke-width="1" />
+        <text x="180" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#93C5FD" text-anchor="middle">Ideal para: Decisiones Inmediatas</text>
+      </g>
+    </g>
+
+    <!-- Channel Comparison 2: Redes Sociales -->
+    <g transform="translate(472, 86)">
+      <rect width="400" height="416" rx="16" fill="#0E0D12" stroke="#2E1B24" stroke-width="1" />
+      <circle cx="36" cy="36" r="14" fill="#F43F5E" fill-opacity="0.2" />
+      <text x="36" y="41" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="bold" fill="#F43F5E" text-anchor="middle">M</text>
+      <text x="62" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Canal de Redes Sociales</text>
+      <text x="62" y="52" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94A3B8">Creación de demanda y Remarketing</text>
+
+      <!-- Stat Box -->
+      <g transform="translate(20, 76)">
+        <rect width="360" height="90" rx="12" fill="#18141F" stroke="#382230" stroke-width="1" />
+        <text x="20" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#94A3B8">RETORNO SOBRE GASTO (ROAS)</text>
+        <text x="20" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="800" fill="#F43F5E">4.8 x</text>
+        <text x="130" y="64" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#E2E8F0">En campañas de retargeting</text>
+      </g>
+
+      <!-- Feature points -->
+      <g transform="translate(24, 190)">
+        <text x="0" y="20" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#E2E8F0">✓ Alcance masivo a nuevos compradores</text>
+        <text x="0" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#E2E8F0">✓ Reimpacto a quienes visitaron la web</text>
+        <text x="0" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#E2E8F0">✓ Formatos dinámicos en video vertical</text>
+      </g>
+
+      <!-- Badge -->
+      <g transform="translate(20, 340)">
+        <rect width="360" height="48" rx="10" fill="#F43F5E" fill-opacity="0.15" stroke="#F43F5E" stroke-width="1" />
+        <text x="180" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#FDA4AF" text-anchor="middle">Ideal para: Construir Marca y Recordación</text>
+      </g>
+    </g>
+  </g>
+</svg>

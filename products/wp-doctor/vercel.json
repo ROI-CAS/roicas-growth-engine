@@ -1,0 +1,22 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/site",
+  "routes": [
+    {
+      "src": "/api/v1/(requests|diagnosis/start|diagnosis/status|public/config|public/pricing|payments/checkout|payments/status)",
+      "dest": "/api/proxy?wpdoctor_path=$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "https://webexpress-wp-doctor.casinmiedo.workers.dev/$1"
+    }
+  ],
+  "functions": {
+    "api/proxy.ts": {
+      "maxDuration": 120
+    }
+  }
+}

@@ -1,0 +1,122 @@
+/* ROICAS: the established red/charcoal identity, with a calmer reading rhythm. */
+:root { --muted-foreground: 220 8% 40%; }
+html { scroll-padding-top: 7rem; }
+::selection { background: hsl(354 70% 40% / .16); color: hsl(220 15% 10%); }
+input, textarea { caret-color: hsl(var(--brand)); }
+:focus-visible { outline: 2px solid hsl(var(--brand)); outline-offset: 4px; }
+.roicas-section { padding-block: clamp(3.5rem, 7vw, 6.5rem); }
+.roicas-heading, .roicas-section-heading h2 { font-size: clamp(1.9rem, 3.4vw, 3rem); line-height: 1.12; letter-spacing: -.035em; text-wrap: balance; }
+.roicas-section-heading { display: grid; grid-template-columns: 1.2fr 1fr; align-items: end; gap: 3rem; margin-bottom: 3rem; }
+.roicas-section-heading > p, .roicas-section-intro { color: hsl(var(--muted-foreground)); font-size: 1.05rem; line-height: 1.75; max-width: 52ch; }
+.roicas-section-intro { margin-block: 1.25rem 2rem; }
+.roicas-text-link { display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; font-weight: 600; text-decoration: underline; text-underline-offset: .35rem; text-decoration-color: hsl(var(--border)); transition: color .18s ease, text-decoration-color .18s ease; }
+.roicas-text-link:hover { color: hsl(var(--brand)); text-decoration-color: currentColor; }
+.roicas-hero { padding-block: clamp(7.5rem, 12vw, 10rem) 4.5rem; background: hsl(var(--background)); }
+.roicas-hero-layout { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: clamp(2rem, 5vw, 5rem); }
+.roicas-hero-copy h1 { font-size: clamp(2.75rem, 4.8vw, 4.5rem); line-height: 1.07; font-weight: 750; letter-spacing: -.04em; text-wrap: balance; }
+.roicas-hero-copy h1 span { color: hsl(var(--brand)); }
+.roicas-hero-lead { margin-top: 1.5rem; max-width: 50ch; font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.7; color: hsl(var(--muted-foreground)); }
+.roicas-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; margin-top: 1.75rem; }
+.roicas-hero-actions button { min-height: 52px; border-radius: .65rem; box-shadow: none; }
+.roicas-hero-reassurance { margin-top: 1rem; font-size: .875rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
+.roicas-hero-work { min-width: 0; background: #fff; border: 1px solid hsl(var(--border)); border-radius: 1rem; overflow: hidden; }
+.roicas-work-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.5rem 1.75rem; font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 650; letter-spacing: -.03em; }
+.roicas-work-heading a { display: grid; place-items: center; width: 44px; height: 44px; color: hsl(var(--brand)); }
+.roicas-work-image { padding: 1rem; background: #f4f5f6; }
+.roicas-work-image img { width: 100%; height: auto; display: block; }
+.roicas-work-detail { padding: 1.5rem 1.75rem; display: grid; gap: .4rem; }
+.roicas-work-detail p { font-weight: 650; font-size: 1.1rem; }
+.roicas-work-detail > span { color: hsl(var(--muted-foreground)); font-size: .9rem; }
+.roicas-work-detail a { display: inline-flex; gap: .5rem; align-items: center; min-height: 44px; margin-top: .35rem; font-size: .9rem; font-weight: 600; color: hsl(var(--brand)); }
+.roicas-solutions { border-top: 1px solid hsl(var(--border)); }
+.roicas-solution { display: grid; grid-template-columns: 3rem 1.3fr 1fr; gap: 2rem; padding-block: 2rem; border-bottom: 1px solid hsl(var(--border)); }
+.roicas-solution-index { font-size: .9rem; padding-top: .2rem; color: hsl(var(--brand)); font-variant-numeric: tabular-nums; }
+.roicas-solution h3 { font-size: clamp(1.3rem, 2vw, 1.65rem); line-height: 1.25; font-weight: 650; letter-spacing: -.025em; }
+.roicas-solution p { max-width: 52ch; margin-top: .75rem; line-height: 1.75; color: hsl(var(--muted-foreground)); }
+.roicas-solution ul { align-self: center; }
+.roicas-solution li + li { border-top: 1px solid hsl(var(--border)); }
+.roicas-solution li a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 52px; padding-block: .75rem; font-weight: 550; }
+.roicas-solution li a:hover { color: hsl(var(--brand)); }
+.roicas-solution li svg { flex-shrink: 0; }
+.roicas-product-heading { margin-block: 3.5rem 1.5rem; }
+.roicas-product-heading h3 { font-size: 1.5rem; font-weight: 650; letter-spacing: -.025em; }
+.roicas-product-heading p { margin-top: .5rem; color: hsl(var(--muted-foreground)); }
+.roicas-products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.roicas-product { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; padding: 1.75rem; border: 1px solid hsl(var(--border)); border-radius: .8rem; background: white; transition: transform .2s ease, border-color .2s ease; }
+.roicas-product > svg { color: hsl(var(--brand)); margin-bottom: 1.5rem; }
+.roicas-product h4 { font-size: 1.3rem; letter-spacing: -.02em; }
+.roicas-product p { margin-block: .75rem 1.25rem; color: hsl(var(--muted-foreground)); line-height: 1.65; }
+.roicas-product > span { display: flex; align-items: center; justify-content: space-between; gap: .5rem; width: 100%; margin-top: auto; min-height: 44px; font-size: .9rem; font-weight: 600; }
+.roicas-product:hover { transform: translateY(-2px); border-color: hsl(var(--brand)); }
+.roicas-guidance { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-block: 1.25rem; }
+.roicas-guidance p { font-size: 1.05rem; }
+.roicas-guidance button { display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; color: hsl(var(--brand)); font-weight: 600; }
+.roicas-process { background: hsl(var(--secondary)); }
+.roicas-process-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+.roicas-process-steps li { border-top: 1px solid hsl(var(--border)); padding-top: 1.5rem; }
+.roicas-process-steps span { display: inline-block; font-size: .875rem; color: hsl(var(--brand)); margin-bottom: 1.5rem; font-variant-numeric: tabular-nums; }
+.roicas-process-steps h3 { font-size: 1.3rem; line-height: 1.3; }
+.roicas-process-steps p { color: hsl(var(--muted-foreground)); line-height: 1.75; margin-top: .75rem; }
+.roicas-faq-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 6vw, 6rem); }
+.roicas-home .text-gradient-warm { color: hsl(var(--brand)); background-image: none; }
+.roicas-footer { padding-block: 3.5rem 1.5rem; border-top: 1px solid hsl(var(--border)); }
+.roicas-footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 2rem; }
+.roicas-footer h2 { font-size: .95rem; margin-bottom: 1rem; }
+.roicas-footer a { display: inline-flex; align-items: center; min-height: 40px; font-size: .9rem; color: hsl(var(--muted-foreground)); }
+.roicas-footer a:hover { color: hsl(var(--brand)); text-decoration: underline; text-underline-offset: 4px; }
+.roicas-footer-bottom { display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid hsl(var(--border)); padding-top: 1.5rem; margin-top: 2.5rem; font-size: .8rem; color: hsl(var(--muted-foreground)); }
+.roicas-guides { padding-block: 3.5rem; background: hsl(var(--background)); }
+.roicas-guides-heading { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+.roicas-guides-heading h2 { font-size: 1.6rem; font-weight: 650; letter-spacing: -.025em; }
+.roicas-guides-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+.roicas-guides-list article { border-top: 1px solid hsl(var(--border)); padding-top: 1.25rem; }
+.roicas-guides-list h3 { line-height: 1.5; font-size: 1.05rem; }
+.roicas-guides-list p { margin-top: 1rem; font-size: .875rem; color: hsl(var(--muted-foreground)); }
+.roicas-service-intro { padding-block: 8.5rem 4rem; }
+.roicas-service-intro h1 { font-size: clamp(2.5rem, 4.5vw, 4.25rem); line-height: 1.1; letter-spacing: -.04em; max-width: 18ch; text-wrap: balance; }
+.roicas-service-intro p { max-width: 58ch; margin-top: 1.5rem; font-size: 1.1rem; line-height: 1.75; color: hsl(var(--muted-foreground)); }
+.roicas-service-intro .roicas-hero-actions { margin-top: 1.5rem; }
+.roicas-doctor-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; border-top: 1px solid hsl(var(--border)); padding-block: 2.5rem 4rem; }
+.roicas-doctor-details h2 { font-size: 1.3rem; }
+.roicas-doctor-details p { color: hsl(var(--muted-foreground)); margin-top: .75rem; line-height: 1.75; }
+@media (min-width: 1600px) { .roicas-hero { padding-block: 11rem 6rem; } }
+@media (max-width: 1023px) {
+  .roicas-hero-layout { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .roicas-hero-copy h1 { font-size: clamp(2.4rem, 4.7vw, 3rem); }
+  .roicas-solution { grid-template-columns: 2rem 1.2fr 1fr; gap: 1.25rem; }
+}
+@media (max-width: 767px) {
+  .roicas-hero { padding-block: 6.5rem 3rem; }
+  .roicas-hero-layout, .roicas-section-heading, .roicas-faq-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .roicas-hero-copy h1 { font-size: clamp(2.3rem, 8.9vw, 3.4rem); line-height: 1.1; }
+  .roicas-hero-lead { margin-top: 1.25rem; line-height: 1.65; }
+  .roicas-hero-actions { align-items: stretch; gap: .65rem; margin-top: 1.5rem; }
+  .roicas-hero-actions button, .roicas-hero-actions > a { width: 100%; justify-content: center; white-space: normal; }
+  .roicas-hero-work { margin-top: .5rem; }
+  .roicas-work-heading { padding: 1rem 1.25rem; }
+  .roicas-work-detail { padding: 1.25rem; }
+  .roicas-section-heading { margin-bottom: 2rem; gap: 1rem; }
+  .roicas-solution { grid-template-columns: 1fr; gap: .75rem; padding-block: 1.75rem; }
+  .roicas-solution-index { display: none; }
+  .roicas-solution ul { margin-top: .25rem; }
+  .roicas-products, .roicas-process-steps, .roicas-guides-list, .roicas-doctor-details { grid-template-columns: 1fr; }
+  .roicas-product { padding: 1.5rem; }
+  .roicas-product > svg { margin-bottom: 1rem; }
+  .roicas-product-heading { margin-top: 2.5rem; }
+  .roicas-guidance, .roicas-guides-heading { align-items: flex-start; flex-direction: column; }
+  .roicas-process-steps { gap: 1.5rem; }
+  .roicas-process-steps span { margin-bottom: .75rem; }
+  .roicas-footer-grid { grid-template-columns: 1fr 1fr; }
+  .roicas-footer-grid > div:first-child { grid-column: 1 / -1; }
+  .roicas-footer-bottom { flex-direction: column; }
+  .roicas-service-intro { padding-top: 7rem; }
+  .roicas-doctor-details { gap: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .roicas-product { transition: none; }
+  .roicas-product:hover { transform: none; }
+  [style*="opacity: 0"], [style*="opacity:0"] { opacity: 1 !important; }
+  .animate-ping, .animate-pulse { animation: none; }
+}
+h2[tabindex="-1"]:focus-visible { outline: none; }

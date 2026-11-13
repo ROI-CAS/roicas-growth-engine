@@ -1,0 +1,12 @@
+# Replace only the dedicated runner hostname. Merge into the existing proxy;
+# never replace an n8n configuration or bind its ports a second time.
+runner.example.com {
+    request_body {
+        max_size 4KB
+    }
+    reverse_proxy 127.0.0.1:8091 {
+        transport http {
+            response_header_timeout 120s
+        }
+    }
+}

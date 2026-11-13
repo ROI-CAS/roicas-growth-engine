@@ -1,0 +1,439 @@
+.roicas-institutional {
+  --ri-ink: #18151a;
+  --ri-muted: #58515a;
+  --ri-paper: #f5f1ed;
+  --ri-line: #e3dad4;
+  --ri-wine: hsl(var(--brand));
+  --ri-focus: var(--ri-wine);
+  background: #fff;
+  color: var(--ri-ink);
+}
+
+.ri-hero,
+.ri-band {
+  --ri-focus: #f0a3ae;
+  color: #fff;
+}
+
+.ri-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(7.25rem, 11vw, 10rem) clamp(3.25rem, 7vw, 6.5rem);
+  background: radial-gradient(ellipse at 78% 35%, #311b26 0%, transparent 61%), #0c0b10;
+}
+
+.ri-hero-layout,
+.ri-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5.5rem);
+}
+
+.ri-hero-layout {
+  position: relative;
+  z-index: 1;
+}
+
+.roicas-institutional :is(.ri-hero, .ri-section) :is(h1, h2, h3) {
+  color: inherit;
+  font-weight: 750;
+  text-wrap: balance;
+}
+
+.ri-hero h1 {
+  max-width: 14ch;
+  font-size: clamp(2.55rem, 5.6vw, 5.25rem);
+  line-height: 1.03;
+  letter-spacing: -0.06em;
+}
+
+.ri-hero h1 span {
+  text-decoration: underline #d95066 0.065em;
+  text-underline-offset: 0.15em;
+}
+
+.ri-label {
+  margin-bottom: 0.85rem;
+  color: #f0a3ae;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.ri-hero-lead {
+  max-width: 47ch;
+  margin-block: 1.45rem;
+  color: #ded6df;
+  font-size: clamp(1rem, 1.5vw, 1.13rem);
+  line-height: 1.65;
+}
+
+.ri-hero-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid #ffffff33;
+  border-radius: 1rem;
+  box-shadow: 0 20px 45px #0005;
+}
+
+.ri-about-hero .ri-hero-image {
+  aspect-ratio: 16 / 10;
+}
+
+.ri-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.2rem;
+}
+
+.ri-button,
+.ri-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  gap: 0.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.ri-button {
+  min-height: 50px;
+  padding: 0.85rem 1.15rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 180ms ease;
+}
+
+.ri-button-light {
+  color: var(--ri-ink);
+  background: #fff;
+}
+
+.ri-button-light:hover {
+  background: #f3e5e8;
+}
+
+.ri-link {
+  text-decoration: underline;
+  text-underline-offset: 0.24em;
+}
+
+.ri-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.ri-actions svg,
+.ri-band svg,
+.ri-service-card svg {
+  flex-shrink: 0;
+}
+
+.roicas-institutional :where(.ri-section, .ri-hero) :focus-visible {
+  outline: 2px solid var(--ri-focus);
+  outline-offset: 4px;
+}
+
+.ri-section {
+  position: relative;
+  padding-block: clamp(3.5rem, 7vw, 6.25rem);
+  scroll-margin-top: 6rem;
+}
+
+.ri-anchor {
+  position: absolute;
+  inset: 0 auto auto 0;
+  scroll-margin-top: 6rem;
+}
+
+.ri-paper {
+  background: var(--ri-paper);
+}
+
+.ri-section-heading,
+.ri-copy h2 {
+  font-size: clamp(2rem, 4.2vw, 3.55rem);
+  line-height: 1.06;
+  letter-spacing: -0.055em;
+}
+
+.ri-section-heading {
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+.ri-copy h3,
+.ri-contact-note h2 {
+  font-size: 1.28rem;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.ri-copy p {
+  max-width: 56ch;
+  margin-top: 0.65rem;
+  color: var(--ri-muted);
+  line-height: 1.65;
+}
+
+.ri-copy h2 + p {
+  margin-top: 1rem;
+}
+
+.ri-split {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+}
+
+.ri-service-group {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  align-items: start;
+  gap: clamp(1.25rem, 5vw, 4.5rem);
+  border-top: 1px solid var(--ri-line);
+  padding-block: clamp(1.2rem, 3vw, 2.3rem);
+}
+
+.ri-service-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.ri-service-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.7rem, 2vw, 1.05rem);
+  min-height: 88px;
+  padding: clamp(0.85rem, 2vw, 1.1rem);
+  background: #fff;
+  border: 1px solid var(--ri-line);
+  border-radius: 0.85rem;
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.ri-service-card strong,
+.ri-service-card span span {
+  display: block;
+}
+
+.ri-service-card span span {
+  margin-top: 0.2rem;
+  color: var(--ri-muted);
+  line-height: 1.5;
+}
+
+.ri-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: var(--ri-wine);
+  background: hsl(var(--brand) / 0.08);
+  border-radius: 0.7rem;
+}
+
+.ri-card-arrow {
+  color: var(--ri-wine);
+  transition: transform 180ms ease;
+}
+
+.ri-ruled-list > * {
+  border-top: 1px solid var(--ri-line);
+  padding-block: 1.1rem;
+}
+
+.ri-ruled-list > :last-child {
+  border-bottom: 1px solid var(--ri-line);
+}
+
+.ri-approach-item,
+.ri-contact-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+}
+
+.ri-client-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.ri-client {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.3rem;
+  height: 100%;
+  min-height: 150px;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--ri-line);
+  border-radius: 0.85rem;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.ri-client img {
+  max-width: 100%;
+  height: 52px;
+  object-fit: contain;
+  margin-bottom: 0.25rem;
+}
+
+.ri-client span {
+  color: var(--ri-muted);
+  font-size: 0.875rem;
+}
+
+.ri-client svg {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  color: var(--ri-wine);
+}
+
+a.ri-client {
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.ri-band {
+  background: #301c26;
+}
+
+.ri-band-layout {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.ri-band .ri-copy p {
+  color: #e2d7df;
+}
+
+.ri-contact-hero {
+  padding-bottom: clamp(2.75rem, 6vw, 4.75rem);
+}
+
+.ri-contact-note {
+  max-width: 33rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  background: #ffffff0a;
+  border: 1px solid #ffffff30;
+  border-radius: 1rem;
+}
+
+.ri-contact-note ul {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0.95rem 0 0 1.1rem;
+  color: #ded6df;
+  line-height: 1.55;
+  list-style: disc;
+}
+
+.ri-contact-note li::marker {
+  color: #f0a3ae;
+}
+
+.ri-contact-details {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.ri-contact-row dt {
+  font-weight: 700;
+}
+
+.ri-contact-row dd {
+  color: var(--ri-muted);
+  overflow-wrap: anywhere;
+}
+
+.ri-contact-row a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ri-wine);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.ri-contact-form {
+  min-width: 0;
+  box-shadow: 0 18px 40px -32px #18151a55;
+}
+
+.ri-contact-layout {
+  row-gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .ri-contact-layout {
+    grid-template-rows: auto 1fr;
+  }
+
+  .ri-contact-form {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+@media (hover: hover) {
+  .ri-service-card:hover,
+  a.ri-client:hover {
+    border-color: hsl(var(--brand) / 0.45);
+    background: #fffcfb;
+  }
+
+  .ri-service-card:hover .ri-card-arrow {
+    transform: translateX(4px);
+  }
+}
+
+@media (max-width: 767px) {
+  .ri-hero-layout,
+  .ri-split,
+  .ri-service-group {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ri-hero-image,
+  .ri-about-hero .ri-hero-image {
+    aspect-ratio: 16 / 9;
+  }
+
+  .ri-client-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ri-enter {
+    animation: ri-enter 360ms ease-out both;
+  }
+
+  @keyframes ri-enter {
+    from { opacity: 0.84; transform: translateY(8px); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roicas-institutional :is(.ri-button, .ri-service-card, .ri-card-arrow, .ri-client) {
+    transition: none;
+  }
+
+  .roicas-institutional .ri-service-card:hover .ri-card-arrow {
+    transform: none;
+  }
+}

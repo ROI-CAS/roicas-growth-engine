@@ -1,94 +1,44 @@
-import { useEffect } from "react";
-import { X, Clock, Shield } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AccessibleDialog } from "./AccessibleDialog";
 
 interface BookingModalProps {
   open: boolean;
   onClose: () => void;
 }
-
 const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/gEm0YwOkG4AarjCYtCq9";
 
 const BookingModal = ({ open, onClose }: BookingModalProps) => {
+  const [status, setStatus] = useState<"loading" | "loaded" | "slow" | "error">("loading");
+  const [attempt, setAttempt] = useState(0);
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-    if (open) document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, [open, onClose]);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [open]);
+    if (!open) return;
+    setStatus("loading");
+    const timeout = window.setTimeout(() => setStatus((current) => current === "loading" ? "slow" : current), 15000);
+    return () => window.clearTimeout(timeout);
+  }, [open, attempt]);
 
   return (
-    <AnimatePresence>
-      {open && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            key="backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
-            onClick={onClose}
-            aria-hidden="true"
-          />
-
-          {/* Scroll container */}
-          <div className="fixed inset-0 z-[61] overflow-y-auto py-6 px-4">
-            <div className="flex min-h-full items-center justify-center">
-              <motion.div
-                key="modal"
-                initial={{ opacity: 0, scale: 0.95, y: 16 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 16 }}
-                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full max-w-2xl bg-background rounded-2xl border border-border shadow-2xl overflow-hidden"
-                role="dialog"
-                aria-modal="true"
-                aria-label="Agendar consultoría de 20 minutos"
-              >
-                {/* Header */}
-                <div className="flex items-center justify-between px-5 py-3.5 border-b border-border bg-muted/30 shrink-0">
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1.5 font-medium text-foreground text-sm">
-                      Consultoría gratuita
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock size={11} />
-                      20 min
-                    </span>
-                    <span className="hidden sm:flex items-center gap-1">
-                      <Shield size={11} />
-                      Sin compromiso
-                    </span>
-                  </div>
-                  <button
-                    onClick={onClose}
-                    className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-accent transition-colors text-muted-foreground hover:text-foreground cursor-pointer"
-                    aria-label="Cerrar"
-                  >
-                    <X size={16} />
-                  </button>
-                </div>
-
-                {/* sandbox blocks window.top navigation attempts from the HL widget */}
-                <iframe
-                  src={BOOKING_URL}
-                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-                  style={{ width: "100%", border: "none", height: "740px", display: "block" }}
-                  title="Agendar consultoría de 20 minutos con ROICAS"
-                />
-              </motion.div>
-            </div>
-          </div>
-        </>
-      )}
-    </AnimatePresence>
+    <AccessibleDialog open={open} onClose={onClose} title="Agendar consultoría" description="Una conversación de 20 minutos para revisar tu negocio. Sin compromiso." className="max-w-2xl">
+      <div className="border-b border-border px-5 py-3 text-sm">
+        <p role="status" aria-live="polite">
+          {status === "loading" ? "Cargando los horarios disponibles…" : status === "loaded" ? "Selecciona un horario en la agenda." : status === "slow" ? "La agenda está tardando más de lo esperado. Puedes abrirla en otra pestaña o volver a cargarla." : "No pudimos cargar la agenda. Inténtalo de nuevo o ábrela en otra pestaña."}
+        </p>
+        <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center font-semibold text-brand underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Abrir agenda en otra pestaña</a>
+          {(status === "slow" || status === "error") && <button type="button" onClick={() => setAttempt((value) => value + 1)} className="min-h-11 rounded-lg px-3 font-semibold underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Volver a cargar</button>}
+        </div>
+      </div>
+      {open && <iframe
+        key={attempt}
+        src={BOOKING_URL}
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+        className="block h-[min(740px,65dvh)] min-h-80 w-full border-0"
+        title="Horarios para agendar una consultoría con ROICAS"
+        onLoad={() => setStatus("loaded")}
+        onError={() => setStatus("error")}
+      />}
+    </AccessibleDialog>
   );
 };
-
 export default BookingModal;
+
