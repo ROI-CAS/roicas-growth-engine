@@ -1,0 +1,19 @@
+.roicas-site-footer .roicas-cookie-consent {
+  flex: 1 1 28rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.roicas-site-footer .roicas-cookie-consent p {
+  margin: 0;
+}
+
+.roicas-site-footer .roicas-cookie-consent a {
+  display: inline;
+  min-height: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.roicas-site-footer .roicas-cookie-consent a:hover {
+  color: hsl(var(--foreground));
+}

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-roicas.webp";
+import CookieConsent from "@/components/CookieConsent";
 import "./site-navigation.css";
 
 export default function Footer() {
@@ -41,6 +42,7 @@ export default function Footer() {
         </div>
         <div className="roicas-footer-bottom">
           <p>© {new Date().getFullYear()} ROICAS · Colombia</p>
+          <CookieConsent />
           <Link to="/politica-privacidad">Política de privacidad</Link>
         </div>
       </div>

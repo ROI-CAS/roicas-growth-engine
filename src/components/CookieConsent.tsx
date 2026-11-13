@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./cookie-consent.css";
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
@@ -15,21 +16,19 @@ export default function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <aside aria-label="Preferencias de cookies" className="border-b border-border bg-background">
-      <div className="section-container flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-2xl text-sm leading-relaxed text-foreground">
+    <aside aria-label="Preferencias de cookies" className="roicas-cookie-consent flex flex-wrap items-center gap-x-3 gap-y-1 text-xs leading-relaxed text-muted-foreground">
+        <p>
           Elige tu preferencia de cookies. Consulta cómo usamos tus datos en la{" "}
-          <a href="/politica-privacidad" className="underline underline-offset-4">política de privacidad</a>.
+          <a href="/politica-privacidad" className="underline underline-offset-2">política de privacidad</a>.
         </p>
-        <div className="flex flex-wrap gap-2">
-          <button type="button" onClick={() => savePreference("accepted")} className="min-h-11 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-            Aceptar cookies
+        <div className="flex items-center gap-2">
+          <button type="button" onClick={() => savePreference("accepted")} className="rounded px-1 py-1 text-xs font-medium text-foreground/80 hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+            Aceptar
           </button>
-          <button type="button" onClick={() => savePreference("declined")} className="min-h-11 rounded-md border border-border px-4 text-sm font-medium hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+          <button type="button" onClick={() => savePreference("declined")} className="rounded px-1 py-1 text-xs text-muted-foreground hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
             Rechazar
           </button>
         </div>
-      </div>
     </aside>
   );
 }

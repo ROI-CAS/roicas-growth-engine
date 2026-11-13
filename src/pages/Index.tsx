@@ -8,7 +8,6 @@ import FAQSection from "@/components/FAQSection";
 import { homeFaqs } from "@/lib/homeFaqs";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import CookieConsent from "@/components/CookieConsent";
 import SeoHead from "@/components/SeoHead";
 
 const homeSchema = [
@@ -29,7 +28,6 @@ export default function Index() {
       <Header />
       <main id="contenido-principal">
         <HeroSection />
-        <CookieConsent />
         <ServicesSection />
         <FeaturedProject />
         <ProcessSection />
