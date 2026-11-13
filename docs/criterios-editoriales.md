@@ -26,6 +26,10 @@ Resolver la intención de búsqueda con explicaciones útiles. Usar los término
 
 Eliminar repeticiones, vaguedades y frases que no aporten información. Mantener la precisión por encima de la apariencia de «texto humano». Comprobar que cada enlace respalde la afirmación asociada, que las fechas sean reales y que no queden notas internas en el contenido publicable.
 
+## Imágenes
+
+Elegir imágenes que representen el tema específico del artículo. Usar fotografías propias, bancos con licencia gratuita verificada o imágenes creadas para el proyecto. No usar capturas de pantalla de tableros, interfaces o productos como portadas editoriales; preferir escenas o ilustraciones relacionadas con el tema, sin interfaces ficticias, marcas ajenas ni texto ilegible. Guardar la fuente y verificar la licencia antes de incorporar una imagen externa.
+
 ## Aplicación en n8n
 
 Incorporar estas instrucciones a los nodos que redactan y revisan contenido. Mantener el tema, las fuentes, las variables y el formato de salida que ya requiere cada flujo. No sustituir el esquema JSON o HTML del flujo por estas instrucciones de estilo.

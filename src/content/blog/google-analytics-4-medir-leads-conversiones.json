@@ -6,7 +6,7 @@
   "category": "Publicidad Digital",
   "author": "Equipo ROICAS",
   "authorAvatar": "/favicon.png",
-  "coverImage": "/blog/pauta-digital.jpg",
+  "coverImage": "/blog/ga4-medicion-informes-unsplash.jpg",
   "published": "2026-11-13",
   "modified": "2026-11-13",
   "introduction": "Google Analytics 4 (GA4) mide interacciones mediante eventos. Para contar leads, configura un evento que represente una solicitud realmente completada y márcalo como evento clave (key event). Si también quieres optimizar campañas de Google Ads con esa acción, enlaza las cuentas e importa el evento como conversión de Ads. Un clic en WhatsApp, por sí solo, indica intención de contacto; no confirma que llegó un lead.",
