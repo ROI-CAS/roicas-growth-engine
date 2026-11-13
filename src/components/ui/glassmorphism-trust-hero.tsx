@@ -5,7 +5,7 @@ import { trackCtaClicked } from "@/lib/analytics";
 import ParticlesBackground from "./ParticlesBackground";
 import "../hero-banner.css";
 
-const poster = "/hero/roicas-hero-poster.webp";
+const poster = "/hero/roicas-home-hero-poster.webp";
 
 export default function HeroSection() {
   const { openBooking } = useBooking();
@@ -42,6 +42,23 @@ export default function HeroSection() {
 
   return (
     <section ref={section} className="roicas-banner" aria-labelledby="home-title">
+      <div className="rb-background" aria-hidden="true">
+        <div className="rb-video-wrapper">
+          <video
+            ref={video}
+            poster={poster}
+            muted
+            playsInline
+            loop
+            preload="none"
+            tabIndex={-1}
+            className="rb-hero-video"
+          >
+            <source data-src="/hero/roicas-home-hero.mp4" type="video/mp4" />
+          </video>
+          <div className="rb-video-overlay" aria-hidden="true" />
+        </div>
+      </div>
       <ParticlesBackground particleCount={50} speed={0.4} className="opacity-90 z-0" />
       <div className="rb-layout">
         <div className="rb-content">
@@ -70,14 +87,7 @@ export default function HeroSection() {
           </div>
           <p className="rb-reassurance">Consultoría gratuita · 20 minutos · Sin compromiso · Tu web 100% tuya</p>
         </div>
-        <div className="rb-background" aria-hidden="true">
-          <video ref={video} poster={poster} muted playsInline loop preload="none" tabIndex={-1}>
-            <source data-src="/hero/roicas-hero-keyed.webm" type="video/webm" />
-            <source data-src="/hero/roicas-hero-desktop.mp4" type="video/mp4" />
-          </video>
-        </div>
       </div>
-
     </section>
   );
 }

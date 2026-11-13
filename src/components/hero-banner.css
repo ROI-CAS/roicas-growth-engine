@@ -5,9 +5,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: radial-gradient(circle at 70% 25%, rgba(212, 43, 43, 0.14) 0%, transparent 55%),
-              radial-gradient(circle at 15% 75%, rgba(40, 24, 38, 0.6) 0%, transparent 55%),
-              #0c0b10;
+  background: radial-gradient(ellipse at 78% 35%, #311b26 0%, transparent 57%), #0c0b10;
   color: #fff;
   padding: clamp(140px, 12vw, 170px) clamp(24px, 4vw, 56px) clamp(64px, 7vw, 96px);
   min-height: 780px;
@@ -253,7 +251,7 @@
   gap: 8px;
 }
 
-/* Video transparente de ROICAS */
+/* Video de fondo 16:9 a altura completa, fundido en el borde izquierdo */
 .rb-background {
   position: absolute;
   inset: 0;
@@ -262,17 +260,24 @@
   overflow: hidden;
 }
 
+.rb-video-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
 .rb-background video {
   position: absolute;
   right: 0;
-  top: 50%;
-  width: min(45vw, 540px);
-  height: auto;
-  aspect-ratio: 1 / 1;
-  transform: translateY(-50%);
+  top: 0;
+  width: auto;
+  height: 100%;
+  aspect-ratio: 16 / 9;
   object-fit: contain;
   object-position: right center;
   opacity: 1;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 42%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 42%);
 }
 
 @media (max-width: 767px) {
