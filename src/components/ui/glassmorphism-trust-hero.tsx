@@ -51,6 +51,8 @@ export default function HeroSection() {
             playsInline
             loop
             preload="none"
+            width={960}
+            height={540}
             tabIndex={-1}
             className="rb-hero-video"
           >
