@@ -39,7 +39,7 @@ export default function Services() {
       <SeoHead title="Servicios digitales para empresas | ROICAS Colombia" description="Diseño web, tiendas online, SEO, publicidad digital y automatización con IA. Explora los servicios de Roicas y elige por dónde empezar." canonical="https://roicas.com/servicios" />
       <Header />
       <main id="contenido-principal" className="roicas-institutional">
-        <section className="ri-hero" aria-labelledby="services-title">
+        <section className="ri-hero ri-services-hero" aria-labelledby="services-title">
           <ParticlesBackground particleCount={30} speed={0.25} className="opacity-60" />
           <div className="section-container ri-hero-layout">
             <div className="ri-enter">
@@ -50,7 +50,6 @@ export default function Services() {
                 <a href="#contacto" className="ri-link">Consultar mi proyecto <ArrowRight size={18} aria-hidden="true" /></a>
               </div>
             </div>
-            <img className="ri-hero-image ri-enter" src="/images/pillars/strategy-web-presencia.webp" width={800} height={450} alt="Monitores con páginas web en proceso de diseño" fetchPriority="high" decoding="async" />
           </div>
         </section>
 

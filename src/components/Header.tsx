@@ -28,7 +28,7 @@ function ServiceGroups({ onNavigate }: { onNavigate: () => void }) {
       <ul className="space-y-1">
         {group.items.map((item) => <li key={item.href}>
           <NavLink to={item.href} end onClick={onNavigate} className={`roicas-service-link flex min-h-12 items-start gap-3 rounded-lg p-3 hover:bg-accent ${focusStyle}`}>
-            <item.icon size={19} aria-hidden="true" className="mt-0.5 shrink-0 text-brand" />
+            <span className="roicas-service-icon"><item.icon size={19} aria-hidden="true" /></span>
             <span className="min-w-0"><span className="block text-sm font-semibold text-foreground">{item.label}</span><span className="mt-1 block text-sm leading-snug text-muted-foreground">{item.description}</span></span>
           </NavLink>
         </li>)}
@@ -99,7 +99,7 @@ const Header = () => {
               <button ref={serviceButton} type="button" className={`${navLink} gap-1`} data-section-active={servicesActive || undefined} aria-expanded={servicesOpen} aria-controls={servicesId} onClick={() => setServicesOpen((value) => !value)}>
                 Servicios<ChevronDown size={16} aria-hidden="true" className={servicesOpen ? "rotate-180" : ""} />
               </button>
-              <div id={servicesId} hidden={!servicesOpen} className="roicas-service-menu fixed inset-x-4 top-20 mx-auto max-h-[75dvh] max-w-3xl overflow-y-auto rounded-xl border border-border bg-background p-5 shadow-xl">
+              <div id={servicesId} data-open={servicesOpen} aria-hidden={!servicesOpen} className="roicas-service-menu fixed inset-x-4 top-20 mx-auto max-h-[75dvh] max-w-3xl overflow-y-auto rounded-xl border border-border bg-background p-5 shadow-xl">
                 <NavLink to="/servicios" end onClick={closeMenus} className={`roicas-service-menu-all mb-4 inline-flex min-h-11 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-brand ${focusStyle}`}>Ver todos los servicios <ArrowRight size={16} aria-hidden="true" /></NavLink>
                 <ServiceGroups onNavigate={closeMenus} />
               </div>
@@ -135,7 +135,7 @@ const Header = () => {
               <button ref={mobileServiceButton} type="button" data-section-active={servicesActive || undefined} aria-expanded={mobileServicesOpen} aria-controls={mobileServicesId} onClick={() => setMobileServicesOpen((value) => !value)} className={`flex w-full justify-between ${navLink}`}>
                 Servicios<ChevronDown size={18} aria-hidden="true" className={mobileServicesOpen ? "rotate-180" : ""} />
               </button>
-              <div id={mobileServicesId} hidden={!mobileServicesOpen} className="px-1 py-3">
+              <div id={mobileServicesId} data-open={mobileServicesOpen} aria-hidden={!mobileServicesOpen} className="roicas-mobile-services px-1">
                 <NavLink to="/servicios" end onClick={closeMenus} className={`roicas-service-menu-all mb-3 flex min-h-11 items-center gap-2 rounded-lg px-3 text-sm font-semibold text-brand ${focusStyle}`}>Ver todos los servicios <ArrowRight size={16} aria-hidden="true" /></NavLink>
                 <ServiceGroups onNavigate={closeMenus} />
               </div>

@@ -28,7 +28,7 @@ function Guide({ post, featured }: { post: BlogArticle; featured: boolean }) {
         </div>
       </Link>
       <div className="red-guide-meta">
-        <img src={getAuthorAvatar(post)} alt="" width={26} height={26} loading="lazy" />
+        <img className="red-brand-avatar" src={getAuthorAvatar(post)} alt="" width={26} height={26} loading="lazy" />
         <span>{post.author}</span>
         <time dateTime={post.published}>{dateFormat.format(new Date(`${post.published}T00:00:00Z`))}</time>
       </div>
@@ -94,7 +94,7 @@ export default function Blog() {
       />
       <Header />
       <main id="contenido-principal" tabIndex={-1}>
-        <header className="red-hero">
+        <header className="red-hero red-blog-hero">
           <ParticlesBackground particleCount={25} speed={0.18} />
           <div className="section-container red-hero-content">
             <h1>Blog de ROICAS</h1>

@@ -95,7 +95,7 @@ function Article({ post }: { post: ArticleData }) {
               </nav>
               <h1>{post.title}</h1>
               <div className="red-article-meta">
-                <span><img src={avatar} alt="" width={28} height={28} />{post.author}</span>
+                <span><img className={avatar === "/favicon.png" ? "red-brand-avatar" : undefined} src={avatar} alt="" width={28} height={28} />{post.author}</span>
                 <time dateTime={post.published}><Calendar size={15} aria-hidden="true" />{formatDate(post.published)}</time>
                 <span><Clock size={15} aria-hidden="true" />{readingMinutes(post)} min de lectura</span>
                 <button className="red-action red-action-outline" type="button" onClick={shareArticle}><Share2 size={16} aria-hidden="true" />Compartir guía</button>
@@ -179,7 +179,7 @@ function Article({ post }: { post: ArticleData }) {
               </section>
 
               <section className="red-byline" aria-label="Autoría de la guía">
-                <img src={avatar} alt="" width={54} height={54} loading="lazy" />
+                <img className={avatar === "/favicon.png" ? "red-brand-avatar" : undefined} src={avatar} alt="" width={54} height={54} loading="lazy" />
                 <div><h2>{post.author}</h2><p>{post.authorRole || "Especialistas en Growth & Tecnología Digital"}</p></div>
               </section>
 

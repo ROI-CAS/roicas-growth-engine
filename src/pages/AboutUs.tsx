@@ -44,7 +44,6 @@ export default function AboutUs() {
                 <a href="#como-trabajamos" className="ri-button ri-button-light">Ver cómo trabajamos <ArrowRight size={18} aria-hidden="true" /></a>
               </div>
             </div>
-            <img className="ri-hero-image ri-enter" src="/images/pillars/process-step-1-estrategia.webp" width={800} height={450} alt="Vista de una reunión de planificación alrededor de una mesa de trabajo" fetchPriority="high" decoding="async" />
           </div>
         </section>
 

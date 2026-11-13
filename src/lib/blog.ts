@@ -125,5 +125,5 @@ export function getCoverImage(post: BlogArticle): string {
 }
 
 export function getAuthorAvatar(post: BlogArticle): string {
-  return post.authorAvatar || "/blog/avatar-1.jpg";
+  return post.authorAvatar || "/favicon.png";
 }
