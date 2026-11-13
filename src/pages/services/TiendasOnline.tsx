@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SeoHead from "@/components/SeoHead";
 import ParticlesBackground from "@/components/ui/ParticlesBackground";
-import shopImage from "@/modules/diagnostico/assets/painpoints-shop-720.webp";
 import "./diseno-web.css";
 import "./service-pages.css";
 
@@ -92,7 +91,7 @@ export default function TiendasOnline() {
         schemaJson={serviceSchema} />
       <Header />
       <main id="contenido-principal" className="roicas-web-design roicas-service-page">
-        <section className="rwd-hero rsp-hero" aria-labelledby="service-title">
+        <section className="rwd-hero rsp-hero rsp-store-hero" aria-labelledby="service-title">
           <ParticlesBackground particleCount={24} speed={0.22} />
           <div className="section-container rwd-hero-layout rsp-hero-content">
             <div>
@@ -108,8 +107,6 @@ export default function TiendasOnline() {
               </div>
               <p className="rwd-note">Cuéntanos qué vendes y cómo operas. Revisaremos tu solicitud para preparar la propuesta.</p>
             </div>
-            <img className="rwd-hero-image rsp-hero-image" src={shopImage} alt="Ilustración de un comercio con sus productos en exhibición"
-              width={720} height={720} fetchPriority="high" decoding="async" />
           </div>
         </section>
 
