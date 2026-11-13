@@ -1,0 +1,132 @@
+{
+  "slug": "google-analytics-4-medir-leads-conversiones",
+  "status": "published",
+  "title": "Google Analytics 4: cómo medir leads y conversiones en tu web",
+  "description": "Aprende a distinguir eventos y eventos clave en GA4, medir solicitudes reales y llevar las acciones importantes a Google Ads sin duplicarlas.",
+  "category": "Publicidad Digital",
+  "author": "Equipo ROICAS",
+  "authorAvatar": "/favicon.png",
+  "coverImage": "/blog/pauta-digital.jpg",
+  "published": "2026-11-13",
+  "modified": "2026-11-13",
+  "introduction": "Google Analytics 4 (GA4) mide interacciones mediante eventos. Para contar leads, configura un evento que represente una solicitud realmente completada y márcalo como evento clave (key event). Si también quieres optimizar campañas de Google Ads con esa acción, enlaza las cuentas e importa el evento como conversión de Ads. Un clic en WhatsApp, por sí solo, indica intención de contacto; no confirma que llegó un lead.",
+  "sections": [
+    {
+      "heading": "¿Qué diferencia hay entre un evento, un evento clave y una conversión?",
+      "paragraphs": [
+        "Un evento registra una interacción en la web o aplicación, como ver una página o enviar un formulario. Un evento clave en GA4 es un evento que la empresa considera importante para su actividad. Una conversión en Google Ads es una acción que se usa para medir el rendimiento de anuncios y, según su configuración, orientar las pujas.",
+        "Por ejemplo, puedes registrar el envío confirmado de una solicitud como evento y marcarlo como evento clave en Analytics. Si esa misma acción es relevante para una campaña, puedes importarla a Google Ads como conversión. Aunque se refieran a la misma acción, Analytics y Ads organizan los datos para propósitos distintos."
+      ]
+    },
+    {
+      "heading": "¿Qué acciones debes medir como leads?",
+      "paragraphs": [
+        "Mide acciones que representen un avance real para el negocio: una solicitud de cotización confirmada, una reserva completada o el envío exitoso de un formulario. Define de antemano qué significa cada evento y qué sistema confirma que la acción terminó.",
+        "Separa las señales de intención de los resultados. Un clic en el teléfono, un clic en WhatsApp o el inicio de un formulario pueden ayudar a entender el recorrido, pero no significan por sí mismos que la empresa recibió una consulta válida. Usa nombres y objetivos distintos para no sumar esas señales como si fueran leads confirmados.",
+        "En formularios, evita disparar el evento al hacer clic en el botón de envío si todavía puede fallar la validación o el servidor. Registra la confirmación después de que la página o el sistema acepte la solicitud. Para llamadas o WhatsApp, decide si medirás solo el clic, una conversación iniciada o una oportunidad confirmada en el CRM; cada opción responde una pregunta diferente."
+      ],
+      "checklist": [
+        "Escribe qué condición concreta confirma cada lead.",
+        "Asigna un nombre claro al evento y documenta cuándo se activa.",
+        "Mantén separados los clics de contacto y las solicitudes completadas.",
+        "Evita enviar datos personales innecesarios dentro de los eventos analíticos."
+      ]
+    },
+    {
+      "heading": "¿Cómo medir un lead correctamente en GA4?",
+      "paragraphs": [
+        "Primero identifica si GA4 ya recibe un evento apropiado. Si no existe, define cómo se enviará desde tu sitio y valida que solo se active cuando la acción termine. Después revisa el evento en Analytics y márcalo como evento clave si representa un resultado importante.",
+        "Prueba el recorrido completo con una solicitud de prueba y comprueba que el evento aparece una sola vez. Revisa formularios aceptados, errores de validación, recargas y páginas de confirmación. Si el mismo código se instala dos veces o el evento se dispara tanto en el clic como en la confirmación, las cifras pueden duplicarse.",
+        "Antes de tomar decisiones, comprueba que la etiqueta se activa en la página correcta y que la configuración de consentimiento y medición corresponde a la política de privacidad de la empresa. La implementación depende de cómo esté construido el sitio y de las herramientas de etiquetas que utilice."
+      ],
+      "callout": {
+        "type": "warning",
+        "title": "No conviertas cada interacción en un resultado",
+        "text": "Si un clic en WhatsApp cuenta como lead y luego también cuentas la conversación confirmada, el informe puede mostrar dos resultados para una misma oportunidad. Mantén objetivos separados y explica qué representa cada uno."
+      },
+      "checklist": [
+        "Verifica el evento en una sesión de prueba antes de publicarlo.",
+        "Confirma que una solicitud exitosa genera un solo evento.",
+        "Documenta los eventos y las condiciones que los activan."
+      ]
+    },
+    {
+      "heading": "¿Cómo llevar eventos clave de GA4 a Google Ads?",
+      "paragraphs": [
+        "Para importar un evento de Analytics, enlaza la propiedad correcta de GA4 con la cuenta de Google Ads y confirma que la acción esté marcada como evento clave. Luego crea o importa la acción correspondiente en Ads y revisa si se utilizará para informes, para pujas o para ambos fines.",
+        "Comprueba el objetivo de optimización de la acción después de importarla. Las acciones principales pueden participar en los objetivos de campaña; las secundarias sirven para observación, según su configuración. No importes y uses al mismo tiempo dos acciones principales que cuentan exactamente el mismo envío, porque podrías inflar las conversiones reportadas.",
+        "La importación no añade retroactivamente conversiones anteriores al momento en que se configuró. Google indica que la disponibilidad de datos puede tardar; por eso valida la propiedad, el evento, los permisos y la acción antes de evaluar una campaña."
+      ],
+      "checklist": [
+        "Verifica que Ads y GA4 estén enlazados a las cuentas correctas.",
+        "Confirma que el evento clave representa una acción valiosa para la campaña.",
+        "Revisa si la acción es principal o secundaria y qué campañas la usan.",
+        "Espera a que la importación procese datos antes de comparar periodos."
+      ]
+    },
+    {
+      "heading": "¿Por qué pueden diferir los datos de GA4 y Google Ads?",
+      "paragraphs": [
+        "GA4 y Google Ads pueden mostrar cifras distintas porque aplican configuraciones, ventanas de atribución, filtros y momentos de procesamiento diferentes. Además, GA4 analiza actividad de distintos canales, mientras que una acción de conversión de Ads está asociada a la medición publicitaria configurada en esa cuenta.",
+        "Antes de concluir que hay un error, compara el mismo periodo y revisa qué evento se cuenta, qué campañas participan, qué modelo o ventana de atribución está activa y si hay acciones duplicadas. Comprueba también si el evento registra la acción final o un clic previo. La diferencia solo tiene sentido cuando sabes qué mide cada columna."
+      ],
+      "comparisonTable": {
+        "title": "GA4 y Google Ads: qué responde cada herramienta",
+        "subtitle": "Usa cada sistema para la pregunta que su medición puede contestar.",
+        "columnA": "Google Analytics 4",
+        "columnB": "Google Ads",
+        "rows": [
+          {
+            "criterion": "Pregunta principal",
+            "valA": "¿Qué interacciones se registran en el sitio o la aplicación y cómo varían por canal?",
+            "valB": "¿Qué acciones se atribuyen a las campañas y cuáles se usan para optimizarlas?"
+          },
+          {
+            "criterion": "Nombre de la acción importante",
+            "valA": "Evento clave (key event).",
+            "valB": "Acción de conversión."
+          },
+          {
+            "criterion": "Uso para campañas",
+            "valA": "Puede analizar la acción en el contexto de distintos canales.",
+            "valB": "Puede informar resultados de anuncios y orientar pujas según el objetivo configurado."
+          },
+          {
+            "criterion": "Precaución",
+            "valA": "No marques como clave una señal que no representa un resultado relevante.",
+            "valB": "Revisa qué acciones son principales para evitar duplicar el mismo resultado."
+          }
+        ]
+      }
+    }
+  ],
+  "roicasSolution": {
+    "title": "Configurar una medición útil para tus campañas",
+    "description": "ROICAS revisa qué acciones debe medir tu sitio y cómo se conectan con tus campañas. El alcance depende del sistema de analítica, la plataforma y las etiquetas disponibles.",
+    "deliverables": [
+      {
+        "title": "Mapa de conversiones",
+        "description": "Definición de eventos para solicitudes completadas y señales de intención, con criterios de validación."
+      },
+      {
+        "title": "Revisión de medición publicitaria",
+        "description": "Comprobación de eventos, importaciones y objetivos de campaña según la configuración disponible."
+      }
+    ],
+    "ctaText": "Revisar la medición de mis campañas"
+  },
+  "references": [
+    {
+      "title": "Conversiones y eventos clave en Google Analytics",
+      "url": "https://support.google.com/analytics/answer/13965727?hl=es"
+    },
+    {
+      "title": "Crear conversiones desde eventos de Google Analytics en Google Ads",
+      "url": "https://support.google.com/google-ads/answer/2375435?hl=es"
+    }
+  ],
+  "service": {
+    "label": "Conocer gestión de Google Ads y Meta Ads",
+    "href": "/servicios/publicidad-digital"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "slug": "crm-para-pymes-colombia",
+  "status": "published",
+  "title": "CRM para pymes en Colombia: cómo elegirlo para tu proceso de ventas",
+  "description": "Criterios para elegir un CRM para pymes en Colombia: organiza etapas, fuentes, responsables y seguimientos sin comprar funciones que no necesitas.",
+  "category": "Automatización con IA",
+  "author": "Equipo ROICAS",
+  "authorAvatar": "/favicon.png",
+  "coverImage": "/blog/automatizacion-ia.jpg",
+  "published": "2026-11-13",
+  "modified": "2026-11-13",
+  "introduction": "Un CRM para una pyme debe mostrar quién es cada prospecto, en qué etapa está y cuál es la siguiente tarea. Para elegirlo, parte del proceso comercial que ya usas, revisa cómo entran las consultas y prueba si el equipo puede mantener los datos al día. La herramienta debe ordenar el trabajo; no reemplaza una definición clara de ventas.",
+  "sections": [
+    {
+      "heading": "¿Qué es un CRM para una pyme y para qué sirve?",
+      "paragraphs": [
+        "Un CRM (Customer Relationship Management) es un sistema para registrar contactos, conversaciones, oportunidades y tareas relacionadas con clientes. En una pyme puede reunir consultas que llegan por la web, recomendaciones, llamadas o WhatsApp, siempre que la forma de registrar cada canal esté definida.",
+        "Su utilidad principal es que el equipo pueda retomar una conversación con contexto. Un registro debería responder quién atendió, qué necesita la persona, qué se acordó y cuándo corresponde volver a contactarla. Si el CRM solo acumula nombres y teléfonos, todavía no está resolviendo el problema de seguimiento."
+      ],
+      "checklist": [
+        "Identifica las fuentes por las que llegan consultas.",
+        "Define qué cuenta como una oportunidad comercial.",
+        "Asegura que cada oportunidad tenga responsable y próxima acción."
+      ]
+    },
+    {
+      "heading": "¿Qué información conviene registrar en el CRM?",
+      "paragraphs": [
+        "Registra los datos que el equipo necesita para atender y decidir el siguiente paso. Para empezar suelen bastar nombre o empresa, un medio de contacto, origen de la consulta, servicio de interés, etapa, responsable, fecha de seguimiento y una nota breve del último acuerdo.",
+        "Evita guardar datos personales que no necesitas. Define quién puede consultar o editar cada registro y cómo se atienden las solicitudes de actualización o eliminación. En Colombia, el tratamiento de datos personales debe ajustarse a la política de privacidad y a las autorizaciones aplicables a tu negocio.",
+        "Usa etapas que describan acciones reales, como consulta recibida, necesidad validada, propuesta enviada y decisión pendiente. Si las etapas son ambiguas, cada persona las interpretará distinto y los reportes dejarán de servir para coordinar el trabajo."
+      ],
+      "callout": {
+        "type": "tip",
+        "title": "Empieza con pocos campos",
+        "text": "Cada dato adicional exige tiempo y una regla para mantenerlo. Agrega un campo solo cuando alguien lo use para atender al cliente, asignar una tarea o tomar una decisión."
+      }
+    },
+    {
+      "heading": "¿Cómo elegir un CRM para pymes en Colombia?",
+      "paragraphs": [
+        "Compara el CRM con el flujo de consultas de tu empresa, no con una lista extensa de funciones. Dibuja el recorrido desde el primer contacto hasta la venta o el cierre y valida cada paso con un ejemplo real, sin datos sensibles.",
+        "Revisa si permite asignar responsables, registrar interacciones, programar tareas y consultar el historial. Si las consultas empiezan en WhatsApp o en formularios, confirma qué integración existe, qué datos sincroniza, si requiere un proveedor adicional y quién mantiene la conexión. No des por hecho que una integración está incluida porque aparezca en una página comercial.",
+        "Antes de contratar, comprueba el precio total para el número de usuarios que necesitas, los límites de contactos o automatizaciones, la exportación de datos, los permisos, el soporte y la forma de cancelar. Pide que el proveedor explique qué sucede con tus datos si dejas de usar el sistema."
+      ],
+      "checklist": [
+        "Prueba el flujo con una consulta de principio a fin.",
+        "Verifica accesos, exportación y respaldo de información.",
+        "Calcula el costo con usuarios, complementos e integraciones necesarios.",
+        "Confirma que el equipo pueda actualizar una oportunidad con facilidad."
+      ]
+    },
+    {
+      "heading": "¿Cuál es el mejor CRM para una pyme?",
+      "paragraphs": [
+        "El mejor CRM es el que encaja con el proceso, el presupuesto y la capacidad de adopción del equipo. Una empresa que solo necesita compartir contactos y tareas puede elegir una herramienta sencilla; otra que recibe consultas por varios canales quizá necesite historial unificado e integración con su CRM.",
+        "Compara dos o tres opciones con los mismos casos: crear un contacto, asignar una oportunidad, registrar una llamada, programar seguimiento y exportar el registro. Esa prueba permite ver qué pasos son fáciles y cuáles dependen de ajustes, complementos o trabajo manual. No hay una marca que sea la mejor para todas las pymes."
+      ]
+    },
+    {
+      "heading": "¿Cuándo necesita una pyme un CRM y cuándo basta una hoja de cálculo?",
+      "paragraphs": [
+        "Una hoja de cálculo puede bastar si pocas personas atienden un volumen manejable de oportunidades y todos conocen la regla de actualización. Un CRM empieza a ser útil cuando varias personas comparten prospectos, se repiten seguimientos olvidados, cuesta saber quién atendió una consulta o hace falta revisar el avance sin reunir datos manualmente.",
+        "No migres por moda. Primero acuerda las etapas y responsabilidades. Si el equipo no puede describir qué debe ocurrir después de una consulta, el nuevo sistema trasladará la confusión a otra pantalla."
+      ],
+      "comparisonTable": {
+        "title": "Hoja de cálculo y chats frente a un CRM",
+        "subtitle": "La diferencia depende de cómo se configuren las herramientas y de la disciplina del equipo.",
+        "columnA": "Hoja de cálculo + chats",
+        "columnB": "CRM configurado",
+        "rows": [
+          {
+            "criterion": "Historial de contacto",
+            "valA": "Puede quedar repartido entre conversaciones y archivos.",
+            "valB": "Puede reunir notas y actividades en un registro compartido."
+          },
+          {
+            "criterion": "Próximo seguimiento",
+            "valA": "Depende de que alguien recuerde revisar la lista.",
+            "valB": "Puede convertirse en una tarea asignada con fecha."
+          },
+          {
+            "criterion": "Cambios de responsable",
+            "valA": "La persona que recibe el caso debe reconstruir el contexto.",
+            "valB": "El historial puede facilitar el traspaso entre integrantes."
+          },
+          {
+            "criterion": "Informes",
+            "valA": "A menudo requieren ordenar o consolidar datos manualmente.",
+            "valB": "Los informes dependen de etapas y campos que se mantengan actualizados."
+          }
+        ]
+      }
+    },
+    {
+      "heading": "¿Cómo implementar el CRM sin complicar al equipo?",
+      "paragraphs": [
+        "Empieza con un flujo pequeño. Define etapas, campos y responsables; importa solo los contactos que necesitas; acuerda qué actividades se registran y prueba el proceso con el equipo antes de automatizar tareas. Después revisa si las oportunidades tienen siguiente acción y si los datos ayudan a tomar decisiones.",
+        "Automatiza cuando una regla sea estable, por ejemplo asignar una consulta por servicio o recordar una tarea pendiente. Conserva una vía para que una persona revise excepciones y actualice la información. La automatización debe apoyar el seguimiento, no enviar mensajes sin contexto ni reemplazar el criterio comercial."
+      ],
+      "checklist": [
+        "Escribe las etapas y qué condición permite avanzar entre ellas.",
+        "Asigna una persona responsable de la calidad de los registros.",
+        "Prueba la integración con formularios o WhatsApp antes de activarla.",
+        "Revisa el flujo con el equipo y ajusta los pasos que nadie usa."
+      ]
+    }
+  ],
+  "roicasSolution": {
+    "title": "Conectar consultas, WhatsApp y CRM",
+    "description": "ROICAS configura flujos de atención y seguimiento según las herramientas, permisos y reglas de cada empresa. El alcance se define después de revisar cómo llegan y se atienden las consultas.",
+    "deliverables": [
+      {
+        "title": "Mapa del seguimiento",
+        "description": "Definición de fuentes, responsables, etapas y tareas que deben quedar registradas."
+      },
+      {
+        "title": "Integraciones y pruebas",
+        "description": "Conexión de canales y CRM según las integraciones disponibles, con validación de casos frecuentes y derivaciones."
+      }
+    ],
+    "ctaText": "Revisar mi flujo de atención"
+  },
+  "service": {
+    "label": "Conocer automatización con WhatsApp y CRM",
+    "href": "/servicios/automatizacion-ia"
+  }
+}

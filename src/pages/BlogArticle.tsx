@@ -165,6 +165,21 @@ function Article({ post }: { post: ArticleData }) {
                 </section>
               )}
 
+              {post.references && post.references.length > 0 && (
+                <section className="mt-10 border-t border-border pt-6" aria-labelledby="article-references-title">
+                  <h2 id="article-references-title" className="text-xl font-bold">Fuentes oficiales</h2>
+                  <ul className="mt-3 list-inside list-disc space-y-2">
+                    {post.references.map(reference => (
+                      <li key={reference.url}>
+                        <a href={reference.url} target="_blank" rel="noreferrer noopener" className="text-brand underline underline-offset-4">
+                          {reference.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+
               <section id="solucion-roicas" className="red-article-service">
                 <h2>{post.roicasSolution?.title || "Lleva esta guía a tu proyecto"}</h2>
                 <p>{post.roicasSolution?.description || "Explora cómo podemos ayudarte a aplicar estas ideas en tu empresa."}</p>

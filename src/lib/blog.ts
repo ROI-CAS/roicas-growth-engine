@@ -64,6 +64,7 @@ export const articleSchema = z.object({
   sections: z.array(sectionSchema).min(1),
   comparisonTable: comparisonTableSchema.optional(),
   roicasSolution: roicasSolutionSchema.optional(),
+  references: z.array(z.object({ title: text, url: z.string().url() })).optional(),
   service: z.object({
     label: text,
     href: z.string().regex(/^\/(?:servicios\/[a-z0-9-]+|cotizar-tienda-online|contacto|cotizar)$/),
@@ -97,6 +98,7 @@ export function readingMinutes(post: BlogArticle) {
       extraWords.push(d.title, d.description);
     }
   }
+  if (post.references) extraWords.push(...post.references.flatMap(({ title, url }) => [title, url]));
   for (const s of post.sections) {
     if (s.callout) extraWords.push(s.callout.title, s.callout.text);
     if (s.image?.caption) extraWords.push(s.image.caption);
