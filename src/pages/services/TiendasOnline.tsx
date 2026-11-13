@@ -97,6 +97,15 @@ export default function TiendasOnline() {
             <div>
               <h1 id="service-title">Diseño de tiendas <span>online en Colombia.</span></h1>
               <p className="rwd-hero-description">Organiza tus productos, recibe pagos y gestiona tus pedidos desde una tienda WooCommerce que se adapta a tu operación.</p>
+              <img
+                className="rsp-store-mobile-image"
+                src="/images/services/tienda-online-mobile.webp"
+                alt="Tienda online abierta en una computadora y un teléfono, junto a productos listos para envío"
+                width={1080}
+                height={1080}
+                loading="lazy"
+                decoding="async"
+              />
               <div className="rwd-actions">
                 <Link className="rwd-button rwd-button-light" to="/cotizar-tienda-online">
                   Solicitar propuesta <ArrowRight size={18} aria-hidden="true" />

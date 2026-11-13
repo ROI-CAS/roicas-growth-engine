@@ -15,6 +15,10 @@
   background-size: cover;
 }
 
+.rsp-store-mobile-image {
+  display: none;
+}
+
 .rsp-hero > canvas {
   opacity: 0.68;
 }
@@ -86,9 +90,21 @@
   }
 
   .roicas-service-page .rsp-store-hero {
-    background-image: linear-gradient(90deg, rgb(12 11 16 / 0.42), rgb(12 11 16 / 0.2)),
-      url("/images/services/tienda-online.webp");
-    background-position: 64% center;
+    background-image: none;
+    background-color: #100e14;
+  }
+
+  .rsp-store-mobile-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 1rem 0 1.5rem;
+    border: 1px solid #ffffff26;
+    border-radius: 1rem;
+  }
+
+  .rsp-store-hero .rwd-hero-layout {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
