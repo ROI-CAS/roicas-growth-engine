@@ -274,7 +274,8 @@
   pointer-events: none;
 }
 
-.rb-background video {
+.rb-background video,
+.rb-background .rb-hero-video {
   position: absolute;
   right: 90px;
   top: 0;

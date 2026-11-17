@@ -1,61 +1,25 @@
-import { useEffect, useRef } from "react";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { useBooking } from "@/contexts/BookingContext";
 import { trackCtaClicked } from "@/lib/analytics";
 import ParticlesBackground from "./ParticlesBackground";
 import "../hero-banner.css";
 
-const poster = "/hero/roicas-home-hero-poster.webp";
-
 export default function HeroSection() {
   const { openBooking } = useBooking();
-  const video = useRef<HTMLVideoElement>(null);
-  const section = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const el = video.current;
-    if (!el) return;
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const mobile = window.matchMedia("(max-width: 767px)");
-    const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
-    let visible = true;
-    const sync = () => {
-      const allowed = !mobile.matches && !motion.matches && !connection?.saveData && !["slow-2g", "2g"].includes(connection?.effectiveType ?? "");
-      if (!allowed || document.hidden || !visible) { el.pause(); return; }
-      if (!el.dataset.sourcesLoaded) {
-        el.querySelectorAll<HTMLSourceElement>("source[data-src]").forEach((source) => {
-          const src = source.dataset.src;
-          if (src) source.src = src;
-        });
-        el.dataset.sourcesLoaded = "true";
-        el.load();
-      }
-      void el.play().catch(() => { /* Video autoplay fallback */ });
-    };
-    const observer = typeof IntersectionObserver === "undefined" ? null : new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }, { threshold: 0.05 });
-    if (section.current) observer?.observe(section.current);
-    motion.addEventListener("change", sync);
-    mobile.addEventListener("change", sync);
-    document.addEventListener("visibilitychange", sync);
-    sync();
-    return () => { observer?.disconnect(); motion.removeEventListener("change", sync); mobile.removeEventListener("change", sync); document.removeEventListener("visibilitychange", sync); el.pause(); };
-  }, []);
 
   return (
-    <section ref={section} className="roicas-banner" aria-labelledby="home-title">
+    <section className="roicas-banner" aria-labelledby="home-title">
       <div className="rb-background" aria-hidden="true">
         <div className="rb-video-wrapper">
-          <video
-            ref={video}
-            poster={poster}
-            muted
-            playsInline
-            loop
-            preload="none"
-            tabIndex={-1}
+          <img
+            src="/hero/banner_hero_home.png"
+            alt=""
+            width={1600}
+            height={900}
+            decoding="async"
+            fetchPriority="high"
             className="rb-hero-video"
-          >
-            <source data-src="/hero/roicas-home-hero.mp4" type="video/mp4" />
-          </video>
+          />
           <div className="rb-video-overlay" aria-hidden="true" />
         </div>
       </div>
@@ -87,13 +51,7 @@ export default function HeroSection() {
           </div>
           <p className="rb-reassurance">Consultoría gratuita · 20 minutos · Sin compromiso · Tu web 100% tuya</p>
         </div>
-        <div className="rb-background" aria-hidden="true">
-          <video ref={video} poster={poster} muted playsInline loop preload="none" tabIndex={-1}>
-            <source data-src="/hero/roicas-home-hero.mp4" type="video/mp4" />
-          </video>
-        </div>
       </div>
-
     </section>
   );
 }
