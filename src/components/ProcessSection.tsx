@@ -2,10 +2,7 @@ import {
   Compass, 
   MonitorCheck,
   KeyRound,
-  CheckCircle2, 
   ArrowRight, 
-  ShieldCheck, 
-  Clock, 
   FileText,
   Calendar
 } from "lucide-react";
@@ -82,20 +79,6 @@ export default function ProcessSection() {
               Antes de escribir una sola línea de código o activar una campaña, acordamos qué vamos a resolver,
               qué incluye el proyecto y cuál será el cronograma de entrega.
             </p>
-            <div className="rpt-guarantees-row">
-              <span className="rpt-guarantee-pill">
-                <FileText size={13} aria-hidden="true" />
-                Alcance y entregables definidos
-              </span>
-              <span className="rpt-guarantee-pill">
-                <Clock size={13} aria-hidden="true" />
-                Fechas acordadas desde el inicio
-              </span>
-              <span className="rpt-guarantee-pill">
-                <ShieldCheck size={13} aria-hidden="true" />
-                Soporte según la propuesta
-              </span>
-            </div>
           </div>
         </div>
 
@@ -135,7 +118,7 @@ export default function ProcessSection() {
                 <h3>{stepItem.title}</h3>
                 <p className="rpt-step-desc">{stepItem.description}</p>
 
-                <ul className="rpt-deliverables-list" aria-label="Entregables del paso">
+                <ul className="rpt-deliverables-list" aria-label="Entregable principal del paso">
                   <li className="rpt-featured-deliverable">
                     <span className="rpt-featured-icon" aria-hidden="true"><DeliverableIcon size={23} /></span>
                     <div>
@@ -143,12 +126,6 @@ export default function ProcessSection() {
                       <span>{detail}</span>
                     </div>
                   </li>
-                  {stepItem.deliverables.map((deliverable) => (
-                    <li key={deliverable} className="rpt-deliverable-item">
-                      <CheckCircle2 size={16} className="rpt-deliverable-icon" aria-hidden="true" />
-                      <span>{deliverable}</span>
-                    </li>
-                  ))}
                 </ul>
               </div>
             </article>

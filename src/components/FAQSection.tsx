@@ -1,37 +1,20 @@
 import { useState } from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { 
-  HelpCircle, 
   ChevronDown, 
   MessageCircle, 
   Calendar, 
-  ArrowRight,
-  ShieldQuestion,
-  Layers,
-  Sparkles
+  ShieldQuestion
 } from "lucide-react";
-import { homeFaqs, type HomeFaq } from "@/lib/homeFaqs";
+import { homeFaqs } from "@/lib/homeFaqs";
 import { trackFaqOpened, trackCtaClicked } from "@/lib/analytics";
 import { useBooking } from "@/contexts/BookingContext";
 import ParticlesBackground from "./ui/ParticlesBackground";
 import "./faq-accordion.css";
 
-const categories = [
-  { id: "todos", label: "Todas las preguntas" },
-  { id: "alcance", label: "Servicios y Alcance" },
-  { id: "propiedad", label: "Propiedad y Control" },
-  { id: "tiempos", label: "Tiempos y Soporte" },
-  { id: "consultoria", label: "Consultoría Inicial" }
-];
-
 export default function FAQSection() {
   const { openBooking } = useBooking();
-  const [activeCategory, setActiveCategory] = useState("todos");
   const [openItem, setOpenItem] = useState<string | undefined>("0");
-
-  const filteredFaqs = activeCategory === "todos" 
-    ? homeFaqs 
-    : homeFaqs.filter(faq => faq.category === activeCategory);
 
   const handleValueChange = (value: string) => {
     setOpenItem(value);
@@ -102,26 +85,6 @@ export default function FAQSection() {
 
           {/* Columna de Acordeón */}
           <div className="rfq-content">
-            
-            {/* Filtros por Categoría */}
-            <div className="rfq-categories" role="tablist" aria-label="Categorías de preguntas frecuentes">
-              {categories.map((cat) => {
-                const isActive = activeCategory === cat.id;
-                return (
-                  <button
-                    key={cat.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    className={`rfq-cat-btn ${isActive ? "is-active" : ""}`}
-                    onClick={() => setActiveCategory(cat.id)}
-                  >
-                    {cat.label}
-                  </button>
-                );
-              })}
-            </div>
-
             {/* Acordeón Radix */}
             <AccordionPrimitive.Root
               type="single"
@@ -130,9 +93,8 @@ export default function FAQSection() {
               onValueChange={handleValueChange}
               className="rfq-accordion-root"
             >
-              {filteredFaqs.map((faq) => {
-                const originalIndex = homeFaqs.findIndex(f => f.question === faq.question);
-                const valueStr = String(originalIndex);
+              {homeFaqs.map((faq, idx) => {
+                const valueStr = String(idx);
 
                 return (
                   <AccordionPrimitive.Item
@@ -143,7 +105,6 @@ export default function FAQSection() {
                     <AccordionPrimitive.Header className="flex">
                       <AccordionPrimitive.Trigger className="rfq-trigger">
                         <div className="rfq-question-wrapper">
-                          <span className="rfq-item-badge">{faq.badge}</span>
                           <span className="rfq-question-text">{faq.question}</span>
                         </div>
                         <span className="rfq-chevron" aria-hidden="true">

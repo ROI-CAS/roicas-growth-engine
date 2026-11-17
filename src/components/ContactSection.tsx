@@ -3,12 +3,7 @@ import {
   ArrowRight, 
   Clock, 
   CheckCircle2, 
-  ShieldCheck, 
-  MessageCircle, 
-  Sparkles,
-  PhoneCall,
-  Search,
-  Headphones
+  Sparkles
 } from "lucide-react";
 import { useBooking } from "@/contexts/BookingContext";
 import { trackCtaClicked } from "@/lib/analytics";
@@ -96,17 +91,6 @@ export default function ContactSection() {
                 <span>Agendar consultoría</span>
                 <ArrowRight size={17} aria-hidden="true" />
               </button>
-
-              <a 
-                href="https://wa.me/573114565403?text=Hola%20Roicas%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20desarrollo%20y%20marketing"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="rch-wa-link"
-                onClick={() => trackCtaClicked("WhatsApp ContactHub Link", "contacto")}
-              >
-                <MessageCircle size={16} aria-hidden="true" />
-                <span>¿Prefieres escribir directo? Abrir chat de WhatsApp</span>
-              </a>
             </div>
           </div>
 

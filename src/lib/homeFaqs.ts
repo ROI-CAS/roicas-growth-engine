@@ -31,33 +31,9 @@ export const homeFaqs: HomeFaq[] = [
     answer: "Acordamos el plazo antes de empezar, según el número de páginas, las integraciones y la disponibilidad de materiales. Web Express tiene sus propias condiciones. Para sitios empresariales y tiendas, la propuesta incluye las fechas de diseño, revisión y publicación."
   },
   {
-    category: "alcance",
-    badge: "Cobertura Nacional",
-    question: "¿Trabajan con empresas en Bogotá o atienden en toda Colombia?",
-    answer: "Atendemos empresas y pymes en Bogotá, Medellín, Cali, Barranquilla, Bucaramanga y en toda Colombia, además de negocios que operan internacionalmente. Somos una empresa legalmente constituida en Colombia, con facturación formal y acompañamiento continuo por videollamada y WhatsApp directo."
-  },
-  {
-    category: "alcance",
-    badge: "CRM & Automatización",
-    question: "¿Qué CRM utilizan para automatizar WhatsApp y el seguimiento comercial?",
-    answer: "Configuramos GoHighLevel (GHL) para reunir chats de WhatsApp, formularios, oportunidades y recordatorios en un solo panel. Si usas otro CRM, como HubSpot o Zoho, evaluamos los accesos, la compatibilidad y el alcance de la integración."
-  },
-  {
-    category: "alcance",
-    badge: "Compatibilidad",
-    question: "¿Pueden trabajar sobre mi sitio web, hosting o CRM existente?",
-    answer: "Sí. Revisamos las herramientas que ya utilizas (WordPress, WooCommerce, CRM actual, hosting) y evaluamos su estado técnico. Si la base es sólida, construimos sobre ella; si detectamos problemas críticos de seguridad, lentitud o código obsoleto que frenen tus ventas, te planteamos alternativas transparentes."
-  },
-  {
     category: "consultoria",
     badge: "Primera Sesión",
     question: "¿Qué ocurre durante la consultoría gratuita de 20 minutos?",
     answer: "Es una sesión estratégica de diagnóstico comercial, 100% gratuita y sin compromiso. Analizamos qué presencia digital tienes hoy, cómo buscan tus clientes en Google y cómo llegan tus consultas por WhatsApp. Al finalizar, si decidimos trabajar juntos, te entregamos una propuesta con entregables, cronograma y precio fijo cerrado."
-  },
-  {
-    category: "tiempos",
-    badge: "Garantía & Soporte",
-    question: "¿Qué soporte y garantía técnica recibo tras publicar el proyecto?",
-    answer: "La propuesta detalla la garantía del desarrollo, el alcance del soporte y la capacitación incluida. Si necesitas mantenimiento mensual para WordPress, puedes consultar WP Doctor."
   }
 ];

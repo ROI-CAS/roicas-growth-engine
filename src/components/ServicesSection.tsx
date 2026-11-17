@@ -1,18 +1,9 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as Tabs from "@radix-ui/react-tabs";
 import { ArrowRight, ChevronDown, Globe2, Megaphone, Workflow } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import "./solutions-interactive.css";
-
-type DemoModule = typeof import("@/components/ui/services-interactive-huds");
-
-function loadDemo(name: keyof DemoModule) {
-  return lazy(() => import("@/components/ui/services-interactive-huds").then(
-    (module) => ({ default: module[name] }),
-    () => ({ default: () => <p className="rsi-demo-status" role="status">No pudimos cargar la demostración. Puedes consultar el servicio en los enlaces de arriba.</p> }),
-  ));
-}
 
 const solutions = [
   {
@@ -27,8 +18,6 @@ const solutions = [
     links: [["Ver desarrollo web", "/servicios/diseno-web"], ["Ver tiendas online", "/servicios/tiendas-online"]],
     image: "/images/pillars/strategy-web-presencia.webp",
     imageAlt: "Diseño de un sitio web adaptable a distintos dispositivos",
-    demoLabel: "Ver demo de diseño web",
-    Demo: loadDemo("WebArchitectureHud"),
   },
   {
     id: "attract",
@@ -42,8 +31,6 @@ const solutions = [
     links: [["Ver SEO", "/servicios/seo"], ["Ver publicidad", "/servicios/publicidad-digital"]],
     image: "/images/pillars/strategy-seo-ads.webp",
     imageAlt: "Vista de trabajo sobre visibilidad en buscadores y publicidad digital",
-    demoLabel: "Ver demo de captación",
-    Demo: loadDemo("SearchAcquisitionHud"),
   },
   {
     id: "follow",
@@ -57,54 +44,38 @@ const solutions = [
     links: [["Ver automatización y CRM", "/servicios/automatizacion-ia"]],
     image: "/images/pillars/strategy-crm-ghl.webp",
     imageAlt: "Vista de un flujo de atención comercial con WhatsApp y CRM",
-    demoLabel: "Ver demo de seguimiento",
-    Demo: loadDemo("CrmAutomationHud"),
   },
 ];
 
 function SolutionPanel({ solution }: { solution: (typeof solutions)[number] }) {
-  const [demoOpen, setDemoOpen] = useState(false);
-  const { title, description, details, links, image, imageAlt, demoLabel, Demo } = solution;
+  const { title, description, details, links, image, imageAlt } = solution;
 
   return (
-    <>
-      <div className="rsi-panel-content">
-        <div className="rsi-copy">
-          <h3>{title}</h3>
-          <p>{description}</p>
-          <ul>
-            {details.map((detail) => (
-              <li key={detail}>
-                <span aria-hidden="true" />
-                {detail}
-              </li>
-            ))}
-          </ul>
-          <div className="rsi-panel-actions">
-            {links.map(([label, href], index) => (
-              <Link className={index === 0 ? "rsi-primary" : "rsi-secondary"} to={href} key={href}>
-                {label}
-                <ArrowRight size={18} aria-hidden="true" />
-              </Link>
-            ))}
-          </div>
-        </div>
-        <div className="rsi-visual">
-          <img src={image} alt={imageAlt} width={800} height={450} loading="lazy" decoding="async" />
+    <div className="rsi-panel-content">
+      <div className="rsi-copy">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <ul>
+          {details.map((detail) => (
+            <li key={detail}>
+              <span aria-hidden="true" />
+              {detail}
+            </li>
+          ))}
+        </ul>
+        <div className="rsi-panel-actions">
+          {links.map(([label, href], index) => (
+            <Link className={index === 0 ? "rsi-primary" : "rsi-secondary"} to={href} key={href}>
+              {label}
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          ))}
         </div>
       </div>
-      <details className="rsi-demo" onToggle={(event) => setDemoOpen(event.currentTarget.open)}>
-        <summary>
-          <span>{demoLabel}</span>
-          <ChevronDown size={18} aria-hidden="true" />
-        </summary>
-        {demoOpen && (
-          <Suspense fallback={<p className="rsi-demo-status" role="status">Cargando demostración…</p>}>
-            <Demo />
-          </Suspense>
-        )}
-      </details>
-    </>
+      <div className="rsi-visual">
+        <img src={image} alt={imageAlt} width={800} height={450} loading="lazy" decoding="async" />
+      </div>
+    </div>
   );
 }
 

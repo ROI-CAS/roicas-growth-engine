@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { useBooking } from "@/contexts/BookingContext";
 import { trackCtaClicked } from "@/lib/analytics";
 import ParticlesBackground from "./ParticlesBackground";
@@ -51,8 +51,6 @@ export default function HeroSection() {
             playsInline
             loop
             preload="none"
-            width={960}
-            height={540}
             tabIndex={-1}
             className="rb-hero-video"
           >
@@ -85,11 +83,17 @@ export default function HeroSection() {
           </ul>
           <div className="rb-actions">
             <button className="rb-cta" type="button" onClick={() => { trackCtaClicked("Agendar consultoría", "hero"); openBooking(); }}><span>Agendar consultoría</span><span className="rb-arrow"><ArrowRight size={18} aria-hidden="true" /></span></button>
-            <a className="rb-whatsapp" href="https://wa.me/573114565403?text=Hola%20Roicas%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20desarrollo%20y%20marketing" target="_blank" rel="noopener noreferrer" onClick={() => trackCtaClicked("Escribir por WhatsApp", "hero")}><MessageCircle size={18} aria-hidden="true" /><span>Hablemos por WhatsApp</span><ArrowRight size={17} aria-hidden="true" /></a>
+            <a className="rb-whatsapp" href="#servicios"><span>Explorar soluciones</span><ArrowDown size={17} aria-hidden="true" /></a>
           </div>
           <p className="rb-reassurance">Consultoría gratuita · 20 minutos · Sin compromiso · Tu web 100% tuya</p>
         </div>
+        <div className="rb-background" aria-hidden="true">
+          <video ref={video} poster={poster} muted playsInline loop preload="none" tabIndex={-1}>
+            <source data-src="/hero/roicas-home-hero.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
+
     </section>
   );
 }
