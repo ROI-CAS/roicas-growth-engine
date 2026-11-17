@@ -38,7 +38,7 @@ export default function HeroSection() {
               decoding="async"
             />
           </picture>
-          <p className="rb-description">Diseñamos tu sitio web, atraemos clientes con Google y Meta y centralizamos tus ventas por WhatsApp.</p>
+          <p className="rb-description">Creamos tu sitio web o tienda online, atraemos clientes calificados con SEO, Google y Meta Ads, y conectamos WhatsApp con tu CRM para que ninguna oportunidad de venta se pierda.</p>
           <div className="rb-actions">
             <button className="rb-cta" type="button" onClick={() => { trackCtaClicked("Agendar consultoría", "hero"); openBooking(); }}><span>Agendar consultoría</span><span className="rb-arrow"><ArrowRight size={18} aria-hidden="true" /></span></button>
           </div>

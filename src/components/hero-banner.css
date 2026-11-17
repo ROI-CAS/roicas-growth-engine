@@ -254,7 +254,9 @@
 /* Video de fondo 16:9 a altura completa, fundido en el borde izquierdo */
 .rb-background {
   position: absolute;
-  inset: 0;
+  inset: 5rem 0 0 0;
+  max-width: var(--roicas-content-width);
+  margin-inline: auto;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
@@ -281,8 +283,8 @@
   top: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: right center;
+  object-fit: cover;
+  object-position: right top;
   opacity: 1;
 }
 
