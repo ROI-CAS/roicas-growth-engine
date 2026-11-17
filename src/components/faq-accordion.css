@@ -47,7 +47,7 @@
 
 .roicas-home .rfq-sidebar h2 {
   font-family: inherit;
-  font-size: clamp(32px, 3.4vw, 48px);
+  font-size: clamp(30px, 3vw, 44px);
   line-height: 1.12;
   letter-spacing: -0.03em;
   font-weight: 750;

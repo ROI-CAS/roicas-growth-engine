@@ -44,7 +44,7 @@
 
 .roicas-home .rsi-intro h2 {
   font-family: inherit;
-  font-size: clamp(32px, 3.4vw, 52px);
+  font-size: clamp(30px, 3vw, 44px);
   line-height: 1.1;
   letter-spacing: -0.035em;
   font-weight: 700;
@@ -333,7 +333,7 @@
 
 .roicas-home .rsi-copy h3 {
   font-family: inherit;
-  font-size: clamp(26px, 2.6vw, 38px);
+  font-size: clamp(24px, 2.2vw, 30px);
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.2;

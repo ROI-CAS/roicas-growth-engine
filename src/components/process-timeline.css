@@ -39,7 +39,7 @@
 
 .roicas-home .rpt-header h2 {
   font-family: inherit;
-  font-size: clamp(32px, 3.6vw, 52px);
+  font-size: clamp(30px, 3vw, 44px);
   line-height: 1.1;
   letter-spacing: -0.035em;
   font-weight: 750;
