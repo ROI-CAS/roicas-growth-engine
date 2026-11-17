@@ -7,8 +7,8 @@
   overflow: hidden;
   background: #0F0B0C;
   color: #fff;
-  padding: clamp(140px, 12vw, 170px) clamp(24px, 4vw, 56px) clamp(64px, 7vw, 96px);
-  min-height: 780px;
+  padding: clamp(112px, 10vw, 136px) clamp(24px, 4vw, 56px) clamp(56px, 6vw, 76px);
+  min-height: clamp(540px, 76vh, 660px);
 }
 
 /* Contenedor Widescreen Expansivo: se adapta con elegancia a 1440px y monitores grandes */
@@ -277,11 +277,10 @@
 .rb-background video,
 .rb-background .rb-hero-video {
   position: absolute;
-  right: 90px;
+  right: 0;
   top: 0;
-  width: auto;
+  width: 100%;
   height: 100%;
-  aspect-ratio: 16 / 9;
   object-fit: contain;
   object-position: right center;
   opacity: 1;

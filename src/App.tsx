@@ -21,7 +21,7 @@ const WebExpressCampaign = lazy(() => import("./modules/web-express/routes/black
 const WebExpressPrivacy = lazy(() => import("./modules/web-express/routes/privacidad"));
 const WebExpressTerms = lazy(() => import("./modules/web-express/routes/terminos"));
 const WPDoctor = lazy(() => import("./pages/WPDoctor"));
-const Index = lazy(() => import("./pages/Index"));
+import Index from "./pages/Index";
 const Services = lazy(() => import("./pages/Services"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Contact = lazy(() => import("./pages/Contact"));
