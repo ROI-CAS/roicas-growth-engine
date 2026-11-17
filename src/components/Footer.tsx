@@ -9,8 +9,8 @@ export default function Footer() {
       <div className="section-container">
         <div className="roicas-footer-grid">
           <div>
-            <Link to="/" aria-label="Roicas, inicio"><img src={logo} width={160} height={48} alt="ROICAS" className="h-10 w-auto" /></Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">Diseño web, marketing digital y automatización para empresas en Colombia.</p>
+            <Link to="/" aria-label="Roicas, inicio" className="roicas-footer-brand"><img src={logo} width={160} height={48} alt="ROICAS" className="h-9 w-auto" /></Link>
+            <p className="roicas-footer-tagline mt-4 max-w-xs text-sm leading-relaxed">Diseño web, marketing digital y automatización para empresas en Colombia.</p>
           </div>
           <nav aria-label="Servicios en el pie de página">
             <h2>Servicios</h2>

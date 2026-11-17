@@ -25,17 +25,59 @@
 }
 
 .roicas-site-footer.roicas-footer {
-  background: #f5f1ed;
+  background: #0F0B0C;
+  color: #f5f1ed;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.roicas-site-footer .roicas-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+}
+
+.roicas-site-footer .roicas-footer-tagline {
+  color: #c7c2cc;
+}
+
+.roicas-site-footer h2 {
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .roicas-site-footer a {
   max-width: 100%;
   min-height: 44px;
   overflow-wrap: anywhere;
+  color: #d6d3db;
+  transition: color 180ms ease;
+}
+
+.roicas-site-footer a:not(.roicas-footer-brand):hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: hsl(var(--brand-on-dark));
+}
+
+.roicas-site-footer .roicas-footer-bottom {
+  border-top-color: rgba(255, 255, 255, 0.12);
+  color: #a59fa9;
+}
+
+.roicas-site-footer .roicas-footer-bottom a {
+  color: #d6d3db;
 }
 
 .roicas-site-footer a:focus-visible {
-  outline: 2px solid hsl(var(--brand));
+  outline: 2px solid #ffffff;
   outline-offset: 3px;
 }
 
