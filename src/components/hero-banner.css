@@ -16,8 +16,8 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.24fr) minmax(0, 1fr);
-  gap: clamp(48px, 6vw, 110px);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(32px, 5vw, 80px);
   align-items: center;
   max-width: var(--roicas-content-width);
   width: 100%;
@@ -28,6 +28,7 @@
   position: relative;
   z-index: 1;
   min-width: 0;
+  max-width: 500px;
 }
 
 /* Badge con micro-glow */
@@ -98,13 +99,13 @@
   }
 }
 
-/* Párrafo con ancho generoso para que no se sienta apretado */
+/* Párrafo compacto para no invadir el gráfico derecho */
 .roicas-home .roicas-banner .rb-description {
-  font-size: clamp(16px, 1.25vw, 19px);
-  line-height: 1.7;
-  max-width: 54ch;
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.65;
+  max-width: 42ch;
   color: #d6d3db;
-  margin: 28px 0 34px;
+  margin: 22px 0 26px;
 }
 
 /* Acciones principales */
@@ -112,19 +113,19 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px 0;
+  gap: 10px 0;
   padding: 0;
-  margin: 0 0 30px;
+  margin: 0 0 28px;
   list-style: none;
 }
 
 .rb-proof-points li {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 0 16px;
+  gap: 8px;
+  padding: 0 12px;
   color: #ede9ed;
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.35;
   white-space: nowrap;
 }
