@@ -26,7 +26,7 @@ export default function HeroSection() {
       <ParticlesBackground particleCount={50} speed={0.4} className="opacity-90 z-0" />
       <div className="rb-layout">
         <div className="rb-content">
-          <h1 id="home-title">Tu sistema de crecimiento digital,<br /><span>de la atracción al cierre</span></h1>
+          <h1 id="home-title">Tu sistema de<br />crecimiento digital,<br /><span>de la atracción al cierre</span></h1>
           <picture>
             <source media="(min-width: 768px)" srcSet="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" />
             <img
