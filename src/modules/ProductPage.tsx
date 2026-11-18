@@ -1,6 +1,5 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { ArrowLeft } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import { Link, useLocation } from "react-router-dom";
 import SeoHead from "@/components/SeoHead";
 import { bootstrapTracking } from "./diagnostico/lib/tracking-loader";
@@ -23,9 +22,6 @@ export default function ProductPage({ product, title, description, children }: {
   return (
     <>
       <SeoHead title={title} description={description} canonical={pathname} noindex={pathname.includes("black-november")} />
-      <Helmet>
-        {product === "diagnostico" && <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;600&display=swap" />}
-      </Helmet>
       <div ref={scope} className={`${product}-scope`}>
         <nav className="product-bridge" aria-label="Volver a Roicas">
           <div className="product-bridge__inner">
