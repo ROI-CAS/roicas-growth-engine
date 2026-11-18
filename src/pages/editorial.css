@@ -200,6 +200,11 @@
   background: #fffcfa;
 }
 
+.red-guide:not(.red-guide-featured) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 340px;
+}
+
 .red-guide-link {
   display: flex;
   flex: 1;

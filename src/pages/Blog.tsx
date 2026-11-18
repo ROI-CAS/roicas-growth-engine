@@ -99,14 +99,14 @@ export default function Blog() {
           <div className="section-container red-hero-content">
             <h1>Blog de ROICAS</h1>
             <p>Guías para decidir qué mejorar en tu web, cómo atraer clientes y qué procesos vale la pena automatizar.</p>
-            <div className="red-search" role="search" aria-label="Buscar guías">
+            <search className="red-search" aria-label="Buscar guías">
               <label htmlFor="guide-search">Buscar en las guías</label>
               <div className="red-search-field">
                 <Search size={20} aria-hidden="true" />
                 <input ref={searchInput} id="guide-search" type="search" value={searchQuery} onChange={event => setSearchQuery(event.target.value)} placeholder="Ej. SEO, pagos o automatización" aria-controls="guide-results" />
                 {searchQuery && <button type="button" aria-label="Borrar búsqueda" onClick={clearSearch}><X size={18} aria-hidden="true" /></button>}
               </div>
-            </div>
+            </search>
           </div>
         </header>
 

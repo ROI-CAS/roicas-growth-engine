@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation } from "react-router-dom";
 import SeoHead from "@/components/SeoHead";
-import { loadTracking } from "./diagnostico/lib/tracking-loader";
+import { bootstrapTracking } from "./diagnostico/lib/tracking-loader";
 import { initWebExpressTracking } from "./web-express/lib/tracking";
 import "./product-landing.css";
 
@@ -16,7 +16,7 @@ export default function ProductPage({ product, title, description, children }: {
 
   useEffect(() => {
     scope.current?.classList.add("reveal-js");
-    if (product === "diagnostico") loadTracking();
+    if (product === "diagnostico") bootstrapTracking();
     else initWebExpressTracking();
   }, [product]);
 

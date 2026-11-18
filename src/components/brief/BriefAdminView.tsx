@@ -120,8 +120,15 @@ export const BriefAdminView: React.FC<{ onClose?: () => void }> = ({ onClose }) 
         </p>
 
         <form onSubmit={handleLogin} className="space-y-4">
+          <label htmlFor="brief-admin-passcode" className="sr-only">
+            Clave de acceso
+          </label>
           <Input
+            id="brief-admin-passcode"
+            name="passcode"
             type="password"
+            autoComplete="current-password"
+            required
             placeholder="Clave de acceso"
             value={enteredPasscode}
             onChange={(e) => setEnteredPasscode(e.target.value)}

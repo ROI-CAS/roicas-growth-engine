@@ -339,6 +339,8 @@ export function ExpressBrief({ onBookingClick }: ExpressBriefProps = {}) {
                 </Label>
                 <Input
                   id="nombre"
+                  name="name"
+                  autoComplete="name"
                   required
                   value={nombre}
                   onChange={(e) => setNombre(e.target.value)}
@@ -355,7 +357,9 @@ export function ExpressBrief({ onBookingClick }: ExpressBriefProps = {}) {
                 </Label>
                 <Input
                   id="whatsapp"
+                  name="tel"
                   type="tel"
+                  autoComplete="tel"
                   required
                   value={whatsapp}
                   onChange={(e) => setWhatsapp(e.target.value)}
@@ -375,7 +379,9 @@ export function ExpressBrief({ onBookingClick }: ExpressBriefProps = {}) {
               </Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
+                autoComplete="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -398,6 +404,8 @@ export function ExpressBrief({ onBookingClick }: ExpressBriefProps = {}) {
                 </Label>
                 <Input
                   id="empresa"
+                  name="organization"
+                  autoComplete="organization"
                   required
                   value={empresa}
                   onChange={(e) => setEmpresa(e.target.value)}
@@ -416,6 +424,8 @@ export function ExpressBrief({ onBookingClick }: ExpressBriefProps = {}) {
                   <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
                   <Input
                     id="ciudad"
+                    name="city"
+                    autoComplete="address-level2"
                     required
                     value={ciudad}
                     onChange={(e) => setCiudad(e.target.value)}
@@ -526,11 +536,12 @@ export function ExpressBrief({ onBookingClick }: ExpressBriefProps = {}) {
               </Label>
               <Textarea
                 id="descripcion"
+                name="descripcion"
                 required
                 value={descripcion}
                 onChange={(e) => setDescripcion(e.target.value)}
                 placeholder="Ej: Somos una clínica dental en Bogotá que ofrece ortodoncia, blanqueamiento y limpieza dental. Atendemos familias y adultos..."
-                className="min-h-20 resize-none rounded-xl bg-background text-sm"
+                className="min-h-20 resize-y rounded-xl bg-background text-sm"
               />
             </div>
 
@@ -545,11 +556,12 @@ export function ExpressBrief({ onBookingClick }: ExpressBriefProps = {}) {
               </Label>
               <Textarea
                 id="servicios"
+                name="servicios"
                 required
                 value={servicios}
                 onChange={(e) => setServicios(e.target.value)}
                 placeholder="Ej: 1. Ortodoncia, 2. Blanqueamiento dental, 3. Limpieza, 4. Implantes, 5. Urgencias 24h"
-                className="min-h-20 resize-none rounded-xl bg-background text-sm"
+                className="min-h-20 resize-y rounded-xl bg-background text-sm"
               />
             </div>
 
@@ -720,10 +732,11 @@ export function ExpressBrief({ onBookingClick }: ExpressBriefProps = {}) {
               </Label>
               <Textarea
                 id="notas"
+                name="notas"
                 value={notas}
                 onChange={(e) => setNotas(e.target.value)}
                 placeholder="Ej: Quiero colores azul y blanco, tengo un video de presentación, abro los domingos..."
-                className="min-h-20 resize-none rounded-xl bg-background text-sm"
+                className="min-h-20 resize-y rounded-xl bg-background text-sm"
               />
             </div>
 

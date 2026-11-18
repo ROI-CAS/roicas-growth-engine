@@ -91,7 +91,7 @@ export function PremiumCampaign({ serverNow }: { serverNow: number }) {
     const activateVideo = () => {
       if (activated || preference.matches) return;
       activated = true;
-      video.src = "/products/web-express/web-express/black-november-hero.mp4";
+      video.src = "/products/web-express/black-november-hero.mp4";
       video.load();
       void video.play().catch(() => undefined);
     };
@@ -257,6 +257,8 @@ export function PremiumCampaign({ serverNow }: { serverNow: number }) {
                 <video
                   className="premium-hero-video"
                   ref={videoRef}
+                  width={1280}
+                  height={720}
                   loop
                   muted
                   playsInline

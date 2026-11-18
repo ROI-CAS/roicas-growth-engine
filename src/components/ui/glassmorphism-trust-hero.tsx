@@ -11,15 +11,33 @@ export default function HeroSection() {
     <section className="roicas-banner" aria-labelledby="home-title">
       <div className="rb-background" aria-hidden="true">
         <div className="rb-video-wrapper">
-          <img
-            src="/hero/banner_hero_home.png"
-            alt=""
-            width={1600}
-            height={900}
-            decoding="async"
-            fetchPriority="high"
-            className="rb-hero-video"
-          />
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              type="image/avif"
+              srcSet="/hero/banner_hero_home-960.avif 960w, /hero/banner_hero_home.avif 1672w"
+              sizes="(min-width: 1200px) 65vw, 100vw"
+            />
+            <source
+              media="(min-width: 768px)"
+              type="image/webp"
+              srcSet="/hero/banner_hero_home-960.webp 960w, /hero/banner_hero_home.webp 1672w"
+              sizes="(min-width: 1200px) 65vw, 100vw"
+            />
+            <source
+              media="(min-width: 768px)"
+              srcSet="/hero/banner_hero_home.png"
+            />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+              alt=""
+              width={1672}
+              height={941}
+              decoding="async"
+              fetchPriority="high"
+              className="rb-hero-video"
+            />
+          </picture>
           <div className="rb-video-overlay" aria-hidden="true" />
         </div>
       </div>
@@ -29,6 +47,16 @@ export default function HeroSection() {
           <h1 id="home-title">Agencia de marketing digital<br /><span>con estrategia comercial</span></h1>
           <picture>
             <source media="(min-width: 768px)" srcSet="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" />
+            <source
+              type="image/avif"
+              srcSet="/images/services/hero-home-mobile-640.avif 640w, /images/services/hero-home-mobile.avif 1080w"
+              sizes="calc(100vw - 48px)"
+            />
+            <source
+              type="image/webp"
+              srcSet="/images/services/hero-home-mobile-640.webp 640w, /images/services/hero-home-mobile.webp 1080w"
+              sizes="calc(100vw - 48px)"
+            />
             <img
               className="rb-placeholder"
               src="/images/services/hero-home-mobile.webp"
@@ -36,6 +64,7 @@ export default function HeroSection() {
               height={1080}
               alt="Estrategia digital 360 grados para empresas"
               decoding="async"
+              fetchPriority="high"
             />
           </picture>
           <p className="rb-description">Estructuramos tu canal digital de punta a punta: combinamos estrategia comercial, SEO, pauta en Google y Meta y flujos automatizados en CRM para atraer mejores prospectos y darles seguimiento real.</p>
