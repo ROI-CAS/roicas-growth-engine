@@ -1,0 +1,111 @@
+{
+  "slug": "que-es-geo-posicionar-empresa-buscadores-ia",
+  "status": "published",
+  "title": "Qué es GEO y cómo posicionar tu empresa en ChatGPT, Perplexity y Google AI",
+  "description": "Descubre qué es GEO (Generative Engine Optimization), en qué se diferencia del SEO tradicional y qué estructura necesita tu sitio web para ser citado por buscadores con IA.",
+  "category": "SEO",
+  "author": "Equipo ROICAS",
+  "authorAvatar": "/favicon.png",
+  "coverImage": "/blog/seo-empresas.jpg",
+  "published": "2026-11-18",
+  "modified": "2026-11-18",
+  "introduction": "GEO (Generative Engine Optimization) es la optimización de contenidos y estructura técnica de un sitio web para que motores generativos como ChatGPT, Perplexity, Gemini y AI Overviews de Google comprendan, verifiquen y citen a tu empresa en sus respuestas. No reemplaza al SEO tradicional: se apoya en una base técnica indexable para ganar visibilidad cuando los usuarios preguntan directamente a una IA.",
+  "sections": [
+    {
+      "heading": "¿Qué es exactamente GEO y por qué importa para tu empresa?",
+      "paragraphs": [
+        "Hasta hace poco, la búsqueda digital consistía en escribir palabras clave cortas en Google y hacer clic entre diez enlaces azules. Hoy, muchos compradores B2B formulan preguntas completas en asistentes de IA para comparar proveedores, entender requisitos técnicos o pedir recomendaciones antes de visitar un sitio web.",
+        "Cuando un motor generativo construye una respuesta, selecciona fuentes claras, estructuradas y confiables. Si tu empresa solo publica textos comerciales vagos sin definiciones precisas, criterios de selección ni datos verificables, queda fuera de esas citas aunque tenga un sitio visualmente atractivo."
+      ],
+      "checklist": [
+        "Responde la pregunta principal en las primeras líneas de cada página o artículo.",
+        "Usa encabezados en forma de pregunta real que coincida con cómo consulta tu cliente.",
+        "Evita afirmaciones genéricas sin contexto técnico o alcance concreto."
+      ]
+    },
+    {
+      "heading": "¿Cómo deciden los motores de IA qué páginas citar?",
+      "paragraphs": [
+        "Los sistemas de búsqueda con IA combinan rastreo web clásico con extracción semántica por fragmentos. Primero necesitan acceder sin bloqueos al HTML de tu sitio; después buscan bloques autónomos que definan un concepto, comparen alternativas o expliquen un proceso paso a paso.",
+        "Las páginas con jerarquía limpia de encabezados (H1, H2, H3), listas concretas, tablas comparativas y marcado estructurado Schema.org facilitan que el modelo extraiga la respuesta exacta sin ambigüedad y enlace tu dominio como fuente."
+      ],
+      "callout": {
+        "type": "tip",
+        "title": "Prioriza HTML renderizado y texto directo",
+        "text": "Muchos rastreadores de IA no ejecutan JavaScript complejo o ignoran texto escondido en imágenes. Asegura que tu contenido clave exista como texto HTML limpio desde la carga inicial."
+      }
+    },
+    {
+      "heading": "¿Qué acciones técnicas y de contenido mejoran tu visibilidad GEO?",
+      "paragraphs": [
+        "La base técnica empieza por revisar el archivo robots.txt para no bloquear por error rastreadores legítimos de búsqueda e IA, mantener un sitemap XML actualizado y asegurar URLs canónicas limpias. También conviene implementar datos estructurados JSON-LD (Organization, Service, FAQPage y Article) coherentes con el texto visible.",
+        "En el plano editorial, cada página de servicio y cada guía debe dejar claro quién es la empresa, qué problema resuelve, en qué país o ciudad opera, qué incluye su alcance y en qué casos aplica. Cuanto más explícita sea la relación entre entidad, servicio y ubicación, mayor precisión tendrá la IA al recomendarte."
+      ],
+      "checklist": [
+        "Verifica que robots.txt permita indexar tus páginas públicas clave.",
+        "Añade datos estructurados Organization, Service y FAQPage acordes al contenido visible.",
+        "Incluye tablas comparativas y listas con criterios objetivos de decisión.",
+        "Especifica cobertura geográfica (por ejemplo, Colombia y ciudades atendidas) y alcance real."
+      ]
+    },
+    {
+      "heading": "¿Cómo evitar que SEO y GEO compitan entre sí?",
+      "paragraphs": [
+        "SEO y GEO comparten el mismo objetivo: resolver con precisión la intención del usuario. Un artículo bien estructurado para GEO también mejora la lectura humana, reduce el rebote y responde directamente a las búsquedas informacionales en Google.",
+        "La clave está en separar roles: las páginas de servicio responden a intención comercial directa (contratar diseño web, SEO, pauta o automatización), mientras que las guías del blog responden preguntas de investigación y comparación que alimentan tanto los resultados orgánicos como las citas en asistentes de IA."
+      ],
+      "callout": {
+        "type": "metric",
+        "title": "Señal de consistencia entre web y marca",
+        "text": "Mantén los mismos datos de nombre comercial, servicios, teléfono y cobertura en tu sitio web, Perfil de Empresa en Google y menciones externas para reforzar la confianza de entidad."
+      }
+    }
+  ],
+  "comparisonTable": {
+    "title": "SEO tradicional frente a GEO (Generative Engine Optimization)",
+    "subtitle": "Cómo se complementan ambos enfoques en una estrategia de visibilidad orgánica.",
+    "columnA": "SEO tradicional",
+    "columnB": "GEO (Motores generativos)",
+    "rows": [
+      {
+        "criterion": "Objetivo principal",
+        "valA": "Posicionar URLs en los primeros resultados de buscadores como Google.",
+        "valB": "Ser citado y recomendado dentro de respuestas generadas por IA."
+      },
+      {
+        "criterion": "Tipo de consulta habitual",
+        "valA": "Palabras clave cortas o transaccionales (ej. agencia SEO Colombia).",
+        "valB": "Preguntas completas y comparativas (ej. qué CRM conviene a una pyme)."
+      },
+      {
+        "criterion": "Formato que mejor funciona",
+        "valA": "Páginas optimizadas por intención, enlaces internos y velocidad técnica.",
+        "valB": "Respuestas directas al inicio, tablas comparativas, listas y Schema.org."
+      },
+      {
+        "criterion": "Medición de impacto",
+        "valA": "Impresiones, clics orgánicos, posiciones y conversiones en el sitio.",
+        "valB": "Tráfico referido desde motores de IA, menciones de marca y consultas directas."
+      }
+    ]
+  },
+  "roicasSolution": {
+    "title": "Posicionamiento SEO y preparación GEO para empresas",
+    "description": "En ROICAS trabajamos la arquitectura técnica, el contenido estructurado y los datos Schema.org de tu sitio web para captar demanda tanto en Google como en motores de búsqueda con IA.",
+    "deliverables": [
+      {
+        "title": "Auditoría técnica SEO + indexación para IA",
+        "description": "Revisión de HTML renderizado, velocidad, robots.txt, sitemaps y marcado estructurado JSON-LD."
+      },
+      {
+        "title": "Arquitectura de contenidos citables",
+        "description": "Estructura de páginas de servicio y guías diseñadas para responder búsquedas comerciales y comparativas reales."
+      }
+    ],
+    "ctaText": "Evaluar mi visibilidad en Google e IA"
+  },
+  "service": {
+    "label": "Conocer servicio de SEO y visibilidad orgánica",
+    "href": "/servicios/seo"
+  }
+}
